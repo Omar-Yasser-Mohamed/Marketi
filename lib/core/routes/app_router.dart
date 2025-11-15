@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/routes/routes.dart';
-import 'package:marketi/features/splash/presentation/screens/onboarding_screen_one.dart';
-import 'package:marketi/features/splash/presentation/screens/onboarding_screen_three.dart';
-import 'package:marketi/features/splash/presentation/screens/onboarding_screen_two.dart';
+import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
+import 'package:marketi/features/auth/presentation/screens/register_screen.dart';
+import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
 
 abstract class AppRouter {
@@ -13,16 +13,20 @@ abstract class AppRouter {
         builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
-        path: Routes.onBoardingOne,
-        builder: (context, state) => const OnboardingScreenOne(),
+        path: Routes.onBoarding,
+        builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-        path: Routes.onBoardingTwo,
-        builder: (context, state) => const OnboardingScreenTwo(),
+        path: Routes.login,
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
-        path: Routes.onBoardingThree,
-        builder: (context, state) => const OnboardingScreenThree(),
+        path: Routes.register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: Routes.forgetPasswrod,
+        builder: (context, state) => const RegisterScreen(),
       ),
     ],
   );

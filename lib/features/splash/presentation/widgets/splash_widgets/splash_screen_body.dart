@@ -46,9 +46,9 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
 
   void _goToOnboardingScreen() {
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       () {
-        GoRouter.of(context).go(Routes.onBoardingOne);
+        GoRouter.of(context).go(Routes.onBoarding);
       },
     );
   }

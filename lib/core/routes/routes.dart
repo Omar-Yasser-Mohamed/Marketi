@@ -1,6 +1,8 @@
 abstract class Routes {
   static const String splash = '/';
-  static const String onBoardingOne = '/onBoardingOne';
-  static const String onBoardingTwo = '/onBoardingTwo';
-  static const String onBoardingThree = '/onBoardingThree';
+  static const String onBoarding = '/onBoarding';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String homeScreen = '/homeScreen';
+  static const String forgetPasswrod = '/forgetPasswordScreen';
 }
