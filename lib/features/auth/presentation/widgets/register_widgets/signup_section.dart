@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/app_assets/app_icons.dart';
 import 'package:marketi/core/theme/text_styles.dart';
-import 'package:marketi/core/widgets/Custom_text_form_field.dart';
+import 'package:marketi/core/widgets/custom_text_form_field.dart';
 import 'package:marketi/core/widgets/custom_button.dart';
 import 'package:marketi/features/auth/presentation/widgets/custom_password_text_form_field.dart';
 
@@ -21,7 +21,7 @@ class SignupSection extends StatelessWidget {
             children: [
               Text(
                 "Your Name",
-                style: TextStyles.enM12,
+                style: TextStyles.enM14,
               ),
               SizedBox(height: 2),
               CustomTextFormField(
@@ -32,7 +32,7 @@ class SignupSection extends StatelessWidget {
 
               Text(
                 "Phone Number",
-                style: TextStyles.enM12,
+                style: TextStyles.enM14,
               ),
               SizedBox(height: 2),
               CustomTextFormField(
@@ -44,7 +44,7 @@ class SignupSection extends StatelessWidget {
 
               Text(
                 "Email",
-                style: TextStyles.enM12,
+                style: TextStyles.enM14,
               ),
               SizedBox(height: 2),
               CustomTextFormField(
@@ -56,7 +56,7 @@ class SignupSection extends StatelessWidget {
 
               Text(
                 "Password",
-                style: TextStyles.enM12,
+                style: TextStyles.enM14,
               ),
               SizedBox(height: 2),
               CustomPasswordTextFormField(),
@@ -64,7 +64,7 @@ class SignupSection extends StatelessWidget {
 
               Text(
                 "Confirm Password",
-                style: TextStyles.enM12,
+                style: TextStyles.enM14,
               ),
               SizedBox(height: 2),
               CustomPasswordTextFormField(

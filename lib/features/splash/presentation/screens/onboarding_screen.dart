@@ -64,7 +64,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         );
       });
     } else {
-      GoRouter.of(context).push(Routes.login);
+      GoRouter.of(context).go(Routes.login);
     }
   }
 }
