@@ -1,8 +1,8 @@
 import 'dart:developer';
-
 import 'package:cherry_toast_msgs/cherry_toast_msgs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/app_assets/app_icons.dart';
 import 'package:marketi/core/theme/text_styles.dart';
 import 'package:marketi/core/utils/app_validators.dart';
@@ -10,6 +10,7 @@ import 'package:marketi/core/widgets/custom_text_form_field.dart';
 import 'package:marketi/core/widgets/custom_button.dart';
 import 'package:marketi/features/auth/presentation/cubits/register_cubit/register_cubit.dart';
 import 'package:marketi/features/auth/presentation/widgets/custom_password_text_form_field.dart';
+import 'package:marketi/core/routes/routes.dart';
 
 class SignupSection extends StatefulWidget {
   const SignupSection({super.key});
@@ -137,6 +138,8 @@ class _SignupSectionState extends State<SignupSection> {
                   title: 'Success!',
                   description: 'Register Success',
                 );
+                
+                  GoRouter.of(context).go(Routes.homeScreen);
               } else if (state is RegisterFailure) {
                 CherryToastMsgs.showErrorToast(
                   context,

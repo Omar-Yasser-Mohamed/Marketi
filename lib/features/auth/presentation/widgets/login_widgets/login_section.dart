@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:cherry_toast_msgs/cherry_toast_msgs.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/app_assets/app_icons.dart';
+import 'package:marketi/core/routes/routes.dart';
 import 'package:marketi/core/utils/app_validators.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
 import 'package:marketi/core/widgets/custom_button.dart';
@@ -83,6 +85,7 @@ class _LoginSectionState extends State<LoginSection> {
                     title: 'Success!',
                     description: 'Login Success',
                   );
+                  GoRouter.of(context).go(Routes.homeScreen);
                 } else if (state is LoginFailure) {
                   CherryToastMsgs.showErrorToast(
                     context,

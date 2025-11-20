@@ -13,6 +13,8 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:marketi/core/network/api_service.dart' as _i352;
 import 'package:marketi/core/network/dio_client.dart' as _i750;
+import 'package:marketi/core/token/token_service.dart' as _i547;
+import 'package:marketi/core/token/token_service_impl.dart' as _i79;
 import 'package:marketi/features/auth/data/data_source/remote/auth_remote_data_source.dart'
     as _i312;
 import 'package:marketi/features/auth/data/data_source/remote/auth_remote_data_source_impl.dart'
@@ -48,6 +50,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.lazySingleton<_i750.DioClient>(() => _i750.DioClient());
+    gh.lazySingleton<_i547.TokenService>(() => _i79.TokenServiceImpl());
     gh.lazySingleton<_i352.ApiService>(
       () => _i352.ApiService(gh<_i750.DioClient>()),
     );
@@ -55,7 +58,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i483.AuthRemoteDataSourceImpl(gh<_i352.ApiService>()),
     );
     gh.lazySingleton<_i377.AuthRepo>(
-      () => _i62.AuthRepoImpl(gh<_i312.AuthRemoteDataSource>()),
+      () => _i62.AuthRepoImpl(
+        gh<_i312.AuthRemoteDataSource>(),
+        gh<_i547.TokenService>(),
+      ),
     );
     gh.lazySingleton<_i442.ForgetPasswordUseCase>(
       () => _i442.ForgetPasswordUseCase(gh<_i377.AuthRepo>()),

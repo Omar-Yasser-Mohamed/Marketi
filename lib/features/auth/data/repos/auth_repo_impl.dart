@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/error/failure.dart';
+import 'package:marketi/core/token/token_service.dart';
 import 'package:marketi/features/auth/data/data_source/remote/auth_remote_data_source.dart';
 import 'package:marketi/features/auth/data/models/auth_response.dart';
 import 'package:marketi/features/auth/data/models/forget_password_request.dart';
@@ -16,8 +19,9 @@ import 'package:marketi/features/auth/domain/repos/auth_repo.dart';
 @LazySingleton(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
   final AuthRemoteDataSource authDataSource;
+  final TokenService tokenService;
 
-  const AuthRepoImpl(this.authDataSource);
+  const AuthRepoImpl(this.authDataSource, this.tokenService);
 
   @override
   Future<Either<Failure, ForgetPasswordResponse>> forgetPassword({
@@ -37,6 +41,10 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await authDataSource.login(request: request);
+      if (response.message == 'success') {
+        await tokenService.setToken(response.token);
+        log('token from repo ----  ${await tokenService.getToken()}');
+      }
       return right(response);
     } catch (e) {
       return left(Failure(e.toString()));
@@ -49,6 +57,10 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await authDataSource.register(request: request);
+      if (response.message == 'success') {
+        await tokenService.setToken(response.token);
+        log('token from repo ----  ${await tokenService.getToken()}');
+      }
       return right(response);
     } catch (e) {
       return left(Failure(e.toString()));

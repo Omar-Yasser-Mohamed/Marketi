@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/app_assets/app_images.dart';
+import 'package:marketi/core/di/injectable.dart';
 import 'package:marketi/core/routes/routes.dart';
+import 'package:marketi/core/token/token_service.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -44,11 +46,17 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     _animationController.forward();
   }
 
-  void _goToOnboardingScreen() {
+  void _goToOnboardingScreen() async {
     Future.delayed(
       const Duration(seconds: 3),
-      () {
-        GoRouter.of(context).go(Routes.onBoarding);
+      () async {
+        final token = await getIt<TokenService>().getToken();
+
+        if (token != null && token.isNotEmpty) {
+          GoRouter.of(context).go(Routes.homeScreen);
+        } else {
+          GoRouter.of(context).go(Routes.onBoarding);
+        }
       },
     );
   }
