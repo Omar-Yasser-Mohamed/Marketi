@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/app_assets/app_images.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
+import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/verify_otp_cubit.dart';
 
-class VerifyHeaderSection extends StatelessWidget {
+class VerifyHeaderSection extends StatefulWidget {
   const VerifyHeaderSection({super.key});
+
+  @override
+  State<VerifyHeaderSection> createState() => _VerifyHeaderSectionState();
+}
+
+class _VerifyHeaderSectionState extends State<VerifyHeaderSection> {
+  late final String email;
+
+  @override
+  void initState() {
+    super.initState();
+    email = context.read<VerifyOtpCubit>().email;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +42,7 @@ class VerifyHeaderSection extends StatelessWidget {
               ),
               children: [
                 TextSpan(
-                  text: 'omary4576@gmail.com',
+                  text: email,
                   style: TextStyles.enM20.copyWith(
                     color: ColorStyles.primary,
                     fontWeight: FontWeight.normal,

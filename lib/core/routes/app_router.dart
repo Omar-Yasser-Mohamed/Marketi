@@ -1,5 +1,12 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/di/injectable.dart';
 import 'package:marketi/core/routes/routes.dart';
+import 'package:marketi/features/auth/presentation/cubits/forget_password_cubit/forget_password_cubit.dart';
+import 'package:marketi/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import 'package:marketi/features/auth/presentation/cubits/register_cubit/register_cubit.dart';
+import 'package:marketi/features/auth/presentation/cubits/reset_password_cubit/reset_password_cubit.dart';
+import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/verify_otp_cubit.dart';
 import 'package:marketi/features/auth/presentation/screens/change_password_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/finish_updated_pass_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/forget_password_screen.dart';
@@ -22,23 +29,53 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.login,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          );
+        },
       ),
       GoRoute(
         path: Routes.register,
-        builder: (context, state) => const RegisterScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<RegisterCubit>(),
+          child: const RegisterScreen(),
+        ),
       ),
       GoRoute(
         path: Routes.forgetPasswrod,
-        builder: (context, state) => const ForgetPasswordScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<ForgetPasswordCubit>(),
+          child: const ForgetPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: Routes.verifyScreen,
-        builder: (context, state) => const VerifyCodeScreen(),
+        builder: (context, state) {
+          final email = state.extra as String;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<VerifyOtpCubit>()..email = email,
+              ),
+              BlocProvider(
+                create: (context) => getIt<ForgetPasswordCubit>(),
+              ),
+            ],
+            child: const VerifyCodeScreen(),
+          );
+        },
       ),
       GoRoute(
         path: Routes.changePassword,
-        builder: (context, state) => const ChangePasswordScreen(),
+        builder: (context, state) {
+          final email = state.extra as String;
+          return BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>()..email = email,
+            child: const ChangePasswordScreen(),
+          );
+        },
       ),
       GoRoute(
         path: Routes.congratsUpdatedPass,

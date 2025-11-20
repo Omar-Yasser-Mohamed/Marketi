@@ -3,11 +3,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:marketi/core/app_assets/app_icons.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
+import 'package:marketi/core/utils/app_validators.dart';
 
 class CustomPasswordTextFormField extends StatefulWidget {
-  const CustomPasswordTextFormField({super.key, this.hint = 'Password'});
+  const CustomPasswordTextFormField({
+    super.key,
+    this.hint = 'Password',
+    this.controller,
+    this.validator = AppValidators.password,
+    this.onChanged,
+  });
 
   final String hint;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
 
   @override
   State<CustomPasswordTextFormField> createState() =>
@@ -22,6 +32,9 @@ class _CustomPasswordTextFormFieldState
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: isSecure,
+      controller: widget.controller,
+      validator: widget.validator,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         prefixIcon: Container(
           margin: const EdgeInsets.only(
