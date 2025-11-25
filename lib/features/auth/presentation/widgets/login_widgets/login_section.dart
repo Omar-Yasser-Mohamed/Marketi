@@ -85,7 +85,7 @@ class _LoginSectionState extends State<LoginSection> {
                     title: 'Success!',
                     description: 'Login Success',
                   );
-                  GoRouter.of(context).go(Routes.homeScreen);
+                  GoRouter.of(context).go(Routes.homeRootScreen);
                 } else if (state is LoginFailure) {
                   CherryToastMsgs.showErrorToast(
                     context,

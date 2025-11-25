@@ -13,6 +13,7 @@ import 'package:marketi/features/auth/presentation/screens/forget_password_scree
 import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/register_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verify_code_screen.dart';
+import 'package:marketi/features/home/presentation/screens/home_root_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
@@ -81,6 +82,10 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.congratsUpdatedPass,
         builder: (context, state) => const FinishUpdatedPassScreen(),
+      ),
+      GoRoute(
+        path: Routes.homeRootScreen,
+        builder: (context, state) => const HomeRootScreen(),
       ),
       GoRoute(
         path: Routes.homeScreen,

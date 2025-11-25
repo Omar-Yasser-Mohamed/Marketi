@@ -7,4 +7,8 @@ abstract class AppIcons {
   static const String arrowBack = 'assets/icons/arrow_back.svg';
   static const String username = 'assets/icons/username.svg';
   static const String phone = 'assets/icons/phone.svg';
+  static const String home = 'assets/icons/home.svg';
+  static const String notification = 'assets/icons/notification.svg';
+  static const String search = 'assets/icons/search.svg';
+  static const String filter = 'assets/icons/Filter_Icon.svg';
 }

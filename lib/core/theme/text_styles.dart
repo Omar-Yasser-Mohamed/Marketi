@@ -142,6 +142,16 @@ abstract class TextStyles {
     fontWeight: FontWeight.w600,
   );
 
+  static const enSb22 = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const enSb24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
+
   // --- English Regular (w400) ---
   static const enR12 = TextStyle(
     fontSize: 12,

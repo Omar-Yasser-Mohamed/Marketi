@@ -10,4 +10,13 @@ abstract class AppImages {
   static const String verificationCode = 'assets/images/verification_code.png';
   static const String createNewPassword = 'assets/images/create_new_password.png';
   static const String congratulations = 'assets/images/congratulations.png';
+  
+  // For Test
+  static const String test = 'assets/images/test.jpg';
+  static const String offer1 = 'assets/images/offer_1.jpg';
+  static const String offer2 = 'assets/images/offer_2.jpg';
+  static const String offer3 = 'assets/images/offer_3.jpg';
+  static const String productTest = 'assets/images/product_test.png';
+  static const String categoryTest = 'assets/images/category_test.jpg';
+  static const String brandTest = 'assets/images/brand_test.jpg';
 }

@@ -21,7 +21,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   void initState() {
     super.initState();
     _initBounceAnimation();
-    _goToOnboardingScreen();
+    _impelementNavigation();
   }
 
   void _initBounceAnimation() {
@@ -46,14 +46,14 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     _animationController.forward();
   }
 
-  void _goToOnboardingScreen() async {
+  void _impelementNavigation() async {
     Future.delayed(
       const Duration(seconds: 3),
       () async {
         final token = await getIt<TokenService>().getToken();
 
         if (token != null && token.isNotEmpty) {
-          GoRouter.of(context).go(Routes.homeScreen);
+          GoRouter.of(context).go(Routes.homeRootScreen);
         } else {
           GoRouter.of(context).go(Routes.onBoarding);
         }
