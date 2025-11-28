@@ -1,7 +1,7 @@
 class VerifyOtpResponse {
   final String statusMsg; // For fail
-  final String message;   // For fail
-  final String status;    // For success
+  final String message; // For fail
+  final String status; // For success
 
   VerifyOtpResponse({
     required this.statusMsg,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/product_item.dart';
+import 'package:marketi/core/widgets/product_item.dart';
 
 class BestProductsForYouListView extends StatelessWidget {
   const BestProductsForYouListView({super.key});

@@ -15,5 +15,7 @@ abstract class AuthRemoteDataSource {
     required ForgetPasswordRequest request,
   });
   Future<VerifyOtpResponse> verifyOtp({required VerifyOtpRequest request});
-  Future<ResetPasswordResponse> resetPassword({required ResetPasswordRequest request});
+  Future<ResetPasswordResponse> resetPassword({
+    required ResetPasswordRequest request,
+  });
 }

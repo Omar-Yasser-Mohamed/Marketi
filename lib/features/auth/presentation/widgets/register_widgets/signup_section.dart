@@ -138,8 +138,8 @@ class _SignupSectionState extends State<SignupSection> {
                   title: 'Success!',
                   description: 'Register Success',
                 );
-                
-                  GoRouter.of(context).go(Routes.homeRootScreen);
+
+                GoRouter.of(context).go(Routes.homeRootScreen);
               } else if (state is RegisterFailure) {
                 CherryToastMsgs.showErrorToast(
                   context,

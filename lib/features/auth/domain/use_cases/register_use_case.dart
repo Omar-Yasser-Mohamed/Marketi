@@ -13,7 +13,9 @@ class RegisterUseCase implements UseCase<AuthResponse, SignUpRequest> {
   const RegisterUseCase(this.authRepo);
 
   @override
-  Future<Either<Failure, AuthResponse>> call({required SignUpRequest params}) async {
+  Future<Either<Failure, AuthResponse>> call({
+    required SignUpRequest params,
+  }) async {
     return await authRepo.register(request: params);
   }
 }

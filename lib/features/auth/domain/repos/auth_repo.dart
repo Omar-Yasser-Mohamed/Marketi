@@ -12,8 +12,16 @@ import 'package:marketi/features/auth/data/models/verify_otp_response.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, AuthResponse>> login({required LoginRequest request});
-  Future<Either<Failure, AuthResponse>> register({required SignUpRequest request});
-  Future<Either<Failure, ForgetPasswordResponse>> forgetPassword({required ForgetPasswordRequest request});
-  Future<Either<Failure, VerifyOtpResponse>> verifyOtp({required VerifyOtpRequest request});
-  Future<Either<Failure, ResetPasswordResponse>> resetPassword({required ResetPasswordRequest request});
+  Future<Either<Failure, AuthResponse>> register({
+    required SignUpRequest request,
+  });
+  Future<Either<Failure, ForgetPasswordResponse>> forgetPassword({
+    required ForgetPasswordRequest request,
+  });
+  Future<Either<Failure, VerifyOtpResponse>> verifyOtp({
+    required VerifyOtpRequest request,
+  });
+  Future<Either<Failure, ResetPasswordResponse>> resetPassword({
+    required ResetPasswordRequest request,
+  });
 }

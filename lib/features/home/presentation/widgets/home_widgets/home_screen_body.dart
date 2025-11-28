@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/features/home/presentation/widgets/home_widgets/best_products_for_you_list_view.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/brands_list_view.dart';
+import 'package:marketi/features/home/presentation/widgets/home_widgets/brands_list.dart';
 import 'package:marketi/features/home/presentation/widgets/home_widgets/buy_products_again_list_view.dart';
 import 'package:marketi/features/home/presentation/widgets/home_widgets/categories_grid_view.dart';
 import 'package:marketi/features/home/presentation/widgets/home_widgets/popular_products_list_view.dart';
@@ -25,15 +25,15 @@ class HomeScreenBody extends StatelessWidget {
         ),
 
         const SizedBox(height: 14),
-        
+
         const OffersSlider(),
-        
+
         const SizedBox(height: 14),
         CustomTitle(
           title: 'Popular Product',
           onPressed: () {},
         ),
-        
+
         const SizedBox(height: 8),
 
         SizedBox(
@@ -79,7 +79,7 @@ class HomeScreenBody extends StatelessWidget {
 
         SizedBox(
           height: height * .125,
-          child: const BrandsListView(),
+          child: const BrandsList(),
         ),
 
         const SizedBox(height: 14),

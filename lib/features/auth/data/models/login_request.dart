@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-String loginRequestToJson(LoginRequest data) =>
-    json.encode(data.toJson());
+String loginRequestToJson(LoginRequest data) => json.encode(data.toJson());
 
 class LoginRequest {
   final String email;

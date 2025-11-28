@@ -100,5 +100,4 @@ class AppValidators {
 
     return null;
   }
-
 }

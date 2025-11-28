@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/theme/color_styles.dart';
+import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/widgets/home_root_widgets/custom_nav_item.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -23,7 +24,7 @@ class _HomeRootScreenState extends State<HomeRootScreen> {
   List<Widget> _screens() {
     return [
       const HomeScreen(),
-      const HomeScreen(),
+      const CartScreen(),
       const HomeScreen(),
       const HomeScreen(),
     ];

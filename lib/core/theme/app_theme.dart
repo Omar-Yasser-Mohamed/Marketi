@@ -10,6 +10,5 @@ abstract class AppTheme {
       backgroundColor: Colors.white,
       centerTitle: true,
     ),
-
   );
 }

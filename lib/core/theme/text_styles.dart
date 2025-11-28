@@ -104,6 +104,12 @@ abstract class TextStyles {
     height: 1.36,
   );
 
+  static const enM26 = TextStyle(
+    fontSize: 26,
+    fontWeight: FontWeight.w500,
+    height: 1.36,
+  );
+
   static const enM28 = TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.w500,

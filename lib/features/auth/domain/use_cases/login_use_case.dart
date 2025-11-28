@@ -13,7 +13,9 @@ class LoginUseCase implements UseCase<AuthResponse, LoginRequest> {
   const LoginUseCase(this.authRepo);
 
   @override
-  Future<Either<Failure, AuthResponse>> call({required LoginRequest params}) async {
+  Future<Either<Failure, AuthResponse>> call({
+    required LoginRequest params,
+  }) async {
     return await authRepo.login(request: params);
   }
 }
