@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/app_assets/app_images.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
     this.showAddButton = false,
     this.aspectRatio = 4 / 3.3,
+    required this.product,
+    this.margin = const EdgeInsets.only(right: 16),
   });
+  final ProductEntity product;
   final bool showAddButton;
   final double aspectRatio;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class ProductItem extends StatelessWidget {
       aspectRatio: aspectRatio,
       child: Container(
         padding: const EdgeInsets.all(5),
-        margin: const EdgeInsets.only(right: 16),
+        margin: margin,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
@@ -36,22 +41,27 @@ class ProductItem extends StatelessWidget {
               child: Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
-                  color: ColorStyles.lightBlue900,
+                  // color: ColorStyles.lightBlue900,
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Stack(
                   clipBehavior: Clip.hardEdge,
                   children: [
+                    // Image
                     Positioned(
                       left: 0,
                       right: 0,
                       top: 0,
                       bottom: 0,
-                      child: Image.asset(
-                        AppImages.productTest,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: CustomNetworkImage(
+                          imageUrl: product.image,
+                        ),
                       ),
                     ),
 
+                    // Discount
                     ClipPath(
                       clipper: _RightCutClipper(),
                       child: Container(
@@ -73,6 +83,7 @@ class ProductItem extends StatelessWidget {
                       ),
                     ),
 
+                    // Fav Button
                     Positioned(
                       right: 4,
                       top: 4,
@@ -104,7 +115,7 @@ class ProductItem extends StatelessWidget {
               children: [
                 const SizedBox(width: 4),
                 Text(
-                  '499 LE',
+                  '${product.price.toStringAsFixed(2)} LE',
                   style: TextStyles.enM14.copyWith(
                     color: ColorStyles.darkBlue900,
                   ),
@@ -116,7 +127,7 @@ class ProductItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 2),
                 Text(
-                  '4.9',
+                  '${product.avgRating}',
                   style: TextStyles.enM14.copyWith(
                     color: ColorStyles.darkBlue900,
                   ),
@@ -128,7 +139,8 @@ class ProductItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 4),
               child: Text(
-                'Smart Watch',
+                product.name,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyles.enM14.copyWith(
                   color: ColorStyles.darkBlue900,
                 ),

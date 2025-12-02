@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/app_assets/app_images.dart';
 import 'package:marketi/core/theme/color_styles.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/features/home/domain/entites/brand_entity.dart';
 
 class BrandItem extends StatelessWidget {
   const BrandItem({
-    super.key,
+    super.key, required this.brand,
   });
+  final BrandEntity brand;
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class BrandItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Center(
-            child: Image.asset(AppImages.brandTest),
+            child: CustomNetworkImage(imageUrl: brand.image),
           ),
         ),
       ),

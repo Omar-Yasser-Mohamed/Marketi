@@ -18,7 +18,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<List<ProductEntity>> getAllProducts({int page = 1}) async {
     final data = await apiService.get(
-      endPoint: '${ApiConstants.allProductsEndPoint}&page=$page',
+      endPoint: '${ApiConstants.allProductsEndPoint}?page=$page',
     );
     final List<ProductEntity> products = productsMapper(data.data);
     return products;
@@ -45,7 +45,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<List<BrandEntity>> getAllBrands({int page = 1}) async {
     final data = await apiService.get(
-      endPoint: '${ApiConstants.allBrandsEndPoint}&page=$page',
+      endPoint: '${ApiConstants.allBrandsEndPoint}?page=$page',
     );
     final List<BrandEntity> brands = brandsMapper(data.data);
     return brands;
@@ -54,7 +54,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<List<CategoryEntity>> getAllCategories() async {
     final data = await apiService.get(
-      endPoint: ApiConstants.allBrandsEndPoint,
+      endPoint: ApiConstants.allCategoriesEndPoint,
     );
     final List<CategoryEntity> categories = categoriesMapper(data.data);
     return categories;

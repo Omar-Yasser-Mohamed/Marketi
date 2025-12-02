@@ -6,7 +6,7 @@ import 'sub_category_model.dart';
 
 class ProductModel extends ProductEntity {
   num? sold;
-  List<String>? productImages;
+  List<dynamic>? productImages;
   List<SubCategoryModel>? subcategory;
   num? ratingsQuantity;
   String? productId;
@@ -44,7 +44,7 @@ class ProductModel extends ProductEntity {
          name: title ?? '',
          description: productDescription ?? '',
          image: imageCover ?? '',
-         images: productImages ?? [],
+         images: productImages?.map((e) => e.toString()).toList() ?? [],
          price: productPrice ?? 0,
          quantity: productQuantity ?? 0,
          category: productCategory?.categoryName ?? '',
@@ -55,7 +55,7 @@ class ProductModel extends ProductEntity {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
     sold: json['sold'] as num?,
-    productImages: json['images'] as List<String>?,
+    productImages: json['images'] as List<dynamic>?,
     subcategory: (json['subcategory'] as List<dynamic>?)
         ?.map((e) => SubCategoryModel.fromJson(e as Map<String, dynamic>))
         .toList(),

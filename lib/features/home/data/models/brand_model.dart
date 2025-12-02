@@ -18,7 +18,7 @@ class BrandModel extends BrandEntity {
   }) : super(
          id: brandId ?? '',
          name: brandName ?? '',
-         image: brandName ?? '',
+         image: brandImage ?? '',
        );
 
   factory BrandModel.fromJson(Map<String, dynamic> json) => BrandModel(

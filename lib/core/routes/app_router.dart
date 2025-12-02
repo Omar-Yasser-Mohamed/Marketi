@@ -13,8 +13,18 @@ import 'package:marketi/features/auth/presentation/screens/forget_password_scree
 import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/register_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verify_code_screen.dart';
+import 'package:marketi/features/home/presentation/cubits/all_brands_cubit/all_brands_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/all_categories_cubit/all_categories_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/best_products_cubit/best_products_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/popular_products_cubit/popular_products_cubit.dart';
+import 'package:marketi/features/home/presentation/screens/all_brands_screen.dart';
+import 'package:marketi/features/home/presentation/screens/all_categories_screen.dart';
+import 'package:marketi/features/home/presentation/screens/all_products_screen.dart';
+import 'package:marketi/features/home/presentation/screens/best_products_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_root_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
+import 'package:marketi/features/home/presentation/screens/popular_products_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
 
@@ -85,11 +95,67 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.homeRootScreen,
-        builder: (context, state) => const HomeRootScreen(),
+        builder: (context, state) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<AllProductCubit>()..getAllProducts(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    getIt<BestProductsCubit>()..getBestProducts(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    getIt<PopularProductsCubit>()..getPopularProducts(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    getIt<AllCategoriesCubit>()..getAllCategories(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<AllBrandsCubit>()..getAllBrands(),
+              ),
+            ],
+            child: const HomeRootScreen(),
+          );
+        },
       ),
       GoRoute(
         path: Routes.homeScreen,
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) {
+          return const HomeScreen();
+        },
+      ),
+      GoRoute(
+        path: Routes.allProductsScreen,
+        builder: (context, state) {
+          return const AllProductsScreen();
+        },
+      ),
+      GoRoute(
+        path: Routes.popularProductsScreen,
+        builder: (context, state) {
+          return const PopularProductsScreen();
+        },
+      ),
+      GoRoute(
+        path: Routes.bestProductsScreen,
+        builder: (context, state) {
+          return const BestProductsScreen();
+        },
+      ),
+      GoRoute(
+        path: Routes.allCategoriesScreen,
+        builder: (context, state) {
+          return const AllCategoriesScreen();
+        },
+      ),
+      GoRoute(
+        path: Routes.allBrandsScreen,
+        builder: (context, state) {
+          return const AllBrandsScreen();
+        },
       ),
     ],
   );

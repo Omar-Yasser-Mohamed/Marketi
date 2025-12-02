@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/product_item.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
-class PopularProductsListView extends StatelessWidget {
-  const PopularProductsListView({
-    super.key,
-    required this.products,
-  });
-
+class AllProductsAgainListView extends StatelessWidget {
+  const AllProductsAgainListView({super.key, required this.products});
   final List<ProductEntity> products;
 
   @override
@@ -17,7 +13,9 @@ class PopularProductsListView extends StatelessWidget {
       padding: const EdgeInsets.only(left: 14),
       scrollDirection: Axis.horizontal,
       itemCount: products.length > 10 ? 10 : products.length,
-      itemBuilder: (context, index) => ProductItem(
+      itemBuilder: (context, index) =>  ProductItem(
+        showAddButton: true,
+        aspectRatio: 1.98 / 2,
         product: products[index],
       ),
     );

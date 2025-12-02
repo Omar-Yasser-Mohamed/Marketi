@@ -9,4 +9,9 @@ abstract class Routes {
   static const String congratsUpdatedPass = '/congratsUpdatedPass';
   static const String homeRootScreen = '/homeRootScreen';
   static const String homeScreen = '/homeScreen';
+  static const String allProductsScreen = '/allProductsScreen';
+  static const String popularProductsScreen = '/popularProductsScreen';
+  static const String bestProductsScreen = '/bestProductsScreen';
+  static const String allCategoriesScreen = '/allCategoriesScreen';
+  static const String allBrandsScreen = '/allBrandsScreen';
 }

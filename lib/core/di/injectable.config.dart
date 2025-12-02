@@ -41,6 +41,32 @@ import 'package:marketi/features/auth/presentation/cubits/reset_password_cubit/r
     as _i895;
 import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/verify_otp_cubit.dart'
     as _i358;
+import 'package:marketi/features/home/data/data_sources/remote/home_remote_data_source.dart'
+    as _i753;
+import 'package:marketi/features/home/data/data_sources/remote/home_remote_data_source_impl.dart'
+    as _i864;
+import 'package:marketi/features/home/data/repos/home_repo_impl.dart' as _i83;
+import 'package:marketi/features/home/domain/repos/home_repo.dart' as _i312;
+import 'package:marketi/features/home/domain/use_cases/get_all_brands_use_case.dart'
+    as _i1028;
+import 'package:marketi/features/home/domain/use_cases/get_all_categories_use_case.dart'
+    as _i341;
+import 'package:marketi/features/home/domain/use_cases/get_all_products_use_case.dart'
+    as _i992;
+import 'package:marketi/features/home/domain/use_cases/get_best_products_use_case.dart'
+    as _i550;
+import 'package:marketi/features/home/domain/use_cases/get_popular_product_use_case.dart'
+    as _i96;
+import 'package:marketi/features/home/presentation/cubits/all_brands_cubit/all_brands_cubit.dart'
+    as _i227;
+import 'package:marketi/features/home/presentation/cubits/all_categories_cubit/all_categories_cubit.dart'
+    as _i560;
+import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart'
+    as _i325;
+import 'package:marketi/features/home/presentation/cubits/best_products_cubit/best_products_cubit.dart'
+    as _i17;
+import 'package:marketi/features/home/presentation/cubits/popular_products_cubit/popular_products_cubit.dart'
+    as _i791;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -57,11 +83,32 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i312.AuthRemoteDataSource>(
       () => _i483.AuthRemoteDataSourceImpl(gh<_i352.ApiService>()),
     );
+    gh.lazySingleton<_i753.HomeRemoteDataSource>(
+      () => _i864.HomeRemoteDataSourceImpl(gh<_i352.ApiService>()),
+    );
     gh.lazySingleton<_i377.AuthRepo>(
       () => _i62.AuthRepoImpl(
         gh<_i312.AuthRemoteDataSource>(),
         gh<_i547.TokenService>(),
       ),
+    );
+    gh.lazySingleton<_i312.HomeRepo>(
+      () => _i83.HomeRepoImpl(gh<_i753.HomeRemoteDataSource>()),
+    );
+    gh.lazySingleton<_i1028.GetAllBrandsUseCase>(
+      () => _i1028.GetAllBrandsUseCase(gh<_i312.HomeRepo>()),
+    );
+    gh.lazySingleton<_i341.GetAllCategoriesUseCase>(
+      () => _i341.GetAllCategoriesUseCase(gh<_i312.HomeRepo>()),
+    );
+    gh.lazySingleton<_i992.GetAllProductsUseCase>(
+      () => _i992.GetAllProductsUseCase(gh<_i312.HomeRepo>()),
+    );
+    gh.lazySingleton<_i550.GetBestProductsUseCase>(
+      () => _i550.GetBestProductsUseCase(gh<_i312.HomeRepo>()),
+    );
+    gh.lazySingleton<_i96.GetPopularProductUseCase>(
+      () => _i96.GetPopularProductUseCase(gh<_i312.HomeRepo>()),
     );
     gh.lazySingleton<_i442.ForgetPasswordUseCase>(
       () => _i442.ForgetPasswordUseCase(gh<_i377.AuthRepo>()),
@@ -84,8 +131,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i726.RegisterCubit>(
       () => _i726.RegisterCubit(gh<_i995.RegisterUseCase>()),
     );
+    gh.factory<_i560.AllCategoriesCubit>(
+      () => _i560.AllCategoriesCubit(gh<_i341.GetAllCategoriesUseCase>()),
+    );
+    gh.factory<_i791.PopularProductsCubit>(
+      () => _i791.PopularProductsCubit(gh<_i96.GetPopularProductUseCase>()),
+    );
+    gh.factory<_i227.AllBrandsCubit>(
+      () => _i227.AllBrandsCubit(gh<_i1028.GetAllBrandsUseCase>()),
+    );
     gh.factory<_i358.VerifyOtpCubit>(
       () => _i358.VerifyOtpCubit(gh<_i629.VerifyOtpUseCase>()),
+    );
+    gh.factory<_i17.BestProductsCubit>(
+      () => _i17.BestProductsCubit(gh<_i550.GetBestProductsUseCase>()),
+    );
+    gh.factory<_i325.AllProductCubit>(
+      () => _i325.AllProductCubit(gh<_i992.GetAllProductsUseCase>()),
     );
     gh.factory<_i53.ForgetPasswordCubit>(
       () => _i53.ForgetPasswordCubit(gh<_i442.ForgetPasswordUseCase>()),
