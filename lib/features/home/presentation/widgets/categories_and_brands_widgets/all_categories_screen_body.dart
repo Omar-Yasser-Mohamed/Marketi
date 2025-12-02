@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/custom_center_app_bar.dart';
 import 'package:marketi/core/widgets/custom_search_text_filed.dart';
-import 'package:marketi/features/home/presentation/widgets/categories_and_brands_widgets/custom_categories_grid_view.dart';
+import 'package:marketi/features/home/presentation/widgets/categories_and_brands_widgets/categories_grid_view_bloc_builder.dart';
 
 class AllCategoriesScreenBody extends StatelessWidget {
   const AllCategoriesScreenBody({super.key});
@@ -26,7 +26,7 @@ class AllCategoriesScreenBody extends StatelessWidget {
         ),
 
         Expanded(
-          child: CustomCategoriesGridView(),
+          child: CategoriesGridViewBlocBuilder(),
         ),
       ],
     );

@@ -130,31 +130,48 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.allProductsScreen,
         builder: (context, state) {
-          return const AllProductsScreen();
+          return BlocProvider(
+            create: (context) => getIt<AllProductCubit>()..getAllProducts(),
+            child: const AllProductsScreen(),
+          );
         },
       ),
       GoRoute(
         path: Routes.popularProductsScreen,
         builder: (context, state) {
-          return const PopularProductsScreen();
+          return BlocProvider(
+            create: (context) =>
+                getIt<PopularProductsCubit>()..getPopularProducts(),
+            child: const PopularProductsScreen(),
+          );
         },
       ),
       GoRoute(
         path: Routes.bestProductsScreen,
         builder: (context, state) {
-          return const BestProductsScreen();
+          return BlocProvider(
+            create: (context) => getIt<BestProductsCubit>()..getBestProducts(),
+            child: const BestProductsScreen(),
+          );
         },
       ),
       GoRoute(
         path: Routes.allCategoriesScreen,
         builder: (context, state) {
-          return const AllCategoriesScreen();
+          return BlocProvider(
+            create: (context) =>
+                getIt<AllCategoriesCubit>()..getAllCategories(),
+            child: const AllCategoriesScreen(),
+          );
         },
       ),
       GoRoute(
         path: Routes.allBrandsScreen,
         builder: (context, state) {
-          return const AllBrandsScreen();
+          return BlocProvider(
+            create: (context) => getIt<AllBrandsCubit>()..getAllBrands(),
+            child: const AllBrandsScreen(),
+          );
         },
       ),
     ],

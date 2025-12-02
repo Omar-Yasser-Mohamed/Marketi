@@ -10,15 +10,30 @@ class BestProductsCubit extends Cubit<BestProductsState> {
   BestProductsCubit(this.getBestProductsUseCase) : super(BestProductsInitial());
   final GetBestProductsUseCase getBestProductsUseCase;
 
+  void safeEmit(BestProductsState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getBestProducts({int page = 1}) async {
-    emit(BestProductsLoading());
+    if (page == 1) {
+      safeEmit(BestProductsLoading());
+    } else {
+      safeEmit(BestProductsPaginationLoading());
+    }
     final result = await getBestProductsUseCase.call(params: page);
+    
+    if (isClosed) return;
+
     result.fold(
       (failure) {
-        emit(BestProductsFailure(failure.errorMessage));
+        if (page == 1) {
+          safeEmit(BestProductsFailure(failure.errorMessage));
+        } else {
+          safeEmit(BestProductsPaginationFailure(failure.errorMessage));
+        }
       },
       (products) {
-        emit(BestProductsSuccess(products));
+        safeEmit(BestProductsSuccess(products));
       },
     );
   }

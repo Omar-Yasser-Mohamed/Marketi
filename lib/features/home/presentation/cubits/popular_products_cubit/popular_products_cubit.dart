@@ -11,16 +11,30 @@ class PopularProductsCubit extends Cubit<PopularProductsState> {
     : super(PopularProductsInitial());
   final GetPopularProductUseCase getPopularProductUseCase;
 
+  void safeEmit(PopularProductsState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getPopularProducts({int page = 1}) async {
-    emit(PopularProductsLoading());
+    if (page == 1) {
+      safeEmit(PopularProductsLoading());
+    } else {
+      safeEmit(PopularProductsPagiantionLoading());
+    }
     final result = await getPopularProductUseCase.call(params: page);
+
+    if (isClosed) return;
 
     result.fold(
       (failure) {
-        emit(PopularProductsFailure(failure.errorMessage));
+        if (page == 1) {
+          safeEmit(PopularProductsFailure(failure.errorMessage));
+        } else {
+          safeEmit(PopularProductsPaginatonFailure(failure.errorMessage));
+        }
       },
       (products) {
-        emit(PopularProductsSuccess(products));
+        safeEmit(PopularProductsSuccess(products));
       },
     );
   }

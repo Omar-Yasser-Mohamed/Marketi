@@ -10,17 +10,29 @@ class AllBrandsCubit extends Cubit<AllBrandsState> {
   AllBrandsCubit(this.getAllBrandsUseCase) : super(AllBrandsInitial());
   final GetAllBrandsUseCase getAllBrandsUseCase;
 
+  void safeEmit(AllBrandsState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getAllBrands({int page = 1}) async {
-    emit(AllBrandsLoading());
+    if (page == 1) {
+      safeEmit(AllBrandsLoading());
+    } else {
+      safeEmit(AllBrandsPaginationLoading());
+    }
 
     final result = await getAllBrandsUseCase.call(params: page);
 
     result.fold(
       (failure) {
-        emit(AllBrandsFailure(failure.errorMessage));
+        if (page == 1) {
+          safeEmit(AllBrandsFailure(failure.errorMessage));
+        } else {
+          safeEmit(AllBrandsPaginationFailure(failure.errorMessage));
+        }
       },
       (brands) {
-        emit(AllBrandsSuccess(brands));
+        safeEmit(AllBrandsSuccess(brands));
       },
     );
   }

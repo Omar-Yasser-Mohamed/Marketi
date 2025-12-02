@@ -2,22 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
-import 'package:marketi/features/home/domain/entites/brand_entity.dart';
-import 'package:marketi/features/home/presentation/cubits/all_brands_cubit/all_brands_cubit.dart';
-import 'package:marketi/features/home/presentation/widgets/categories_and_brands_widgets/brand_item_with_name.dart';
+import 'package:marketi/core/widgets/product_item.dart';
+import 'package:marketi/features/home/domain/entites/product_entity.dart';
+import 'package:marketi/features/home/presentation/cubits/best_products_cubit/best_products_cubit.dart';
 
-class CustomBrandsGridView extends StatefulWidget {
-  const CustomBrandsGridView({
-    super.key,
-    required this.brands,
-  });
-  final List<BrandEntity> brands;
+class BestProductsGridView extends StatefulWidget {
+  const BestProductsGridView({super.key, required this.products});
+  final List<ProductEntity> products;
 
   @override
-  State<CustomBrandsGridView> createState() => _CustomBrandsGridViewState();
+  State<BestProductsGridView> createState() => _BestProductsGridViewState();
 }
 
-class _CustomBrandsGridViewState extends State<CustomBrandsGridView> {
+class _BestProductsGridViewState extends State<BestProductsGridView> {
   int nextPage = 2;
   bool isLoading = false;
   late final ScrollController scrollController;
@@ -35,9 +32,9 @@ class _CustomBrandsGridViewState extends State<CustomBrandsGridView> {
     if (currentPosition > 0.8 * maxPosition) {
       if (!isLoading) {
         isLoading = true;
-        await BlocProvider.of<AllBrandsCubit>(
+        await BlocProvider.of<BestProductsCubit>(
           context,
-        ).getAllBrands(page: nextPage++);
+        ).getBestProducts(page: nextPage++);
         isLoading = false;
       }
     }
@@ -59,7 +56,7 @@ class _CustomBrandsGridViewState extends State<CustomBrandsGridView> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
             child: Text(
-              'All Brands',
+              'All Products',
               style: TextStyles.enSb22.copyWith(
                 color: ColorStyles.darkBlue900,
               ),
@@ -79,11 +76,15 @@ class _CustomBrandsGridViewState extends State<CustomBrandsGridView> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 20,
-              childAspectRatio: 2 / 1.6,
+              mainAxisSpacing: 16,
+              childAspectRatio: 1.98 / 2.1,
             ),
-            itemCount: widget.brands.length,
-            itemBuilder: (context, index) => BrandItemWithName(
-              brand: widget.brands[index],
+            itemCount: widget.products.length,
+            itemBuilder: (context, index) => ProductItem(
+              aspectRatio: 1.98 / 2,
+              showAddButton: true,
+              margin: EdgeInsets.zero,
+              product: widget.products[index],
             ),
           ),
         ],

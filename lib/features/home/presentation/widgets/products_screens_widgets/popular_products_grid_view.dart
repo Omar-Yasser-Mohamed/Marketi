@@ -1,15 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
 import 'package:marketi/core/widgets/product_item.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
+import 'package:marketi/features/home/presentation/cubits/popular_products_cubit/popular_products_cubit.dart';
 
-class CustomProductsGridView extends StatelessWidget {
-  const CustomProductsGridView({super.key});
+class PopularProductsGridView extends StatefulWidget {
+  const PopularProductsGridView({super.key, required this.products});
+  final List<ProductEntity> products;
+
+  @override
+  State<PopularProductsGridView> createState() => _PopularProductsGridViewState();
+}
+
+class _PopularProductsGridViewState extends State<PopularProductsGridView> {
+  int nextPage = 2;
+  bool isLoading = false;
+  late final ScrollController scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController = ScrollController();
+    scrollController.addListener(_scrollListener);
+  }
+
+  void _scrollListener() async {
+    final currentPosition = scrollController.position.pixels;
+    final maxPosition = scrollController.position.maxScrollExtent;
+    if (currentPosition > 0.8 * maxPosition) {
+      if (!isLoading) {
+        isLoading = true;
+        await BlocProvider.of<PopularProductsCubit>(
+          context,
+        ).getPopularProducts(page: nextPage++);
+        isLoading = false;
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    scrollController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: scrollController,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,24 +79,12 @@ class CustomProductsGridView extends StatelessWidget {
               mainAxisSpacing: 16,
               childAspectRatio: 1.98 / 2.1,
             ),
-            itemCount: 20,
+            itemCount: widget.products.length,
             itemBuilder: (context, index) => ProductItem(
               aspectRatio: 1.98 / 2,
               showAddButton: true,
               margin: EdgeInsets.zero,
-              product: ProductEntity(
-                id: '0',
-                name: 'name',
-                image: 'image',
-                images: [],
-                description: 'description',
-                quantity: 10,
-                price: 100,
-                ratingCount: 4,
-                avgRating: 3,
-                brand: 'brand',
-                category: 'category',
-              ),
+              product: widget.products[index],
             ),
           ),
         ],

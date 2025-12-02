@@ -12,17 +12,22 @@ class AllCategoriesCubit extends Cubit<AllCategoriesState> {
     : super(AllCategoriesInitial());
   final GetAllCategoriesUseCase getAllCategoriesUseCase;
 
+  void safeEmit(AllCategoriesState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getAllCategories() async {
-    emit(AllCategoriesLoading());
+    safeEmit(AllCategoriesLoading());
 
     final result = await getAllCategoriesUseCase.call(params: NoParam());
-
+    if (isClosed) return;
+    
     result.fold(
       (failure) {
-        emit(AllCategoriesFailure(failure.errorMessage));
+        safeEmit(AllCategoriesFailure(failure.errorMessage));
       },
       (categories) {
-        emit(AllCategoriesSuccess(categories));
+        safeEmit(AllCategoriesSuccess(categories));
       },
     );
   }

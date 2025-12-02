@@ -10,15 +10,30 @@ class AllProductCubit extends Cubit<AllProductState> {
   AllProductCubit(this.getAllProductsUseCase) : super(AllProductInitial());
   final GetAllProductsUseCase getAllProductsUseCase;
 
+  void safeEmit(AllProductState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getAllProducts({int page = 1}) async {
-    emit(AllProductLoading());
+    if (page == 1) {
+      safeEmit(AllProductLoading());
+    } else {
+      safeEmit(AllProductPaginationLoading());
+    }
     final result = await getAllProductsUseCase.call(params: page);
+    
+    if (isClosed) return;
+
     result.fold(
       (failure) {
-        emit(AllProductFailure(failure.errorMessage));
+        if (page == 1) {
+          safeEmit(AllProductFailure(failure.errorMessage));
+        } else {
+          safeEmit(AllProductPaginationFailure(failure.errorMessage));
+        }
       },
       (products) {
-        emit(AllProductSuccess(products));
+        safeEmit(AllProductSuccess(products));
       },
     );
   }

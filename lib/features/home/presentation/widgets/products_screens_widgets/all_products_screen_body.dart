@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/widgets/custom_center_app_bar.dart';
 import 'package:marketi/core/widgets/custom_search_text_filed.dart';
-import 'package:marketi/features/home/presentation/widgets/products_screens_widgets/custom_products_grid_view.dart';
+import 'package:marketi/features/home/presentation/widgets/products_screens_widgets/all_products_grid_view_bloc_consumer.dart';
 
 class AllProductsScreenBody extends StatelessWidget {
   const AllProductsScreenBody({super.key});
@@ -26,7 +26,7 @@ class AllProductsScreenBody extends StatelessWidget {
         ),
 
         Expanded(
-          child: CustomProductsGridView(),
+          child: AllProductsGridViewBlocConsumer(),
         ),
       ],
     );

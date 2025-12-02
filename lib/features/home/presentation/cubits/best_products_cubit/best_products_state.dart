@@ -6,6 +6,8 @@ final class BestProductsInitial extends BestProductsState {}
 
 final class BestProductsLoading extends BestProductsState {}
 
+final class BestProductsPaginationLoading extends BestProductsState {}
+
 final class BestProductsSuccess extends BestProductsState {
   final List<ProductEntity> products;
 
@@ -16,4 +18,10 @@ final class BestProductsFailure extends BestProductsState {
   final String errorMsg;
 
   BestProductsFailure(this.errorMsg);
+}
+
+final class BestProductsPaginationFailure extends BestProductsState {
+  final String errorMsg;
+  
+  BestProductsPaginationFailure(this.errorMsg);
 }
