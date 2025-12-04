@@ -25,6 +25,8 @@ import 'package:marketi/features/home/presentation/screens/best_products_screen.
 import 'package:marketi/features/home/presentation/screens/home_root_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/popular_products_screen.dart';
+import 'package:marketi/features/search/presentation/cubits/search_cubit/search_cubit.dart';
+import 'package:marketi/features/search/presentation/screens/search_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
 
@@ -171,6 +173,15 @@ abstract class AppRouter {
           return BlocProvider(
             create: (context) => getIt<AllBrandsCubit>()..getAllBrands(),
             child: const AllBrandsScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.searchScreen,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => getIt<SearchCubit>()..getAllProducts(),
+            child: const SearchScreen(),
           );
         },
       ),

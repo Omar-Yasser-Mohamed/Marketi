@@ -67,6 +67,13 @@ import 'package:marketi/features/home/presentation/cubits/best_products_cubit/be
     as _i17;
 import 'package:marketi/features/home/presentation/cubits/popular_products_cubit/popular_products_cubit.dart'
     as _i791;
+import 'package:marketi/features/search/data/repos/search_repo_impl.dart'
+    as _i274;
+import 'package:marketi/features/search/domain/repos/search_repo.dart' as _i277;
+import 'package:marketi/features/search/domain/use_cases/search_use_case.dart'
+    as _i315;
+import 'package:marketi/features/search/presentation/cubits/search_cubit/search_cubit.dart'
+    as _i1064;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -85,6 +92,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i753.HomeRemoteDataSource>(
       () => _i864.HomeRemoteDataSourceImpl(gh<_i352.ApiService>()),
+    );
+    gh.lazySingleton<_i277.SearchRepo>(
+      () => _i274.SearchRepoImpl(gh<_i753.HomeRemoteDataSource>()),
     );
     gh.lazySingleton<_i377.AuthRepo>(
       () => _i62.AuthRepoImpl(
@@ -110,6 +120,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i96.GetPopularProductUseCase>(
       () => _i96.GetPopularProductUseCase(gh<_i312.HomeRepo>()),
     );
+    gh.lazySingleton<_i315.SearchUseCase>(
+      () => _i315.SearchUseCase(gh<_i277.SearchRepo>()),
+    );
     gh.lazySingleton<_i442.ForgetPasswordUseCase>(
       () => _i442.ForgetPasswordUseCase(gh<_i377.AuthRepo>()),
     );
@@ -127,6 +140,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i895.ResetPasswordCubit>(
       () => _i895.ResetPasswordCubit(gh<_i391.ResetPasswordUseCase>()),
+    );
+    gh.factory<_i1064.SearchCubit>(
+      () => _i1064.SearchCubit(gh<_i315.SearchUseCase>()),
     );
     gh.factory<_i726.RegisterCubit>(
       () => _i726.RegisterCubit(gh<_i995.RegisterUseCase>()),

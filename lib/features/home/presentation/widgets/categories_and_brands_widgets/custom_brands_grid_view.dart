@@ -1,58 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
 import 'package:marketi/features/home/domain/entites/brand_entity.dart';
-import 'package:marketi/features/home/presentation/cubits/all_brands_cubit/all_brands_cubit.dart';
 import 'package:marketi/features/home/presentation/widgets/categories_and_brands_widgets/brand_item_with_name.dart';
 
-class CustomBrandsGridView extends StatefulWidget {
+class CustomBrandsGridView extends StatelessWidget {
   const CustomBrandsGridView({
     super.key,
     required this.brands,
   });
   final List<BrandEntity> brands;
 
-  @override
-  State<CustomBrandsGridView> createState() => _CustomBrandsGridViewState();
-}
-
-class _CustomBrandsGridViewState extends State<CustomBrandsGridView> {
-  int nextPage = 2;
-  bool isLoading = false;
-  late final ScrollController scrollController;
-
-  @override
-  void initState() {
-    super.initState();
-    scrollController = ScrollController();
-    scrollController.addListener(_scrollListener);
-  }
-
-  void _scrollListener() async {
-    final currentPosition = scrollController.position.pixels;
-    final maxPosition = scrollController.position.maxScrollExtent;
-    if (currentPosition > 0.8 * maxPosition) {
-      if (!isLoading) {
-        isLoading = true;
-        await BlocProvider.of<AllBrandsCubit>(
-          context,
-        ).getAllBrands(page: nextPage++);
-        isLoading = false;
-      }
-    }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    scrollController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      controller: scrollController,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -81,9 +43,9 @@ class _CustomBrandsGridViewState extends State<CustomBrandsGridView> {
               crossAxisSpacing: 20,
               childAspectRatio: 2 / 1.6,
             ),
-            itemCount: widget.brands.length,
+            itemCount: brands.length,
             itemBuilder: (context, index) => BrandItemWithName(
-              brand: widget.brands[index],
+              brand: brands[index],
             ),
           ),
         ],

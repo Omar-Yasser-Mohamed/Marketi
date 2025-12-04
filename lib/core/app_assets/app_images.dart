@@ -14,7 +14,7 @@ abstract class AppImages {
   static const String createNewPassword =
       'assets/images/create_new_password.png';
   static const String congratulations = 'assets/images/congratulations.png';
-  static const String cartEmpty = 'assets/images/cart_empty.png';
+  static const String empty = 'assets/images/cart_empty.png';
 
   // For Test
   static const String test = 'assets/images/test.jpg';

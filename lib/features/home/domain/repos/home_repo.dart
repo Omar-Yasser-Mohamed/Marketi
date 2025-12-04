@@ -8,6 +8,6 @@ abstract class HomeRepo {
   Future<Either<Failure ,List<ProductEntity>>> getAllProducts({int page = 1});
   Future<Either<Failure ,List<ProductEntity>>> getPopularProducts({int page = 1});
   Future<Either<Failure ,List<ProductEntity>>> getBestProducts({int page = 1});
-  Future<Either<Failure ,List<BrandEntity>>> getAllBrands({int page = 1});
+  Future<Either<Failure ,List<BrandEntity>>> getAllBrands();
   Future<Either<Failure ,List<CategoryEntity>>> getAllCategories();
 }

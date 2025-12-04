@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
+import 'package:marketi/core/widgets/custom_add_button.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
@@ -155,31 +156,16 @@ class ProductItem extends StatelessWidget {
                     children: [
                       const SizedBox(height: 4),
 
-                      Container(
-                        width: 120,
-                        height: 28,
+                      Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 4.5,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              side: const BorderSide(
-                                color: ColorStyles.primary,
-                              ),
-                            ),
-                          ),
-                          onPressed: () {},
+                        child: CustomAddButton(
                           child: Text(
                             'Add',
                             style: TextStyles.enM14.copyWith(
                               color: ColorStyles.primary,
                             ),
                           ),
+                          onPressed: () {},
                         ),
                       ),
 

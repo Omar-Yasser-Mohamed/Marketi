@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketi/core/use_case/use_case.dart';
 import 'package:marketi/features/home/domain/entites/brand_entity.dart';
 import 'package:marketi/features/home/domain/use_cases/get_all_brands_use_case.dart';
 
@@ -10,30 +11,42 @@ class AllBrandsCubit extends Cubit<AllBrandsState> {
   AllBrandsCubit(this.getAllBrandsUseCase) : super(AllBrandsInitial());
   final GetAllBrandsUseCase getAllBrandsUseCase;
 
+  List<BrandEntity> allBrands = [];
+
   void safeEmit(AllBrandsState state) {
     if (!isClosed) emit(state);
   }
 
   Future<void> getAllBrands({int page = 1}) async {
-    if (page == 1) {
-      safeEmit(AllBrandsLoading());
-    } else {
-      safeEmit(AllBrandsPaginationLoading());
-    }
+    safeEmit(AllBrandsLoading());
+    final result = await getAllBrandsUseCase.call(params: NoParam());
 
-    final result = await getAllBrandsUseCase.call(params: page);
+    if (isClosed) return;
 
     result.fold(
       (failure) {
-        if (page == 1) {
-          safeEmit(AllBrandsFailure(failure.errorMessage));
-        } else {
-          safeEmit(AllBrandsPaginationFailure(failure.errorMessage));
-        }
+        safeEmit(AllBrandsFailure(failure.errorMessage));
       },
       (brands) {
-        safeEmit(AllBrandsSuccess(brands));
+        allBrands = brands;
+        safeEmit(AllBrandsSuccess(allBrands));
       },
     );
+  }
+
+  void searchForBrand({required String query}) {
+    List<BrandEntity> brands = [];
+    safeEmit(AllBrandsLoading());
+    if (query.trim().isEmpty) {
+      brands = allBrands;
+    } else {
+      brands = allBrands
+          .where(
+            (b) => b.name.toLowerCase().contains(query.toLowerCase()),
+          )
+          .toList();
+    }
+
+    safeEmit(AllBrandsSuccess(brands));
   }
 }

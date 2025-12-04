@@ -1,31 +1,58 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/widgets/custom_center_app_bar.dart';
 import 'package:marketi/core/widgets/custom_search_text_filed.dart';
+import 'package:marketi/features/home/presentation/cubits/all_categories_cubit/all_categories_cubit.dart';
 import 'package:marketi/features/home/presentation/widgets/categories_and_brands_widgets/categories_grid_view_bloc_builder.dart';
 
-class AllCategoriesScreenBody extends StatelessWidget {
+class AllCategoriesScreenBody extends StatefulWidget {
   const AllCategoriesScreenBody({super.key});
 
   @override
+  State<AllCategoriesScreenBody> createState() =>
+      _AllCategoriesScreenBodyState();
+}
+
+class _AllCategoriesScreenBodyState extends State<AllCategoriesScreenBody> {
+  Timer? _debounce;
+
+  void _search(String query) {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+
+    _debounce = Timer(
+      const Duration(milliseconds: 500),
+      () {
+        BlocProvider.of<AllCategoriesCubit>(
+          context,
+        ).searchForCategory(query: query);
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 14, right: 14, top: 58),
+          padding: const EdgeInsets.only(left: 14, right: 14, top: 58),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CustomCenterAppBar(
+              const CustomCenterAppBar(
                 title: 'Categories',
               ),
-              SizedBox(height: 16),
-              CustomSearchTextField(),
-              SizedBox(height: 6),
+              const SizedBox(height: 16),
+              CustomSearchTextField(
+                onChanged: _search,
+              ),
+              const SizedBox(height: 6),
             ],
           ),
         ),
 
-        Expanded(
+        const Expanded(
           child: CategoriesGridViewBlocBuilder(),
         ),
       ],

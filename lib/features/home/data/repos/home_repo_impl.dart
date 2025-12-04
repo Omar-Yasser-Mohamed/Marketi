@@ -41,7 +41,9 @@ class HomeRepoImpl implements HomeRepo {
     int page = 1,
   }) async {
     try {
-      final products = await homeRemoteDataSource.getPopularProducts(page: page);
+      final products = await homeRemoteDataSource.getPopularProducts(
+        page: page,
+      );
       return right(products);
     } catch (e) {
       return left(Failure(e.toString()));
@@ -49,11 +51,14 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BrandEntity>>> getAllBrands({
-    int page = 1,
-  }) async {
+  Future<Either<Failure, List<BrandEntity>>> getAllBrands() async {
     try {
-      final brands = await homeRemoteDataSource.getAllBrands(page: page);
+      final List<BrandEntity> brands = [];
+      for (int page = 1; ; page++) {
+        final data = await homeRemoteDataSource.getAllBrands(page: page);
+        if (data.isEmpty) break;
+        brands.addAll(data);
+      }
       return right(brands);
     } catch (e) {
       return left(Failure(e.toString()));

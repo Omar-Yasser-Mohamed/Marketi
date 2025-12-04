@@ -6,11 +6,20 @@ import 'package:marketi/core/theme/color_styles.dart';
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({
     super.key,
+    this.onTap,
+    this.enabled, this.onChanged,
   });
+  final void Function()? onTap;
+  final bool? enabled;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: const TextStyle(fontSize: 18),
+      enabled: enabled,
+      onTap: onTap,
+      onChanged: onChanged,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(0),
         hintText: 'What are you looking for ?',
@@ -38,6 +47,7 @@ class CustomSearchTextField extends StatelessWidget {
         border: buildOutlineBorder(),
         enabledBorder: buildOutlineBorder(),
         focusedBorder: buildOutlineBorder(),
+        disabledBorder: buildOutlineBorder(),
       ),
     );
   }

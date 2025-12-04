@@ -12,6 +12,8 @@ class AllCategoriesCubit extends Cubit<AllCategoriesState> {
     : super(AllCategoriesInitial());
   final GetAllCategoriesUseCase getAllCategoriesUseCase;
 
+  List<CategoryEntity> allCategories = [];
+
   void safeEmit(AllCategoriesState state) {
     if (!isClosed) emit(state);
   }
@@ -21,14 +23,35 @@ class AllCategoriesCubit extends Cubit<AllCategoriesState> {
 
     final result = await getAllCategoriesUseCase.call(params: NoParam());
     if (isClosed) return;
-    
+
     result.fold(
       (failure) {
         safeEmit(AllCategoriesFailure(failure.errorMessage));
       },
       (categories) {
-        safeEmit(AllCategoriesSuccess(categories));
+        allCategories = categories;
+        safeEmit(AllCategoriesSuccess(allCategories));
       },
     );
+  }
+
+  void searchForCategory({required String query}) {
+    List<CategoryEntity> categories = [];
+    if (query.trim().isEmpty) {
+      categories = allCategories;
+      safeEmit(AllCategoriesSuccess(categories));
+      return;
+    }
+
+    safeEmit(AllCategoriesLoading());
+
+    if (isClosed) return;
+
+    categories = allCategories
+        .where(
+          (c) => c.name.toLowerCase().contains(query.toLowerCase().trim()),
+        )
+        .toList();
+    safeEmit(AllCategoriesSuccess(categories));
   }
 }

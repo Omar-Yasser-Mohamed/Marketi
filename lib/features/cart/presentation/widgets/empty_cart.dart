@@ -15,7 +15,7 @@ class EmptyCart extends StatelessWidget {
       children: [
         const SizedBox(height: 30),
         Image.asset(
-          AppImages.cartEmpty,
+          AppImages.empty,
           fit: BoxFit.fill,
           height: height * .31,
         ),
@@ -47,9 +47,7 @@ class EmptyCart extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14),
           child: CustomButton(
-            onPressed: () {
-
-            },
+            onPressed: () {},
             text: 'Start Shopping',
           ),
         ),
