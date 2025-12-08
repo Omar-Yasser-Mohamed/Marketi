@@ -9,28 +9,52 @@ class CustomCenterAppBar extends StatelessWidget {
     super.key,
     required this.title,
     this.showArrowButton = true,
+    this.withShadow = false,
   });
   final String title;
   final bool showArrowButton;
+  final bool withShadow;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        showArrowButton
-            ? const CustomArrowBackIconButton()
-            : const SizedBox(width: 52),
-        Expanded(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyles.enSb22.copyWith(
-              color: ColorStyles.darkBlue900,
+    return Container(
+      padding: const EdgeInsets.only(left: 14, right: 14, bottom: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: withShadow
+            ? Border(
+                bottom: BorderSide(
+                  color: ColorStyles.lightBlue700.withValues(alpha: .2),
+                ),
+              )
+            : null,
+        boxShadow: withShadow
+            ? [
+                BoxShadow(
+                  color: ColorStyles.lightBlue700.withValues(alpha: .2),
+                  blurRadius: 2,
+                  offset: const Offset(0, 3),
+                ),
+              ]
+            : null,
+      ),
+      child: Row(
+        children: [
+          showArrowButton
+              ? const CustomArrowBackIconButton()
+              : const SizedBox(width: 52),
+          Expanded(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyles.enSb22.copyWith(
+                color: ColorStyles.darkBlue900,
+              ),
             ),
           ),
-        ),
-        const ProfileItem(),
-      ],
+          const ProfileItem(),
+        ],
+      ),
     );
   }
 }

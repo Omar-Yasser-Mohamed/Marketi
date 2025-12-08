@@ -14,7 +14,7 @@ class BestProductsBlocBuilder extends StatelessWidget {
     return BlocBuilder<BestProductsCubit, BestProductsState>(
       builder: (context, state) {
         if (state is BestProductsSuccess) {
-          return  BestProductsForYouListView(
+          return BestProductsForYouListView(
             products: state.products,
           );
         } else if (state is BestProductsFailure) {

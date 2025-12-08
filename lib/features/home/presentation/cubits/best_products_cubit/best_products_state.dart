@@ -22,6 +22,6 @@ final class BestProductsFailure extends BestProductsState {
 
 final class BestProductsPaginationFailure extends BestProductsState {
   final String errorMsg;
-  
+
   BestProductsPaginationFailure(this.errorMsg);
 }

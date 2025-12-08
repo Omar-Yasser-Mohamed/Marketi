@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/app_assets/app_icons.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
-import 'package:marketi/features/auth/presentation/widgets/custom_icon_button.dart';
+import 'package:marketi/features/auth/presentation/widgets/custom_icon_svg_button.dart';
 import 'package:marketi/features/auth/presentation/widgets/login_widgets/login_footer_section.dart';
 import 'package:marketi/features/auth/presentation/widgets/login_widgets/login_header_section.dart';
 import 'package:marketi/features/auth/presentation/widgets/login_widgets/login_section.dart';
@@ -34,13 +34,13 @@ class LoginScreenBody extends StatelessWidget {
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomIconButton(
+            CustomIconSvgButton(
               iconPath: AppIcons.google,
             ),
-            CustomIconButton(
+            CustomIconSvgButton(
               iconPath: AppIcons.apple,
             ),
-            CustomIconButton(
+            CustomIconSvgButton(
               iconPath: AppIcons.facebook,
             ),
           ],

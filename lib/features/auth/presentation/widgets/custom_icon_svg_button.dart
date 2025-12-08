@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomIconButton extends StatelessWidget {
-  const CustomIconButton({super.key, required this.iconPath});
+class CustomIconSvgButton extends StatelessWidget {
+  const CustomIconSvgButton({super.key, required this.iconPath});
   final String iconPath;
 
   @override

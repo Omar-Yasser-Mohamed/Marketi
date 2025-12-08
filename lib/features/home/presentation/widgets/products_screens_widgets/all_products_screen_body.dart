@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:marketi/core/routes/routes.dart';
 import 'package:marketi/core/widgets/custom_center_app_bar.dart';
 import 'package:marketi/core/widgets/custom_search_text_filed.dart';
-import 'package:marketi/features/home/presentation/widgets/products_screens_widgets/all_products_grid_view_bloc_consumer.dart';
+import 'package:marketi/features/home/presentation/widgets/products_screens_widgets/all_products_grid_view_bloc_builder.dart';
 
 class AllProductsScreenBody extends StatelessWidget {
   const AllProductsScreenBody({super.key});
@@ -13,20 +13,23 @@ class AllProductsScreenBody extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 14, right: 14, top: 58),
+          padding: const EdgeInsets.only(top: 58),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const CustomCenterAppBar(
                 title: 'All Products',
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               GestureDetector(
                 onTap: () {
                   GoRouter.of(context).push(Routes.searchScreen);
                 },
-                child: const CustomSearchTextField(
-                  enabled: false,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 14),
+                  child: CustomSearchTextField(
+                    enabled: false,
+                  ),
                 ),
               ),
               const SizedBox(height: 6),
@@ -35,7 +38,7 @@ class AllProductsScreenBody extends StatelessWidget {
         ),
 
         const Expanded(
-          child: AllProductsGridViewBlocConsumer(),
+          child: AllProductsGridViewBlocBuilder(),
         ),
       ],
     );

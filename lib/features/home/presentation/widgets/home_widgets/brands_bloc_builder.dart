@@ -14,7 +14,7 @@ class BrandsBlocBuilder extends StatelessWidget {
     return BlocBuilder<AllBrandsCubit, AllBrandsState>(
       builder: (context, state) {
         if (state is AllBrandsSuccess) {
-          return  BrandsList(
+          return BrandsList(
             brands: state.brands,
           );
         } else if (state is AllBrandsFailure) {

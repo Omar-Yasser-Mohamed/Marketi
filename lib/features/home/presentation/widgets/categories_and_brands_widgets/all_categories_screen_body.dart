@@ -36,16 +36,19 @@ class _AllCategoriesScreenBodyState extends State<AllCategoriesScreenBody> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 14, right: 14, top: 58),
+          padding: const EdgeInsets.only(top: 58),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const CustomCenterAppBar(
                 title: 'Categories',
               ),
-              const SizedBox(height: 16),
-              CustomSearchTextField(
-                onChanged: _search,
+              const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: CustomSearchTextField(
+                  onChanged: _search,
+                ),
               ),
               const SizedBox(height: 6),
             ],

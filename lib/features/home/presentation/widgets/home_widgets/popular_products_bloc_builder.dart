@@ -14,7 +14,7 @@ class PopularProductsBlocBuilder extends StatelessWidget {
     return BlocBuilder<PopularProductsCubit, PopularProductsState>(
       builder: (context, state) {
         if (state is PopularProductsSuccess) {
-          return  PopularProductsListView(
+          return PopularProductsListView(
             products: state.products,
           );
         } else if (state is PopularProductsFailure) {

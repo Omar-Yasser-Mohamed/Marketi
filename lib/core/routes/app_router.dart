@@ -15,7 +15,6 @@ import 'package:marketi/features/auth/presentation/screens/register_screen.dart'
 import 'package:marketi/features/auth/presentation/screens/verify_code_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/all_brands_cubit/all_brands_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/all_categories_cubit/all_categories_cubit.dart';
-import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/best_products_cubit/best_products_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/popular_products_cubit/popular_products_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/all_brands_screen.dart';
@@ -100,9 +99,9 @@ abstract class AppRouter {
         builder: (context, state) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider(
-                create: (context) => getIt<AllProductCubit>()..getAllProducts(),
-              ),
+              // BlocProvider(
+              //   create: (context) => getIt<AllProductCubit>()..getAllProducts(),
+              // ),
               BlocProvider(
                 create: (context) =>
                     getIt<BestProductsCubit>()..getBestProducts(),
@@ -132,10 +131,7 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.allProductsScreen,
         builder: (context, state) {
-          return BlocProvider(
-            create: (context) => getIt<AllProductCubit>()..getAllProducts(),
-            child: const AllProductsScreen(),
-          );
+          return const AllProductsScreen();
         },
       ),
       GoRoute(
@@ -180,7 +176,7 @@ abstract class AppRouter {
         path: Routes.searchScreen,
         builder: (context, state) {
           return BlocProvider(
-            create: (context) => getIt<SearchCubit>()..getAllProducts(),
+            create: (context) => getIt<SearchCubit>()..init(),
             child: const SearchScreen(),
           );
         },

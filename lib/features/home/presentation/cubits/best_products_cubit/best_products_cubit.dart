@@ -21,7 +21,7 @@ class BestProductsCubit extends Cubit<BestProductsState> {
       safeEmit(BestProductsPaginationLoading());
     }
     final result = await getBestProductsUseCase.call(params: page);
-    
+
     if (isClosed) return;
 
     result.fold(

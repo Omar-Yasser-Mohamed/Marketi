@@ -6,14 +6,14 @@ import 'package:marketi/features/home/domain/entites/product_entity.dart';
 import 'package:marketi/features/home/domain/repos/home_repo.dart';
 
 @LazySingleton()
-class GetAllProductsUseCase implements UseCase<List<ProductEntity>, int> {
+class GetAllProductsUseCase implements UseCase<List<ProductEntity>, NoParam> {
   final HomeRepo homeRepo;
 
   GetAllProductsUseCase(this.homeRepo);
   @override
   Future<Either<Failure, List<ProductEntity>>> call({
-    required int params,
+    required NoParam params,
   }) async {
-    return await homeRepo.getAllProducts(page: params);
+    return await homeRepo.getAllProducts();
   }
 }

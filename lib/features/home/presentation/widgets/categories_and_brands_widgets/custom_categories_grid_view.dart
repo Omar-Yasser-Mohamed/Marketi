@@ -6,7 +6,8 @@ import 'package:marketi/features/home/presentation/widgets/home_widgets/category
 
 class CustomCategoriesGridView extends StatelessWidget {
   const CustomCategoriesGridView({
-    super.key, required this.categories,
+    super.key,
+    required this.categories,
   });
   final List<CategoryEntity> categories;
   @override
@@ -41,10 +42,8 @@ class CustomCategoriesGridView extends StatelessWidget {
               childAspectRatio: 2 / 1.6,
             ),
             itemCount: categories.length,
-            itemBuilder: (context, index) => CategoryItem(
-              aspectRatio: 2 / 1.2,
-              category: categories[index]
-            ),
+            itemBuilder: (context, index) =>
+                CategoryItem(aspectRatio: 2 / 1.2, category: categories[index]),
           ),
         ],
       ),

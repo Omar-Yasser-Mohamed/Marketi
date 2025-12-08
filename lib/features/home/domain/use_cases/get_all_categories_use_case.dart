@@ -14,7 +14,7 @@ class GetAllCategoriesUseCase
   @override
   Future<Either<Failure, List<CategoryEntity>>> call({
     required NoParam params,
-  }) async{
+  }) async {
     return await homeRepo.getAllCategories();
   }
 }

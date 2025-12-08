@@ -20,7 +20,7 @@ class SearchResultBlocBuilder extends StatelessWidget {
           if (products.isEmpty) {
             return const EmptySearchResult();
           }
-          return VirticalProductsListView(products:products);
+          return VirticalProductsListView(products: products);
         } else if (state is SearchFailure) {
           return CustomErrorMessage(text: state.errorMsg);
         }

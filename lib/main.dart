@@ -4,6 +4,8 @@ import 'package:marketi/core/di/injectable.dart';
 import 'package:marketi/core/routes/app_router.dart';
 import 'package:marketi/core/theme/app_theme.dart';
 import 'package:marketi/core/utils/app_bloc_observer.dart';
+import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart';
 
 void main() {
   configureDependencies();
@@ -16,11 +18,21 @@ class Marketi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Marketi',
-      theme: AppTheme.lightTheme,
-      routerConfig: AppRouter.router,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<CartCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AllProductsCubit>(),
+        ),
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Marketi',
+        theme: AppTheme.lightTheme,
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }

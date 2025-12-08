@@ -5,10 +5,10 @@ import 'package:marketi/features/home/domain/entites/brand_entity.dart';
 
 class BrandItem extends StatelessWidget {
   const BrandItem({
-    super.key, required this.brand,
+    super.key,
+    required this.brand,
   });
   final BrandEntity brand;
-
 
   @override
   Widget build(BuildContext context) {

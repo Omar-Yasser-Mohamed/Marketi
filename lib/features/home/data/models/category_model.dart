@@ -16,10 +16,10 @@ class CategoryModel extends CategoryEntity {
     this.createdAt,
     this.updatedAt,
   }) : super(
-    id: categoryId ?? '',
-    image: categoryImage ?? '',
-    name: categoryName ?? '',
-  );
+         id: categoryId ?? '',
+         image: categoryImage ?? '',
+         name: categoryName ?? '',
+       );
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
     categoryId: json['_id'] as String?,

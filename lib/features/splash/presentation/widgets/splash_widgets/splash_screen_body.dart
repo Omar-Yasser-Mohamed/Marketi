@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/app_assets/app_images.dart';
@@ -53,6 +55,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
         final token = await getIt<TokenService>().getToken();
 
         if (token != null && token.isNotEmpty) {
+          log(token);
           GoRouter.of(context).go(Routes.homeRootScreen);
         } else {
           GoRouter.of(context).go(Routes.onBoarding);

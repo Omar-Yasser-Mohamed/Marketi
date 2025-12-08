@@ -11,7 +11,8 @@ class PopularProductsGridView extends StatefulWidget {
   final List<ProductEntity> products;
 
   @override
-  State<PopularProductsGridView> createState() => _PopularProductsGridViewState();
+  State<PopularProductsGridView> createState() =>
+      _PopularProductsGridViewState();
 }
 
 class _PopularProductsGridViewState extends State<PopularProductsGridView> {

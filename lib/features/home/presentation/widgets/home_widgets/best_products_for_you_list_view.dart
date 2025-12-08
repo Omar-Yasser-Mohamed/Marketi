@@ -12,7 +12,7 @@ class BestProductsForYouListView extends StatelessWidget {
       clipBehavior: Clip.none,
       padding: const EdgeInsets.only(left: 14),
       scrollDirection: Axis.horizontal,
-      itemCount: products.length > 10 ? 10 : products.length ,
+      itemCount: products.length > 10 ? 10 : products.length,
       itemBuilder: (context, index) => ProductItem(
         showAddButton: true,
         aspectRatio: 1.98 / 2,

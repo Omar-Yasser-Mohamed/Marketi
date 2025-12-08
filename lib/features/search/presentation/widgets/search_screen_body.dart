@@ -11,7 +11,7 @@ class SearchScreenBody extends StatelessWidget {
       children: [
         // Header Section (Search text field & App bar)
         Padding(
-          padding: EdgeInsets.only(top: 57, left: 14, right: 14, bottom: 8),
+          padding: EdgeInsets.only(top: 57, bottom: 8),
           child: SearchHeaderSection(),
         ),
 

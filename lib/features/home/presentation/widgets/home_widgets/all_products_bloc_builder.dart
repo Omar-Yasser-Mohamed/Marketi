@@ -11,7 +11,7 @@ class AllProductsBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AllProductCubit, AllProductState>(
+    return BlocBuilder<AllProductsCubit, AllProductState>(
       builder: (context, state) {
         if (state is AllProductSuccess) {
           return AllProductsAgainListView(
@@ -29,5 +29,3 @@ class AllProductsBlocBuilder extends StatelessWidget {
     );
   }
 }
-
-

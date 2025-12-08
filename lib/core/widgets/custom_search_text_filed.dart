@@ -7,7 +7,8 @@ class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({
     super.key,
     this.onTap,
-    this.enabled, this.onChanged,
+    this.enabled,
+    this.onChanged,
   });
   final void Function()? onTap;
   final bool? enabled;

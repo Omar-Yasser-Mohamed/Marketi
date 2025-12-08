@@ -13,11 +13,14 @@ class HomeRepoImpl implements HomeRepo {
 
   HomeRepoImpl(this.homeRemoteDataSource);
   @override
-  Future<Either<Failure, List<ProductEntity>>> getAllProducts({
-    int page = 1,
-  }) async {
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts() async {
     try {
-      final products = await homeRemoteDataSource.getAllProducts(page: page);
+      final List<ProductEntity> products = [];
+      for (var page = 1; ; page++) {
+        final data = await homeRemoteDataSource.getAllProducts(page: page);
+        if (data.isEmpty) break;
+        products.addAll(data);
+      }
       return right(products);
     } catch (e) {
       return left(Failure(e.toString()));

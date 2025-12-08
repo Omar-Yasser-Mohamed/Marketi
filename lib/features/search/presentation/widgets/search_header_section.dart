@@ -33,9 +33,12 @@ class _SearchHeaderSectionState extends State<SearchHeaderSection> {
       mainAxisSize: MainAxisSize.min,
       children: [
         const CustomCenterAppBar(title: ''),
-        const SizedBox(height: 16),
-        CustomSearchTextField(
-          onChanged: _search,
+        const SizedBox(height: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14.0),
+          child: CustomSearchTextField(
+            onChanged: _search,
+          ),
         ),
       ],
     );

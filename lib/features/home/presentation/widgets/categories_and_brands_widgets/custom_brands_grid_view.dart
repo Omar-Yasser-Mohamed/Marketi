@@ -11,7 +11,6 @@ class CustomBrandsGridView extends StatelessWidget {
   });
   final List<BrandEntity> brands;
 
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

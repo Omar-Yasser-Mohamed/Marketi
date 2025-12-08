@@ -13,7 +13,7 @@ class AllProductsAgainListView extends StatelessWidget {
       padding: const EdgeInsets.only(left: 14),
       scrollDirection: Axis.horizontal,
       itemCount: products.length > 10 ? 10 : products.length,
-      itemBuilder: (context, index) =>  ProductItem(
+      itemBuilder: (context, index) => ProductItem(
         showAddButton: true,
         aspectRatio: 1.98 / 2,
         product: products[index],

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/theme/color_styles.dart';
+import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
+import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/widgets/home_root_widgets/custom_nav_item.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -19,6 +22,12 @@ class _HomeRootScreenState extends State<HomeRootScreen> {
   void initState() {
     super.initState();
     _controller = PersistentTabController(initialIndex: 0);
+    getIntialData();
+  }
+
+  Future<void> getIntialData() async {
+    await context.read<AllProductsCubit>().getAllProducts();
+    await context.read<CartCubit>().getCart();
   }
 
   List<Widget> _screens() {

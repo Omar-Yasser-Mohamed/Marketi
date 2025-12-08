@@ -4,7 +4,8 @@ import 'package:marketi/core/theme/text_styles.dart';
 
 class CustomErrorMessage extends StatelessWidget {
   const CustomErrorMessage({
-    super.key, required this.text,
+    super.key,
+    required this.text,
   });
   final String text;
 

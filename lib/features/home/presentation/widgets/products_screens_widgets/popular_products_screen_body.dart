@@ -13,20 +13,23 @@ class PopularProductsScreenBody extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 14, right: 14, top: 56),
+          padding: const EdgeInsets.only(top: 56),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const CustomCenterAppBar(
                 title: 'Popular Products',
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               GestureDetector(
                 onTap: () {
                   GoRouter.of(context).push(Routes.searchScreen);
                 },
-                child: const CustomSearchTextField(
-                  enabled: false,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 14),
+                  child: CustomSearchTextField(
+                    enabled: false,
+                  ),
                 ),
               ),
               const SizedBox(height: 6),

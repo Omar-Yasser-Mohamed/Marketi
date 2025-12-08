@@ -6,7 +6,6 @@ final class AllBrandsInitial extends AllBrandsState {}
 
 final class AllBrandsLoading extends AllBrandsState {}
 
-
 final class AllBrandsSuccess extends AllBrandsState {
   final List<BrandEntity> brands;
 

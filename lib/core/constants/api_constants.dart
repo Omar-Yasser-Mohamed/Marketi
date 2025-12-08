@@ -25,4 +25,7 @@ abstract class ApiConstants {
 
   // Brands
   static const String allBrandsEndPoint = '${apiVersion}brands';
+
+  // Cart
+  static const String cartEndPoint = '${apiVersion}cart';
 }
