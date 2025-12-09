@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
+import 'package:marketi/features/favourites/presentation/cubits/favorites_cubit/favorites_cubit.dart';
+import 'package:marketi/features/favourites/presentation/screens/favorites_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/widgets/home_root_widgets/custom_nav_item.dart';
@@ -28,13 +30,14 @@ class _HomeRootScreenState extends State<HomeRootScreen> {
   Future<void> getIntialData() async {
     await context.read<AllProductsCubit>().getAllProducts();
     await context.read<CartCubit>().getCart();
+    await context.read<FavoritesCubit>().getFavoritesProducts();
   }
 
   List<Widget> _screens() {
     return [
       const HomeScreen(),
       const CartScreen(),
-      const HomeScreen(),
+      const FavoritesScreen(),
       const HomeScreen(),
     ];
   }

@@ -9,6 +9,7 @@ import 'package:marketi/core/widgets/edit_count_buttons.dart';
 import 'package:marketi/features/cart/domain/entities/cart_entity.dart';
 import 'package:marketi/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:marketi/features/favourites/presentation/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
 class ProductItem extends StatelessWidget {
@@ -27,6 +28,8 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartCubit = context.read<CartCubit>();
+    final favCubit = context.read<FavoritesCubit>();
+
     return AspectRatio(
       aspectRatio: aspectRatio,
       child: BlocBuilder<CartCubit, CartState>(
@@ -89,48 +92,78 @@ class ProductItem extends StatelessWidget {
                         ),
 
                         // Discount
-                        ClipPath(
-                          clipper: _RightCutClipper(),
-                          child: Container(
-                            height: 24,
-                            width: 82,
-                            decoration: BoxDecoration(
-                              color: const Color(
-                                0xffB2CCFF,
-                              ).withValues(alpha: .4),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '15% OFF',
-                                style: TextStyles.enM14.copyWith(
-                                  color: ColorStyles.primary,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        // ClipPath(
+                        //   clipper: _RightCutClipper(),
+                        //   child: Container(
+                        //     height: 24,
+                        //     width: 82,
+                        //     decoration: BoxDecoration(
+                        //       color: const Color(
+                        //         0xffB2CCFF,
+                        //       ).withValues(alpha: .4),
+                        //     ),
+                        //     child: Center(
+                        //       child: Text(
+                        //         '15% OFF',
+                        //         style: TextStyles.enM14.copyWith(
+                        //           color: ColorStyles.primary,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
 
                         // Fav Button
-                        Positioned(
-                          right: 4,
-                          top: 4,
-                          child: Container(
-                            padding: const EdgeInsets.only(
-                              top: 3,
-                              bottom: 2,
-                              right: 2,
-                              left: 2,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.white,
-                            ),
-                            child: const Icon(
-                              Icons.favorite_border,
-                              color: ColorStyles.darkBlue900,
-                              size: 21,
-                            ),
-                          ),
+                        BlocBuilder<FavoritesCubit, FavoritesState>(
+                          builder: (context, state) {
+                            final favProducts = favCubit.favProducts;
+                            final isInFavorites = favProducts.any(
+                              (p) => p.id == product.id,
+                            );
+
+                            final isFavLoading =
+                                state is FavoritesToggleLoading &&
+                                state.productId == product.id;
+                            return Positioned(
+                              right: 4,
+                              top: 4,
+                              child: InkWell(
+                                onTap: () {
+                                  favCubit.toggleFavorite(
+                                    productId: product.id,
+                                    isCurrentlyFavorite: isInFavorites,
+                                  );
+                                },
+                                child: AbsorbPointer(
+                                  absorbing: state is FavoritesToggleLoading,
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                      top: 3,
+                                      bottom: 2,
+                                      right: 2,
+                                      left: 2,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Colors.white,
+                                    ),
+                                    child: isFavLoading
+                                        ? const CustomLoadingIndicator()
+                                        : SizedBox(
+                                            height: 20,
+                                            child: Icon(
+                                              isInFavorites
+                                                  ? Icons.favorite_rounded
+                                                  : Icons
+                                                        .favorite_border_rounded,
+                                              color: ColorStyles.darkBlue900,
+                                            ),
+                                          ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -208,16 +241,6 @@ class ProductItem extends StatelessWidget {
                                         ),
                                 ),
                               ),
-
-                        // CustomAddButton(
-                        //     child: Text(
-                        //       'Add',
-                        //       style: TextStyles.enM14.copyWith(
-                        //         color: ColorStyles.primary,
-                        //       ),
-                        //     ),
-                        //     onPressed: () {},
-                        //   ),
                       )
                     : const SizedBox(),
                 const SizedBox(height: 2),
@@ -230,19 +253,19 @@ class ProductItem extends StatelessWidget {
   }
 }
 
-class _RightCutClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final Path path = Path();
-    path.moveTo(0, 0); // شمال فوق
-    path.lineTo(size.width, 0); // يمين فوق
-    path.lineTo(size.width - 12, size.height); // نزول لتحت شمال شوية
-    path.lineTo(0, size.height); // شمال تحت
-    path.close();
+// class _RightCutClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     final Path path = Path();
+//     path.moveTo(0, 0); // شمال فوق
+//     path.lineTo(size.width, 0); // يمين فوق
+//     path.lineTo(size.width - 12, size.height); // نزول لتحت شمال شوية
+//     path.lineTo(0, size.height); // شمال تحت
+//     path.close();
 
-    return path;
-  }
+//     return path;
+//   }
 
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
-}
+//   @override
+//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+// }

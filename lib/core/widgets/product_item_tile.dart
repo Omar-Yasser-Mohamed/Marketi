@@ -9,10 +9,11 @@ import 'package:marketi/core/widgets/edit_count_buttons.dart';
 import 'package:marketi/features/cart/domain/entities/cart_entity.dart';
 import 'package:marketi/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:marketi/features/favourites/presentation/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
-class HorizontalProductItem extends StatelessWidget {
-  const HorizontalProductItem({
+class ProductItemTile extends StatelessWidget {
+  const ProductItemTile({
     super.key,
     this.withBorder = false,
     required this.product,
@@ -24,6 +25,7 @@ class HorizontalProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartCubit = context.read<CartCubit>();
+    final favCubit = context.read<FavoritesCubit>();
 
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
@@ -104,9 +106,42 @@ class HorizontalProductItem extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        const Icon(
-                          Icons.favorite_border_rounded,
-                          color: ColorStyles.darkBlue900,
+
+                        // Fav Button
+                        BlocBuilder<FavoritesCubit, FavoritesState>(
+                          builder: (context, state) {
+                            final favProducts = favCubit.favProducts;
+                            final isInFavorites = favProducts.any(
+                              (p) => p.id == product.id,
+                            );
+
+                            final isFavLoading =
+                                state is FavoritesToggleLoading &&
+                                state.productId == product.id;
+                            return AbsorbPointer(
+                              absorbing: state is FavoritesToggleLoading,
+                              child: InkWell(
+                                onTap: () {
+                                  favCubit.toggleFavorite(
+                                    productId: product.id,
+                                    isCurrentlyFavorite: isInFavorites,
+                                  );
+                                },
+                                child: isFavLoading
+                                    ? const CustomLoadingIndicator(
+                                    )
+                                    : SizedBox(
+                                      height: 20,
+                                      child: Icon(
+                                          isInFavorites
+                                              ? Icons.favorite_rounded
+                                              : Icons.favorite_border_rounded,
+                                          color: ColorStyles.darkBlue900,
+                                        ),
+                                    ),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -150,14 +185,14 @@ class HorizontalProductItem extends StatelessWidget {
                     /// Buttons
                     isInCart
                         ? AbsorbPointer(
-                          absorbing: state is CartEditingLoading,
-                          child: EditCountButtons(
+                            absorbing: state is CartEditingLoading,
+                            child: EditCountButtons(
                               countOfProduct: countOfProduct,
                               cartCubit: cartCubit,
                               product: product,
                               isThisItemLoading: isThisItemLoading,
                             ),
-                        )
+                          )
                         : AbsorbPointer(
                             absorbing: state is CartEditingLoading,
                             child: CustomAddButton(

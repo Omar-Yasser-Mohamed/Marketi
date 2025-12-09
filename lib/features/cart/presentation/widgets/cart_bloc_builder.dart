@@ -6,21 +6,20 @@ import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.
 import 'package:marketi/features/cart/presentation/widgets/empty_cart.dart';
 import 'package:marketi/features/cart/presentation/widgets/products_on_cart_section.dart';
 
-class CartBlocConsumer extends StatefulWidget {
-  const CartBlocConsumer({
+class CartBlocBuilder extends StatefulWidget {
+  const CartBlocBuilder({
     super.key,
   });
 
   @override
-  State<CartBlocConsumer> createState() => _CartBlocConsumerState();
+  State<CartBlocBuilder> createState() => _CartBlocBuilderState();
 }
 
-class _CartBlocConsumerState extends State<CartBlocConsumer> {
+class _CartBlocBuilderState extends State<CartBlocBuilder> {
   CartEntity? cart;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {},
+    return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartSuccess || state is CartEditingLoading) {
           final cart = context.read<CartCubit>().userCart;

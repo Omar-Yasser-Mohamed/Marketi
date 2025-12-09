@@ -117,7 +117,6 @@ class _SignupSectionState extends State<SignupSection> {
                 ),
                 const SizedBox(height: 2),
                 CustomPasswordTextFormField(
-                  hint: 'Confirm Password',
                   controller: _confirmPasswordController,
                   validator: (value) => AppValidators.confirmPassword(
                     value,

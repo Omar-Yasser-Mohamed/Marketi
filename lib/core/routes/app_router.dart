@@ -24,6 +24,7 @@ import 'package:marketi/features/home/presentation/screens/best_products_screen.
 import 'package:marketi/features/home/presentation/screens/home_root_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/popular_products_screen.dart';
+import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
 import 'package:marketi/features/search/presentation/cubits/search_cubit/search_cubit.dart';
 import 'package:marketi/features/search/presentation/screens/search_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
@@ -179,6 +180,12 @@ abstract class AppRouter {
             create: (context) => getIt<SearchCubit>()..init(),
             child: const SearchScreen(),
           );
+        },
+      ),
+      GoRoute(
+        path: Routes.productDetailsScreen,
+        builder: (context, state) {
+          return const ProductDetailsScreen();
         },
       ),
     ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/widgets/horizontal_product_item.dart';
+import 'package:marketi/core/widgets/product_item_tile.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
 class VirticalProductsListView extends StatelessWidget {
@@ -11,7 +11,7 @@ class VirticalProductsListView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.zero,
       itemCount: products.length,
-      itemBuilder: (context, index) => HorizontalProductItem(
+      itemBuilder: (context, index) => ProductItemTile(
         product: products[index],
       ),
     );

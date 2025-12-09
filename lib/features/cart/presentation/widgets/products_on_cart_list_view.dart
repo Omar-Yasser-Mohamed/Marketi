@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/theme/text_styles.dart';
-import 'package:marketi/core/widgets/horizontal_product_item.dart';
+import 'package:marketi/core/widgets/product_item_tile.dart';
 import 'package:marketi/features/cart/domain/entities/cart_item_entity.dart';
 
 class ProductsOnCartListView extends StatelessWidget {
@@ -33,7 +33,7 @@ class ProductsOnCartListView extends StatelessWidget {
                     ],
                   )
                 : const SizedBox(),
-            HorizontalProductItem(
+            ProductItemTile(
               withBorder: true,
               product: products[index].product,
             ),

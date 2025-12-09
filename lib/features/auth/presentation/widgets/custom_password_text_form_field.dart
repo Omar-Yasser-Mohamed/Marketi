@@ -8,13 +8,11 @@ import 'package:marketi/core/utils/app_validators.dart';
 class CustomPasswordTextFormField extends StatefulWidget {
   const CustomPasswordTextFormField({
     super.key,
-    this.hint = 'Password',
     this.controller,
     this.validator = AppValidators.password,
     this.onChanged,
   });
 
-  final String hint;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
@@ -58,7 +56,7 @@ class _CustomPasswordTextFormFieldState
             color: ColorStyles.darkBlue900,
           ),
         ),
-        hintText: widget.hint,
+        hintText: '********',
         hintStyle: TextStyles.normalTextStyle.copyWith(
           color: const Color(0xff929BAB),
         ),

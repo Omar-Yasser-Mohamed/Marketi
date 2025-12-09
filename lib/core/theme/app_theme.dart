@@ -5,7 +5,7 @@ abstract class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: ColorStyles.primary,
     scaffoldBackgroundColor: Colors.white,
-
+    fontFamily: 'Poppins',
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
       centerTitle: true,

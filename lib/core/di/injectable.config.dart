@@ -49,6 +49,16 @@ import 'package:marketi/features/cart/data/repos/cart_repo_impl.dart' as _i1039;
 import 'package:marketi/features/cart/domain/repos/cart_repo.dart' as _i307;
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart'
     as _i723;
+import 'package:marketi/features/favourites/data/data_source/remote/favorites_remote_data_source.dart'
+    as _i454;
+import 'package:marketi/features/favourites/data/data_source/remote/favorites_remote_data_source_impl.dart'
+    as _i763;
+import 'package:marketi/features/favourites/data/repos/favorites_repo_impl.dart'
+    as _i915;
+import 'package:marketi/features/favourites/domain/repos/favorites_repo.dart'
+    as _i534;
+import 'package:marketi/features/favourites/presentation/cubits/favorites_cubit/favorites_cubit.dart'
+    as _i44;
 import 'package:marketi/features/home/data/data_sources/remote/home_remote_data_source.dart'
     as _i753;
 import 'package:marketi/features/home/data/data_sources/remote/home_remote_data_source_impl.dart'
@@ -90,8 +100,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i352.ApiService>(
       () => _i352.ApiService(gh<_i750.DioClient>()),
     );
+    gh.lazySingleton<_i454.FavoritesRemoteDataSource>(
+      () => _i763.FavoritesRemoteDataSourceImpl(
+        gh<_i352.ApiService>(),
+        gh<_i547.TokenService>(),
+      ),
+    );
     gh.lazySingleton<_i312.AuthRemoteDataSource>(
       () => _i483.AuthRemoteDataSourceImpl(gh<_i352.ApiService>()),
+    );
+    gh.lazySingleton<_i534.FavoritesRepo>(
+      () => _i915.FavoritesRepoImpl(gh<_i454.FavoritesRemoteDataSource>()),
     );
     gh.lazySingleton<_i753.HomeRemoteDataSource>(
       () => _i864.HomeRemoteDataSourceImpl(gh<_i352.ApiService>()),
@@ -101,6 +120,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i307.CartRepo>(
       () => _i1039.CartRepoImpl(gh<_i862.CartRemoteDataSource>()),
+    );
+    gh.factory<_i44.FavoritesCubit>(
+      () => _i44.FavoritesCubit(gh<_i534.FavoritesRepo>()),
     );
     gh.lazySingleton<_i377.AuthRepo>(
       () => _i62.AuthRepoImpl(
@@ -165,6 +187,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i325.AllProductsCubit>(
       () => _i325.AllProductsCubit(gh<_i992.GetAllProductsUseCase>()),
     );
+    gh.factory<_i1064.SearchCubit>(
+      () => _i1064.SearchCubit(gh<_i325.AllProductsCubit>()),
+    );
     gh.factory<_i53.ForgetPasswordCubit>(
       () => _i53.ForgetPasswordCubit(gh<_i442.ForgetPasswordUseCase>()),
     );
@@ -173,9 +198,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i723.CartCubit>(
       () => _i723.CartCubit(gh<_i307.CartRepo>(), gh<_i325.AllProductsCubit>()),
-    );
-    gh.factory<_i1064.SearchCubit>(
-      () => _i1064.SearchCubit(gh<_i325.AllProductsCubit>()),
     );
     return this;
   }

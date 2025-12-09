@@ -67,7 +67,6 @@ class _ChangePassSectionState extends State<ChangePassSection> {
                 ),
                 const SizedBox(height: 2),
                 CustomPasswordTextFormField(
-                  hint: 'Confirm Password',
                   controller: _confirmPasswordController,
                   validator: (value) => AppValidators.confirmPassword(
                     value,
