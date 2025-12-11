@@ -15,6 +15,7 @@ class ProductModel extends ProductEntity {
   String? productDescription;
   num? productQuantity;
   num? productPrice;
+  num? productPriceAfterDiscount;
   String? imageCover;
   CategoryModel? productCategory;
   BrandModel? productBrand;
@@ -39,6 +40,7 @@ class ProductModel extends ProductEntity {
     this.ratingsAverage,
     this.createdAt,
     this.updatedAt,
+    this.productPriceAfterDiscount,
   }) : super(
          id: productId ?? '',
          name: title ?? '',
@@ -46,6 +48,7 @@ class ProductModel extends ProductEntity {
          image: imageCover ?? '',
          images: productImages?.map((e) => e.toString()).toList() ?? [],
          price: productPrice ?? 0,
+         priceAfterDiscount: productPriceAfterDiscount,
          quantity: productQuantity ?? 0,
          category: productCategory?.categoryName ?? '',
          brand: productBrand?.brandName ?? '',
@@ -66,6 +69,7 @@ class ProductModel extends ProductEntity {
     productDescription: json['description'] as String?,
     productQuantity: json['quantity'] as num?,
     productPrice: json['price'] as num?,
+    productPriceAfterDiscount: json['priceAfterDiscount'] as num?,
     imageCover: json['imageCover'] as String?,
     productCategory: json['category'] == null
         ? null

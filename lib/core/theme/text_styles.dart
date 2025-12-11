@@ -199,6 +199,12 @@ abstract class TextStyles {
     color: _color,
   );
 
+  static const enR18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: _color,
+  );
+
   static const enR12U = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,

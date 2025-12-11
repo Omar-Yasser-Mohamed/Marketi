@@ -6,6 +6,7 @@ class ProductEntity {
   final String description;
   final num quantity;
   final num price;
+  final num? priceAfterDiscount;
   final num ratingCount;
   final num avgRating;
   final String category;
@@ -23,5 +24,6 @@ class ProductEntity {
     required this.avgRating,
     required this.brand,
     required this.category,
+    this.priceAfterDiscount
   });
 }
