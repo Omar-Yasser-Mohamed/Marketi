@@ -9,18 +9,20 @@ class CustomIconButton extends StatelessWidget {
     this.icon,
     this.iconColor = ColorStyles.primary,
     this.iconSvg,
+    this.width = 40,
   });
   final IconData? icon;
   final String? iconSvg;
   final void Function() onTap;
   final Color iconColor;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 40,
+        width: width,
         decoration: BoxDecoration(
           color: ColorStyles.lightBlue900,
           borderRadius: BorderRadius.circular(14),

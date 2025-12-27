@@ -1,3 +1,6 @@
+import 'package:marketi/features/home/domain/entites/brand_entity.dart';
+import 'package:marketi/features/home/domain/entites/category_entity.dart';
+
 class ProductEntity {
   final String id;
   final String name;
@@ -9,8 +12,8 @@ class ProductEntity {
   final num? priceAfterDiscount;
   final num ratingCount;
   final num avgRating;
-  final String category;
-  final String brand;
+  final CategoryEntity category;
+  final BrandEntity brand;
 
   ProductEntity({
     required this.id,

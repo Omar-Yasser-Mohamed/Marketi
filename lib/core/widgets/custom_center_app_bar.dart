@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
+import 'package:marketi/core/widgets/cart_item.dart';
 import 'package:marketi/core/widgets/custom_arrow_back_icon_button.dart';
 import 'package:marketi/core/widgets/profile_item.dart';
 
@@ -10,10 +11,12 @@ class CustomCenterAppBar extends StatelessWidget {
     required this.title,
     this.showArrowButton = true,
     this.withShadow = false,
+    this.showCart = false,
   });
   final String title;
   final bool showArrowButton;
   final bool withShadow;
+  final bool showCart;
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +55,12 @@ class CustomCenterAppBar extends StatelessWidget {
               ),
             ),
           ),
-          const ProfileItem(),
+          showCart
+              ? const CartItem()
+              : const ProfileItem(),
         ],
       ),
     );
   }
 }
+

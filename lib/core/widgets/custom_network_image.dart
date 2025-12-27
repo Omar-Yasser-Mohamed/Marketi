@@ -16,7 +16,12 @@ class CustomNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: imageUrl,
+      imageUrl:
+          imageUrl.contains(
+            "https://ecommerce.routemisr.com",
+          )
+          ? imageUrl
+          : "https://ecommerce.routemisr.com/Route-Academy-products/$imageUrl",
       fit: fit,
       width: width,
       height: height,

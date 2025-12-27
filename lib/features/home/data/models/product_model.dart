@@ -1,3 +1,5 @@
+import 'package:marketi/features/home/domain/entites/brand_entity.dart';
+import 'package:marketi/features/home/domain/entites/category_entity.dart';
 import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
 import 'category_model.dart';
@@ -50,8 +52,16 @@ class ProductModel extends ProductEntity {
          price: productPrice ?? 0,
          priceAfterDiscount: productPriceAfterDiscount,
          quantity: productQuantity ?? 0,
-         category: productCategory?.categoryName ?? '',
-         brand: productBrand?.brandName ?? '',
+         category: CategoryEntity(
+          id: productCategory?.id ?? '',
+          image: productCategory?.image ?? '',
+          name: productCategory?.name ?? ''
+         ),
+         brand: BrandEntity(
+          id: productBrand?.id ??'', 
+          image: productBrand?.image ??'', 
+          name: productBrand?.name ??'', 
+         ),
          avgRating: ratingsAverage ?? 0,
          ratingCount: ratingsQuantity ?? 0,
        );

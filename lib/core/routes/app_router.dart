@@ -13,6 +13,8 @@ import 'package:marketi/features/auth/presentation/screens/forget_password_scree
 import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/register_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verify_code_screen.dart';
+import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
+import 'package:marketi/features/home/domain/entites/product_entity.dart';
 import 'package:marketi/features/home/presentation/cubits/all_brands_cubit/all_brands_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/all_categories_cubit/all_categories_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/best_products_cubit/best_products_cubit.dart';
@@ -130,6 +132,12 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
+        path: Routes.cartScreen,
+        builder: (context, state) {
+          return const CartScreen(fromDetailsScreen: true);
+        },
+      ),
+      GoRoute(
         path: Routes.allProductsScreen,
         builder: (context, state) {
           return const AllProductsScreen();
@@ -185,7 +193,8 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.productDetailsScreen,
         builder: (context, state) {
-          return const ProductDetailsScreen();
+          final product = state.extra as ProductEntity;
+          return ProductDetailsScreen(product: product);
         },
       ),
     ],

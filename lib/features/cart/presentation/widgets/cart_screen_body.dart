@@ -3,19 +3,20 @@ import 'package:marketi/core/widgets/custom_center_app_bar.dart';
 import 'package:marketi/features/cart/presentation/widgets/cart_bloc_builder.dart';
 
 class CartScreenBody extends StatelessWidget {
-  const CartScreenBody({super.key});
+  const CartScreenBody({super.key, this.fromDetailsScreen = false});
+  final bool fromDetailsScreen;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SizedBox(height: 56),
+        const SizedBox(height: 56),
         CustomCenterAppBar(
           title: 'Cart',
-          showArrowButton: false,
+          showArrowButton: fromDetailsScreen,
           withShadow: true,
         ),
-        Expanded(
+        const Expanded(
           child: CartBlocBuilder(),
         ),
       ],

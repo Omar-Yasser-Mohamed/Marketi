@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -56,7 +58,10 @@ class ProductItem extends StatelessWidget {
 
           return GestureDetector(
             onTap: () {
-              GoRouter.of(context).push(Routes.productDetailsScreen);
+              GoRouter.of(
+                context,
+              ).push(Routes.productDetailsScreen, extra: product);
+              log('images:  ${product.images}');
             },
             child: Container(
               padding: const EdgeInsets.all(5),
@@ -123,20 +128,20 @@ class ProductItem extends StatelessWidget {
                                 ),
 
                           // Fav Button
-                          BlocBuilder<FavoritesCubit, FavoritesState>(
-                            builder: (context, state) {
-                              final favProducts = favCubit.favProducts;
-                              final isInFavorites = favProducts.any(
-                                (p) => p.id == product.id,
-                              );
+                          Positioned(
+                            right: 4,
+                            top: 4,
+                            child: BlocBuilder<FavoritesCubit, FavoritesState>(
+                              builder: (context, state) {
+                                final favProducts = favCubit.favProducts;
+                                final isInFavorites = favProducts.any(
+                                  (p) => p.id == product.id,
+                                );
 
-                              final isFavLoading =
-                                  state is FavoritesToggleLoading &&
-                                  state.productId == product.id;
-                              return Positioned(
-                                right: 4,
-                                top: 4,
-                                child: InkWell(
+                                final isFavLoading =
+                                    state is FavoritesToggleLoading &&
+                                    state.productId == product.id;
+                                return InkWell(
                                   onTap: () {
                                     favCubit.toggleFavorite(
                                       productId: product.id,
@@ -170,9 +175,9 @@ class ProductItem extends StatelessWidget {
                                             ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ),
                         ],
                       ),

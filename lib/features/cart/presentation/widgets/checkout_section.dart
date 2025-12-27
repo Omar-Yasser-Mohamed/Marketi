@@ -16,8 +16,8 @@ class CheckoutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 124,
-      padding: const EdgeInsets.all(16),
+      height: 130,
+      padding: const EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 22),
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(

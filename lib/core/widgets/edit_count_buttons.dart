@@ -13,7 +13,9 @@ class EditCountButtons extends StatelessWidget {
     required this.countOfProduct,
     required this.cartCubit,
     required this.product,
-    required this.isThisItemLoading, this.height = 40,
+    required this.isThisItemLoading,
+    this.height = 40,
+    this.width = 40,
   });
 
   final int countOfProduct;
@@ -21,6 +23,7 @@ class EditCountButtons extends StatelessWidget {
   final ProductEntity product;
   final bool isThisItemLoading;
   final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,7 @@ class EditCountButtons extends StatelessWidget {
         children: [
           countOfProduct == 1
               ? CustomIconButton(
+                  width: width,
                   iconSvg: AppIcons.trash,
                   iconColor: Colors.red,
                   onTap: () {
@@ -39,6 +43,7 @@ class EditCountButtons extends StatelessWidget {
                   },
                 )
               : CustomIconButton(
+                  width: width,
                   icon: Icons.remove,
                   onTap: () {
                     cartCubit.removeFromCart(
@@ -72,6 +77,7 @@ class EditCountButtons extends StatelessWidget {
           const SizedBox(width: 12),
 
           CustomIconButton(
+            width: width,
             icon: Icons.add,
             onTap: () {
               cartCubit.addToCart(

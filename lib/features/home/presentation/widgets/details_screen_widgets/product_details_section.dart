@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/functions/calc_discount_precentage.dart';
 import 'package:marketi/core/theme/color_styles.dart';
 import 'package:marketi/core/theme/text_styles.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/features/home/domain/entites/product_entity.dart';
 
 class ProductDetailsSection extends StatelessWidget {
-  const ProductDetailsSection({super.key});
+  const ProductDetailsSection({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -29,59 +34,80 @@ class ProductDetailsSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text.rich(
-                TextSpan(
-                  text: 'EGP ',
-                  style: TextStyles.enR18,
-                  children: [
-                    const TextSpan(
-                      text: '100 ',
-                      style: TextStyles.enM18,
-                    ),
-                    TextSpan(
-                      text: '200',
-                      style: TextStyles.enR18.copyWith(
-                        color: ColorStyles.customGray,
-                        decoration: TextDecoration.lineThrough,
+              product.priceAfterDiscount != null
+                  ? Text.rich(
+                      TextSpan(
+                        text: 'EGP ',
+                        style: TextStyles.enR18,
+                        children: [
+                          TextSpan(
+                            text:
+                                '${product.priceAfterDiscount!.toStringAsFixed(2)} ',
+                            style: TextStyles.enM18,
+                          ),
+                          TextSpan(
+                            text: product.price.toStringAsFixed(2),
+                            style: TextStyles.enR18.copyWith(
+                              color: ColorStyles.customGray,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                          TextSpan(
+                            text:
+                                ' ${calculateDiscountPercentage(product.price, product.priceAfterDiscount).toInt()}%',
+                            style: TextStyles.enM18.copyWith(
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Container(
+                      alignment: Alignment.center,
+                      height: 24,
+                      width: width * .33,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: ColorStyles.primary),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        'Free Shipping',
+                        style: TextStyles.enM14.copyWith(
+                          color: ColorStyles.primary,
+                        ),
                       ),
                     ),
-                    TextSpan(
-                      text: ' 50%',
-                      style: TextStyles.enM18.copyWith(
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Container(
-              //   alignment: Alignment.center,
-              //   height: 24,
-              //   width: width * .33,
-              //   decoration: BoxDecoration(
-              //     border: Border.all(color: ColorStyles.primary),
-              //     borderRadius: BorderRadius.circular(8),
-              //   ),
-              //   child: Text(
-              //     'Free Shipping',
-              //     style: TextStyles.enM14.copyWith(
-              //       color: ColorStyles.primary,
-              //     ),
-              //   ),
-              // ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  for (int star = 1; star < 6; star++)
+                  ...List.generate(
+                    product.avgRating.floor(),
+                    (_) => const Icon(
+                      Icons.star,
+                      color: ColorStyles.darkBlue900,
+                      size: 20,
+                    ),
+                  ),
+
+                  if (product.avgRating % 1 != 0)
                     const Icon(
-                      Icons.star_rate,
+                      Icons.star_half,
+                      color: ColorStyles.darkBlue900,
                       size: 20,
                     ),
 
+                  ...List.generate(
+                    5 - product.avgRating.ceil(),
+                    (_) => const Icon(
+                      Icons.star_border,
+                      color: ColorStyles.darkBlue900,
+                      size: 20,
+                    ),
+                  ),
+
                   const SizedBox(width: 4),
-                  const Text(
-                    '(4.0)',
+                  Text(
+                    '(${product.avgRating})',
                     style: TextStyles.enM12,
                   ),
                 ],
@@ -92,24 +118,24 @@ class ProductDetailsSection extends StatelessWidget {
           const SizedBox(height: 8),
 
           // Product title
-          const Text(
-            'Pampers Swaddlers',
+          Text(
+            product.name,
             style: TextStyles.enM18,
           ),
 
           const SizedBox(height: 8),
 
           // Product category
-          const Text(
-            'Product Value',
+          Text(
+            product.category.name,
             style: TextStyles.enR16,
           ),
 
           const SizedBox(height: 4),
 
           // Description
-          const Text(
-            'Fear no leaks with new and improved Pampers Swaddlers Pampers Swaddlers helps prevent up to 100% of leaks, even blowouts Plus, Dual Leak-Guard Barriers at the legs help protect where leaks happen most With Swaddlers, you can rest assured that you have superior leak protection* while keeping baby’s skin healthy See more  ',
+          Text(
+            product.description,
             style: TextStyles.enR12,
           ),
 
@@ -130,10 +156,19 @@ class ProductDetailsSection extends StatelessWidget {
                 Container(
                   width: 56,
                   height: 56,
+                  clipBehavior: Clip.hardEdge,
+                  padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(50),
                     border: Border.all(
                       color: ColorStyles.lightBlue700,
+                      width: 2,
+                    ),
+                  ),
+                  child: ClipRRect(
+                    child: CustomNetworkImage(
+                      imageUrl: product.brand.image,
                     ),
                   ),
                 ),
@@ -150,7 +185,7 @@ class ProductDetailsSection extends StatelessWidget {
                       style: TextStyles.enR16,
                       children: [
                         TextSpan(
-                          text: 'Brand name',
+                          text: product.brand.name,
                           style: TextStyles.enM16.copyWith(
                             color: ColorStyles.primary,
                           ),

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/theme/color_styles.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
 
 class ProductImagesSection extends StatefulWidget {
-  const ProductImagesSection({super.key});
+  const ProductImagesSection({
+    super.key,
+    required this.images,
+  });
+  final List<String> images;
 
   @override
   State<ProductImagesSection> createState() => _ProductImagesSectionState();
@@ -24,7 +30,6 @@ class _ProductImagesSectionState extends State<ProductImagesSection> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = [Colors.red, Colors.blue, Colors.green];
     return Column(
       children: [
         Expanded(
@@ -35,14 +40,16 @@ class _ProductImagesSectionState extends State<ProductImagesSection> {
                 selectedIndex = value;
               });
             },
-            itemCount: 3,
+            itemCount: widget.images.length,
             itemBuilder: (context, index) => AspectRatio(
               aspectRatio: 1,
               child: Container(
                 margin: const EdgeInsets.all(20),
                 width: 100,
                 height: 100,
-                color: colors[index],
+                child: CustomNetworkImage(
+                  imageUrl: widget.images[index],
+                ),
               ),
             ),
           ),
@@ -56,7 +63,7 @@ class _ProductImagesSectionState extends State<ProductImagesSection> {
           child: ListView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.only(left: 16),
-            itemCount: 3,
+            itemCount: widget.images.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               final isSelected = index == selectedIndex;
@@ -76,13 +83,20 @@ class _ProductImagesSectionState extends State<ProductImagesSection> {
                 child: Container(
                   width: 56,
                   height: 56,
-                  padding: const EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(2),
                   margin: const EdgeInsets.only(right: 16),
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: isSelected ? Colors.black : Colors.yellow,
+                      width: 2,
+                      color: isSelected
+                          ? ColorStyles.primary
+                          : ColorStyles.customGray.withValues(alpha: .5),
                     ),
-                    color: colors[index],
+                  ),
+                  child: CustomNetworkImage(
+                    imageUrl: widget.images[index],
+                    fit: BoxFit.fill,
                   ),
                 ),
               );

@@ -18,6 +18,26 @@ class FavoritesBlocConsumer extends StatefulWidget {
 
 class _FavoritesBlocConsumerState extends State<FavoritesBlocConsumer> {
   List<ProductEntity> favProducts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize with current data if available
+    final cubit = context.read<FavoritesCubit>();
+    if (cubit.state is FavoritesSuccess) {
+      favProducts = (cubit.state as FavoritesSuccess).products;
+    } else {
+      favProducts = cubit.favProducts;
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // Clean up resources if needed
+  favProducts.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FavoritesCubit, FavoritesState>(
@@ -40,8 +60,8 @@ class _FavoritesBlocConsumerState extends State<FavoritesBlocConsumer> {
         }
         return const Center(
           child: CustomLoadingIndicator(
-            height: 50,
-            width: 50,
+            height: 30,
+            width: 30,
           ),
         );
       },
