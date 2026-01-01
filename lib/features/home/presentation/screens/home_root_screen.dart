@@ -8,6 +8,7 @@ import 'package:marketi/features/favourites/presentation/screens/favorites_scree
 import 'package:marketi/features/home/presentation/cubits/all_products_cubit/all_product_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/widgets/home_root_widgets/custom_nav_item.dart';
+import 'package:marketi/features/profile/presentation/screens/profile_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomeRootScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _HomeRootScreenState extends State<HomeRootScreen> {
       const HomeScreen(),
       const CartScreen(),
       const FavoritesScreen(),
-      const HomeScreen(),
+      const ProfileScreen(),
     ];
   }
 
@@ -56,8 +57,8 @@ class _HomeRootScreenState extends State<HomeRootScreen> {
       title: "Favorites",
     ),
     customNavItem(
-      icon: Icons.menu,
-      title: "Menu",
+      icon: Icons.person,
+      title: "Profile",
     ),
   ];
 

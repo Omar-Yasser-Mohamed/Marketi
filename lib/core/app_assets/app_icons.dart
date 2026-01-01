@@ -12,4 +12,5 @@ abstract class AppIcons {
   static const String search = 'assets/icons/search.svg';
   static const String filter = 'assets/icons/Filter_Icon.svg';
   static const String trash = 'assets/icons/trash.svg';
+  static const String arrowForward = 'assets/icons/arrow_forward.svg';
 }

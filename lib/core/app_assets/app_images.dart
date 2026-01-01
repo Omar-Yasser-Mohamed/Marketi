@@ -16,6 +16,7 @@ abstract class AppImages {
   static const String congratulations = 'assets/images/congratulations.png';
   static const String empty = 'assets/images/cart_empty.png';
   static const String favoritesEmpty = 'assets/images/empty_favorites.png';
+  static const String profileShapesLightMode = 'assets/images/profile_shapes_light_mode.png';
 
   // For Test
   static const String test = 'assets/images/test.jpg';
