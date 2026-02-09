@@ -34,4 +34,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get getStarted => 'Get Started';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get remember_me => 'Remember Me';
+
+  @override
+  String get forgot_password => 'Forgot Password?';
+
+  @override
+  String get login => 'Log In';
+
+  @override
+  String get or_continue_with => 'Or Continue With';
+
+  @override
+  String get are_you_new => 'Are you new in Marketi?';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get your_name => 'Your Name';
+
+  @override
+  String get full_name => 'Full Name';
+
+  @override
+  String get phone_number => 'Phone Number';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get signup => 'Sign Up';
 }

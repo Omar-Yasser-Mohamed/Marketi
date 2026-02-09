@@ -36,7 +36,7 @@ class PageIndicatorDot extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.isLightMode
             ? (isActive ? AppColors.darkBlue900 : AppColors.lightBlue700)
-            : (isActive ? AppColors.lightBlue900 : AppColors.darkBlue100),
+            : (isActive ? AppColors.darkBlue100 : AppColors.lightBlue900),
         shape: BoxShape.circle,
       ),
     );

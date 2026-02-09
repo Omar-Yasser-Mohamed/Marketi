@@ -1,13 +1,23 @@
 {
   "onboardingOneTitle": "Welcome to Marketi",
   "onboardingOneDesc": "Discover a world of endless possibilities and shop from the comfort of your fingertips. Browse through a wide range of products, from fashion and electronics to home essentials.",
-
   "onboardingTwoTitle": "Easy to Buy",
   "onboardingTwoDesc": "Find the perfect item that suits your style and needs with secure payment options and fast delivery. Shopping has never been easier.",
-
   "onboardingThreeTitle": "Wonderful User Experience",
   "onboardingThreeDesc": "Start exploring now and experience the convenience of online shopping at its best.",
-
   "next": "Next",
-  "getStarted": "Get Started"
+  "getStarted": "Get Started",
+  "password": "Password",
+  "remember_me": "Remember Me",
+  "forgot_password": "Forgot Password?",
+  "login": "Log In",
+  "or_continue_with": "Or Continue With",
+  "are_you_new": "Are you new in Marketi?",
+  "register": "Register",
+  "your_name": "Your Name",
+  "full_name": "Full Name",
+  "phone_number": "Phone Number",
+  "email": "Email",
+  "confirm_password": "Confirm Password",
+  "signup": "Sign Up"
 }

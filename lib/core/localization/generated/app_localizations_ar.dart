@@ -34,4 +34,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get getStarted => 'ابدأ الآن';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get remember_me => 'تذكرني';
+
+  @override
+  String get forgot_password => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get or_continue_with => 'أو المتابعة باستخدام';
+
+  @override
+  String get are_you_new => 'هل أنت جديد في ماركتي؟';
+
+  @override
+  String get register => 'إنشاء حساب';
+
+  @override
+  String get your_name => 'اسمك';
+
+  @override
+  String get full_name => 'الاسم بالكامل';
+
+  @override
+  String get phone_number => 'رقم الهاتف';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get confirm_password => 'تأكيد كلمة المرور';
+
+  @override
+  String get signup => 'إنشاء حساب';
 }

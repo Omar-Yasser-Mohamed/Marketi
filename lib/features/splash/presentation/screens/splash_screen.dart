@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/constansts/app_images.dart';
+import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/routing/app_routes.dart';
+import 'package:marketi/core/styles/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -61,8 +63,14 @@ class _SplashScreenState extends State<SplashScreen>
               child: Opacity(
                 opacity: _animation.value,
                 child: Hero(
-                  tag: 'onboarding',
-                  child: Image.asset(AppImages.splashLogo),
+                  tag: 'splash',
+                  child: Image.asset(
+                    AppImages.splashLogo,
+
+                    color: context.isLightMode
+                        ? AppColors.primary
+                        : Colors.white,
+                  ),
                 ),
               ),
             );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -31,15 +32,15 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
-      style: AppTextStyles.enR16,
+      style: AppTextStyles.normalTextStyle,
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
-        hintStyle: AppTextStyles.enR16.copyWith(
-          color: const Color(0xff929BAB),
+        hintStyle: AppTextStyles.normalTextStyle.copyWith(
+          color: context.isLightMode ? const Color(0xff929BAB) : Colors.white,
         ),
-        labelStyle: AppTextStyles.enR16.copyWith(
-          color: const Color(0xff929BAB),
+        labelStyle: AppTextStyles.normalTextStyle.copyWith(
+          color: context.isLightMode ? const Color(0xff929BAB) : Colors.white,
         ),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,

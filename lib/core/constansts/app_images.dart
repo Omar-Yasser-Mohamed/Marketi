@@ -3,4 +3,6 @@ abstract class AppImages {
   static const String onboardingOneImage = 'assets/images/onboarding_1.png';
   static const String onboardingTwoImage = 'assets/images/onboarding_2.png';
   static const String onboardingThreeImage = 'assets/images/onboarding_3.png';
+  static const String loginLogo = 'assets/images/login_logo.png';
+  static const String signupLogo = 'assets/images/signup_logo.png';
 }

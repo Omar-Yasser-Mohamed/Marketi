@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // init responsive config
     ResponsiveConfig.init(context);
     return MaterialApp.router(
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       routerConfig: RouterConfigration.router,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
     );
   }
 }
