@@ -13,7 +13,7 @@ class ResponsiveConfig {
   static late double scaleIcon;
 
   static void init(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
 
     screenWidth = size.width;
     screenHeight = size.height;
