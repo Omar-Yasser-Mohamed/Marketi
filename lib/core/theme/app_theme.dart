@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 
 abstract class AppTheme {
-
   static ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Poppins',
@@ -48,8 +48,9 @@ abstract class AppTheme {
 
   //Dark theme
   static ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: AppColors.darkBlue900,
     fontFamily: 'Poppins',
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
@@ -58,7 +59,7 @@ abstract class AppTheme {
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: Colors.black,
+      fillColor: AppColors.darkBlue900,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(

@@ -23,9 +23,11 @@ class MyApp extends StatelessWidget {
       title: 'Marketi',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       routerConfig: RouterConfigration.router,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      themeMode: ThemeMode.dark,
     );
   }
 }

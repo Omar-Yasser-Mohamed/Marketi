@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/constansts/app_images.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 
 class OnboardingTwo extends StatelessWidget {
@@ -24,7 +25,9 @@ class OnboardingTwo extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           context.l10n.onboardingTwoTitle,
-          style: AppTextStyles.enSb20,
+          style: AppTextStyles.enSb20.copyWith(
+            color: context.isLightMode ? AppColors.darkBlue900 : Colors.white,
+          ),
         ),
         const SizedBox(height: 16),
         Padding(
@@ -32,7 +35,9 @@ class OnboardingTwo extends StatelessWidget {
           child: Text(
             context.l10n.onboardingTwoDesc,
             textAlign: TextAlign.center,
-            style: AppTextStyles.enM14,
+            style: AppTextStyles.enM14.copyWith(
+              color: context.isLightMode ? AppColors.darkBlue900 : Colors.white,
+            ),
           ),
         ),
       ],

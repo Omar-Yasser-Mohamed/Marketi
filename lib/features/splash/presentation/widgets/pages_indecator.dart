@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 
@@ -33,7 +34,9 @@ class PageIndicatorDot extends StatelessWidget {
       height: isActive ? 20.h : 16.h,
       margin: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
-        color: isActive ? AppColors.darkBlue900 : AppColors.lightBlue700,
+        color: context.isLightMode
+            ? (isActive ? AppColors.darkBlue900 : AppColors.lightBlue700)
+            : (isActive ? AppColors.lightBlue900 : AppColors.darkBlue100),
         shape: BoxShape.circle,
       ),
     );
