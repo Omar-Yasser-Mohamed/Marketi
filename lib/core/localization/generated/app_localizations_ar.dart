@@ -42,7 +42,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get remember_me => 'تذكرني';
 
   @override
-  String get forgot_password => 'هل نسيت كلمة المرور؟';
+  String get forgot_password_ques => 'هل نسيت كلمة المرور؟';
 
   @override
   String get login => 'تسجيل الدخول';
@@ -73,4 +73,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signup => 'إنشاء حساب';
+
+  @override
+  String get forgot_password => 'نسيت كلمة المرور';
+
+  @override
+  String get forgot_password_desc =>
+      'من فضلك أدخل بريدك الإلكتروني لاستلام رمز التحقق';
+
+  @override
+  String get send_code => 'إرسال الرمز';
+
+  @override
+  String get verification_code => 'رمز التحقق';
+
+  @override
+  String get verification_code_desc =>
+      'من فضلك أدخل رمز التحقق المكوّن من 6 أرقام المرسل إلى: ';
+
+  @override
+  String get verify_code => 'تأكيد الرمز';
+
+  @override
+  String get resend_code => 'إعادة إرسال الرمز';
 }

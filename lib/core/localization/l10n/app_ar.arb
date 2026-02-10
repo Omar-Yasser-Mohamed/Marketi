@@ -9,7 +9,7 @@
   "getStarted": "ابدأ الآن",
   "password": "كلمة المرور",
   "remember_me": "تذكرني",
-  "forgot_password": "هل نسيت كلمة المرور؟",
+  "forgot_password_ques": "هل نسيت كلمة المرور؟",
   "login": "تسجيل الدخول",
   "or_continue_with": "أو المتابعة باستخدام",
   "are_you_new": "هل أنت جديد في ماركتي؟",
@@ -19,5 +19,15 @@
   "phone_number": "رقم الهاتف",
   "email": "البريد الإلكتروني",
   "confirm_password": "تأكيد كلمة المرور",
-  "signup": "إنشاء حساب"
+  "signup": "إنشاء حساب",
+  "forgot_password": "نسيت كلمة المرور",
+  "forgot_password_desc": "من فضلك أدخل بريدك الإلكتروني لاستلام رمز التحقق",
+  "send_code": "إرسال الرمز",
+  "verification_code": "رمز التحقق",
+  "verification_code_desc": "من فضلك أدخل رمز التحقق المكوّن من 6 أرقام المرسل إلى: ",
+  "verify_code": "تأكيد الرمز",
+  "resend_code": "إعادة إرسال الرمز",
+  "createNewPassword": "إنشاء كلمة مرور جديدة",
+  "newPasswordHint": "يجب أن تكون كلمة المرور الجديدة مختلفة عن السابقة",
+  "savePassword": "حفظ كلمة المرور"
 }

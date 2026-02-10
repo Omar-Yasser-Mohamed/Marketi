@@ -158,11 +158,11 @@ abstract class AppLocalizations {
   /// **'Remember Me'**
   String get remember_me;
 
-  /// No description provided for @forgot_password.
+  /// No description provided for @forgot_password_ques.
   ///
   /// In en, this message translates to:
   /// **'Forgot Password?'**
-  String get forgot_password;
+  String get forgot_password_ques;
 
   /// No description provided for @login.
   ///
@@ -223,6 +223,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign Up'**
   String get signup;
+
+  /// No description provided for @forgot_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get forgot_password;
+
+  /// No description provided for @forgot_password_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address to receive a verification code'**
+  String get forgot_password_desc;
+
+  /// No description provided for @send_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Code'**
+  String get send_code;
+
+  /// No description provided for @verification_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Code'**
+  String get verification_code;
+
+  /// No description provided for @verification_code_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the 6 digit code sent to: '**
+  String get verification_code_desc;
+
+  /// No description provided for @verify_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Code'**
+  String get verify_code;
+
+  /// No description provided for @resend_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend Code'**
+  String get resend_code;
 }
 
 class _AppLocalizationsDelegate

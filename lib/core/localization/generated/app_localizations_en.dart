@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get remember_me => 'Remember Me';
 
   @override
-  String get forgot_password => 'Forgot Password?';
+  String get forgot_password_ques => 'Forgot Password?';
 
   @override
   String get login => 'Log In';
@@ -73,4 +73,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signup => 'Sign Up';
+
+  @override
+  String get forgot_password => 'Forgot Password';
+
+  @override
+  String get forgot_password_desc =>
+      'Please enter your email address to receive a verification code';
+
+  @override
+  String get send_code => 'Send Code';
+
+  @override
+  String get verification_code => 'Verification Code';
+
+  @override
+  String get verification_code_desc =>
+      'Please enter the 6 digit code sent to: ';
+
+  @override
+  String get verify_code => 'Verify Code';
+
+  @override
+  String get resend_code => 'Resend Code';
 }
