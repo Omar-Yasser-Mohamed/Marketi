@@ -96,4 +96,21 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend_code => 'إعادة إرسال الرمز';
+
+  @override
+  String get createNewPassword => 'إنشاء كلمة مرور جديدة';
+
+  @override
+  String get newPasswordHint =>
+      'يجب أن تكون كلمة المرور الجديدة مختلفة عن السابقة';
+
+  @override
+  String get savePassword => 'حفظ كلمة المرور';
+
+  @override
+  String get congratulations => 'تهانينا';
+
+  @override
+  String get passwordUpdatedMessage =>
+      'تم تحديث كلمة المرور بنجاح. يُرجى تسجيل الدخول مرة أخرى باستخدام كلمة المرور الجديدة.';
 }

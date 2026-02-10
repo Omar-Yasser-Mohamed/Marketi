@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/routing/app_routes.dart';
+import 'package:marketi/features/auth/presentation/screens/congratulations_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/reset_password_screen.dart';
@@ -38,6 +39,10 @@ abstract class RouterConfigration {
       GoRoute(
         path: AppRoutes.resetPassword,
         builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.congratulationsScreen,
+        builder: (context, state) => const CongratulationsScreen(),
       ),
     ],
   );

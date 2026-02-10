@@ -29,7 +29,7 @@ class ArrowBackButton extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             AppIcons.arrowBackIos,
-            width: 12.w,
+            width: context.screenHeight * 0.015,
             colorFilter: ColorFilter.mode(
               context.isLightMode
                   ? AppColors.darkBlue900

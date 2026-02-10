@@ -37,8 +37,8 @@ class _VerificationSectionState extends State<VerificationSection> {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-      width: 50.w,
-      height: 50.h,
+      width: context.isPortrait ? 50.h : 50.w,
+      height: context.isPortrait ? 50.h : 50.w,
       textStyle: AppTextStyles.enM26.copyWith(
         color: context.primaryColor,
       ),

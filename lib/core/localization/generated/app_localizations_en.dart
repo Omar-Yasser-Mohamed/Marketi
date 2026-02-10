@@ -96,4 +96,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code';
+
+  @override
+  String get createNewPassword => 'Create New Password';
+
+  @override
+  String get newPasswordHint =>
+      'New password must be different from last password';
+
+  @override
+  String get savePassword => 'Save Password';
+
+  @override
+  String get congratulations => 'Congratulations';
+
+  @override
+  String get passwordUpdatedMessage =>
+      'You have updated your password. Please log in again with your new password.';
 }

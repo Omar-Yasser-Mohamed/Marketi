@@ -265,6 +265,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend Code'**
   String get resend_code;
+
+  /// No description provided for @createNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Password'**
+  String get createNewPassword;
+
+  /// No description provided for @newPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'New password must be different from last password'**
+  String get newPasswordHint;
+
+  /// No description provided for @savePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Password'**
+  String get savePassword;
+
+  /// No description provided for @congratulations.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations'**
+  String get congratulations;
+
+  /// No description provided for @passwordUpdatedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have updated your password. Please log in again with your new password.'**
+  String get passwordUpdatedMessage;
 }
 
 class _AppLocalizationsDelegate

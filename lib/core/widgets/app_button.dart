@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 
@@ -31,7 +32,7 @@ class AppButton extends StatelessWidget {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: height ?? 48,
+      height: height ?? 48.h,
       width: isLoading ? loadingWidth : normalWidth,
       curve: Curves.easeInOut,
       child: ElevatedButton(
@@ -40,7 +41,7 @@ class AppButton extends StatelessWidget {
           backgroundColor: backgroundColor ?? AppColors.primary,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 10),
+            borderRadius: BorderRadius.circular(radius ?? 14),
           ),
         ),
         child: AnimatedSwitcher(

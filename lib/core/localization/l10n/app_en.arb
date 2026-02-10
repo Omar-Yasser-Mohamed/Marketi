@@ -29,5 +29,7 @@
   "resend_code": "Resend Code",
   "createNewPassword": "Create New Password",
   "newPasswordHint": "New password must be different from last password",
-  "savePassword": "Save Password"
+  "savePassword": "Save Password",
+  "congratulations": "Congratulations",
+  "passwordUpdatedMessage": "You have updated your password. Please log in again with your new password."
 }

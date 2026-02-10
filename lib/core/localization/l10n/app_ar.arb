@@ -29,5 +29,7 @@
   "resend_code": "إعادة إرسال الرمز",
   "createNewPassword": "إنشاء كلمة مرور جديدة",
   "newPasswordHint": "يجب أن تكون كلمة المرور الجديدة مختلفة عن السابقة",
-  "savePassword": "حفظ كلمة المرور"
+  "savePassword": "حفظ كلمة المرور",
+  "congratulations": "تهانينا",
+  "passwordUpdatedMessage": "تم تحديث كلمة المرور بنجاح. يُرجى تسجيل الدخول مرة أخرى باستخدام كلمة المرور الجديدة."
 }

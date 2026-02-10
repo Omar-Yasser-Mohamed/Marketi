@@ -7,4 +7,6 @@ abstract class AppImages {
   static const String signupLogo = 'assets/images/signup_logo.png';
   static const String forgotPasswordLogo = 'assets/images/forget_password.png';
   static const String verificationLogo = 'assets/images/verification_logo.png';
+  static const String createNewPasswordLogo = 'assets/images/create_new_password.png';
+  static const String congratulationsLogo = 'assets/images/congratulations.png';
 }
