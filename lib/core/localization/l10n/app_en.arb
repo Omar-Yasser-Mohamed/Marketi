@@ -31,5 +31,44 @@
   "newPasswordHint": "New password must be different from last password",
   "savePassword": "Save Password",
   "congratulations": "Congratulations",
-  "passwordUpdatedMessage": "You have updated your password. Please log in again with your new password."
+  "passwordUpdatedMessage": "You have updated your password. Please log in again with your new password.",
+  "nameRequired": "Name is required",
+  "nameMinLength": "Name must be at least 3 characters",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Enter a valid email address",
+  "passwordRequired": "Password is required",
+  "passwordMinLength": "Password must be at least 8 characters",
+  "passwordUppercase": "an uppercase letter",
+  "passwordLowercase": "a lowercase letter",
+  "passwordNumber": "a number",
+  "passwordSpecial": "a special character",
+  "passwordMustContain": "Password must contain {rules}",
+  "@passwordMustContain": {
+    "placeholders": {
+      "rules": {}
+    }
+  },
+  "confirmPasswordRequired": "Please confirm your password",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "phoneRequired": "Phone number is required",
+  "invalidEgyptianPhone": "Enter a valid Egyptian phone number (11 digits)",
+  "pinRequired": "PIN code is required",
+  "pinDigitsOnly": "PIN must contain digits only",
+  "pinInvalidLength": "PIN must be 6 digits",
+  
+  "errorNetwork": "No internet connection. Please check your network.",
+  "errorTimeout": "The request took too long. Please try again.",
+  "errorUnauthorized": "You are not authorized to perform this action.",
+  "errorForbidden": "Access denied.",
+  "errorSessionExpired": "Your session has expired. Please login again.",
+  "errorBadRequest": "Invalid request. Please check your input.",
+  "errorNotFound": "The requested data was not found.",
+  "errorConflict": "This data already exists.",
+  "errorServer": "Server error. Please try again later.",
+  "errorCache": "Failed to load cached data.",
+  "errorDatabase": "Database error occurred.",
+  "errorValidation": "Please check the entered data.",
+  "errorEmptyData": "No data available.",
+  "errorCancelled": "The request was cancelled.",
+  "errorUnknown": "Something went wrong. Please try again."
 }

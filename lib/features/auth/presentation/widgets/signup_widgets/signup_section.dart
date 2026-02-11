@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/utils/app_validators.dart';
@@ -73,7 +74,7 @@ class _SignupSectionState extends State<SignupSection> {
                   controller: nameController,
                   hintText: context.l10n.full_name,
                   keyboardType: TextInputType.name,
-                  validator: AppValidators.name,
+                  validator: context.l10nValidator(AppValidators.name),
                   prefixIcon: Icon(
                     Icons.person_outline,
                     color: context.primaryColor,
@@ -94,7 +95,7 @@ class _SignupSectionState extends State<SignupSection> {
                   controller: phoneController,
                   hintText: context.l10n.phone_number,
                   keyboardType: TextInputType.phone,
-                  validator: AppValidators.phone,
+                  validator: context.l10nValidator(AppValidators.phone),
                   prefixIcon: Icon(
                     Icons.phone_android,
                     color: context.primaryColor,
@@ -115,7 +116,7 @@ class _SignupSectionState extends State<SignupSection> {
                   controller: emailController,
                   hintText: context.l10n.email,
                   keyboardType: TextInputType.emailAddress,
-                  validator: AppValidators.email,
+                  validator: context.l10nValidator(AppValidators.email),
                   prefixIcon: Icon(
                     Icons.mail_outline,
                     color: context.primaryColor,
@@ -136,7 +137,9 @@ class _SignupSectionState extends State<SignupSection> {
                   controller: passwordController,
                   hintText: context.l10n.password,
                   keyboardType: TextInputType.visiblePassword,
-                  validator: AppValidators.password,
+                  validator: context.l10nMultiValidator(
+                    AppValidators.password,
+                  ),
                   isSecure: _isPasswordHidden,
                   prefixIcon: Icon(
                     Icons.lock_outline,
@@ -174,12 +177,13 @@ class _SignupSectionState extends State<SignupSection> {
                   controller: confirmPasswordController,
                   hintText: context.l10n.confirm_password,
                   keyboardType: TextInputType.visiblePassword,
-                  validator: (value) {
-                    return AppValidators.confirmPassword(
+                  validator: context.l10nValidator(
+                    (value) => AppValidators.confirmPassword(
                       value,
                       passwordController.text,
-                    );
-                  },
+                    ),
+                  ),
+
                   prefixIcon: Icon(
                     Icons.lock_outline,
                     color: context.primaryColor,

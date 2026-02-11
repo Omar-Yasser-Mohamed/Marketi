@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/utils/app_validators.dart';
@@ -55,7 +56,7 @@ class _ForgetPassSectionState extends State<ForgetPassSection> {
             child: CustomTextFormField(
               hintText: "You@gmail.com",
               keyboardType: TextInputType.emailAddress,
-              validator: AppValidators.email,
+              validator: context.l10nValidator(AppValidators.email),
               prefixIcon: Icon(
                 Icons.email_outlined,
                 color: context.primaryColor,

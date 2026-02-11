@@ -113,4 +113,109 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordUpdatedMessage =>
       'You have updated your password. Please log in again with your new password.';
+
+  @override
+  String get nameRequired => 'Name is required';
+
+  @override
+  String get nameMinLength => 'Name must be at least 3 characters';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get invalidEmail => 'Enter a valid email address';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get passwordMinLength => 'Password must be at least 8 characters';
+
+  @override
+  String get passwordUppercase => 'an uppercase letter';
+
+  @override
+  String get passwordLowercase => 'a lowercase letter';
+
+  @override
+  String get passwordNumber => 'a number';
+
+  @override
+  String get passwordSpecial => 'a special character';
+
+  @override
+  String passwordMustContain(Object rules) {
+    return 'Password must contain $rules';
+  }
+
+  @override
+  String get confirmPasswordRequired => 'Please confirm your password';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get phoneRequired => 'Phone number is required';
+
+  @override
+  String get invalidEgyptianPhone =>
+      'Enter a valid Egyptian phone number (11 digits)';
+
+  @override
+  String get pinRequired => 'PIN code is required';
+
+  @override
+  String get pinDigitsOnly => 'PIN must contain digits only';
+
+  @override
+  String get pinInvalidLength => 'PIN must be 6 digits';
+
+  @override
+  String get errorNetwork =>
+      'No internet connection. Please check your network.';
+
+  @override
+  String get errorTimeout => 'The request took too long. Please try again.';
+
+  @override
+  String get errorUnauthorized =>
+      'You are not authorized to perform this action.';
+
+  @override
+  String get errorForbidden => 'Access denied.';
+
+  @override
+  String get errorSessionExpired =>
+      'Your session has expired. Please login again.';
+
+  @override
+  String get errorBadRequest => 'Invalid request. Please check your input.';
+
+  @override
+  String get errorNotFound => 'The requested data was not found.';
+
+  @override
+  String get errorConflict => 'This data already exists.';
+
+  @override
+  String get errorServer => 'Server error. Please try again later.';
+
+  @override
+  String get errorCache => 'Failed to load cached data.';
+
+  @override
+  String get errorDatabase => 'Database error occurred.';
+
+  @override
+  String get errorValidation => 'Please check the entered data.';
+
+  @override
+  String get errorEmptyData => 'No data available.';
+
+  @override
+  String get errorCancelled => 'The request was cancelled.';
+
+  @override
+  String get errorUnknown => 'Something went wrong. Please try again.';
 }

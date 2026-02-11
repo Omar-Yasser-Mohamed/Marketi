@@ -113,4 +113,105 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get passwordUpdatedMessage =>
       'تم تحديث كلمة المرور بنجاح. يُرجى تسجيل الدخول مرة أخرى باستخدام كلمة المرور الجديدة.';
+
+  @override
+  String get nameRequired => 'الاسم مطلوب';
+
+  @override
+  String get nameMinLength => 'الاسم لازم يكون 3 حروف على الأقل';
+
+  @override
+  String get emailRequired => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get invalidEmail => 'أدخل بريد إلكتروني صحيح';
+
+  @override
+  String get passwordRequired => 'كلمة المرور مطلوبة';
+
+  @override
+  String get passwordMinLength => 'كلمة المرور لازم تكون 8 حروف على الأقل';
+
+  @override
+  String get passwordUppercase => 'حرف كبير';
+
+  @override
+  String get passwordLowercase => 'حرف صغير';
+
+  @override
+  String get passwordNumber => 'رقم';
+
+  @override
+  String get passwordSpecial => 'رمز خاص';
+
+  @override
+  String passwordMustContain(Object rules) {
+    return 'كلمة المرور يجب أن تحتوي على $rules';
+  }
+
+  @override
+  String get confirmPasswordRequired => 'من فضلك أكد كلمة المرور';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get phoneRequired => 'رقم الهاتف مطلوب';
+
+  @override
+  String get invalidEgyptianPhone => 'أدخل رقم هاتف مصري صحيح (11 رقم)';
+
+  @override
+  String get pinRequired => 'رمز PIN مطلوب';
+
+  @override
+  String get pinDigitsOnly => 'رمز PIN يجب أن يحتوي على أرقام فقط';
+
+  @override
+  String get pinInvalidLength => 'رمز PIN يجب أن يكون 6 أرقام';
+
+  @override
+  String get errorNetwork => 'لا يوجد اتصال بالإنترنت. تأكد من الشبكة.';
+
+  @override
+  String get errorTimeout => 'الطلب استغرق وقتًا طويلاً. حاول مرة أخرى.';
+
+  @override
+  String get errorUnauthorized => 'غير مصرح لك بتنفيذ هذا الإجراء.';
+
+  @override
+  String get errorForbidden => 'تم رفض الوصول.';
+
+  @override
+  String get errorSessionExpired => 'انتهت صلاحية الجلسة. سجل الدخول مرة أخرى.';
+
+  @override
+  String get errorBadRequest => 'طلب غير صالح. تحقق من البيانات.';
+
+  @override
+  String get errorNotFound => 'لم يتم العثور على البيانات المطلوبة.';
+
+  @override
+  String get errorConflict => 'هذه البيانات موجودة بالفعل.';
+
+  @override
+  String get errorServer => 'خطأ في الخادم. حاول لاحقًا.';
+
+  @override
+  String get errorCache => 'فشل تحميل البيانات المحفوظة.';
+
+  @override
+  String get errorDatabase => 'حدث خطأ في قاعدة البيانات.';
+
+  @override
+  String get errorValidation => 'تحقق من البيانات المدخلة.';
+
+  @override
+  String get errorEmptyData => 'لا توجد بيانات.';
+
+  @override
+  String get errorCancelled => 'تم إلغاء الطلب.';
+
+  @override
+  String get errorUnknown => 'حدث خطأ غير متوقع. حاول مرة أخرى.';
 }

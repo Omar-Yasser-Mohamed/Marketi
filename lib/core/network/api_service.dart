@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketi/core/errors/exceptions.dart';
 import 'package:marketi/core/network/dio_service.dart';
 import 'package:marketi/core/utils/connectivity_helper.dart';
 
@@ -14,7 +15,7 @@ class ApiService {
   Future<void> _checkInternet() async {
     final isConnected = await connectivityHelper.isConnected();
     if (!isConnected) {
-      throw Exception('No internet connection');
+      throw NoInternetException();
     }
   }
 

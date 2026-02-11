@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/utils/app_validators.dart';
 import 'package:marketi/core/widgets/app_button.dart';
@@ -50,7 +51,7 @@ class _LoginSectionState extends State<LoginSection> {
             child: CustomTextFormField(
               controller: _emailController,
               labelText: context.l10n.email,
-              validator: AppValidators.email,
+              validator: context.l10nValidator(AppValidators.email),
               keyboardType: TextInputType.emailAddress,
               prefixIcon: Icon(
                 Icons.mail_outline,
@@ -70,7 +71,7 @@ class _LoginSectionState extends State<LoginSection> {
               controller: _passwordController,
               isSecure: _isPasswordHidden,
               labelText: context.l10n.password,
-              validator: AppValidators.password,
+              validator: context.l10nMultiValidator(AppValidators.password),
               keyboardType: TextInputType.visiblePassword,
               prefixIcon: Icon(
                 Icons.lock_outline,

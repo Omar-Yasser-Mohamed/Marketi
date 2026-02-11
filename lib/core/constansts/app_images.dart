@@ -9,4 +9,11 @@ abstract class AppImages {
   static const String verificationLogo = 'assets/images/verification_logo.png';
   static const String createNewPasswordLogo = 'assets/images/create_new_password.png';
   static const String congratulationsLogo = 'assets/images/congratulations.png';
+
+  // Errors
+  static const String cancelledError = 'assets/images/cancelled_error.svg';
+  static const String dataError = 'assets/images/data_error.svg';
+  static const String networkError = 'assets/images/network_error.svg';
+  static const String unauthorizedError = 'assets/images/unauthorized_error.svg';
+  static const String unkownError = 'assets/images/unkown_error.svg';
 }

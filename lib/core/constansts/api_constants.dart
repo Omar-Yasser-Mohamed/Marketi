@@ -7,7 +7,7 @@ abstract class ApiConstants {
 
   // Auth
   static const String signupEndPoint = '${apiVersion}auth/signup';
-  static const String signinEndPoint = '${apiVersion}auth/signin';
+  static const String loginEndPoint = '${apiVersion}auth/signin';
   static const String forgetPasswordEndPoint =
       '${apiVersion}auth/forgotPasswords';
   static const String verifyResetCodeEndPoint =

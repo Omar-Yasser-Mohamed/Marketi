@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
@@ -66,7 +67,9 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
                   controller: passwordController,
                   hintText: context.l10n.password,
                   keyboardType: TextInputType.visiblePassword,
-                  validator: AppValidators.password,
+                  validator: context.l10nMultiValidator(
+                    AppValidators.password,
+                  ),
                   prefixIcon: Icon(
                     Icons.lock_outline,
                     color: context.primaryColor,
@@ -103,12 +106,13 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
                   controller: confirmPasswordController,
                   hintText: context.l10n.confirm_password,
                   keyboardType: TextInputType.visiblePassword,
-                  validator: (value) {
-                    return AppValidators.confirmPassword(
+                  validator: context.l10nValidator(
+                    (value) => AppValidators.confirmPassword(
                       value,
                       passwordController.text,
-                    );
-                  },
+                    ),
+                  ),
+
                   prefixIcon: Icon(
                     Icons.lock_outline,
                     color: context.primaryColor,

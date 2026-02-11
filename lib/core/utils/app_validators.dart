@@ -2,10 +2,10 @@ class AppValidators {
   // Name
   static String? name(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Name is required';
+      return 'nameRequired';
     }
     if (value.trim().length < 3) {
-      return 'Name must be at least 3 characters';
+      return 'nameMinLength';
     }
     return null;
   }
@@ -13,53 +13,52 @@ class AppValidators {
   // Email
   static String? email(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Email is required';
+      return 'emailRequired';
     }
 
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
     if (!emailRegex.hasMatch(value.trim())) {
-      return 'Enter a valid email address';
+      return 'invalidEmail';
     }
     return null;
   }
 
   // Password
-  static String? password(String? value) {
+  static List<String>? password(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Password is required';
+      return ['passwordRequired'];
     }
+
     if (value.length < 8) {
-      return 'Password must be at least 8 characters long';
+      return ['passwordMinLength'];
     }
 
-    final hasUpper = value.contains(RegExp(r'[A-Z]'));
-    final hasLower = value.contains(RegExp(r'[a-z]'));
-    final hasDigit = value.contains(RegExp(r'[0-9]'));
-    final hasSpecial = value.contains(RegExp(r'[!@#\$%\^&\*\(\)_\+\-=\?]'));
+    final errors = <String>[];
 
-    // Build message dynamically based on what's missing
-    final List<String> errors = [];
-
-    if (!hasUpper) errors.add('uppercase letter');
-    if (!hasLower) errors.add('lowercase letter');
-    if (!hasDigit) errors.add('number');
-    if (!hasSpecial) errors.add('special character');
-
-    if (errors.isNotEmpty) {
-      return 'Password must contain ${errors.join(', ')}';
+    if (!value.contains(RegExp(r'[A-Z]'))) {
+      errors.add('passwordUppercase');
+    }
+    if (!value.contains(RegExp(r'[a-z]'))) {
+      errors.add('passwordLowercase');
+    }
+    if (!value.contains(RegExp(r'[0-9]'))) {
+      errors.add('passwordNumber');
+    }
+    if (!value.contains(RegExp(r'[!@#\$%\^&\*\(\)_\+\-=\?]'))) {
+      errors.add('passwordSpecial');
     }
 
-    return null;
+    return errors.isEmpty ? null : errors;
   }
 
   // Confirm Password
   static String? confirmPassword(String? value, String password) {
     if (value == null || value.trim().isEmpty) {
-      return 'Please confirm your password';
+      return 'confirmPasswordRequired';
     }
     if (value != password) {
-      return 'Passwords do not match';
+      return 'passwordsDoNotMatch';
     }
     return null;
   }
@@ -67,36 +66,32 @@ class AppValidators {
   // Phone number (example for Egypt)
   static String? phone(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Phone number is required';
+      return 'phoneRequired';
     }
 
     final phoneRegex = RegExp(r'^01[0-9]{9}$');
 
     if (!phoneRegex.hasMatch(value.trim())) {
-      return 'Enter a valid Egyptian phone number (11 digits)';
+      return 'invalidEgyptianPhone';
     }
 
     return null;
   }
 
   // Pin
-  static String? pin(String? value, {int length = 6}) {
+  static String? pin(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'PIN code is required';
+      return 'pinRequired';
     }
 
-    // Remove spaces just in case
     value = value.trim();
 
-    // Check only numbers
-    final onlyDigits = RegExp(r'^[0-9]+$');
-    if (!onlyDigits.hasMatch(value)) {
-      return 'PIN must contain digits only';
+    if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+      return 'pinDigitsOnly';
     }
 
-    // Validate length (4-digit, 6-digit…)
-    if (value.length != length) {
-      return 'PIN must be $length digits';
+    if (value.length != 6) {
+      return 'pinInvalidLength';
     }
 
     return null;
