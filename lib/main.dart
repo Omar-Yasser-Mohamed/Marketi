@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/di/injectable.dart';
+import 'package:marketi/core/helpers/hive_helper.dart';
 import 'package:marketi/core/localization/generated/app_localizations.dart';
 import 'package:marketi/core/responsive/responsive_config.dart';
 import 'package:marketi/core/routing/router_configration.dart';
@@ -8,6 +9,8 @@ import 'package:marketi/core/theme/app_theme.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  HiveHelper.init();
+  
   runApp(const MyApp());
 }
 

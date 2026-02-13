@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/snake_bar_extention.dart';
 import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
-import 'package:marketi/core/utils/app_validators.dart';
+import 'package:marketi/core/helpers/app_validators.dart';
 import 'package:marketi/core/widgets/app_button.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
+import 'package:marketi/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
 
 class SignupSection extends StatefulWidget {
   const SignupSection({super.key});
@@ -183,7 +187,6 @@ class _SignupSectionState extends State<SignupSection> {
                       passwordController.text,
                     ),
                   ),
-
                   prefixIcon: Icon(
                     Icons.lock_outline,
                     color: context.primaryColor,
@@ -214,16 +217,39 @@ class _SignupSectionState extends State<SignupSection> {
         // Sign up Button
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 14.p),
-          child: AppButton(
-            text: context.l10n.signup,
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // Handle sign up logic here
-              } else {
-                setState(() {
-                  autovalidateMode = AutovalidateMode.always;
-                });
+          child: BlocConsumer<SignupCubit, SignupState>(
+            listener: (context, state) {
+              if (state is SignupSuccess) {
+                // Go to home screen
+                context.showSuccessSnakbar(message: "Success");
+              } else if (state is SignupFailure) {
+                final errorMessage = FailureUiMapper.map(
+                  context: context,
+                  failure: state.failure,
+                ).message;
+                context.showErrorSnakbar(message: errorMessage);
               }
+            },
+            builder: (context, state) {
+              return AppButton(
+                isLoading: state is SignupLoading,
+                text: context.l10n.signup,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<SignupCubit>().signup(
+                      name: nameController.text,
+                      email: emailController.text,
+                      password: passwordController.text,
+                      confirmPassword: confirmPasswordController.text,
+                      phone: phoneController.text,
+                    );
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
+                  }
+                },
+              );
             },
           ),
         ),
