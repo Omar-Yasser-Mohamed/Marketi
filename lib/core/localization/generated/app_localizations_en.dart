@@ -218,4 +218,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorUnknown => 'Something went wrong. Please try again.';
+
+  @override
+  String get otpResentSuccess => 'A new verification code has been sent.';
 }

@@ -6,7 +6,7 @@ import 'package:marketi/features/auth/domain/repos/auth_repo.dart';
 
 part 'signup_state.dart';
 
-@lazySingleton
+@injectable
 class SignupCubit extends Cubit<SignupState> {
   SignupCubit(this.authRepo) : super(SignupInitial());
   final AuthRepo authRepo;

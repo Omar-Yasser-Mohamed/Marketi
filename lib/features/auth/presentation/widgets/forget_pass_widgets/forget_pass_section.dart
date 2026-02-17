@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/snake_bar_extention.dart';
 import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/helpers/app_validators.dart';
 import 'package:marketi/core/widgets/app_button.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
+import 'package:marketi/features/auth/presentation/cubits/forget_password_cubit/forget_password_cubit.dart';
 
 class ForgetPassSection extends StatefulWidget {
   const ForgetPassSection({super.key});
@@ -54,6 +58,7 @@ class _ForgetPassSectionState extends State<ForgetPassSection> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.p),
             child: CustomTextFormField(
+              controller: _emailController,
               hintText: "You@gmail.com",
               keyboardType: TextInputType.emailAddress,
               validator: context.l10nValidator(AppValidators.email),
@@ -69,16 +74,33 @@ class _ForgetPassSectionState extends State<ForgetPassSection> {
           // send button
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 14.p),
-            child: AppButton(
-              text: context.l10n.send_code,
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
+            child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
+              listener: (context, state) {
+                if (state is ForgetPasswordFailure) {
+                  final errorMessage = FailureUiMapper.map(
+                    context: context,
+                    failure: state.failure,
+                  ).message;
+                  context.showErrorSnakbar(message: errorMessage);
+                } else if (state is ForgetPasswordSuccess) {
                   context.push(AppRoutes.verificationCode);
-                } else {
-                  setState(() {
-                    _autovalidateMode = AutovalidateMode.always;
-                  });
                 }
+              },
+              builder: (context, state) {
+                return AppButton(
+                  text: context.l10n.send_code,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<ForgetPasswordCubit>().forgetPassword(
+                        email: _emailController.text,
+                      );
+                    } else {
+                      setState(() {
+                        _autovalidateMode = AutovalidateMode.always;
+                      });
+                    }
+                  },
+                );
               },
             ),
           ),

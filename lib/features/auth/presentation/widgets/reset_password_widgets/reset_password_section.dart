@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/snake_bar_extention.dart';
 import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
@@ -9,6 +12,7 @@ import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/helpers/app_validators.dart';
 import 'package:marketi/core/widgets/app_button.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
+import 'package:marketi/features/auth/presentation/cubits/reset_password_cubit/reset_password_cubit.dart';
 
 class ResetPasswordSection extends StatefulWidget {
   const ResetPasswordSection({super.key});
@@ -142,16 +146,35 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
 
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 14.p),
-          child: AppButton(
-            text: context.l10n.savePassword,
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
+          child: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
+            listener: (context, state) {
+              if (state is ResetPasswordFailure) {
+                final errorMsg = FailureUiMapper.map(
+                  context: context,
+                  failure: state.failure,
+                ).message;
+
+                context.showErrorSnakbar(message: errorMsg);
+              } else if (state is ResetPasswordSuccess) {
                 context.go(AppRoutes.congratulationsScreen);
-              } else {
-                setState(() {
-                  _autovalidateMode = AutovalidateMode.always;
-                });
               }
+            },
+            builder: (context, state) {
+              return AppButton(
+                isLoading: state is ResetPasswordLoading,
+                text: context.l10n.savePassword,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<ResetPasswordCubit>().resetPassword(
+                      newPassword: passwordController.text,
+                    );
+                  } else {
+                    setState(() {
+                      _autovalidateMode = AutovalidateMode.always;
+                    });
+                  }
+                },
+              );
             },
           ),
         ),

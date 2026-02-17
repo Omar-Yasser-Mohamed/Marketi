@@ -65,5 +65,6 @@
   "errorValidation": "تحقق من البيانات المدخلة.",
   "errorEmptyData": "لا توجد بيانات.",
   "errorCancelled": "تم إلغاء الطلب.",
-  "errorUnknown": "حدث خطأ غير متوقع. حاول مرة أخرى."
+  "errorUnknown": "حدث خطأ غير متوقع. حاول مرة أخرى.",
+  "otpResentSuccess": "تم إرسال رمز تحقق جديد."
 }

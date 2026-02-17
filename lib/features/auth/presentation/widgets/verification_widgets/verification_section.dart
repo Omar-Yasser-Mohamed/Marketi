@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/extentions/snake_bar_extention.dart';
 import 'package:marketi/core/extentions/validation_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/helpers/app_validators.dart';
 import 'package:marketi/core/widgets/app_button.dart';
+import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/verify_otp_cubit.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationSection extends StatefulWidget {
@@ -79,16 +83,34 @@ class _VerificationSectionState extends State<VerificationSection> {
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 14.p),
-            child: AppButton(
-              text: context.l10n.verify_code,
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
+            child: BlocConsumer<VerifyOtpCubit, VerifyOtpState>(
+              listener: (context, state) {
+                if (state is VerifyOtpFailure) {
+                  final errorMsg = FailureUiMapper.map(
+                    context: context,
+                    failure: state.failure,
+                  ).message;
+
+                  context.showErrorSnakbar(message: errorMsg);
+                } else if (state is VerifyOtpSuccess) {
                   context.push(AppRoutes.resetPassword);
-                } else {
-                  setState(() {
-                    _autovalidateMode = AutovalidateMode.always;
-                  });
                 }
+              },
+              builder: (context, state) {
+                return AppButton(
+                  text: context.l10n.verify_code,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<VerifyOtpCubit>().verifyOtp(
+                        resetCode: _otpController.text,
+                      );
+                    } else {
+                      setState(() {
+                        _autovalidateMode = AutovalidateMode.always;
+                      });
+                    }
+                  },
+                );
               },
             ),
           ),

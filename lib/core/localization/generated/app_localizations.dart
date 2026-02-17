@@ -493,6 +493,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong. Please try again.'**
   String get errorUnknown;
+
+  /// No description provided for @otpResentSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'A new verification code has been sent.'**
+  String get otpResentSuccess;
 }
 
 class _AppLocalizationsDelegate

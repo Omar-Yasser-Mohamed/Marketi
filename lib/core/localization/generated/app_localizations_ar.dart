@@ -214,4 +214,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorUnknown => 'حدث خطأ غير متوقع. حاول مرة أخرى.';
+
+  @override
+  String get otpResentSuccess => 'تم إرسال رمز تحقق جديد.';
 }

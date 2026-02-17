@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constansts/app_images.dart';
+import 'package:marketi/core/di/injectable.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
+import 'package:marketi/features/auth/domain/services/email_flow.dart';
 import 'package:marketi/features/auth/presentation/widgets/verification_widgets/resend_timer.dart';
 import 'package:marketi/features/auth/presentation/widgets/verification_widgets/verification_section.dart';
 
@@ -37,7 +39,7 @@ class VerificationBody extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: "You@gmail.com",
+                    text: getIt<EmailFlow>().email,
                     style: AppTextStyles.enM16.copyWith(
                       color: context.isLightMode
                           ? AppColors.primary

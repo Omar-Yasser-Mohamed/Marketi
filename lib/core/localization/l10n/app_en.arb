@@ -70,5 +70,6 @@
   "errorValidation": "Please check the entered data.",
   "errorEmptyData": "No data available.",
   "errorCancelled": "The request was cancelled.",
-  "errorUnknown": "Something went wrong. Please try again."
+  "errorUnknown": "Something went wrong. Please try again.",
+  "otpResentSuccess": "A new verification code has been sent."
 }

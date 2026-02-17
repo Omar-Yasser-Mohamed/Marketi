@@ -1,0 +1,11 @@
+class ForgetPasswordRequest {
+  final String email;
+
+  const ForgetPasswordRequest({required this.email});
+
+  Map<String, dynamic> toJson() {
+    return {
+      "email": email,
+    };
+  }
+}
