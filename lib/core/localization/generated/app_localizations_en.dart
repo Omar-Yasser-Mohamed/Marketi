@@ -221,4 +221,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get otpResentSuccess => 'A new verification code has been sent.';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get profile => 'Profile';
 }

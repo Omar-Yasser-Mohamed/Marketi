@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/constansts/app_images.dart';
+import 'package:marketi/core/di/injectable.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/routing/app_routes.dart';
+import 'package:marketi/core/shared/token/token_service.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -46,8 +48,12 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _implementNavigation() {
-    Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRoutes.onboarding);
+    Future.delayed(const Duration(seconds: 3), () async {
+      final token = await getIt<TokenService>().getToken();
+      if (token == null || token.isEmpty) {
+        context.go(AppRoutes.onboarding);
+      }
+      context.go(AppRoutes.homrScreen);
     });
   }
 

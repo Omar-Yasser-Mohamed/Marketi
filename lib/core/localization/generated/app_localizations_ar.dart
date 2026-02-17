@@ -217,4 +217,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get otpResentSuccess => 'تم إرسال رمز تحقق جديد.';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get cart => 'السلة';
+
+  @override
+  String get favorites => 'المفضلة';
+
+  @override
+  String get profile => 'حسابي';
 }

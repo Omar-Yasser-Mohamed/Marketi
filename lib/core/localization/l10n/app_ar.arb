@@ -66,5 +66,9 @@
   "errorEmptyData": "لا توجد بيانات.",
   "errorCancelled": "تم إلغاء الطلب.",
   "errorUnknown": "حدث خطأ غير متوقع. حاول مرة أخرى.",
-  "otpResentSuccess": "تم إرسال رمز تحقق جديد."
+  "otpResentSuccess": "تم إرسال رمز تحقق جديد.",
+  "home": "الرئيسية",
+  "cart": "السلة",
+  "favorites": "المفضلة",
+  "profile": "حسابي"
 }

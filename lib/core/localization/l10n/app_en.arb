@@ -71,5 +71,9 @@
   "errorEmptyData": "No data available.",
   "errorCancelled": "The request was cancelled.",
   "errorUnknown": "Something went wrong. Please try again.",
-  "otpResentSuccess": "A new verification code has been sent."
+  "otpResentSuccess": "A new verification code has been sent.",
+  "home": "Home",
+  "cart": "Cart",
+  "favorites": "Favorites",
+  "profile": "Profile"
 }
