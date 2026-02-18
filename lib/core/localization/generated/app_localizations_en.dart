@@ -241,4 +241,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchHint => 'What are you looking for?';
+
+  @override
+  String get popular_product => 'Popular Products';
+
+  @override
+  String get view_all => 'View all';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get bestForYou => 'Best for You';
+
+  @override
+  String get brands => 'Brands';
+
+  @override
+  String get allProducts => 'All Products';
 }

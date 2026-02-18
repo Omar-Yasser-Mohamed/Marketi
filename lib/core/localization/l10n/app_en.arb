@@ -82,5 +82,11 @@
       "name": {}
     }
   },
-  "searchHint": "What are you looking for?"
+  "searchHint": "What are you looking for?",
+  "popular_product": "Popular Products",
+  "view_all": "View all",
+  "category": "Category",
+  "bestForYou": "Best for You",
+  "brands": "Brands",
+  "allProducts": "All Products"
 }

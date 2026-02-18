@@ -237,4 +237,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get searchHint => 'بتدور على إيه؟';
+
+  @override
+  String get popular_product => 'المنتجات الأكثر شهرة';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get category => 'فئة';
+
+  @override
+  String get bestForYou => 'الأفضل لك';
+
+  @override
+  String get brands => 'العلامات التجارية';
+
+  @override
+  String get allProducts => 'جميع المنتجات';
 }

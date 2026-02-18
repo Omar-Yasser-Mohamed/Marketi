@@ -23,4 +23,7 @@ abstract class AppImages {
   static const String offer1 = 'assets/images/offer_1.jpg';
   static const String offer2 = 'assets/images/offer_2.jpg';
   static const String offer3 = 'assets/images/offer_3.jpg';
+
+  // For Test
+  static const String productTest = 'assets/images/product_test.png';
 }

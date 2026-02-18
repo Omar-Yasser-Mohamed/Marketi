@@ -72,5 +72,11 @@
   "favorites": "المفضلة",
   "profile": "حسابي",
   "hiUser": "مرحبًا {name}!",
-  "searchHint": "بتدور على إيه؟"
+  "searchHint": "بتدور على إيه؟",
+  "popular_product": "المنتجات الأكثر شهرة",
+  "view_all": "عرض الكل",
+  "category": "فئة",
+  "bestForYou": "الأفضل لك",
+  "brands": "العلامات التجارية",
+  "allProducts": "جميع المنتجات"
 }

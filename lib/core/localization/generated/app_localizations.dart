@@ -535,6 +535,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'What are you looking for?'**
   String get searchHint;
+
+  /// No description provided for @popular_product.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular Products'**
+  String get popular_product;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get view_all;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @bestForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Best for You'**
+  String get bestForYou;
+
+  /// No description provided for @brands.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands'**
+  String get brands;
+
+  /// No description provided for @allProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'All Products'**
+  String get allProducts;
 }
 
 class _AppLocalizationsDelegate
