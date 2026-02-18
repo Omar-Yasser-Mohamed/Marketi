@@ -70,5 +70,7 @@
   "home": "الرئيسية",
   "cart": "السلة",
   "favorites": "المفضلة",
-  "profile": "حسابي"
+  "profile": "حسابي",
+  "hiUser": "مرحبًا {name}!",
+  "searchHint": "بتدور على إيه؟"
 }

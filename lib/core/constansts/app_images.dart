@@ -7,13 +7,20 @@ abstract class AppImages {
   static const String signupLogo = 'assets/images/signup_logo.png';
   static const String forgotPasswordLogo = 'assets/images/forget_password.png';
   static const String verificationLogo = 'assets/images/verification_logo.png';
-  static const String createNewPasswordLogo = 'assets/images/create_new_password.png';
+  static const String createNewPasswordLogo =
+      'assets/images/create_new_password.png';
   static const String congratulationsLogo = 'assets/images/congratulations.png';
 
   // Errors
   static const String cancelledError = 'assets/images/cancelled_error.svg';
   static const String dataError = 'assets/images/data_error.svg';
   static const String networkError = 'assets/images/network_error.svg';
-  static const String unauthorizedError = 'assets/images/unauthorized_error.svg';
+  static const String unauthorizedError =
+      'assets/images/unauthorized_error.svg';
   static const String unkownError = 'assets/images/unkown_error.svg';
+
+  // Offers
+  static const String offer1 = 'assets/images/offer_1.jpg';
+  static const String offer2 = 'assets/images/offer_2.jpg';
+  static const String offer3 = 'assets/images/offer_3.jpg';
 }

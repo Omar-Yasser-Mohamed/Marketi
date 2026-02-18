@@ -233,4 +233,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String hiUser(Object name) {
+    return 'Hi $name!';
+  }
+
+  @override
+  String get searchHint => 'What are you looking for?';
 }

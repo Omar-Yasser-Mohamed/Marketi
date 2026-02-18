@@ -70,7 +70,7 @@ class _SignupSectionState extends State<SignupSection> {
                 Text(
                   context.l10n.your_name,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -81,7 +81,7 @@ class _SignupSectionState extends State<SignupSection> {
                   validator: context.l10nValidator(AppValidators.name),
                   prefixIcon: Icon(
                     Icons.person_outline,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
 
@@ -91,7 +91,7 @@ class _SignupSectionState extends State<SignupSection> {
                 Text(
                   context.l10n.phone_number,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -102,7 +102,7 @@ class _SignupSectionState extends State<SignupSection> {
                   validator: context.l10nValidator(AppValidators.phone),
                   prefixIcon: Icon(
                     Icons.phone_android,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
 
@@ -112,7 +112,7 @@ class _SignupSectionState extends State<SignupSection> {
                 Text(
                   context.l10n.email,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -123,7 +123,7 @@ class _SignupSectionState extends State<SignupSection> {
                   validator: context.l10nValidator(AppValidators.email),
                   prefixIcon: Icon(
                     Icons.mail_outline,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
 
@@ -133,7 +133,7 @@ class _SignupSectionState extends State<SignupSection> {
                 Text(
                   context.l10n.password,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -147,7 +147,7 @@ class _SignupSectionState extends State<SignupSection> {
                   isSecure: _isPasswordHidden,
                   prefixIcon: Icon(
                     Icons.lock_outline,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -172,7 +172,7 @@ class _SignupSectionState extends State<SignupSection> {
                 Text(
                   context.l10n.confirm_password,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -189,7 +189,7 @@ class _SignupSectionState extends State<SignupSection> {
                   ),
                   prefixIcon: Icon(
                     Icons.lock_outline,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(

@@ -23,8 +23,8 @@ class ResponsiveConfig {
     scaleHeight = screenHeight / _designHeight;
 
     // font scaling controlled
-    scaleText = scaleWidth.clamp(0.7, 1.5);
-    scaleIcon = scaleWidth.clamp(0.7, 1.5);
+    scaleText = scaleWidth.clamp(0.8, 1.3);
+    scaleIcon = scaleWidth.clamp(0.8, 1.3);
   }
 
   // Responsive Width

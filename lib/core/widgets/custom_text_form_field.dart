@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.suffixIcon,
     this.prefixIcon,
+    this.readOnly = false,
   });
 
   final String? hintText;
@@ -23,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: isSecure,
       keyboardType: keyboardType,
       validator: validator,
+      readOnly: readOnly,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       style: AppTextStyles.normalTextStyle,
       decoration: InputDecoration(

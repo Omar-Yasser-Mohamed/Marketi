@@ -28,7 +28,7 @@ class ResetPasswordBody extends StatelessWidget {
               context.l10n.newPasswordHint,
               textAlign: TextAlign.center,
               style: AppTextStyles.enM16.copyWith(
-                color: context.primaryColor,
+                color: context.textColor,
               ),
             ),
           ),

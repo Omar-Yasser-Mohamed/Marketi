@@ -35,7 +35,7 @@ class VerificationBody extends StatelessWidget {
               TextSpan(
                 text: context.l10n.verification_code_desc,
                 style: AppTextStyles.enM16.copyWith(
-                  color: context.primaryColor,
+                  color: context.textColor,
                 ),
                 children: [
                   TextSpan(

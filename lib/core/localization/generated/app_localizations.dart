@@ -523,6 +523,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @hiUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi {name}!'**
+  String hiUser(Object name);
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What are you looking for?'**
+  String get searchHint;
 }
 
 class _AppLocalizationsDelegate

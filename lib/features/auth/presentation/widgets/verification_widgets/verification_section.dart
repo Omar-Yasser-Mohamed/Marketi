@@ -45,7 +45,7 @@ class _VerificationSectionState extends State<VerificationSection> {
       width: context.isPortrait ? 50.h : 50.w,
       height: context.isPortrait ? 50.h : 50.w,
       textStyle: AppTextStyles.enM26.copyWith(
-        color: context.primaryColor,
+        color: context.textColor,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),

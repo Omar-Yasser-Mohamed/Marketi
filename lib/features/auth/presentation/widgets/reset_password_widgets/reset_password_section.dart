@@ -62,7 +62,7 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
                 Text(
                   context.l10n.password,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -76,7 +76,7 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
                   ),
                   prefixIcon: Icon(
                     Icons.lock_outline,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -101,7 +101,7 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
                 Text(
                   context.l10n.confirm_password,
                   style: AppTextStyles.enM12.copyWith(
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -119,7 +119,7 @@ class _ResetPasswordSectionState extends State<ResetPasswordSection> {
 
                   prefixIcon: Icon(
                     Icons.lock_outline,
-                    color: context.primaryColor,
+                    color: context.textColor,
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(

@@ -75,5 +75,12 @@
   "home": "Home",
   "cart": "Cart",
   "favorites": "Favorites",
-  "profile": "Profile"
+  "profile": "Profile",
+  "hiUser": "Hi {name}!",
+  "@hiUser": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "searchHint": "What are you looking for?"
 }

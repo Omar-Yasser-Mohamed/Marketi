@@ -18,7 +18,7 @@ class AuthAppBar extends StatelessWidget {
         Text(
           title,
           style: AppTextStyles.enM16.copyWith(
-            color: context.primaryColor,
+            color: context.textColor,
           ),
         ),
       ],

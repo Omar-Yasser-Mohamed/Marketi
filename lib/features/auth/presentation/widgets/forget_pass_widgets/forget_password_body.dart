@@ -27,7 +27,7 @@ class ForgetPasswordBody extends StatelessWidget {
             child: Text(
               context.l10n.forgot_password_desc,
               style: AppTextStyles.enM16.copyWith(
-                color: context.primaryColor,
+                color: context.textColor,
               ),
               textAlign: TextAlign.center,
             ),

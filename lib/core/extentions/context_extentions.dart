@@ -12,7 +12,7 @@ extension ContextExtention on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   bool get isLightMode => Theme.of(this).brightness == Brightness.light;
 
-  Color get primaryColor => isLightMode ? AppColors.darkBlue900 : Colors.white;
+  Color get textColor => isLightMode ? AppColors.darkBlue900 : Colors.white;
   Color get logoColor => isLightMode ? AppColors.primary : Colors.white;
 
   bool get isLandscape =>

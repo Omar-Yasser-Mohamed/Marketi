@@ -50,7 +50,7 @@ class _ForgetPassSectionState extends State<ForgetPassSection> {
             child: Text(
               context.l10n.email,
               style: AppTextStyles.enM12.copyWith(
-                color: context.primaryColor,
+                color: context.textColor,
               ),
             ),
           ),
@@ -64,7 +64,7 @@ class _ForgetPassSectionState extends State<ForgetPassSection> {
               validator: context.l10nValidator(AppValidators.email),
               prefixIcon: Icon(
                 Icons.email_outlined,
-                color: context.primaryColor,
+                color: context.textColor,
               ),
             ),
           ),

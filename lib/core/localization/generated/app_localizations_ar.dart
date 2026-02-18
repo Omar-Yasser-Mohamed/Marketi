@@ -229,4 +229,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile => 'حسابي';
+
+  @override
+  String hiUser(Object name) {
+    return 'مرحبًا $name!';
+  }
+
+  @override
+  String get searchHint => 'بتدور على إيه؟';
 }

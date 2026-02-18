@@ -28,7 +28,7 @@ class CongratulationsScreen extends StatelessWidget {
             Text(
               context.l10n.congratulations,
               style: AppTextStyles.enM24.copyWith(
-                color: context.primaryColor,
+                color: context.textColor,
               ),
             ),
 
@@ -40,7 +40,7 @@ class CongratulationsScreen extends StatelessWidget {
                 context.l10n.passwordUpdatedMessage,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.enM16.copyWith(
-                  color: context.primaryColor,
+                  color: context.textColor,
                 ),
               ),
             ),
