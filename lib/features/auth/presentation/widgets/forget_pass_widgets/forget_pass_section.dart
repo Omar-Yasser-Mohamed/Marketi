@@ -83,6 +83,9 @@ class _ForgetPassSectionState extends State<ForgetPassSection> {
                   ).message;
                   context.showErrorSnakbar(message: errorMessage);
                 } else if (state is ForgetPasswordSuccess) {
+                  context.showSuccessSnakbar(
+                    message: context.l10n.verificationCodeSentSuccessfully,
+                  );
                   context.push(AppRoutes.verificationCode);
                 }
               },

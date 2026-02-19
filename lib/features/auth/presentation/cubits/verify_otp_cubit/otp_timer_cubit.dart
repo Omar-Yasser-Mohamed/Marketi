@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 class OtpTimerCubit extends Cubit<int> {
   OtpTimerCubit() : super(_initialSeconds);
 
-  static const int _initialSeconds = 10;
+  static const int _initialSeconds = 10 * 60;
   Timer? _timer;
 
   void start() {

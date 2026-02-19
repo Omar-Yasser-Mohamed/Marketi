@@ -15,10 +15,10 @@ class ArrowBackButton extends StatelessWidget {
       onTap: () => Navigator.pop(context),
       child: Container(
         padding: EdgeInsets.only(
-          top: 14.h,
-          bottom: 14.h,
-          left: 18.w,
-          right: 20.w,
+          top: 12.h,
+          bottom: 12.h,
+          left: 16.w,
+          right: 18.w,
         ),
         decoration: BoxDecoration(
           shape: BoxShape.circle,

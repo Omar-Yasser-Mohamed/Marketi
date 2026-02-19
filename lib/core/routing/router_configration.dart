@@ -17,6 +17,7 @@ import 'package:marketi/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verification_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
+import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
 
@@ -90,7 +91,7 @@ abstract class RouterConfigration {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRoutes.homrScreen,
+                path: AppRoutes.homeScreen,
                 builder: (context, state) {
                   return const HomeScreen();
                 },
@@ -104,7 +105,7 @@ abstract class RouterConfigration {
               GoRoute(
                 path: AppRoutes.cartScreen,
                 builder: (context, state) {
-                  return  const Scaffold(
+                  return const Scaffold(
                     body: Center(
                       child: Text("Cart"),
                     ),
@@ -120,7 +121,7 @@ abstract class RouterConfigration {
               GoRoute(
                 path: AppRoutes.favoritesScreen,
                 builder: (context, state) {
-                  return  const Scaffold(
+                  return const Scaffold(
                     body: Center(
                       child: Text("Fav"),
                     ),
@@ -136,7 +137,7 @@ abstract class RouterConfigration {
               GoRoute(
                 path: AppRoutes.profileScreen,
                 builder: (context, state) {
-                  return  const Scaffold(
+                  return const Scaffold(
                     body: Center(
                       child: Text("profile"),
                     ),
@@ -146,6 +147,10 @@ abstract class RouterConfigration {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: AppRoutes.productDetailsScreen,
+        builder: (context, state) => const ProductDetailsScreen(),
       ),
     ],
   );

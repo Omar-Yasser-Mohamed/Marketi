@@ -172,6 +172,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pinInvalidLength => 'PIN must be 6 digits';
 
   @override
+  String get verificationCodeSentSuccessfully =>
+      'Verification code sent successfully';
+
+  @override
   String get errorNetwork =>
       'No internet connection. Please check your network.';
 
@@ -259,4 +263,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allProducts => 'All Products';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get addToCart => 'Add to Cart';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get rating => 'Rating';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get soldBy => 'Sold By';
+
+  @override
+  String averageRating(Object count) {
+    return 'Average rating based on $count ratings from trusted sources';
+  }
 }

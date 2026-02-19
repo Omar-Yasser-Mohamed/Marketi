@@ -50,7 +50,8 @@
   "pinRequired": "رمز PIN مطلوب",
   "pinDigitsOnly": "رمز PIN يجب أن يحتوي على أرقام فقط",
   "pinInvalidLength": "رمز PIN يجب أن يكون 6 أرقام",
-
+  "verificationCodeSentSuccessfully": "تم إرسال رمز التحقق بنجاح",
+  
   "errorNetwork": "لا يوجد اتصال بالإنترنت. تأكد من الشبكة.",
   "errorTimeout": "الطلب استغرق وقتًا طويلاً. حاول مرة أخرى.",
   "errorUnauthorized": "غير مصرح لك بتنفيذ هذا الإجراء.",
@@ -78,5 +79,12 @@
   "category": "فئة",
   "bestForYou": "الأفضل لك",
   "brands": "العلامات التجارية",
-  "allProducts": "جميع المنتجات"
+  "allProducts": "جميع المنتجات",
+  "price": "السعر",
+  "addToCart": "أضف إلى السلة",
+  "add": "إضافة",
+  "rating": "التقييم",
+  "description": "الوصف",
+  "soldBy": "يُباع بواسطة",
+  "averageRating": "متوسط التقييم بناءً على {count} تقييمًا من مصادر موثوقة"
 }

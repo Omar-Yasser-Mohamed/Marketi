@@ -14,6 +14,7 @@ extension ContextExtention on BuildContext {
 
   Color get textColor => isLightMode ? AppColors.darkBlue900 : Colors.white;
   Color get logoColor => isLightMode ? AppColors.primary : Colors.white;
+  Color get backgroundColor => isLightMode ? Colors.white : AppColors.primaryDark;
 
   bool get isLandscape =>
       MediaQuery.of(this).orientation == Orientation.landscape;

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/constansts/app_images.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/add_to_cart_button.dart';
@@ -21,118 +23,131 @@ class _ProductItemState extends State<ProductItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 14),
-      width: context.screenHeight * .2,
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: context.isLightMode ? Colors.white : AppColors.primaryDark,
-        borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.lightBlue700.withValues(alpha: .7),
-            blurRadius: 10,
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image, Discount & Fav Button
-          Expanded(
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: AppColors.lightBlue900,
+    return GestureDetector(
+      onTap: () {
+        context.push(AppRoutes.productDetailsScreen);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(right: 14),
+        width: context.screenHeight * .2,
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: context.isLightMode ? Colors.white : AppColors.primaryDark,
+          borderRadius: BorderRadius.circular(14),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.lightBlue700.withValues(alpha: .7),
+              blurRadius: 10,
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Image, Discount & Fav Button
+            Expanded(
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: AppColors.lightBlue900,
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      AppImages.productTest,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+
+                    Positioned(
+                      top: 4,
+                      right: 4,
+                      child: FavButton(
+                        isFav: _isFav,
+                        onTap: () {
+                          setState(() {
+                            _isFav = !_isFav;
+                          });
+                        },
+                      ),
+                    ),
+
+                    const DiscountBanner(),
+                  ],
                 ),
               ),
-              child: Stack(
-                children: [
-                  Image.asset(
-                    AppImages.productTest,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+            ),
+            4.verticalSizedBox,
 
-                  Positioned(
-                    top: 4,
-                    right: 4,
-                    child: FavButton(
-                      isFav: _isFav,
-                      onTap: () {
-                        setState(() {
-                          _isFav = !_isFav;
-                        });
-                      },
+            // Price & rating
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Row(
+                children: [
+                  Text(
+                    "499 LE",
+                    style: AppTextStyles.enM12.copyWith(
+                      color: context.textColor,
                     ),
                   ),
+                  const Spacer(),
 
-                  const DiscountBanner(),
+                  Icon(
+                    Icons.star_border_outlined,
+                    color: context.textColor,
+                  ),
+
+                  2.horizontalSizedBox,
+
+                  Text(
+                    "4.9",
+                    style: AppTextStyles.enM12.copyWith(
+                      color: context.textColor,
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-          4.verticalSizedBox,
 
-          // Price & rating
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Row(
-              children: [
-                Text(
-                  "499 LE",
-                  style: AppTextStyles.enM12.copyWith(
-                    color: context.textColor,
-                  ),
-                ),
-                const Spacer(),
-
-                Icon(
-                  Icons.star_border_outlined,
+            // Add to cart button
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(
+                "Smart Watch",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.enM12.copyWith(
                   color: context.textColor,
                 ),
-
-                2.horizontalSizedBox,
-
-                Text(
-                  "4.9",
-                  style: AppTextStyles.enM12.copyWith(
-                    color: context.textColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // Add to cart button
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Text(
-              "Smart Watch",
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.enM12.copyWith(
-                color: context.textColor,
               ),
             ),
-          ),
 
-          widget.showAddToCartButton
-              ? Column(
-                  children: [
-                    4.verticalSizedBox,
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: AddToCartButton(),
-                    ),
-                  ],
-                )
-              : const SizedBox(),
+            widget.showAddToCartButton
+                ? Column(
+                    children: [
+                      4.verticalSizedBox,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: AddToCartButton(
+                          child: Text(
+                            context.l10n.add,
+                            style: AppTextStyles.enM14.copyWith(
+                              color: AppColors.darkBlue100,
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  )
+                : const SizedBox(),
 
-          2.verticalSizedBox,
-        ],
+            2.verticalSizedBox,
+          ],
+        ),
       ),
     );
   }

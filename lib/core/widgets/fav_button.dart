@@ -3,9 +3,10 @@ import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 
 class FavButton extends StatelessWidget {
-  const FavButton({super.key, required this.isFav, this.onTap});
+  const FavButton({super.key, required this.isFav, this.onTap, this.padding});
   final bool isFav;
   final void Function()? onTap;
+  final double? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +14,11 @@ class FavButton extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        padding: const EdgeInsets.only(
-          top: 6,
-          bottom: 5,
-          right: 5,
-          left: 5,
+        padding: EdgeInsets.only(
+          top: padding == null ? 6 : padding! + 1,
+          bottom: padding ?? 5,
+          right: padding ?? 5,
+          left: padding ?? 5,
         ),
         decoration: BoxDecoration(
           color: AppColors.lightBlue900.withValues(alpha: .6),

@@ -29,7 +29,7 @@ class VerificationBody extends StatelessWidget {
 
           // Desc
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 60.p),
+            padding: EdgeInsets.symmetric(horizontal: 40.p),
             child: Text.rich(
               textAlign: TextAlign.center,
               TextSpan(

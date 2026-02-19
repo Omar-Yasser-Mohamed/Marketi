@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/snake_bar_extention.dart';
 import 'package:marketi/core/extentions/validation_extention.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/helpers/app_validators.dart';
@@ -220,8 +222,8 @@ class _SignupSectionState extends State<SignupSection> {
           child: BlocConsumer<SignupCubit, SignupState>(
             listener: (context, state) {
               if (state is SignupSuccess) {
-                // Go to home screen
-                context.showSuccessSnakbar(message: "Success");
+                context.showSuccessSnakbar(message: "Sign up Success");
+                context.go(AppRoutes.homeScreen);
               } else if (state is SignupFailure) {
                 final errorMessage = FailureUiMapper.map(
                   context: context,

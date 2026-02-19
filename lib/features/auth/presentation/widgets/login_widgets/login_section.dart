@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/snake_bar_extention.dart';
 import 'package:marketi/core/extentions/validation_extention.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/helpers/app_validators.dart';
 import 'package:marketi/core/widgets/app_button.dart';
@@ -118,6 +120,7 @@ class _LoginSectionState extends State<LoginSection> {
               listener: (context, state) {
                 if (state is LoginSuccess) {
                   context.showSuccessSnakbar(message: "Login Success");
+                  context.go(AppRoutes.homeScreen);
                 } else if (state is LoginFailure) {
                   final message = FailureUiMapper.map(
                     context: context,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/constansts/app_images.dart';
@@ -50,10 +52,12 @@ class _SplashScreenState extends State<SplashScreen>
   void _implementNavigation() {
     Future.delayed(const Duration(seconds: 3), () async {
       final token = await getIt<TokenService>().getToken();
+      log(token ?? "There is no Token");
       if (token == null || token.isEmpty) {
         context.go(AppRoutes.onboarding);
+      } else {
+        context.go(AppRoutes.homeScreen);
       }
-      context.go(AppRoutes.homrScreen);
     });
   }
 

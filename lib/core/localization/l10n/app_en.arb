@@ -55,6 +55,7 @@
   "pinRequired": "PIN code is required",
   "pinDigitsOnly": "PIN must contain digits only",
   "pinInvalidLength": "PIN must be 6 digits",
+  "verificationCodeSentSuccessfully": "Verification code sent successfully",
   
   "errorNetwork": "No internet connection. Please check your network.",
   "errorTimeout": "The request took too long. Please try again.",
@@ -88,5 +89,12 @@
   "category": "Category",
   "bestForYou": "Best for You",
   "brands": "Brands",
-  "allProducts": "All Products"
+  "allProducts": "All Products",
+  "price": "Price",
+  "addToCart": "Add to Cart",
+  "add": "Add",
+  "rating": "Rating",
+  "description": "Description",
+  "soldBy": "Sold By",
+  "averageRating": "Average rating based on {count} ratings from trusted sources"
 }

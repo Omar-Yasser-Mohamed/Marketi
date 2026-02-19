@@ -171,6 +171,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pinInvalidLength => 'رمز PIN يجب أن يكون 6 أرقام';
 
   @override
+  String get verificationCodeSentSuccessfully => 'تم إرسال رمز التحقق بنجاح';
+
+  @override
   String get errorNetwork => 'لا يوجد اتصال بالإنترنت. تأكد من الشبكة.';
 
   @override
@@ -255,4 +258,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get allProducts => 'جميع المنتجات';
+
+  @override
+  String get price => 'السعر';
+
+  @override
+  String get addToCart => 'أضف إلى السلة';
+
+  @override
+  String get add => 'إضافة';
+
+  @override
+  String get rating => 'التقييم';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get soldBy => 'يُباع بواسطة';
+
+  @override
+  String averageRating(Object count) {
+    return 'متوسط التقييم بناءً على $count تقييمًا من مصادر موثوقة';
+  }
 }

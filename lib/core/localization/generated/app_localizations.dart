@@ -404,6 +404,12 @@ abstract class AppLocalizations {
   /// **'PIN must be 6 digits'**
   String get pinInvalidLength;
 
+  /// No description provided for @verificationCodeSentSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code sent successfully'**
+  String get verificationCodeSentSuccessfully;
+
   /// No description provided for @errorNetwork.
   ///
   /// In en, this message translates to:
@@ -571,6 +577,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All Products'**
   String get allProducts;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Cart'**
+  String get addToCart;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @rating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get rating;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @soldBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold By'**
+  String get soldBy;
+
+  /// No description provided for @averageRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Average rating based on {count} ratings from trusted sources'**
+  String averageRating(Object count);
 }
 
 class _AppLocalizationsDelegate
