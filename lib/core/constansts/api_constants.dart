@@ -19,10 +19,8 @@ abstract class ApiConstants {
 
   // Products
   static const String allProductsEndPoint = '${apiVersion}products';
-  static const String popularProductsEndPoint =
-      '$allProductsEndPoint?sort=-sold';
-  static const String bestProductsEndPoint =
-      '$allProductsEndPoint?sort=-ratingsAverage';
+  // static const String popularProductsEndPoint = '$allProductsEndPoint?sort=-sold';
+  // static const String bestProductsEndPoint = '$allProductsEndPoint?sort=-ratingsAverage';
 
   // Categories
   static const String allCategoriesEndPoint = '${apiVersion}categories';

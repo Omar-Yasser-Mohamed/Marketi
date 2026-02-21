@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketi/core/constansts/app_images.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
@@ -9,10 +8,16 @@ import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/add_to_cart_button.dart';
 import 'package:marketi/core/widgets/discount_banner.dart';
 import 'package:marketi/core/widgets/fav_button.dart';
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
 
 class ProductItem extends StatefulWidget {
-  const ProductItem({super.key, this.showAddToCartButton = true});
+  const ProductItem({
+    super.key,
+    this.showAddToCartButton = true,
+    required this.product,
+  });
   final bool showAddToCartButton;
+  final ProductEntity product;
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -56,10 +61,9 @@ class _ProductItemState extends State<ProductItem> {
                 ),
                 child: Stack(
                   children: [
-                    Image.asset(
-                      AppImages.productTest,
+                    Image.network(
+                      widget.product.imageCover,
                       width: double.infinity,
-                      fit: BoxFit.cover,
                     ),
 
                     Positioned(
@@ -88,7 +92,7 @@ class _ProductItemState extends State<ProductItem> {
               child: Row(
                 children: [
                   Text(
-                    "499 LE",
+                    "${widget.product.price} LE",
                     style: AppTextStyles.enM12.copyWith(
                       color: context.textColor,
                     ),
@@ -103,7 +107,7 @@ class _ProductItemState extends State<ProductItem> {
                   2.horizontalSizedBox,
 
                   Text(
-                    "4.9",
+                    "${widget.product.avgRating}",
                     style: AppTextStyles.enM12.copyWith(
                       color: context.textColor,
                     ),
@@ -112,11 +116,10 @@ class _ProductItemState extends State<ProductItem> {
               ),
             ),
 
-            // Add to cart button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: Text(
-                "Smart Watch",
+                widget.product.title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.enM12.copyWith(
@@ -125,6 +128,7 @@ class _ProductItemState extends State<ProductItem> {
               ),
             ),
 
+            // Add to cart button
             widget.showAddToCartButton
                 ? Column(
                     children: [

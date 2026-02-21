@@ -4,8 +4,7 @@ import 'package:marketi/core/shared/token/token_service.dart';
 
 @LazySingleton(as: TokenService)
 class TokenServiceImpl implements TokenService {
-  TokenServiceImpl(this._storage);
-  final FlutterSecureStorage _storage;
+  final FlutterSecureStorage _storage = const FlutterSecureStorage();
 
   static const String _tokenKey = "auth_token";
 

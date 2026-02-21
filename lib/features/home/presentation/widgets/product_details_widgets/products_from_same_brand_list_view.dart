@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/widgets/product_item.dart';
 
 class ProductsFromSameBrandListView extends StatelessWidget {
   const ProductsFromSameBrandListView({super.key});
@@ -10,7 +9,10 @@ class ProductsFromSameBrandListView extends StatelessWidget {
       padding: EdgeInsets.zero,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return const ProductItem();
+        // return  ProductItem(
+        //   product: Product,
+        // );
+        return Container();
       },
     );
   }

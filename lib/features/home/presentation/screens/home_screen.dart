@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
-import 'package:marketi/core/extentions/sized_box_extention.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/brands_grid_view.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/categories_grid_view.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/home_header.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/home_products_list_view.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/offers_carousel.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/popular_products_list_view.dart';
-import 'package:marketi/features/home/presentation/widgets/home_widgets/section_title.dart';
+import 'package:marketi/core/styles/app_text_styles.dart';
+import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart';
+
+import '../widgets/home_widgets/home_screen_body.dart';
+import '../widgets/home_widgets/home_shimmer_loading.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,76 +16,51 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          8.verticalSizedBox,
+      body: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state is HomeSuccess) {
+            final allProducts = state.products;
+            final bestProducts = state.bestProducts;
+            final popularProducts = state.popularProducts;
+            final categories = state.categories;
+            final brands = state.brands;
 
-          // hi & search
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14.p),
-            child: const HomeHeader(),
-          ),
-
-          14.verticalSizedBox,
-
-          // Offers
-          const OffersCarousel(),
-
-          14.verticalSizedBox,
-
-          // Popular Products
-          SectionTitle(title: context.l10n.popular_product),
-
-          8.verticalSizedBox,
-
-          SizedBox(
-            height: 150.h,
-            child: const PopularProductsListView(),
-          ),
-
-          // Category
-          14.verticalSizedBox,
-
-          SectionTitle(title: context.l10n.category),
-
-          8.verticalSizedBox,
-
-          const CategoriesGridView(),
-
-          14.verticalSizedBox,
-
-          SectionTitle(title: context.l10n.bestForYou),
-
-          8.verticalSizedBox,
-
-          SizedBox(
-            height: 200.h,
-            child: const HomeProductsListView(),
-          ),
-
-          14.verticalSizedBox,
-
-          // Brands
-          SectionTitle(title: context.l10n.brands),
-
-          8.verticalSizedBox,
-
-          const BrandsGridView(),
-
-          14.verticalSizedBox,
-
-          // All Products
-          SectionTitle(title: context.l10n.allProducts),
-
-          8.verticalSizedBox,
-
-          SizedBox(
-            height: 200.h,
-            child: const HomeProductsListView(),
-          ),
-
-          18.verticalSizedBox,
-        ],
+            return HomeScreenBody(
+              popularProducts: popularProducts,
+              categories: categories,
+              bestProducts: bestProducts,
+              brands: brands,
+              allProducts: allProducts,
+            );
+          } else if (state is HomeFailure) {
+            final error = FailureUiMapper.map(
+              context: context,
+              failure: state.failure,
+            );
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    error.image,
+                    height: 350.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.p),
+                    child: Text(
+                      error.message,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.enSb16.copyWith(
+                        color: context.textColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+          return const HomeShimmerLoading();
+        },
       ),
     );
   }
