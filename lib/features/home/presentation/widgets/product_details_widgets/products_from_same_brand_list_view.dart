@@ -8,6 +8,7 @@ class ProductsFromSameBrandListView extends StatelessWidget {
     return ListView.builder(
       padding: EdgeInsets.zero,
       scrollDirection: Axis.horizontal,
+      itemCount: 10,
       itemBuilder: (context, index) {
         // return  ProductItem(
         //   product: Product,

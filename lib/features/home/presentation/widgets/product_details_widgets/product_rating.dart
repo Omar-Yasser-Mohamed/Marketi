@@ -4,12 +4,16 @@ import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
+
 class ProductRating extends StatelessWidget {
-  const ProductRating({super.key});
+  const ProductRating({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
-    final avgRating = 4.5;
+    final avgRating = product.avgRating.toDouble();
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -27,7 +31,7 @@ class ProductRating extends StatelessWidget {
           Row(
             children: [
               Text(
-                "4.4",
+                "${product.avgRating}",
                 style: AppTextStyles.enSb18.copyWith(
                   color: context.textColor,
                 ),
@@ -61,7 +65,7 @@ class ProductRating extends StatelessWidget {
 
           8.verticalSizedBox,
           Text(
-            context.l10n.averageRating(232),
+            context.l10n.averageRating(product.ratingCount.toInt()),
             style: AppTextStyles.enR12.copyWith(
               color: context.textColor,
             ),

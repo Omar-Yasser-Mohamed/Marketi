@@ -15,9 +15,13 @@ import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verification_screen.dart';
+import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
+import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
+import 'package:marketi/features/home/presentation/screens/categories_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
+import 'package:marketi/features/home/presentation/screens/products_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
 
@@ -151,6 +155,21 @@ abstract class RouterConfigration {
       GoRoute(
         path: AppRoutes.productDetailsScreen,
         builder: (context, state) => const ProductDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.productsScreen,
+        builder: (context, state) => const ProductsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.categoriesScreen,
+        builder: (context, state) => const CategoriesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.brandsScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<BrandsCubit>()..getBrands(),
+          child: const BrandsScreen(),
+        ),
       ),
     ],
   );

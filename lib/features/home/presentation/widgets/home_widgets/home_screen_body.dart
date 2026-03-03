@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/features/home/domain/entities/brand_entity.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
+import 'package:marketi/features/home/presentation/args/products_args.dart';
 
-import 'brands_grid_view.dart';
-import 'categories_grid_view.dart';
+import 'home_brands_grid_view.dart';
+import 'home_categories_grid_view.dart';
 import 'home_header.dart';
 import 'home_products_list_view.dart';
 import 'offers_carousel.dart';
@@ -50,7 +53,18 @@ class HomeScreenBody extends StatelessWidget {
         14.verticalSizedBox,
 
         // Popular Products
-        SectionTitle(title: context.l10n.popular_product),
+        SectionTitle(
+          title: context.l10n.popular_product,
+          onTap: () {
+            context.push(
+              AppRoutes.productsScreen,
+              extra: ProductsArgs(
+                title: context.l10n.popular_product,
+                products: popularProducts,
+              ),
+            );
+          },
+        ),
 
         8.verticalSizedBox,
 
@@ -64,17 +78,36 @@ class HomeScreenBody extends StatelessWidget {
         // Category
         14.verticalSizedBox,
 
-        SectionTitle(title: context.l10n.category),
+        SectionTitle(
+          title: context.l10n.category,
+          onTap: () {
+            context.push(
+              AppRoutes.categoriesScreen,
+              extra: categories,
+            );
+          },
+        ),
 
         8.verticalSizedBox,
 
-        CategoriesGridView(
+        HomeCategoriesGridView(
           categories: categories,
         ),
 
         14.verticalSizedBox,
 
-        SectionTitle(title: context.l10n.bestForYou),
+        SectionTitle(
+          title: context.l10n.bestForYou,
+          onTap: () {
+            context.push(
+              AppRoutes.productsScreen,
+              extra: ProductsArgs(
+                title: context.l10n.bestForYou,
+                products: bestProducts,
+              ),
+            );
+          },
+        ),
 
         8.verticalSizedBox,
 
@@ -89,18 +122,37 @@ class HomeScreenBody extends StatelessWidget {
         14.verticalSizedBox,
 
         // Brands
-        SectionTitle(title: context.l10n.brands),
+        SectionTitle(
+          title: context.l10n.brands,
+          onTap: () {
+            context.push(
+              AppRoutes.brandsScreen,
+              extra: brands,
+            );
+          },
+        ),
 
         8.verticalSizedBox,
 
-        BrandsGridView(
+        HomeBrandsGridView(
           brands: brands,
         ),
 
         14.verticalSizedBox,
 
         // All Products
-        SectionTitle(title: context.l10n.allProducts),
+        SectionTitle(
+          title: context.l10n.allProducts,
+          onTap: () {
+            context.push(
+              AppRoutes.productsScreen,
+              extra: ProductsArgs(
+                title: context.l10n.allProducts,
+                products: allProducts,
+              ),
+            );
+          },
+        ),
 
         8.verticalSizedBox,
 

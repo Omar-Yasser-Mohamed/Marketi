@@ -286,4 +286,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String averageRating(Object count) {
     return 'Average rating based on $count ratings from trusted sources';
   }
+
+  @override
+  String get categories => 'Categories';
 }

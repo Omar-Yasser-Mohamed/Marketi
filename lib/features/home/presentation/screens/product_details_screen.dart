@@ -14,11 +14,9 @@ class ProductDetailsScreen extends StatelessWidget {
         children: [
           38.verticalSpace,
           const ProductDetailsAppBar(),
-
           const Expanded(
             child: ProductDetailsBody(),
           ),
-
           const AddToCartSection(),
         ],
       ),

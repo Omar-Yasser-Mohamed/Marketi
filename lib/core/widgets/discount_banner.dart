@@ -4,7 +4,8 @@ import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 
 class DiscountBanner extends StatelessWidget {
-  const DiscountBanner({super.key});
+  const DiscountBanner({super.key, required this.discount});
+  final int discount;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class DiscountBanner extends StatelessWidget {
           color: AppColors.lightBlue700.withValues(alpha: .7),
         ),
         child: Text(
-          "15% OFF",
+          "$discount% OFF",
           style: AppTextStyles.enM12.copyWith(
             color: context.textColor,
           ),

@@ -13,4 +13,7 @@ abstract class AppRoutes {
   static const String favoritesScreen = '/favorites_screen';
   static const String profileScreen = '/profile_screen';
   static const String productDetailsScreen = '/product_details_screen';
+  static const String productsScreen = '/products_screen';
+  static const String categoriesScreen = '/categories_screen';
+  static const String brandsScreen = '/brands_screen';
 }

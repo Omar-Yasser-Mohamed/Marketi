@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 
-class GategoryItem extends StatelessWidget {
-  const GategoryItem({
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
     super.key,
     required this.category,
   });
@@ -24,10 +25,9 @@ class GategoryItem extends StatelessWidget {
                 color: AppColors.lightBlue700.withValues(alpha: .7),
               ),
             ),
-            child: Image.network(
-              category.image,
+            child: CustomNetworkImage(
+              imageUrl: category.image,
               height: constraints.maxHeight * .65,
-              width: double.infinity,
             ),
           ),
           Text(

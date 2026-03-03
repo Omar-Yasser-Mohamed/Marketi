@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:marketi/core/helpers/connectivity_helper.dart' as _i14;
@@ -58,8 +59,12 @@ import 'package:marketi/features/home/domain/use_cases/categories_use_case.dart'
     as _i639;
 import 'package:marketi/features/home/domain/use_cases/sort_products_use_case.dart'
     as _i478;
+import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart'
+    as _i923;
 import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart'
     as _i70;
+import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart'
+    as _i24;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -78,6 +83,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i977.EmailFlow>(() => _i977.EmailFlow());
     gh.lazySingleton<_i478.SortProductsUseCase>(
         () => _i478.SortProductsUseCase());
+    gh.lazySingleton<_i24.BrandsGridBlocBuilder>(
+        () => _i24.BrandsGridBlocBuilder(key: gh<_i409.Key>()));
     gh.lazySingleton<_i1028.TokenService>(() => _i364.TokenServiceImpl());
     gh.lazySingleton<_i352.ApiService>(() => _i352.ApiService(
           gh<_i951.DioService>(),
@@ -113,6 +120,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i281.BrandsUseCase>(),
           gh<_i639.CategoriesUseCase>(),
         ));
+    gh.factory<_i923.BrandsCubit>(
+        () => _i923.BrandsCubit(gh<_i281.BrandsUseCase>()));
     gh.factory<_i53.ForgetPasswordCubit>(() => _i53.ForgetPasswordCubit(
           gh<_i377.AuthRepo>(),
           gh<_i977.EmailFlow>(),

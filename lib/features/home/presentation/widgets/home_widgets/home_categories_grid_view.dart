@@ -5,8 +5,8 @@ import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/presentation/strategies/categories_grid_strategy/categories_grid_factory.dart';
 import 'package:marketi/features/home/presentation/widgets/home_widgets/category_item.dart';
 
-class CategoriesGridView extends StatelessWidget {
-  const CategoriesGridView({super.key, required this.categories});
+class HomeCategoriesGridView extends StatelessWidget {
+  const HomeCategoriesGridView({super.key, required this.categories});
   final List<CategoryEntity> categories;
 
   @override
@@ -22,13 +22,14 @@ class CategoriesGridView extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: strategy.getChildAspectRatio(),
       ),
-      itemCount: strategy.getCrossAxisCount() * 2,
+      itemCount: categories.length < strategy.getCrossAxisCount() * 2
+          ? categories.length
+          : strategy.getCrossAxisCount() * 2,
       itemBuilder: (context, index) {
-        return GategoryItem(
+        return CategoryItem(
           category: categories[index],
         );
       },
     );
   }
 }
-

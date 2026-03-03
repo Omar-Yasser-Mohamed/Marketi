@@ -281,4 +281,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String averageRating(Object count) {
     return 'متوسط التقييم بناءً على $count تقييمًا من مصادر موثوقة';
   }
+
+  @override
+  String get categories => 'الفئات';
 }

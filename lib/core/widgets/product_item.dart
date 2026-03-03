@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
+import 'package:marketi/core/shared/functions/calculate_discount_percent.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/add_to_cart_button.dart';
 import 'package:marketi/core/widgets/discount_banner.dart';
 import 'package:marketi/core/widgets/fav_button.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
 
 class ProductItem extends StatefulWidget {
@@ -15,9 +17,11 @@ class ProductItem extends StatefulWidget {
     super.key,
     this.showAddToCartButton = true,
     required this.product,
+    this.marginRight,
   });
   final bool showAddToCartButton;
   final ProductEntity product;
+  final double? marginRight;
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -30,10 +34,13 @@ class _ProductItemState extends State<ProductItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.productDetailsScreen);
+        context.push(
+          AppRoutes.productDetailsScreen,
+          extra: widget.product,
+        );
       },
       child: Container(
-        margin: const EdgeInsets.only(right: 14),
+        margin: EdgeInsets.only(right: widget.marginRight ?? 14),
         width: context.screenHeight * .2,
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -61,9 +68,8 @@ class _ProductItemState extends State<ProductItem> {
                 ),
                 child: Stack(
                   children: [
-                    Image.network(
-                      widget.product.imageCover,
-                      width: double.infinity,
+                    CustomNetworkImage(
+                      imageUrl: widget.product.imageCover,
                     ),
 
                     Positioned(
@@ -79,7 +85,13 @@ class _ProductItemState extends State<ProductItem> {
                       ),
                     ),
 
-                    const DiscountBanner(),
+                    if (widget.product.priceAfterDiscount != null)
+                      DiscountBanner(
+                        discount: calculateDiscountPercent(
+                          widget.product.price,
+                          widget.product.priceAfterDiscount!,
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -92,7 +104,9 @@ class _ProductItemState extends State<ProductItem> {
               child: Row(
                 children: [
                   Text(
-                    "${widget.product.price} LE",
+                    widget.product.priceAfterDiscount != null
+                        ? "${widget.product.priceAfterDiscount} LE"
+                        : "${widget.product.price} LE",
                     style: AppTextStyles.enM12.copyWith(
                       color: context.textColor,
                     ),

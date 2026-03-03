@@ -10,15 +10,14 @@ class ArrowBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () => Navigator.pop(context),
       child: Container(
         padding: EdgeInsets.only(
-          top: 12.h,
-          bottom: 12.h,
-          left: 16.w,
-          right: 18.w,
+          top: 10.h,
+          bottom: 10.h,
+          left: 14.w,
+          right: 16.w,
         ),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -29,7 +28,7 @@ class ArrowBackButton extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             AppIcons.arrowBackIos,
-            width: context.screenHeight * 0.015,
+            width: context.screenHeight * 0.013,
             colorFilter: ColorFilter.mode(
               context.isLightMode
                   ? AppColors.darkBlue900

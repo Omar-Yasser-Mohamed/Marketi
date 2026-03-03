@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
+
 class ProductDescription extends StatefulWidget {
-  const ProductDescription({super.key});
+  const ProductDescription({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   State<ProductDescription> createState() => _ProductDescriptionState();
@@ -72,7 +76,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
                     color: Colors.grey.withValues(alpha: .1),
                   ),
                   child: Text(
-                    "Fear no leaks with new and improved Pampers Swaddlers Pampers Swaddlers helps prevent up to 100% of leaks, even blowouts Plus, Dual Leak-Guard Barriers at the legs help protect where leaks happen most With Swaddlers, you can rest assured that you have superior leak protection* while keeping baby’s skin healthy See more  ",
+                    widget.product.description,
                     style: AppTextStyles.normalTextStyle.copyWith(
                       color: context.textColor,
                     ),

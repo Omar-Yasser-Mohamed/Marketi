@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constansts/app_images.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_colors.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ImagesSection extends StatefulWidget {
@@ -18,13 +20,6 @@ class _ImagesSectionState extends State<ImagesSection> {
 
   int currentIndex = 0;
 
-  List<String> images = [
-    AppImages.productTest,
-    AppImages.productTest,
-    AppImages.productTest,
-    AppImages.productTest,
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -33,12 +28,13 @@ class _ImagesSectionState extends State<ImagesSection> {
 
   @override
   void dispose() {
-    super.dispose();
     pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final product = GoRouterState.of(context).extra as ProductEntity;
     return Column(
       children: [
         // images page view
@@ -51,17 +47,21 @@ class _ImagesSectionState extends State<ImagesSection> {
                 currentIndex = value;
               });
             },
-            itemCount: images.length,
+            itemCount: product.images.length,
             itemBuilder: (context, index) {
-              return Image.asset(images[index]);
+              return CustomNetworkImage(
+                imageUrl: product.images[index],
+              );
             },
           ),
         ),
 
+        16.verticalSizedBox,
+
         // images indecator
         SmoothPageIndicator(
           controller: pageController,
-          count: images.length,
+          count: product.images.length,
           onDotClicked: (index) {
             pageController.animateToPage(
               index,
@@ -79,7 +79,7 @@ class _ImagesSectionState extends State<ImagesSection> {
           ),
         ),
 
-        12.verticalSizedBox,
+        16.verticalSizedBox,
 
         SizedBox(
           height: 56,
@@ -87,7 +87,7 @@ class _ImagesSectionState extends State<ImagesSection> {
             shrinkWrap: true,
             padding: const EdgeInsets.only(left: 14),
             scrollDirection: Axis.horizontal,
-            itemCount: images.length,
+            itemCount: product.images.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -114,9 +114,8 @@ class _ImagesSectionState extends State<ImagesSection> {
                           : AppColors.lightBlue700.withValues(alpha: .7),
                     ),
                   ),
-                  child: Image.asset(
-                    images[index],
-                    fit: BoxFit.cover,
+                  child: CustomNetworkImage(
+                    imageUrl: product.images[index],
                   ),
                 ),
               );

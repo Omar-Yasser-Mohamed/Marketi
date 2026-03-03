@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
+import 'package:marketi/core/shared/functions/calculate_discount_percent.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/brand_section.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_description.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_rating.dart';
@@ -13,6 +16,7 @@ class ProdouctDataSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = GoRouterState.of(context).extra as ProductEntity;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14.p, vertical: 14),
       decoration: BoxDecoration(
@@ -30,7 +34,7 @@ class ProdouctDataSection extends StatelessWidget {
         children: [
           // title
           Text(
-            "Pampers Swaddlers",
+            product.title,
             style: AppTextStyles.enM16.copyWith(
               color: context.textColor,
             ),
@@ -56,7 +60,7 @@ class ProdouctDataSection extends StatelessWidget {
                 4.horizontalSizedBox,
 
                 Text(
-                  "2.9",
+                  "${product.avgRating}",
                   style: AppTextStyles.enSb14.copyWith(
                     color: context.textColor,
                   ),
@@ -65,7 +69,7 @@ class ProdouctDataSection extends StatelessWidget {
                 6.horizontalSizedBox,
 
                 Text(
-                  "(9 ${context.l10n.rating})",
+                  "(${product.ratingCount} ${context.l10n.rating})",
                   style: AppTextStyles.normalTextStyle.copyWith(
                     color: Colors.grey,
                   ),
@@ -79,24 +83,29 @@ class ProdouctDataSection extends StatelessWidget {
           // Price & Discount
           Text.rich(
             TextSpan(
-              text: "EGP 60 ",
+              text: product.priceAfterDiscount != null
+                  ? "${product.priceAfterDiscount} LE "
+                  : "${product.price} LE ",
               style: AppTextStyles.enSb18.copyWith(
                 color: context.textColor,
               ),
               children: [
-                TextSpan(
-                  text: "80",
-                  style: AppTextStyles.enM16.copyWith(
-                    color: Colors.grey,
-                    decoration: TextDecoration.lineThrough,
+                if (product.priceAfterDiscount != null) ...[
+                  TextSpan(
+                    text: "${product.price}",
+                    style: AppTextStyles.enM16.copyWith(
+                      color: Colors.grey,
+                      decoration: TextDecoration.lineThrough,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text: " 25% OFF",
-                  style: AppTextStyles.enSb16.copyWith(
-                    color: Colors.green,
+                  TextSpan(
+                    text:
+                        " ${calculateDiscountPercent(product.price, product.priceAfterDiscount!)}% OFF",
+                    style: AppTextStyles.enSb16.copyWith(
+                      color: Colors.green,
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
@@ -104,17 +113,17 @@ class ProdouctDataSection extends StatelessWidget {
           8.verticalSizedBox,
 
           //Desc
-          const ProductDescription(),
+          ProductDescription(product: product),
 
           16.verticalSizedBox,
 
           // Brand Data
-          const BrandSection(),
+          BrandSection(product: product),
 
           16.verticalSizedBox,
 
           //Rating
-          const ProductRating(),
+          ProductRating(product: product),
         ],
       ),
     );

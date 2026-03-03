@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/add_to_cart_button.dart';
 
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
+
 class AddToCartSection extends StatelessWidget {
   const AddToCartSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final product = GoRouterState.of(context).extra as ProductEntity;
     return Container(
       padding: EdgeInsets.only(left: 14.p, right: 14.p, bottom: 24, top: 8),
       decoration: BoxDecoration(
@@ -27,7 +31,7 @@ class AddToCartSection extends StatelessWidget {
                 ),
               ),
               Text(
-                "345.00 EGP",
+                "${product.price} LE",
                 style: AppTextStyles.enM18.copyWith(
                   color: context.textColor,
                 ),

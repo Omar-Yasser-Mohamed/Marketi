@@ -9,6 +9,7 @@ abstract class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Poppins',
     appBarTheme: const AppBarTheme(
+      scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
       centerTitle: true,
     ),

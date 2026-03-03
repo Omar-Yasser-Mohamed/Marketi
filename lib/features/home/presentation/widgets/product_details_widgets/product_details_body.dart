@@ -8,10 +8,9 @@ class ProductDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.zero,
+      padding: const EdgeInsets.only(top: 14),
       children: const [
         ImagesSection(),
-
         ProdouctDataSection(),
       ],
     );

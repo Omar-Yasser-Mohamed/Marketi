@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constansts/app_images.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
+import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/features/home/domain/entities/product_entity.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/products_from_same_brand_list_view.dart';
 
 class BrandSection extends StatelessWidget {
-  const BrandSection({super.key});
+  const BrandSection({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class BrandSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Image.asset(AppImages.productTest),
+                child: CustomNetworkImage(imageUrl: product.brand.image),
               ),
 
               16.horizontalSizedBox,
@@ -50,7 +53,7 @@ class BrandSection extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: " Defacto",
+                        text: " ${product.brand.name}",
                         style: AppTextStyles.enSb16.copyWith(
                           color: context.textColor,
                         ),

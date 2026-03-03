@@ -619,6 +619,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Average rating based on {count} ratings from trusted sources'**
   String averageRating(Object count);
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
 }
 
 class _AppLocalizationsDelegate

@@ -96,5 +96,6 @@
   "rating": "Rating",
   "description": "Description",
   "soldBy": "Sold By",
-  "averageRating": "Average rating based on {count} ratings from trusted sources"
+  "averageRating": "Average rating based on {count} ratings from trusted sources",
+  "categories": "Categories"
 }

@@ -18,6 +18,7 @@ abstract class AppImages {
   static const String unauthorizedError =
       'assets/images/unauthorized_error.svg';
   static const String unkownError = 'assets/images/unkown_error.svg';
+  static const String noImageError = 'assets/images/no-pictures.png';
 
   // Offers
   static const String offer1 = 'assets/images/offer_1.jpg';
