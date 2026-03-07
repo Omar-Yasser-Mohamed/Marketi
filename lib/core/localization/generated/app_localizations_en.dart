@@ -289,4 +289,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get categories => 'Categories';
+
+  @override
+  String ahlan(Object name) {
+    return 'Ahlan, $name!';
+  }
+
+  @override
+  String get orders => 'Orders';
+
+  @override
+  String get wishlist => 'Wishlist';
+
+  @override
+  String get payment => 'Payment';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get lightMode => 'Light Mode';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get logout => 'Log out';
 }

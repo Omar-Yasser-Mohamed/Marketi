@@ -97,5 +97,17 @@
   "description": "Description",
   "soldBy": "Sold By",
   "averageRating": "Average rating based on {count} ratings from trusted sources",
-  "categories": "Categories"
+  "categories": "Categories",
+  "ahlan": "Ahlan, {name}!",
+  "orders": "Orders",
+  "wishlist": "Wishlist",
+  "payment": "Payment",
+  "address": "Address",
+  "language": "Language",
+  "signOut": "Sign Out",
+  "theme": "Theme",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "settings": "Settings",
+  "logout": "Log out"
 }

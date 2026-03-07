@@ -284,4 +284,42 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get categories => 'الفئات';
+
+  @override
+  String ahlan(Object name) {
+    return 'أهلاً, $name!';
+  }
+
+  @override
+  String get orders => 'الطلبات';
+
+  @override
+  String get wishlist => 'المفضلة';
+
+  @override
+  String get payment => 'الدفع';
+
+  @override
+  String get address => 'العنوان';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get signOut => 'تسجيل الخروج';
+
+  @override
+  String get theme => 'المظهر';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get lightMode => 'الوضع الفاتح';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get logout => 'تسجيل الخروج';
 }

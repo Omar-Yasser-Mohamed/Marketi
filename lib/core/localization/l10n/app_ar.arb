@@ -87,5 +87,17 @@
   "description": "الوصف",
   "soldBy": "يُباع بواسطة",
   "averageRating": "متوسط التقييم بناءً على {count} تقييمًا من مصادر موثوقة",
-  "categories": "الفئات"
+  "categories": "الفئات",
+  "ahlan": "أهلاً, {name}!",
+  "orders": "الطلبات",
+  "wishlist": "المفضلة",
+  "payment": "الدفع",
+  "address": "العنوان",
+  "language": "اللغة",
+  "signOut": "تسجيل الخروج",
+  "theme": "المظهر",
+  "darkMode": "الوضع الداكن",
+  "lightMode": "الوضع الفاتح",
+  "settings": "الإعدادات",
+  "logout": "تسجيل الخروج"
 }

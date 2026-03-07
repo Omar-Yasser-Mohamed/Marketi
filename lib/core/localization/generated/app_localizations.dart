@@ -625,6 +625,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Categories'**
   String get categories;
+
+  /// No description provided for @ahlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Ahlan, {name}!'**
+  String ahlan(Object name);
+
+  /// No description provided for @orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get orders;
+
+  /// No description provided for @wishlist.
+  ///
+  /// In en, this message translates to:
+  /// **'Wishlist'**
+  String get wishlist;
+
+  /// No description provided for @payment.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get payment;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get lightMode;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get logout;
 }
 
 class _AppLocalizationsDelegate

@@ -23,4 +23,5 @@ abstract class AppColors {
   static const customBlue200 = Color(0xff5286EC);
   static const customBlue300 = Color(0xff658DD9);
   static const customYellow = Color(0xffFFDA44);
+  static const customBlack = Color(0xff1A1A1A);
 }
