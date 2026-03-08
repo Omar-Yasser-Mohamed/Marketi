@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constansts/app_images.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/styles/app_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OffersCarousel extends StatefulWidget {
@@ -58,7 +59,10 @@ class _OffersCarouselState extends State<OffersCarousel> {
         AnimatedSmoothIndicator(
           activeIndex: _currentIndex,
           count: offers.length,
-          effect: const ExpandingDotsEffect(),
+          effect: ExpandingDotsEffect(
+            activeDotColor: AppColors.primary,
+            dotColor: Colors.grey.shade300,
+          ),
           onDotClicked: (index) {
             _controller.animateToPage(index);
           },

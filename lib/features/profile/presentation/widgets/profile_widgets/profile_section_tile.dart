@@ -53,7 +53,11 @@ class CustomArrow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 9, top: 6, bottom: 6, right: 8),
       decoration: BoxDecoration(
-        color: color?.withValues(alpha: 0.1) ?? const Color(0xffF5FBFF),
+        color:
+            color?.withValues(alpha: 0.1) ??
+            (context.isLightMode
+                ? const Color(0xffF5FBFF)
+                : const Color(0xff1E1E1E)),
         shape: BoxShape.circle,
         border: Border.all(
           color:

@@ -13,7 +13,7 @@ class ProfileDataHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.isLightMode
             ? Colors.grey.shade100
-            : AppColors.customBlack,
+            : AppColors.customBlack2,
         borderRadius: BorderRadius.circular(16),
       ),
 
@@ -27,7 +27,7 @@ class ProfileDataHeader extends StatelessWidget {
             ),
             child: Text(
               "O",
-              style: AppTextStyles.enM18,
+              style: AppTextStyles.enM18.copyWith(color: Colors.black),
             ),
           ),
 
