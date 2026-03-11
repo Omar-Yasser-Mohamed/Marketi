@@ -109,5 +109,7 @@
   "darkMode": "Dark Mode",
   "lightMode": "Light Mode",
   "settings": "Settings",
-  "logout": "Log out"
+  "logout": "Log out",
+  "editProfile": "Edit Profile",
+  "saveChanges": "Save Changes"
 }

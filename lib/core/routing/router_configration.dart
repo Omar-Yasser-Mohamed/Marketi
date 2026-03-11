@@ -22,6 +22,7 @@ import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
 import 'package:marketi/features/home/presentation/screens/products_screen.dart';
+import 'package:marketi/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:marketi/features/profile/presentation/screens/profile_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
@@ -167,6 +168,10 @@ abstract class RouterConfigration {
           create: (context) => getIt<BrandsCubit>()..getBrands(),
           child: const BrandsScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.editProfileScreen,
+        builder: (context, state) => const EditProfileScreen(),
       ),
     ],
   );

@@ -55,7 +55,8 @@ abstract class AppTheme {
     scaffoldBackgroundColor: AppColors.primaryDark,
     fontFamily: 'Poppins',
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
+      scrolledUnderElevation: 0,
+      backgroundColor: AppColors.primaryDark,
       centerTitle: true,
     ),
 
