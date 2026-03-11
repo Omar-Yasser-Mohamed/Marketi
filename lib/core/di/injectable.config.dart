@@ -65,6 +65,8 @@ import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.
     as _i70;
 import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart'
     as _i24;
+import 'package:marketi/features/splash/presentation/cubits/cubit/splash_cubit.dart'
+    as _i938;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -99,7 +101,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i643.CategoryRemoteDataSource>(
         () => _i643.CategoryRemoteDataSourceImpl(gh<_i352.ApiService>()));
     gh.lazySingleton<_i244.AuthRemoteDataSource>(
-        () => _i6.AuthRemoteDataSourceImpl(gh<_i352.ApiService>()));
+        () => _i6.AuthRemoteDataSourceImpl(
+              gh<_i352.ApiService>(),
+              gh<_i1028.TokenService>(),
+            ));
     gh.lazySingleton<_i423.ProductsRepo>(
         () => _i184.ProductsRepoImpl(gh<_i517.ProductsRemoteDataSource>()));
     gh.lazySingleton<_i229.CategoriesRepo>(
@@ -135,6 +140,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i597.SignupCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i358.VerifyOtpCubit>(
         () => _i358.VerifyOtpCubit(gh<_i377.AuthRepo>()));
+    gh.factory<_i938.SplashCubit>(() => _i938.SplashCubit(
+          gh<_i377.AuthRepo>(),
+          gh<_i1028.TokenService>(),
+        ));
     return this;
   }
 }

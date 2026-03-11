@@ -1,3 +1,4 @@
+import 'package:marketi/core/shared/models/verify_token_model.dart';
 import 'package:marketi/features/auth/data/models/auth_response.dart';
 import 'package:marketi/features/auth/data/models/forget_password_request.dart';
 import 'package:marketi/features/auth/data/models/forget_password_response.dart';
@@ -14,4 +15,5 @@ abstract class AuthRemoteDataSource {
   Future<ForgetPasswordResponse> forgetPassword({required ForgetPasswordRequest forgetPasswordRequest});
   Future<VerifyOtpResponse> verifyOtp({required VerifyOtpRequest verifyOtpRequest});
   Future<ResetPasswordResponse> resetPassword({required ResetPasswordRequest resetPasswordRequest});
+  Future<VerifyTokenModel> verifyToken();
 }

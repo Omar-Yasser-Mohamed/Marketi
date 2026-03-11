@@ -1,6 +1,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/constansts/api_constants.dart';
 import 'package:marketi/core/network/api_service.dart';
+import 'package:marketi/core/shared/models/verify_token_model.dart';
+import 'package:marketi/core/shared/token/token_service.dart';
 import 'package:marketi/features/auth/data/data_sources/remote/auth_remote_data_source.dart';
 import 'package:marketi/features/auth/data/models/auth_response.dart';
 import 'package:marketi/features/auth/data/models/forget_password_request.dart';
@@ -15,8 +17,9 @@ import 'package:marketi/features/auth/data/models/verify_otp_response.dart';
 @LazySingleton(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiService _apiService;
+  final TokenService _tokenService;
 
-  const AuthRemoteDataSourceImpl(this._apiService);
+  const AuthRemoteDataSourceImpl(this._apiService, this._tokenService);
 
   @override
   Future<AuthResponse> login({required LoginRequest loginRequest}) async {
@@ -67,5 +70,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       data: verifyOtpRequest.toJson(),
     );
     return VerifyOtpResponse.fromJson(response.data);
+  }
+
+  @override
+  Future<VerifyTokenModel> verifyToken() async {
+    final token = await _tokenService.getToken(); 
+    final response = await _apiService.get(
+      endpoint: ApiConstants.verifyTokenEndPoint,
+      headers: {
+        "token": token,
+      }
+    );
+    return VerifyTokenModel.fromJson(response.data["decoded"]);
   }
 }

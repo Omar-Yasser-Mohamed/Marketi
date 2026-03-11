@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/errors/error_handler.dart';
 import 'package:marketi/core/errors/failure.dart';
+import 'package:marketi/core/shared/models/verify_token_model.dart';
 import 'package:marketi/core/shared/token/token_service.dart';
 import 'package:marketi/features/auth/data/data_sources/remote/auth_remote_data_source.dart';
 import 'package:marketi/features/auth/data/models/auth_response.dart';
@@ -97,6 +98,20 @@ class AuthRepoImpl implements AuthRepo {
       final data = await _authRemoteDataSource.verifyOtp(
         verifyOtpRequest: verifyOtpRequest,
       );
+      return right(data);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, VerifyTokenModel>> verifyToken() async {
+    try {
+      final data = await _authRemoteDataSource.verifyToken();
+
+      // Save User ID
+      _tokenService.saveUserId(data.id);
+
       return right(data);
     } catch (e) {
       return left(ErrorHandler.handle(e));
