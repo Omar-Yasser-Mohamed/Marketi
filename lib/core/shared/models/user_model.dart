@@ -1,12 +1,14 @@
+import '../entities/user_entity.dart';
+
 class UserModel {
   final String? userId;
   final String? userName;
   final String? userEmail;
   final String? userPhone;
-  final String? userRole;
-  final String? userIsActive;
-  final List<String>? userAddresses;
-  final List<String>? userWishlist;
+  final dynamic userRole;
+  final dynamic userIsActive;
+  final List<dynamic>? userAddresses;
+  final List<dynamic>? userWishlist;
 
   UserModel({
     this.userId,
@@ -43,5 +45,17 @@ class UserModel {
       "role": userRole,
       "active": userIsActive,
     };
+  }
+
+  UserEntity toEntity() {
+    return UserEntity(
+      id: userId ?? '',
+      name: userName ?? '',
+      email: userEmail ?? '',
+      phone: userPhone ?? '',
+      addresses: userAddresses?.map((e) => e.toString()).toList(),
+      wishlist: userWishlist?.map((e) => e.toString()).toList(),
+      role: userRole.toString(),
+    );
   }
 }

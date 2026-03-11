@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
-import 'package:marketi/core/extentions/context_extentions.dart';
-import 'package:marketi/core/extentions/responsive_extentions.dart';
-import 'package:marketi/core/styles/app_text_styles.dart';
+import 'package:marketi/core/widgets/custom_failure_widget.dart';
 import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart';
 
 import '../widgets/home_widgets/home_screen_body.dart';
@@ -37,27 +34,7 @@ class HomeScreen extends StatelessWidget {
               context: context,
               failure: state.failure,
             );
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    error.image,
-                    height: 350.h,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.p),
-                    child: Text(
-                      error.message,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.enSb16.copyWith(
-                        color: context.textColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return CustomFailureWidget(error: error);
           }
           return const HomeShimmerLoading();
         },
@@ -65,3 +42,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+

@@ -65,6 +65,19 @@ import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.
     as _i70;
 import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart'
     as _i24;
+import 'package:marketi/features/profile/data/data_source/local/profile_local_data_source.dart'
+    as _i1030;
+import 'package:marketi/features/profile/data/data_source/local/profile_local_data_source_impl.dart'
+    as _i860;
+import 'package:marketi/features/profile/data/data_source/remote/profile_remote_data_source.dart'
+    as _i258;
+import 'package:marketi/features/profile/data/data_source/remote/profile_remote_data_source_impl.dart'
+    as _i636;
+import 'package:marketi/features/profile/data/repos/profile_repo_impl.dart'
+    as _i432;
+import 'package:marketi/features/profile/domain/repos/profile_repo.dart' as _i9;
+import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart'
+    as _i66;
 import 'package:marketi/features/splash/presentation/cubits/cubit/splash_cubit.dart'
     as _i938;
 
@@ -85,6 +98,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i977.EmailFlow>(() => _i977.EmailFlow());
     gh.lazySingleton<_i478.SortProductsUseCase>(
         () => _i478.SortProductsUseCase());
+    gh.lazySingleton<_i1030.ProfileLocalDataSource>(
+        () => _i860.ProfileLocalDataSourceImpl());
     gh.lazySingleton<_i24.BrandsGridBlocBuilder>(
         () => _i24.BrandsGridBlocBuilder(key: gh<_i409.Key>()));
     gh.lazySingleton<_i1028.TokenService>(() => _i364.TokenServiceImpl());
@@ -105,6 +120,11 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i352.ApiService>(),
               gh<_i1028.TokenService>(),
             ));
+    gh.lazySingleton<_i258.ProfileRemoteDataSource>(
+        () => _i636.ProfileRemoteDataSourceImpl(
+              gh<_i352.ApiService>(),
+              gh<_i1028.TokenService>(),
+            ));
     gh.lazySingleton<_i423.ProductsRepo>(
         () => _i184.ProductsRepoImpl(gh<_i517.ProductsRemoteDataSource>()));
     gh.lazySingleton<_i229.CategoriesRepo>(
@@ -115,15 +135,25 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i898.AllProductsUseCase(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i281.BrandsUseCase>(
         () => _i281.BrandsUseCase(gh<_i605.BrandsRepo>()));
-    gh.lazySingleton<_i377.AuthRepo>(() => _i62.AuthRepoImpl(
-          gh<_i244.AuthRemoteDataSource>(),
-          gh<_i1028.TokenService>(),
+    gh.lazySingleton<_i9.ProfileRepo>(() => _i432.ProfileRepoImpl(
+          gh<_i1030.ProfileLocalDataSource>(),
+          gh<_i258.ProfileRemoteDataSource>(),
         ));
     gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
+          gh<_i1030.ProfileLocalDataSource>(),
           gh<_i898.AllProductsUseCase>(),
           gh<_i478.SortProductsUseCase>(),
           gh<_i281.BrandsUseCase>(),
           gh<_i639.CategoriesUseCase>(),
+        ));
+    gh.lazySingleton<_i377.AuthRepo>(() => _i62.AuthRepoImpl(
+          gh<_i244.AuthRemoteDataSource>(),
+          gh<_i1028.TokenService>(),
+        ));
+    gh.factory<_i938.SplashCubit>(() => _i938.SplashCubit(
+          gh<_i377.AuthRepo>(),
+          gh<_i1028.TokenService>(),
+          gh<_i9.ProfileRepo>(),
         ));
     gh.factory<_i923.BrandsCubit>(
         () => _i923.BrandsCubit(gh<_i281.BrandsUseCase>()));
@@ -138,12 +168,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i315.LoginCubit>(() => _i315.LoginCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i597.SignupCubit>(
         () => _i597.SignupCubit(gh<_i377.AuthRepo>()));
+    gh.factory<_i66.ProfileCubit>(
+        () => _i66.ProfileCubit(gh<_i9.ProfileRepo>()));
     gh.factory<_i358.VerifyOtpCubit>(
         () => _i358.VerifyOtpCubit(gh<_i377.AuthRepo>()));
-    gh.factory<_i938.SplashCubit>(() => _i938.SplashCubit(
-          gh<_i377.AuthRepo>(),
-          gh<_i1028.TokenService>(),
-        ));
     return this;
   }
 }

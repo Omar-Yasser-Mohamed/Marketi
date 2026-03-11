@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/shared/token/token_service.dart';
 import 'package:marketi/features/auth/domain/repos/auth_repo.dart';
+import 'package:marketi/features/profile/domain/repos/profile_repo.dart';
 
 part 'splash_state.dart';
 
@@ -9,8 +10,10 @@ part 'splash_state.dart';
 class SplashCubit extends Cubit<SplashState> {
   final AuthRepo _authRepo;
   final TokenService _tokenService;
+  final ProfileRepo _profileRepo;
 
-  SplashCubit(this._authRepo, this._tokenService) : super(SplashInitial());
+  SplashCubit(this._authRepo, this._tokenService, this._profileRepo)
+    : super(SplashInitial());
 
   Future<void> checkAuth() async {
     emit(SplashLoading());
@@ -21,7 +24,17 @@ class SplashCubit extends Cubit<SplashState> {
     final result = await _authRepo.verifyToken();
     result.fold(
       (failure) => emit(SplashUnauthenticated()),
-      (_) => emit(SplashAuthenticated()),
+      (_) async {
+        final userResult = await _profileRepo.getUserData();
+        userResult.fold(
+          (failure) {
+            emit(SplashUnauthenticated());
+          },
+          (_) {
+            emit(SplashAuthenticated());
+          },
+        );
+      },
     );
   }
 }

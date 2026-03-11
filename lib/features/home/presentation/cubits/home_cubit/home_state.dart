@@ -12,6 +12,7 @@ final class HomeSuccess extends HomeState {
   final List<ProductEntity> bestProducts;
   final List<CategoryEntity> categories;
   final List<BrandEntity> brands;
+  final UserEntity user;
 
   HomeSuccess({
     required this.products,
@@ -19,6 +20,7 @@ final class HomeSuccess extends HomeState {
     required this.bestProducts,
     required this.categories,
     required this.brands,
+    required this.user,
   });
 }
 

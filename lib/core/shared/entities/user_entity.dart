@@ -1,11 +1,9 @@
 import 'package:hive/hive.dart';
-import 'package:marketi/core/shared/models/user_model.dart';
 
 part 'user_entity.g.dart';
 
-
 @HiveType(typeId: 0)
-class UserEntity extends UserModel {
+class UserEntity {
   @HiveField(0)
   final String id;
   @HiveField(1)
@@ -16,6 +14,8 @@ class UserEntity extends UserModel {
   final String phone;
   @HiveField(4)
   final List<String>? addresses;
+  final List<String>? wishlist;
+  final String? role;
 
   UserEntity({
     required this.id,
@@ -23,11 +23,7 @@ class UserEntity extends UserModel {
     required this.email,
     required this.phone,
     this.addresses,
-  }) : super(
-        userId: id,
-        userName: name,
-        userEmail: email,
-        userPhone: phone,
-        userAddresses: addresses,
-      );
+    this.wishlist,
+    this.role,
+  });
 }
