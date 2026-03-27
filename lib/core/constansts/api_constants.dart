@@ -4,6 +4,7 @@ abstract class ApiConstants {
 
   // User
   static const String userEndPoint = '${apiVersion}users';
+  static const String updateUserEndPoint = '$userEndPoint/updateMe';
 
   // Auth
   static const String signupEndPoint = '${apiVersion}auth/signup';

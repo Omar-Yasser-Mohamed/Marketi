@@ -1,17 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
+import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 
-class MainNavigationScreen extends StatelessWidget {
+class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
   @override
+  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+}
+
+class _MainNavigationScreenState extends State<MainNavigationScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ProfileCubit>().getUserData();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell,
+      body: widget.navigationShell,
       bottomNavigationBar: Container(
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
@@ -37,9 +52,9 @@ class MainNavigationScreen extends StatelessWidget {
               : AppColors.primaryDark,
 
           type: BottomNavigationBarType.fixed,
-          currentIndex: navigationShell.currentIndex,
+          currentIndex: widget.navigationShell.currentIndex,
           onTap: (index) {
-            navigationShell.goBranch(index);
+            widget.navigationShell.goBranch(index);
           },
           unselectedItemColor: context.isLightMode
               ? const Color(0xff67687E)

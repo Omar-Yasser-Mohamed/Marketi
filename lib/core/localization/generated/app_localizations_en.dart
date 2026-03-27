@@ -240,7 +240,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String hiUser(Object name) {
-    return 'Hi $name!';
+    return 'Hi, $name!';
   }
 
   @override
@@ -333,4 +333,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saveChanges => 'Save Changes';
+
+  @override
+  String get profileUpdatedSuccessfully => 'Profile updated successfully';
 }

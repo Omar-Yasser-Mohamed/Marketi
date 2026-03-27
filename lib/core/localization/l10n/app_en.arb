@@ -77,7 +77,7 @@
   "cart": "Cart",
   "favorites": "Favorites",
   "profile": "Profile",
-  "hiUser": "Hi {name}!",
+  "hiUser": "Hi, {name}!",
   "@hiUser": {
     "placeholders": {
       "name": {}
@@ -111,5 +111,6 @@
   "settings": "Settings",
   "logout": "Log out",
   "editProfile": "Edit Profile",
-  "saveChanges": "Save Changes"
+  "saveChanges": "Save Changes",
+  "profileUpdatedSuccessfully": "Profile updated successfully"
 }

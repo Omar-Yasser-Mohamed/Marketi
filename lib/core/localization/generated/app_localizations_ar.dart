@@ -235,7 +235,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String hiUser(Object name) {
-    return 'مرحبًا $name!';
+    return 'مرحبًا، $name!';
   }
 
   @override
@@ -328,4 +328,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get saveChanges => 'حفظ التغييرات';
+
+  @override
+  String get profileUpdatedSuccessfully => 'تم تحديث الملف الشخصي بنجاح';
 }

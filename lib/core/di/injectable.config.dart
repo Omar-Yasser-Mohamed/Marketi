@@ -76,8 +76,12 @@ import 'package:marketi/features/profile/data/data_source/remote/profile_remote_
 import 'package:marketi/features/profile/data/repos/profile_repo_impl.dart'
     as _i432;
 import 'package:marketi/features/profile/domain/repos/profile_repo.dart' as _i9;
+import 'package:marketi/features/profile/domain/use_cases/update_profile_use_case.dart'
+    as _i571;
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart'
     as _i66;
+import 'package:marketi/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart'
+    as _i899;
 import 'package:marketi/features/splash/presentation/cubits/cubit/splash_cubit.dart'
     as _i938;
 
@@ -103,6 +107,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i24.BrandsGridBlocBuilder>(
         () => _i24.BrandsGridBlocBuilder(key: gh<_i409.Key>()));
     gh.lazySingleton<_i1028.TokenService>(() => _i364.TokenServiceImpl());
+    gh.lazySingleton<_i951.AuthorizationInterceptor>(
+        () => _i951.AuthorizationInterceptor(gh<_i1028.TokenService>()));
     gh.lazySingleton<_i352.ApiService>(() => _i352.ApiService(
           gh<_i951.DioService>(),
           gh<_i14.ConnectivityHelper>(),
@@ -139,13 +145,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1030.ProfileLocalDataSource>(),
           gh<_i258.ProfileRemoteDataSource>(),
         ));
-    gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
-          gh<_i1030.ProfileLocalDataSource>(),
-          gh<_i898.AllProductsUseCase>(),
-          gh<_i478.SortProductsUseCase>(),
-          gh<_i281.BrandsUseCase>(),
-          gh<_i639.CategoriesUseCase>(),
-        ));
     gh.lazySingleton<_i377.AuthRepo>(() => _i62.AuthRepoImpl(
           gh<_i244.AuthRemoteDataSource>(),
           gh<_i1028.TokenService>(),
@@ -157,6 +156,14 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i923.BrandsCubit>(
         () => _i923.BrandsCubit(gh<_i281.BrandsUseCase>()));
+    gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
+          gh<_i377.AuthRepo>(),
+          gh<_i9.ProfileRepo>(),
+          gh<_i898.AllProductsUseCase>(),
+          gh<_i478.SortProductsUseCase>(),
+          gh<_i281.BrandsUseCase>(),
+          gh<_i639.CategoriesUseCase>(),
+        ));
     gh.factory<_i53.ForgetPasswordCubit>(() => _i53.ForgetPasswordCubit(
           gh<_i377.AuthRepo>(),
           gh<_i977.EmailFlow>(),
@@ -168,10 +175,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i315.LoginCubit>(() => _i315.LoginCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i597.SignupCubit>(
         () => _i597.SignupCubit(gh<_i377.AuthRepo>()));
+    gh.lazySingleton<_i571.UpdateProfileUseCase>(
+        () => _i571.UpdateProfileUseCase(gh<_i9.ProfileRepo>()));
     gh.factory<_i66.ProfileCubit>(
         () => _i66.ProfileCubit(gh<_i9.ProfileRepo>()));
     gh.factory<_i358.VerifyOtpCubit>(
         () => _i358.VerifyOtpCubit(gh<_i377.AuthRepo>()));
+    gh.factory<_i899.UpdateProfileCubit>(
+        () => _i899.UpdateProfileCubit(gh<_i571.UpdateProfileUseCase>()));
     return this;
   }
 }

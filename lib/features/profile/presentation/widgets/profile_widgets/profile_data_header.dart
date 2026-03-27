@@ -17,7 +17,7 @@ class ProfileDataHeader extends StatelessWidget {
         if (state is ProfileSuccess) {
           final user = state.user;
           return GestureDetector(
-            onTap: () => context.push(AppRoutes.editProfileScreen),
+            onTap: () => context.push(AppRoutes.editProfileScreen, extra: user),
             child: Container(
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -49,12 +49,16 @@ class ProfileDataHeader extends StatelessWidget {
                       children: [
                         Text(
                           context.l10n.ahlan(user.name),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.enM16.copyWith(
                             color: context.textColor,
                           ),
                         ),
                         Text(
                           user.email,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.normalTextStyle.copyWith(
                             color: context.textColor,
                           ),

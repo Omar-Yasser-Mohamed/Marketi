@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.readOnly = false,
+    this.initialValue,
   });
 
   final String? hintText;
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool readOnly;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       readOnly: readOnly,
+      initialValue: initialValue,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       style: AppTextStyles.normalTextStyle,
       decoration: InputDecoration(

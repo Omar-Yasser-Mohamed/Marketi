@@ -533,7 +533,7 @@ abstract class AppLocalizations {
   /// No description provided for @hiUser.
   ///
   /// In en, this message translates to:
-  /// **'Hi {name}!'**
+  /// **'Hi, {name}!'**
   String hiUser(Object name);
 
   /// No description provided for @searchHint.
@@ -709,6 +709,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save Changes'**
   String get saveChanges;
+
+  /// No description provided for @profileUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdatedSuccessfully;
 }
 
 class _AppLocalizationsDelegate

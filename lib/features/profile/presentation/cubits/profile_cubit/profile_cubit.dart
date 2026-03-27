@@ -15,10 +15,24 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (!isClosed) emit(state);
   }
 
-  Future<void> getUserData() async {
+  Future<void> getUserData({bool forceRefresh = false}) async {
     safeEmit(ProfileLoading());
 
-    final result = await _profileRepo.getUserData();
+    final result = await _profileRepo.getUserData(forceRefresh: forceRefresh);
+
+    result.fold(
+      (failure) {
+        safeEmit(ProfileFailure(failure));
+      },
+      (user) {
+        safeEmit(ProfileSuccess(user));
+      },
+    );
+  }
+
+  Future<void> updateUserData(UserEntity user) async {
+    safeEmit(ProfileLoading());
+    final result = await _profileRepo.updateCachedUser(user);
 
     result.fold(
       (failure) {

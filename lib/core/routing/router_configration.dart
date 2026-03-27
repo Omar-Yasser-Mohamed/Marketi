@@ -22,7 +22,7 @@ import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
 import 'package:marketi/features/home/presentation/screens/products_screen.dart';
-import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:marketi/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:marketi/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:marketi/features/profile/presentation/screens/profile_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
@@ -144,10 +144,7 @@ abstract class RouterConfigration {
               GoRoute(
                 path: AppRoutes.profileScreen,
                 builder: (context, state) {
-                  return BlocProvider(
-                    create: (context) => getIt<ProfileCubit>()..getUserData(),
-                    child: const ProfileScreen(),
-                  );
+                  return const ProfileScreen();
                 },
               ),
             ],
@@ -175,7 +172,10 @@ abstract class RouterConfigration {
       ),
       GoRoute(
         path: AppRoutes.editProfileScreen,
-        builder: (context, state) => const EditProfileScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<UpdateProfileCubit>(),
+          child: const EditProfileScreen(),
+        ),
       ),
     ],
   );

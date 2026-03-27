@@ -17,7 +17,7 @@ class ProfileLocalDataSourceImpl implements ProfileLocalDataSource {
 
   @override
   Future<void> saveUserData(UserEntity user) async {
-    return await HiveHelper.put(
+    await HiveHelper.put<UserEntity>(
       boxName: HiveConstants.userBox,
       key: HiveConstants.userKey,
       data: user,

@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/errors/failure.dart';
-import 'package:marketi/core/errors/failure_code.dart';
 import 'package:marketi/core/shared/entities/user_entity.dart';
+import 'package:marketi/features/auth/domain/repos/auth_repo.dart';
 import 'package:marketi/features/home/domain/entities/brand_entity.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
@@ -12,21 +12,23 @@ import 'package:marketi/features/home/domain/use_cases/all_products_use_case.dar
 import 'package:marketi/features/home/domain/use_cases/brands_use_case.dart';
 import 'package:marketi/features/home/domain/use_cases/categories_use_case.dart';
 import 'package:marketi/features/home/domain/use_cases/sort_products_use_case.dart';
-import 'package:marketi/features/profile/data/data_source/local/profile_local_data_source.dart';
+import 'package:marketi/features/profile/domain/repos/profile_repo.dart';
 
 part 'home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(
-    this._profileLocalDataSource,
+    this._authRepo,
+    this._profileRepo,
     this._allProductsUseCase,
     this._sortProductsUseCase,
     this._brandsUseCase,
     this._categoriesUseCase,
   ) : super(HomeInitial());
 
-  final ProfileLocalDataSource _profileLocalDataSource;
+  final AuthRepo _authRepo;
+  final ProfileRepo _profileRepo;
   final AllProductsUseCase _allProductsUseCase;
   final SortProductsUseCase _sortProductsUseCase;
   final BrandsUseCase _brandsUseCase;
@@ -51,13 +53,12 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> loadHomeData() async {
     safeEmit(HomeLoading());
 
-    final user = await _profileLocalDataSource.getUserData();
-    if (user == null) {
-      safeEmit(
-        HomeFailure(const AppFailure(failureCode: FailureCode.notFound)),
-      );
-      return;
-    }
+    final verifyTokenResult = await _authRepo.verifyToken();
+    final verifyToken = _extractOrEmitFailure(verifyTokenResult);
+    if (verifyToken == null) return;
+
+    final user = _extractOrEmitFailure(await _profileRepo.getUserData());
+    if (user == null) return;
 
     final results = await Future.wait([
       _allProductsUseCase.call(),

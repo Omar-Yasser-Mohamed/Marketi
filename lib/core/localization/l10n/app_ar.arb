@@ -72,7 +72,7 @@
   "cart": "السلة",
   "favorites": "المفضلة",
   "profile": "حسابي",
-  "hiUser": "مرحبًا {name}!",
+  "hiUser": "مرحبًا، {name}!",
   "searchHint": "بتدور على إيه؟",
   "popular_product": "المنتجات الأكثر شهرة",
   "view_all": "عرض الكل",
@@ -101,5 +101,6 @@
   "settings": "الإعدادات",
   "logout": "تسجيل الخروج",
   "editProfile": "تعديل الملف الشخصي",
-  "saveChanges": "حفظ التغييرات"
+  "saveChanges": "حفظ التغييرات",
+  "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح"
 }
