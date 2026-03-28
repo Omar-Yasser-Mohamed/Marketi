@@ -102,5 +102,8 @@
   "logout": "تسجيل الخروج",
   "editProfile": "تعديل الملف الشخصي",
   "saveChanges": "حفظ التغييرات",
-  "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح"
+  "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
+  "changeLanguage": "تغيير اللغة",
+  "english": "الإنجليزية",
+  "arabic": "العربية"
 }

@@ -86,10 +86,14 @@ class _ProductItemState extends State<ProductItem> {
                     ),
 
                     if (widget.product.priceAfterDiscount != null)
-                      DiscountBanner(
-                        discount: calculateDiscountPercent(
-                          widget.product.price,
-                          widget.product.priceAfterDiscount!,
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        child: DiscountBanner(
+                          discount: calculateDiscountPercent(
+                            widget.product.price,
+                            widget.product.priceAfterDiscount!,
+                          ),
                         ),
                       ),
                   ],

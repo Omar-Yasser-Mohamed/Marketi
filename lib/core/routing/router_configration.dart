@@ -24,6 +24,7 @@ import 'package:marketi/features/home/presentation/screens/product_details_scree
 import 'package:marketi/features/home/presentation/screens/products_screen.dart';
 import 'package:marketi/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:marketi/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:marketi/features/profile/presentation/screens/locale_screen.dart';
 import 'package:marketi/features/profile/presentation/screens/profile_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:marketi/features/splash/presentation/screens/splash_screen.dart';
@@ -176,6 +177,10 @@ abstract class RouterConfigration {
           create: (context) => getIt<UpdateProfileCubit>(),
           child: const EditProfileScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.localeScreen,
+        builder: (context, state) => const LocaleScreen(),
       ),
     ],
   );

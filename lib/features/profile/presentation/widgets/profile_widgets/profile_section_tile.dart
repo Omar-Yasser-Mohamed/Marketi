@@ -8,37 +8,42 @@ class ProfileSectionTile extends StatelessWidget {
     required this.icon,
     required this.title,
     this.color,
+    this.onTap,
   });
   final IconData icon;
   final String title;
   final Color? color;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: color ?? context.textColor,
-          ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: color ?? context.textColor,
+            ),
 
-          const SizedBox(width: 12),
+            const SizedBox(width: 12),
 
-          Expanded(
-            child: Text(
-              title,
-              style: AppTextStyles.enM16.copyWith(
-                color: color ?? context.textColor,
+            Expanded(
+              child: Text(
+                title,
+                style: AppTextStyles.enM16.copyWith(
+                  color: color ?? context.textColor,
+                ),
               ),
             ),
-          ),
 
-          const SizedBox(width: 6),
+            const SizedBox(width: 6),
 
-          CustomArrow(color: color),
-        ],
+            CustomArrow(color: color),
+          ],
+        ),
       ),
     );
   }

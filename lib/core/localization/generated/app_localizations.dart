@@ -715,6 +715,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile updated successfully'**
   String get profileUpdatedSuccessfully;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
 }
 
 class _AppLocalizationsDelegate

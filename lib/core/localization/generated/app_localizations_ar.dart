@@ -331,4 +331,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profileUpdatedSuccessfully => 'تم تحديث الملف الشخصي بنجاح';
+
+  @override
+  String get changeLanguage => 'تغيير اللغة';
+
+  @override
+  String get english => 'الإنجليزية';
+
+  @override
+  String get arabic => 'العربية';
 }

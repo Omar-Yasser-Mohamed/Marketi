@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/widgets/custom_divider.dart';
 import 'package:marketi/features/profile/presentation/widgets/profile_widgets/profile_section_tile.dart';
@@ -36,6 +38,9 @@ class ProfileSettingsSection extends StatelessWidget {
           ProfileSectionTile(
             icon: Icons.language_rounded,
             title: context.l10n.language,
+            onTap: () {
+              context.push(AppRoutes.localeScreen);
+            },
           ),
 
           const CustomDivider(),

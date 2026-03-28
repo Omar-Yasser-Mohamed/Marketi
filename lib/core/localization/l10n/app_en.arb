@@ -112,5 +112,8 @@
   "logout": "Log out",
   "editProfile": "Edit Profile",
   "saveChanges": "Save Changes",
-  "profileUpdatedSuccessfully": "Profile updated successfully"
+  "profileUpdatedSuccessfully": "Profile updated successfully",
+  "changeLanguage": "Change Language",
+  "english": "English",
+  "arabic": "Arabic"
 }
