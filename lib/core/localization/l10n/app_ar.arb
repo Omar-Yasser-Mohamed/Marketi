@@ -105,5 +105,8 @@
   "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
   "changeLanguage": "تغيير اللغة",
   "english": "الإنجليزية",
-  "arabic": "العربية"
+  "arabic": "العربية",
+  "yourCartIsEmpty": "سلة التسوق فارغة",
+  "cartEmptyDescription": "تصفح عروضنا الكبيرة ومنتجاتنا الطازجة واملأ سلة التسوق بالمنتجات",
+  "startShopping": "ابدأ التسوق"
 }

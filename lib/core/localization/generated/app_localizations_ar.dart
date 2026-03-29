@@ -340,4 +340,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get arabic => 'العربية';
+
+  @override
+  String get yourCartIsEmpty => 'سلة التسوق فارغة';
+
+  @override
+  String get cartEmptyDescription =>
+      'تصفح عروضنا الكبيرة ومنتجاتنا الطازجة واملأ سلة التسوق بالمنتجات';
+
+  @override
+  String get startShopping => 'ابدأ التسوق';
 }

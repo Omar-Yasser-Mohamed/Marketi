@@ -733,6 +733,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arabic'**
   String get arabic;
+
+  /// No description provided for @yourCartIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Cart is Empty'**
+  String get yourCartIsEmpty;
+
+  /// No description provided for @cartEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Check our big offers, fresh products and fill your cart with items'**
+  String get cartEmptyDescription;
+
+  /// No description provided for @startShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Shopping'**
+  String get startShopping;
 }
 
 class _AppLocalizationsDelegate

@@ -115,5 +115,8 @@
   "profileUpdatedSuccessfully": "Profile updated successfully",
   "changeLanguage": "Change Language",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "yourCartIsEmpty": "Your Cart is Empty",
+  "cartEmptyDescription": "Check our big offers, fresh products and fill your cart with items",
+  "startShopping": "Start Shopping"
 }

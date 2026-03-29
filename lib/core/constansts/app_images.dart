@@ -10,6 +10,7 @@ abstract class AppImages {
   static const String createNewPasswordLogo =
       'assets/images/create_new_password.png';
   static const String congratulationsLogo = 'assets/images/congratulations.png';
+  static const String emptyCart = 'assets/images/cart_empty.png';
 
   // Errors
   static const String cancelledError = 'assets/images/cancelled_error.svg';

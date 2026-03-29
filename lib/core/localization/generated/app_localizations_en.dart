@@ -345,4 +345,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arabic => 'Arabic';
+
+  @override
+  String get yourCartIsEmpty => 'Your Cart is Empty';
+
+  @override
+  String get cartEmptyDescription =>
+      'Check our big offers, fresh products and fill your cart with items';
+
+  @override
+  String get startShopping => 'Start Shopping';
 }

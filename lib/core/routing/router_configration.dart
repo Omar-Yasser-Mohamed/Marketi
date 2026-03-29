@@ -15,6 +15,7 @@ import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verification_screen.dart';
+import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
 import 'package:marketi/features/home/presentation/screens/categories_screen.dart';
@@ -113,11 +114,7 @@ abstract class RouterConfigration {
               GoRoute(
                 path: AppRoutes.cartScreen,
                 builder: (context, state) {
-                  return const Scaffold(
-                    body: Center(
-                      child: Text("Cart"),
-                    ),
-                  );
+                  return const CartScreen();
                 },
               ),
             ],
