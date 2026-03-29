@@ -23,7 +23,9 @@ class HomeShimmerLoading extends StatelessWidget {
           baseColor: Colors.grey.shade300,
           highlightColor: Colors.grey.shade100,
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: context.isArabic
+                ? Alignment.centerRight
+                : Alignment.centerLeft,
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 14.p),
               width: 150,
