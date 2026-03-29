@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/widgets/custom_divider.dart';
+import 'package:marketi/features/profile/presentation/cubits/theme_cubit/theme_cubit.dart';
 import 'package:marketi/features/profile/presentation/widgets/profile_widgets/profile_section_tile.dart';
 
 class ProfileSettingsSection extends StatelessWidget {
@@ -59,6 +61,9 @@ class ProfileSettingsSection extends StatelessWidget {
             title: context.isLightMode
                 ? context.l10n.darkMode
                 : context.l10n.lightMode,
+            onTap: () async {
+              await context.read<ThemeCubit>().toggleTheme();
+            },
           ),
         ],
       ),

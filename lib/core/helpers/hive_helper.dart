@@ -10,6 +10,8 @@ class HiveHelper {
     await openBox<UserEntity>(name: HiveConstants.userBox);
     // locale
     await openBox<String>(name: HiveConstants.localeBox);
+    // theme
+    await openBox<String>(name: HiveConstants.themeBox);
   }
 
   static Future<Box<T>> openBox<T>({required String name}) async {

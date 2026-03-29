@@ -9,6 +9,7 @@ import 'package:marketi/core/theme/app_theme.dart';
 import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/locale_cubit/locale_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:marketi/features/profile/presentation/cubits/theme_cubit/theme_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,19 +38,35 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<LocaleCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<ThemeCubit>(),
+        ),
       ],
       child: BlocBuilder<LocaleCubit, Locale>(
         builder: (context, locale) {
-          return MaterialApp.router(
-            locale: locale,
-            title: 'Marketi',
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            routerConfig: RouterConfigration.router,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            themeMode: ThemeMode.light,
+          return BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, state) {
+              final isDark = state.mode == AppThemeMode.dark;
+              return MaterialApp.router(
+                locale: locale,
+                title: 'Marketi',
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                routerConfig: RouterConfigration.router,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
+                themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
+                builder: (context, child) {
+                  return AnimatedTheme(
+                    data: isDark ? AppTheme.darkTheme : AppTheme.lightTheme,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    child: child!,
+                  );
+                },
+              );
+            },
           );
         },
       ),

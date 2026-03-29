@@ -23,7 +23,9 @@ extension SnakeBarExtention on BuildContext {
           Expanded(
             child: Text(
               message,
-              style: AppTextStyles.enM14,
+              style: AppTextStyles.enM14.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
         ],
@@ -52,7 +54,9 @@ extension SnakeBarExtention on BuildContext {
           Expanded(
             child: Text(
               message,
-              style: AppTextStyles.enM14,
+              style: AppTextStyles.enM14.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
         ],

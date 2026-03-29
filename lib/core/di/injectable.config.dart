@@ -82,6 +82,8 @@ import 'package:marketi/features/profile/presentation/cubits/locale_cubit/locale
     as _i292;
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart'
     as _i66;
+import 'package:marketi/features/profile/presentation/cubits/theme_cubit/theme_cubit.dart'
+    as _i517;
 import 'package:marketi/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart'
     as _i899;
 import 'package:marketi/features/splash/presentation/cubits/cubit/splash_cubit.dart'
@@ -105,6 +107,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i478.SortProductsUseCase>(
         () => _i478.SortProductsUseCase());
     gh.lazySingleton<_i292.LocaleCubit>(() => _i292.LocaleCubit());
+    gh.lazySingleton<_i517.ThemeCubit>(() => _i517.ThemeCubit());
     gh.lazySingleton<_i1030.ProfileLocalDataSource>(
         () => _i860.ProfileLocalDataSourceImpl());
     gh.lazySingleton<_i24.BrandsGridBlocBuilder>(

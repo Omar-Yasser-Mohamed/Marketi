@@ -6,4 +6,8 @@ abstract class HiveConstants {
   // Locale
   static const String localeBox = "locale_box";
   static const String localeKey = "locale";
+
+  // Theme
+  static const String themeBox = "theme_box";
+  static const String themeKey = "theme";
 }
