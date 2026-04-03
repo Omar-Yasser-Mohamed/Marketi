@@ -118,5 +118,10 @@
   "arabic": "Arabic",
   "yourCartIsEmpty": "Your Cart is Empty",
   "cartEmptyDescription": "Check our big offers, fresh products and fill your cart with items",
-  "startShopping": "Start Shopping"
+  "startShopping": "Start Shopping",
+  "egp": "EGP",
+  "productsOnCart": "Products on Cart",
+  "suptotal": "Subtotal",
+  "items": "items",
+  "checkout": "Checkout"
 }

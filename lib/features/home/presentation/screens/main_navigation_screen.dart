@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
+import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -18,8 +19,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ProfileCubit>().getUserData();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await context.read<ProfileCubit>().getUserData();
+      await context.read<CartCubit>().getCart();
     });
   }
 

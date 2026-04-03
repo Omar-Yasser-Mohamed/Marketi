@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
-import 'package:marketi/features/cart/presentation/widgets/empty_cart_screen.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_items_bloc_builder.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -21,7 +21,7 @@ class CartScreen extends StatelessWidget {
         surfaceTintColor: Colors.transparent,
         shadowColor: AppColors.primary.withValues(alpha: 0.04),
       ),
-      body: const EmptyCartScreen(),
+      body: const CartItemsBlocBuilder(),
     );
   }
 }

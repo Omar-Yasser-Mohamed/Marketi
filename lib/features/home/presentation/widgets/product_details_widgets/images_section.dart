@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
@@ -9,7 +8,9 @@ import 'package:marketi/features/home/domain/entities/product_entity.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ImagesSection extends StatefulWidget {
-  const ImagesSection({super.key});
+  const ImagesSection({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   State<ImagesSection> createState() => _ImagesSectionState();
@@ -34,7 +35,7 @@ class _ImagesSectionState extends State<ImagesSection> {
 
   @override
   Widget build(BuildContext context) {
-    final product = GoRouterState.of(context).extra as ProductEntity;
+    final product = widget.product;
     return Column(
       children: [
         // images page view

@@ -35,6 +35,14 @@ import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/otp_t
     as _i449;
 import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/verify_otp_cubit.dart'
     as _i358;
+import 'package:marketi/features/cart/data/data_sources/remote/cart_remote_data_source.dart'
+    as _i862;
+import 'package:marketi/features/cart/data/data_sources/remote/cart_remote_data_source_impl.dart'
+    as _i196;
+import 'package:marketi/features/cart/data/repos/cart_repo_impl.dart' as _i1039;
+import 'package:marketi/features/cart/domain/repos/cart_repo.dart' as _i307;
+import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart'
+    as _i723;
 import 'package:marketi/features/home/data/data_source/remote/brands_remote_data_source.dart'
     as _i822;
 import 'package:marketi/features/home/data/data_source/remote/category_remote_data_source.dart'
@@ -63,6 +71,8 @@ import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cu
     as _i923;
 import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart'
     as _i70;
+import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart'
+    as _i607;
 import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart'
     as _i24;
 import 'package:marketi/features/profile/data/data_source/local/profile_local_data_source.dart'
@@ -119,6 +129,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i951.DioService>(),
           gh<_i14.ConnectivityHelper>(),
         ));
+    gh.lazySingleton<_i862.CartRemoteDataSource>(
+        () => _i196.CartRemoteDataSourceImpl(
+              gh<_i352.ApiService>(),
+              gh<_i1028.TokenService>(),
+            ));
+    gh.lazySingleton<_i307.CartRepo>(
+        () => _i1039.CartRepoImpl(gh<_i862.CartRemoteDataSource>()));
+    gh.factory<_i723.CartCubit>(() => _i723.CartCubit(gh<_i307.CartRepo>()));
     gh.lazySingleton<_i822.BrandsRemoteDataSource>(
         () => _i822.BrandsRemoteDataSourceImpl(gh<_i352.ApiService>()));
     gh.lazySingleton<_i517.ProductsRemoteDataSource>(
@@ -143,6 +161,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i742.CategoriesRepoImpl(gh<_i643.CategoryRemoteDataSource>()));
     gh.lazySingleton<_i639.CategoriesUseCase>(
         () => _i639.CategoriesUseCase(gh<_i229.CategoriesRepo>()));
+    gh.factory<_i607.ProductDetailsCubit>(
+        () => _i607.ProductDetailsCubit(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i898.AllProductsUseCase>(
         () => _i898.AllProductsUseCase(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i281.BrandsUseCase>(

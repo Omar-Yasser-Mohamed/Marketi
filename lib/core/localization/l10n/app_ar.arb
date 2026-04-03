@@ -108,5 +108,10 @@
   "arabic": "العربية",
   "yourCartIsEmpty": "سلة التسوق فارغة",
   "cartEmptyDescription": "تصفح عروضنا الكبيرة ومنتجاتنا الطازجة واملأ سلة التسوق بالمنتجات",
-  "startShopping": "ابدأ التسوق"
+  "startShopping": "ابدأ التسوق",
+  "egp": "جنيه",
+  "productsOnCart": "المنتجات في السلة",
+  "suptotal": "المجموع",
+  "items": "منتجات",
+  "checkout": "الدفع"
 }

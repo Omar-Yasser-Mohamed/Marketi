@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
@@ -12,11 +11,12 @@ import 'package:marketi/features/home/presentation/widgets/product_details_widge
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_rating.dart';
 
 class ProdouctDataSection extends StatelessWidget {
-  const ProdouctDataSection({super.key});
+  const ProdouctDataSection({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
-    final product = GoRouterState.of(context).extra as ProductEntity;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14.p, vertical: 14),
       decoration: BoxDecoration(

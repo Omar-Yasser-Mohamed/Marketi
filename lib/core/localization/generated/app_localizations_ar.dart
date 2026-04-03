@@ -350,4 +350,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get startShopping => 'ابدأ التسوق';
+
+  @override
+  String get egp => 'جنيه';
+
+  @override
+  String get productsOnCart => 'المنتجات في السلة';
+
+  @override
+  String get suptotal => 'المجموع';
+
+  @override
+  String get items => 'منتجات';
+
+  @override
+  String get checkout => 'الدفع';
 }

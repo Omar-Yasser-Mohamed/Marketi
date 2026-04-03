@@ -751,6 +751,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start Shopping'**
   String get startShopping;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @productsOnCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Products on Cart'**
+  String get productsOnCart;
+
+  /// No description provided for @suptotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get suptotal;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'items'**
+  String get items;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
 }
 
 class _AppLocalizationsDelegate

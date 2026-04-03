@@ -25,4 +25,5 @@ abstract class AppColors {
   static const customYellow = Color(0xffFFDA44);
   static const customBlack = Color(0xff1A1A1A);
   static const customBlack2 = Color(0xFF282828);
+
 }

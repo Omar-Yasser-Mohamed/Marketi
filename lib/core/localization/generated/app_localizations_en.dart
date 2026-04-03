@@ -355,4 +355,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get startShopping => 'Start Shopping';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get productsOnCart => 'Products on Cart';
+
+  @override
+  String get suptotal => 'Subtotal';
+
+  @override
+  String get items => 'items';
+
+  @override
+  String get checkout => 'Checkout';
 }

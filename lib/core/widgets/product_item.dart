@@ -36,7 +36,7 @@ class _ProductItemState extends State<ProductItem> {
       onTap: () {
         context.push(
           AppRoutes.productDetailsScreen,
-          extra: widget.product,
+          extra: widget.product.id,
         );
       },
       child: Container(

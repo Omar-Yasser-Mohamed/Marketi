@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/extentions/responsive_extentions.dart';
-import 'package:marketi/features/home/presentation/widgets/product_details_widgets/add_to_cart_section.dart';
-import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_details_app_bar.dart';
-import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_details_body.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketi/core/errors/failure_ui_mapper.dart';
+import 'package:marketi/core/widgets/custom_failure_widget.dart';
+import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
+import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_details_screen_body.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key});
@@ -10,15 +11,21 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          38.verticalSpace,
-          const ProductDetailsAppBar(),
-          const Expanded(
-            child: ProductDetailsBody(),
-          ),
-          const AddToCartSection(),
-        ],
+      body: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+        builder: (context, state) {
+          if (state is ProductDetailsSuccess) {
+            final product = state.product;
+
+            return ProductDetailsScreenBody(product: product);
+          } else if (state is ProductDetailsFailure) {
+            final error = FailureUiMapper.map(
+              context: context,
+              failure: state.failure,
+            );
+            return CustomFailureWidget(error: error);
+          }
+          return const Center(child: CircularProgressIndicator()); //TODO: Change loading widget
+        },
       ),
     );
   }
