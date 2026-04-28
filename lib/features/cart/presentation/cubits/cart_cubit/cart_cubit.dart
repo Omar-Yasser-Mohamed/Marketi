@@ -11,6 +11,13 @@ class CartCubit extends Cubit<CartState> {
   CartCubit(this._cartRepo) : super(CartInitial());
   final CartRepo _cartRepo;
 
+  CartEntity cart = CartEntity(
+    id: '',
+    cartOwner: '',
+    products: [],
+    totalCartPrice: 0,
+  );
+
   void safeEmit(CartState state) {
     if (!isClosed) emit(state);
   }
@@ -20,7 +27,46 @@ class CartCubit extends Cubit<CartState> {
     final result = await _cartRepo.getCart();
     result.fold(
       (failure) => safeEmit(CartFailure(failure)),
-      (cart) => safeEmit(CartSuccess(cart)),
+      (cart) {
+        this.cart = cart;
+        safeEmit(CartSuccess(cart));
+      },
+    );
+  }
+
+  Future<void> addProductToCart(String productId) async {
+    safeEmit(CartActionLoading(productId));
+    final result = await _cartRepo.addProductToCart(productId);
+    result.fold(
+      (failure) => safeEmit(CartFailure(failure)),
+      (cart) {
+        this.cart = cart;
+        safeEmit(CartSuccess(cart));
+      },
+    );
+  }
+
+  Future<void> removeProductFromCart(String productId) async {
+    safeEmit(CartActionLoading(productId));
+    final result = await _cartRepo.removeProductFromCart(productId);
+    result.fold(
+      (failure) => safeEmit(CartFailure(failure)),
+      (cart) {
+        this.cart = cart;
+        safeEmit(CartSuccess(cart));
+      },
+    );
+  }
+
+  Future<void> updateProductFromCart(String productId, int quantity) async {
+    safeEmit(CartActionLoading(productId));
+    final result = await _cartRepo.updateProductFromCart(productId, quantity);
+    result.fold(
+      (failure) => safeEmit(CartFailure(failure)),
+      (cart) {
+        this.cart = cart;
+        safeEmit(CartSuccess(cart));
+      },
     );
   }
 }

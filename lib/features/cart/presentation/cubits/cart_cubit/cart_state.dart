@@ -6,6 +6,11 @@ final class CartInitial extends CartState {}
 
 final class CartLoading extends CartState {}
 
+final class CartActionLoading extends CartState {
+  final String productId;
+  CartActionLoading(this.productId);
+}
+
 final class CartSuccess extends CartState {
   final CartEntity cart;
 

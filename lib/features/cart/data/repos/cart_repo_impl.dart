@@ -24,4 +24,40 @@ class CartRepoImpl implements CartRepo {
       return Left(ErrorHandler.handle(e));
     }
   }
+  
+  @override
+  Future<Either<Failure, CartEntity>> addProductToCart(String productId) async {
+    try {
+      await _cartRemoteDataSource.addProductToCart(productId);
+      final cartModel = await _cartRemoteDataSource.getCart();
+
+      return Right(CartMapper.mapToEntity(cartModel));
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, CartEntity>> removeProductFromCart(String productId) async {
+    try {
+      await _cartRemoteDataSource.removeProductFromCart(productId);
+      final cartModel = await _cartRemoteDataSource.getCart();
+
+      return Right(CartMapper.mapToEntity(cartModel));
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, CartEntity>> updateProductFromCart(String productId, int quantity) async {
+    try {
+      await _cartRemoteDataSource.updateProductFromCart(productId, quantity);
+      final cartModel = await _cartRemoteDataSource.getCart();
+
+      return Right(CartMapper.mapToEntity(cartModel));
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
 }

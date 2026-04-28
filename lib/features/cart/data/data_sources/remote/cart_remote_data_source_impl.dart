@@ -21,4 +21,40 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
     );
     return CartModel.fromJson(response.data['data']);
   }
+  
+  @override
+  Future<void> addProductToCart(String productId) async {
+    await _apiService.post(
+      endpoint: ApiConstants.cartEndPoint,
+      headers: {
+        'token': await _tokenService.getToken(),
+      },
+      data: {
+        'productId': productId,
+      },
+    );
+  }
+  
+  @override
+  Future<void> removeProductFromCart(String productId) async {
+    await _apiService.delete(
+      endpoint: "${ApiConstants.cartEndPoint}/$productId",
+      headers: {
+        'token': await _tokenService.getToken(),
+      },
+    );
+  }
+  
+  @override
+  Future<void> updateProductFromCart(String productId, int quantity) async {
+    await _apiService.put(
+      endpoint: "${ApiConstants.cartEndPoint}/$productId",
+      headers: {
+        'token': await _tokenService.getToken(),
+      },
+      data: {
+        'count': quantity,
+      },
+    );
+  }
 }

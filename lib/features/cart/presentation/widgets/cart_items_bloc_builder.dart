@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
@@ -25,12 +23,12 @@ class CartItemsBlocBuilder extends StatelessWidget {
           );
           return CustomFailureWidget(error: error);
         }
-        if (state is CartSuccess) {
-          log(state.cart.products.length.toString());
-          if (state.cart.products.isEmpty) {
+        if (state is CartSuccess || state is CartActionLoading) {
+          final cart = context.read<CartCubit>().cart;
+          if (cart.products.isEmpty) {
             return const EmptyCartScreen();
           }
-          return CartScreenBody(cart: state.cart);
+          return CartScreenBody(cart: cart);
         }
         return const SizedBox.shrink();
       },

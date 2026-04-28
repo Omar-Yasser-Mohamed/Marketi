@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
+import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/shared/functions/calculate_discount_percent.dart';
@@ -10,6 +12,8 @@ import 'package:marketi/core/widgets/add_to_cart_button.dart';
 import 'package:marketi/core/widgets/discount_banner.dart';
 import 'package:marketi/core/widgets/fav_button.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
 
 class ProductItem extends StatefulWidget {
@@ -32,6 +36,7 @@ class _ProductItemState extends State<ProductItem> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = context.read<CartCubit>().cart;
     return GestureDetector(
       onTap: () {
         context.push(
@@ -48,7 +53,7 @@ class _ProductItemState extends State<ProductItem> {
           borderRadius: BorderRadius.circular(14),
           boxShadow: [
             BoxShadow(
-              color: AppColors.lightBlue700.withValues(alpha: .7),
+              color: AppColors.lightBlue700.withValues(alpha: .3),
               blurRadius: 10,
             ),
           ],
@@ -150,24 +155,58 @@ class _ProductItemState extends State<ProductItem> {
             widget.showAddToCartButton
                 ? Column(
                     children: [
-                      4.verticalSizedBox,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: AddToCartButton(
-                          child: Text(
-                            context.l10n.add,
-                            style: AppTextStyles.enM14.copyWith(
-                              color: AppColors.darkBlue100,
-                            ),
+                      6.verticalSizedBox,
+                      SizedBox(
+                        height: 28.h,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: BlocBuilder<CartCubit, CartState>(
+                            builder: (context, state) {
+                              final cartItem = context
+                                  .read<CartCubit>()
+                                  .cart
+                                  .products
+                                  .where(
+                                    (element) =>
+                                        element.product.id == widget.product.id,
+                                  )
+                                  .firstOrNull;
+
+                              if (cartItem != null) {
+                                return ProductQuantityButtons(
+                                  product: cartItem,
+                                  iconSize: 16,
+                                  padding: 8,
+                                  textPadding: 4,
+                                );
+                              }
+
+                              return AddToCartButton(
+                                height: 28,
+                                isLoading:
+                                    state is CartActionLoading &&
+                                    state.productId == widget.product.id,
+                                child: Text(
+                                  context.l10n.add,
+                                  style: AppTextStyles.enM14.copyWith(
+                                    color: AppColors.darkBlue100,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  context.read<CartCubit>().addProductToCart(
+                                    widget.product.id,
+                                  );
+                                },
+                              );
+                            },
                           ),
-                          onPressed: () {},
                         ),
                       ),
                     ],
                   )
                 : const SizedBox(),
 
-            2.verticalSizedBox,
+            4.verticalSizedBox,
           ],
         ),
       ),
