@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/di/injectable.dart';
@@ -16,6 +15,7 @@ import 'package:marketi/features/auth/presentation/screens/reset_password_screen
 import 'package:marketi/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verification_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
+import 'package:marketi/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
@@ -127,11 +127,7 @@ abstract class RouterConfigration {
               GoRoute(
                 path: AppRoutes.favoritesScreen,
                 builder: (context, state) {
-                  return const Scaffold(
-                    body: Center(
-                      child: Text("Fav"),
-                    ),
-                  );
+                  return const FavoritesScreen();
                 },
               ),
             ],

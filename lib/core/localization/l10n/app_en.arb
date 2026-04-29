@@ -123,5 +123,7 @@
   "productsOnCart": "Products on Cart",
   "suptotal": "Subtotal",
   "items": "items",
-  "checkout": "Checkout"
+  "checkout": "Checkout",
+  "favoritesEmptyTitle": "No favorites yet",
+  "favoritesEmptyDescription": "Save items you like by tapping the heart icon so you can find them quickly later."
 }

@@ -365,4 +365,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get checkout => 'الدفع';
+
+  @override
+  String get favoritesEmptyTitle => 'لا توجد مفضلة بعد';
+
+  @override
+  String get favoritesEmptyDescription =>
+      'احفظ العناصر التي تعجبك بالضغط على أيقونة القلب لتتمكن من الوصول إليها بسهولة لاحقًا.';
 }

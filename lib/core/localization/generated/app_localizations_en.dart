@@ -370,4 +370,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkout => 'Checkout';
+
+  @override
+  String get favoritesEmptyTitle => 'No favorites yet';
+
+  @override
+  String get favoritesEmptyDescription =>
+      'Save items you like by tapping the heart icon so you can find them quickly later.';
 }

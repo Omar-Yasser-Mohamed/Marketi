@@ -113,5 +113,7 @@
   "productsOnCart": "المنتجات في السلة",
   "suptotal": "المجموع",
   "items": "منتجات",
-  "checkout": "الدفع"
+  "checkout": "الدفع",
+  "favoritesEmptyTitle": "لا توجد مفضلة بعد",
+  "favoritesEmptyDescription": "احفظ العناصر التي تعجبك بالضغط على أيقونة القلب لتتمكن من الوصول إليها بسهولة لاحقًا."
 }

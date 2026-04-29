@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
+import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 
@@ -62,7 +63,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               ? const Color(0xff67687E)
               : Colors.white,
           selectedItemColor: AppColors.primary,
-          iconSize: 28,
+          iconSize: 26,
+          selectedLabelStyle: AppTextStyles.enM12,
+          unselectedLabelStyle: AppTextStyles.enM12,
           items: [
             BottomNavigationBarItem(
               icon: const Icon(Icons.home_outlined),

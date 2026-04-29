@@ -781,6 +781,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Checkout'**
   String get checkout;
+
+  /// No description provided for @favoritesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No favorites yet'**
+  String get favoritesEmptyTitle;
+
+  /// No description provided for @favoritesEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Save items you like by tapping the heart icon so you can find them quickly later.'**
+  String get favoritesEmptyDescription;
 }
 
 class _AppLocalizationsDelegate
