@@ -793,6 +793,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save items you like by tapping the heart icon so you can find them quickly later.'**
   String get favoritesEmptyDescription;
+
+  /// No description provided for @itemsInYourWishList.
+  ///
+  /// In en, this message translates to:
+  /// **'items in your wishlist'**
+  String get itemsInYourWishList;
 }
 
 class _AppLocalizationsDelegate

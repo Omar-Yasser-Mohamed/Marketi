@@ -377,4 +377,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get favoritesEmptyDescription =>
       'Save items you like by tapping the heart icon so you can find them quickly later.';
+
+  @override
+  String get itemsInYourWishList => 'items in your wishlist';
 }

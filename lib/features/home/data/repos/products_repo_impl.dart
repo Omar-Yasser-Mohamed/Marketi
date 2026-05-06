@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/errors/error_handler.dart';
@@ -34,7 +32,6 @@ class ProductsRepoImpl implements ProductsRepo {
   Future<Either<Failure, ProductEntity>> getProductById(String id) async {
     try {
       final product = await _productsRemoteDataSource.getProductById(id);
-      log(product.title);
       return right(product);
     } catch (e) {
       return left(ErrorHandler.handle(e));

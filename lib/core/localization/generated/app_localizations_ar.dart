@@ -372,4 +372,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get favoritesEmptyDescription =>
       'احفظ العناصر التي تعجبك بالضغط على أيقونة القلب لتتمكن من الوصول إليها بسهولة لاحقًا.';
+
+  @override
+  String get itemsInYourWishList => 'منتجات في قائمة المفضلة';
 }

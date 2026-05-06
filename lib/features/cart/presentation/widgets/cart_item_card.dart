@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
@@ -9,6 +10,7 @@ import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
+import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
 
 class CartItemCard extends StatelessWidget {
   const CartItemCard({super.key, required this.product});
@@ -16,6 +18,8 @@ class CartItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favCubit = context.read<FavCubit>();
+
     return GestureDetector(
       onTap: () {
         context.push(
@@ -44,9 +48,9 @@ class CartItemCard extends StatelessWidget {
               height: 100.h,
               width: 100.h,
             ),
-      
+
             8.horizontalSizedBox,
-      
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,13 +67,34 @@ class CartItemCard extends StatelessWidget {
                           ),
                         ),
                       ),
-      
-                      const Icon(
-                        Icons.favorite_border_rounded,
+
+                      8.horizontalSizedBox,
+
+                      BlocBuilder<FavCubit, FavState>(
+                        builder: (context, state) {
+                          final isFav = favCubit.isFav(product.product.id);
+                          return GestureDetector(
+                            onTap: () {
+                              if (isFav) {
+                                favCubit.removeFavProduct(product.product.id);
+                              } else {
+                                favCubit.addFavProduct(product.product.id);
+                              }
+                            },
+                            child: AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 300),
+                              child: Icon(
+                                key: ValueKey(isFav),
+                                isFav ? Icons.favorite : Icons.favorite_outline,
+                                color: isFav ? Colors.red : context.textColor,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
-      
+
                   Text(
                     product.product.brand.name,
                     maxLines: 2,
@@ -78,9 +103,9 @@ class CartItemCard extends StatelessWidget {
                       color: const Color(0xff67687E),
                     ),
                   ),
-      
+
                   8.verticalSizedBox,
-      
+
                   // price & rating
                   Row(
                     children: [
@@ -90,17 +115,17 @@ class CartItemCard extends StatelessWidget {
                           color: context.textColor,
                         ),
                       ),
-      
+
                       const Spacer(),
-      
+
                       Icon(
                         Icons.star_border,
                         color: context.textColor,
                         size: 20,
                       ),
-      
+
                       2.horizontalSizedBox,
-      
+
                       Text(
                         "4.5",
                         style: AppTextStyles.enM12.copyWith(
@@ -109,9 +134,9 @@ class CartItemCard extends StatelessWidget {
                       ),
                     ],
                   ),
-      
+
                   8.verticalSizedBox,
-      
+
                   ProductQuantityButtons(product: product),
                 ],
               ),

@@ -7,6 +7,7 @@ import 'package:marketi/core/responsive/responsive_config.dart';
 import 'package:marketi/core/routing/router_configration.dart';
 import 'package:marketi/core/theme/app_theme.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/locale_cubit/locale_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<CartCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<FavCubit>(),
         ),
         BlocProvider(
           create: (context) => getIt<ProfileCubit>(),

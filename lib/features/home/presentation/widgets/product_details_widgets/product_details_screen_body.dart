@@ -18,7 +18,7 @@ class ProductDetailsScreenBody extends StatelessWidget {
     return Column(
       children: [
         38.verticalSpace,
-        const ProductDetailsAppBar(),
+        ProductDetailsAppBar(productId: product.id),
         Expanded(
           child: ProductDetailsBody(product: product),
         ),

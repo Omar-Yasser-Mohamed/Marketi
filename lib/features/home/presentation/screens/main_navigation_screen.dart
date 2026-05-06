@@ -5,6 +5,7 @@ import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await context.read<ProfileCubit>().getUserData();
       await context.read<CartCubit>().getCart();
+      await context.read<FavCubit>().getFavProducts();
     });
   }
 

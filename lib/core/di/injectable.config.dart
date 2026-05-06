@@ -43,6 +43,15 @@ import 'package:marketi/features/cart/data/repos/cart_repo_impl.dart' as _i1039;
 import 'package:marketi/features/cart/domain/repos/cart_repo.dart' as _i307;
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart'
     as _i723;
+import 'package:marketi/features/favorites/data/data_sources/remote/fav_remote_data_source.dart'
+    as _i689;
+import 'package:marketi/features/favorites/data/data_sources/remote/fav_remote_data_source_impl.dart'
+    as _i713;
+import 'package:marketi/features/favorites/data/repos/fav_repo_impl.dart'
+    as _i276;
+import 'package:marketi/features/favorites/domain/repos/fav_repo.dart' as _i370;
+import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart'
+    as _i366;
 import 'package:marketi/features/home/data/data_source/remote/brands_remote_data_source.dart'
     as _i822;
 import 'package:marketi/features/home/data/data_source/remote/category_remote_data_source.dart'
@@ -136,6 +145,11 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.lazySingleton<_i307.CartRepo>(
         () => _i1039.CartRepoImpl(gh<_i862.CartRemoteDataSource>()));
+    gh.lazySingleton<_i689.FavRemoteDataSource>(
+        () => _i713.FavRemoteDataSourceImpl(
+              gh<_i352.ApiService>(),
+              gh<_i1028.TokenService>(),
+            ));
     gh.factory<_i723.CartCubit>(() => _i723.CartCubit(gh<_i307.CartRepo>()));
     gh.lazySingleton<_i822.BrandsRemoteDataSource>(
         () => _i822.BrandsRemoteDataSourceImpl(gh<_i352.ApiService>()));
@@ -155,6 +169,8 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i352.ApiService>(),
               gh<_i1028.TokenService>(),
             ));
+    gh.lazySingleton<_i370.FavRepo>(
+        () => _i276.FavRepoImpl(gh<_i689.FavRemoteDataSource>()));
     gh.lazySingleton<_i423.ProductsRepo>(
         () => _i184.ProductsRepoImpl(gh<_i517.ProductsRemoteDataSource>()));
     gh.lazySingleton<_i229.CategoriesRepo>(
@@ -180,6 +196,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1028.TokenService>(),
           gh<_i9.ProfileRepo>(),
         ));
+    gh.factory<_i366.FavCubit>(() => _i366.FavCubit(gh<_i370.FavRepo>()));
     gh.factory<_i923.BrandsCubit>(
         () => _i923.BrandsCubit(gh<_i281.BrandsUseCase>()));
     gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(

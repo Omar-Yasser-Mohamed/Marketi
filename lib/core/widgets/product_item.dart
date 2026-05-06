@@ -14,9 +14,10 @@ import 'package:marketi/core/widgets/fav_button.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
+import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
 
-class ProductItem extends StatefulWidget {
+class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
     this.showAddToCartButton = true,
@@ -28,24 +29,19 @@ class ProductItem extends StatefulWidget {
   final double? marginRight;
 
   @override
-  State<ProductItem> createState() => _ProductItemState();
-}
-
-class _ProductItemState extends State<ProductItem> {
-  bool _isFav = false;
-
-  @override
   Widget build(BuildContext context) {
     final cart = context.read<CartCubit>().cart;
+    final favCubit = context.read<FavCubit>();
+
     return GestureDetector(
       onTap: () {
         context.push(
           AppRoutes.productDetailsScreen,
-          extra: widget.product.id,
+          extra: product.id,
         );
       },
       child: Container(
-        margin: EdgeInsets.only(right: widget.marginRight ?? 14),
+        margin: EdgeInsets.only(right: marginRight ?? 14),
         width: context.screenHeight * .2,
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -74,30 +70,37 @@ class _ProductItemState extends State<ProductItem> {
                 child: Stack(
                   children: [
                     CustomNetworkImage(
-                      imageUrl: widget.product.imageCover,
+                      imageUrl: product.imageCover,
                     ),
 
                     Positioned(
                       top: 4,
                       right: 4,
-                      child: FavButton(
-                        isFav: _isFav,
-                        onTap: () {
-                          setState(() {
-                            _isFav = !_isFav;
-                          });
+                      child: BlocBuilder<FavCubit, FavState>(
+                        builder: (context, state) {
+                          final isFav = favCubit.isFav(product.id);
+                          return FavButton(
+                            isFav: isFav,
+                            onTap: () {
+                              if (isFav) {
+                                favCubit.removeFavProduct(product.id);
+                              } else {
+                                favCubit.addFavProduct(product.id);
+                              }
+                            },
+                          );
                         },
                       ),
                     ),
 
-                    if (widget.product.priceAfterDiscount != null)
+                    if (product.priceAfterDiscount != null)
                       Positioned(
                         top: 0,
                         left: 0,
                         child: DiscountBanner(
                           discount: calculateDiscountPercent(
-                            widget.product.price,
-                            widget.product.priceAfterDiscount!,
+                            product.price,
+                            product.priceAfterDiscount!,
                           ),
                         ),
                       ),
@@ -113,9 +116,9 @@ class _ProductItemState extends State<ProductItem> {
               child: Row(
                 children: [
                   Text(
-                    widget.product.priceAfterDiscount != null
-                        ? "${widget.product.priceAfterDiscount} LE"
-                        : "${widget.product.price} LE",
+                    product.priceAfterDiscount != null
+                        ? "${product.priceAfterDiscount} LE"
+                        : "${product.price} LE",
                     style: AppTextStyles.enM12.copyWith(
                       color: context.textColor,
                     ),
@@ -130,7 +133,7 @@ class _ProductItemState extends State<ProductItem> {
                   2.horizontalSizedBox,
 
                   Text(
-                    "${widget.product.avgRating}",
+                    "${product.avgRating}",
                     style: AppTextStyles.enM12.copyWith(
                       color: context.textColor,
                     ),
@@ -142,7 +145,7 @@ class _ProductItemState extends State<ProductItem> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: Text(
-                widget.product.title,
+                product.title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.enM12.copyWith(
@@ -152,7 +155,7 @@ class _ProductItemState extends State<ProductItem> {
             ),
 
             // Add to cart button
-            widget.showAddToCartButton
+            showAddToCartButton
                 ? Column(
                     children: [
                       6.verticalSizedBox,
@@ -168,7 +171,7 @@ class _ProductItemState extends State<ProductItem> {
                                   .products
                                   .where(
                                     (element) =>
-                                        element.product.id == widget.product.id,
+                                        element.product.id == product.id,
                                   )
                                   .firstOrNull;
 
@@ -185,7 +188,7 @@ class _ProductItemState extends State<ProductItem> {
                                 height: 28,
                                 isLoading:
                                     state is CartActionLoading &&
-                                    state.productId == widget.product.id,
+                                    state.productId == product.id,
                                 child: Text(
                                   context.l10n.add,
                                   style: AppTextStyles.enM14.copyWith(
@@ -194,7 +197,7 @@ class _ProductItemState extends State<ProductItem> {
                                 ),
                                 onPressed: () {
                                   context.read<CartCubit>().addProductToCart(
-                                    widget.product.id,
+                                    product.id,
                                   );
                                 },
                               );
