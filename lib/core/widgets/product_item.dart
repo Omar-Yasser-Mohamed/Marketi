@@ -79,8 +79,12 @@ class ProductItem extends StatelessWidget {
                       child: BlocBuilder<FavCubit, FavState>(
                         builder: (context, state) {
                           final isFav = favCubit.isFav(product.id);
+                          final isLoading =
+                              state is FavActionLoading &&
+                              state.productId == product.id;
                           return FavButton(
                             isFav: isFav,
+                            isLoading: isLoading,
                             onTap: () {
                               if (isFav) {
                                 favCubit.removeFavProduct(product.id);

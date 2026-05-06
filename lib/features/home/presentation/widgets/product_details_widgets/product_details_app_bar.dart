@@ -36,8 +36,11 @@ class ProductDetailsAppBar extends StatelessWidget {
           BlocBuilder<FavCubit, FavState>(
             builder: (context, state) {
               final isFav = favCubit.isFav(productId);
+              final isLoading =
+                  state is FavActionLoading && state.productId == productId;
               return FavButton(
                 isFav: isFav,
+                isLoading: isLoading,
                 padding: 8,
                 onTap: () {
                   if (isFav) {

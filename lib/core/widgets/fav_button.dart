@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
+import 'package:marketi/core/widgets/fav_loading.dart';
 
 class FavButton extends StatelessWidget {
-  const FavButton({super.key, required this.isFav, this.onTap, this.padding});
+  const FavButton({
+    super.key,
+    required this.isFav,
+    this.onTap,
+    this.padding,
+    this.isLoading = false,
+  });
   final bool isFav;
   final void Function()? onTap;
   final double? padding;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: isLoading ? null : onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         padding: EdgeInsets.only(
@@ -26,11 +34,15 @@ class FavButton extends StatelessWidget {
         ),
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          child: Icon(
-            key: ValueKey(isFav),
-            isFav ? Icons.favorite : Icons.favorite_outline,
-            color: isFav ? Colors.red : context.textColor,
-          ),
+          child: isLoading
+              ? const FavoritesLoading(
+                  key: ValueKey('loading'),
+                )
+              : Icon(
+                  key: ValueKey(isFav),
+                  isFav ? Icons.favorite : Icons.favorite_outline,
+                  color: isFav ? Colors.red : context.textColor,
+                ),
         ),
       ),
     );

@@ -8,6 +8,7 @@ import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
+import 'package:marketi/core/widgets/fav_loading.dart';
 import 'package:marketi/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
 import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
@@ -73,21 +74,38 @@ class CartItemCard extends StatelessWidget {
                       BlocBuilder<FavCubit, FavState>(
                         builder: (context, state) {
                           final isFav = favCubit.isFav(product.product.id);
+                          final isLoading =
+                              state is FavActionLoading &&
+                              state.productId == product.product.id;
                           return GestureDetector(
-                            onTap: () {
-                              if (isFav) {
-                                favCubit.removeFavProduct(product.product.id);
-                              } else {
-                                favCubit.addFavProduct(product.product.id);
-                              }
-                            },
+                            onTap: isLoading
+                                ? null
+                                : () {
+                                    if (isFav) {
+                                      favCubit.removeFavProduct(
+                                        product.product.id,
+                                      );
+                                    } else {
+                                      favCubit.addFavProduct(
+                                        product.product.id,
+                                      );
+                                    }
+                                  },
                             child: AnimatedSwitcher(
                               duration: const Duration(milliseconds: 300),
-                              child: Icon(
-                                key: ValueKey(isFav),
-                                isFav ? Icons.favorite : Icons.favorite_outline,
-                                color: isFav ? Colors.red : context.textColor,
-                              ),
+                              child: isLoading
+                                  ? const FavoritesLoading(
+                                      key: ValueKey("loading"),
+                                    )
+                                  : Icon(
+                                      key: ValueKey(isFav),
+                                      isFav
+                                          ? Icons.favorite
+                                          : Icons.favorite_outline,
+                                      color: isFav
+                                          ? Colors.red
+                                          : context.textColor,
+                                    ),
                             ),
                           );
                         },
