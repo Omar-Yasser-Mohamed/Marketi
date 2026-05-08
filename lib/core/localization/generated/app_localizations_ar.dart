@@ -438,4 +438,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get placeOrder => 'تأكيد الطلب';
+
+  @override
+  String get notes => 'ملاحظات';
+
+  @override
+  String get notesHint => 'أضف ملاحظات...';
 }

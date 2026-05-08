@@ -16,6 +16,9 @@ class CustomTextFormField extends StatelessWidget {
     this.readOnly = false,
     this.initialValue,
     this.border,
+    this.maxLines = 1,
+    this.prefix,
+    this.suffix,
   });
 
   final String? hintText;
@@ -29,6 +32,9 @@ class CustomTextFormField extends StatelessWidget {
   final bool readOnly;
   final String? initialValue;
   final InputBorder? border;
+  final int? maxLines;
+  final Widget? prefix;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
       initialValue: initialValue,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       style: AppTextStyles.normalTextStyle,
+      maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
@@ -52,6 +59,8 @@ class CustomTextFormField extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
+        prefix: prefix,
+        suffix: suffix,
         border: border,
         enabledBorder: border,
         focusedBorder: border,

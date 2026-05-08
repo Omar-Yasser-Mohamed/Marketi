@@ -6,4 +6,6 @@ abstract class AppIcons {
   static const String plus = 'assets/icons/plus.svg';
   static const String minus = 'assets/icons/minus.svg';
   static const String trush = 'assets/icons/trush.svg';
+  static const String deliveryIcon = 'assets/icons/Delivery_Icon.svg';
+  static const String cashIcon = 'assets/icons/cash_icon.svg';
 }

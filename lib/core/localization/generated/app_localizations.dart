@@ -919,6 +919,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Place Order'**
   String get placeOrder;
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
+
+  /// No description provided for @notesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add notes...'**
+  String get notesHint;
 }
 
 class _AppLocalizationsDelegate

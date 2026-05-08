@@ -12,7 +12,7 @@ class ViewLocationOnMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterMap(
-options: MapOptions(
+      options: MapOptions(
         initialCenter: LatLng(lat, lng),
         initialZoom: 12,
       ),
@@ -27,7 +27,7 @@ options: MapOptions(
             Marker(
               point: LatLng(lat, lng),
               child: const Icon(
-                Icons.location_on,
+                Icons.location_pin,
                 color: AppColors.primary,
                 size: 44,
               ),

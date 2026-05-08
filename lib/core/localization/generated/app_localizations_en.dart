@@ -443,4 +443,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get placeOrder => 'Place Order';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
+  String get notesHint => 'Add notes...';
 }

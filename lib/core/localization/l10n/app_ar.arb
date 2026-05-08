@@ -136,5 +136,7 @@
   "subtotalWithItems": "المجموع ({itemsCount} منتجات)",
   "total": "المجموع",
   "deliveryFees": "رسوم التوصيل",
-  "placeOrder": "تأكيد الطلب"
+  "placeOrder": "تأكيد الطلب",
+  "notes": "ملاحظات",
+  "notesHint": "أضف ملاحظات..."
 }
