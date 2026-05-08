@@ -380,4 +380,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get itemsInYourWishList => 'items in your wishlist';
+
+  @override
+  String get selectLocation => 'Select Location';
+
+  @override
+  String get selectLocationDescription =>
+      'Choose your delivery location to see available products and pricing.';
+
+  @override
+  String get currentLocation => 'Current Location';
+
+  @override
+  String get selectedLocation => 'Selected Location';
+
+  @override
+  String get confirmLocation => 'Confirm Location';
+
+  @override
+  String get useCurrentLocation => 'Use Current Location';
+
+  @override
+  String get pickLocationOnMap => 'Pick Location on Map';
+
+  @override
+  String get noLocationSelected => 'No location selected';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get mobile => 'Mobile';
+
+  @override
+  String get deliveryTime => 'Delivery Time';
+
+  @override
+  String get withinTwoDays => 'Within 2 days';
+
+  @override
+  String get cashOnDelivery => 'Cash on Delivery';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String subtotalWithItems(Object itemsCount) {
+    return 'Subtotal ($itemsCount items)';
+  }
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get deliveryFees => 'Delivery Fees';
+
+  @override
+  String get placeOrder => 'Place Order';
 }

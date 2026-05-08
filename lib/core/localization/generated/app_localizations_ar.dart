@@ -375,4 +375,67 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get itemsInYourWishList => 'منتجات في قائمة المفضلة';
+
+  @override
+  String get selectLocation => 'اختر الموقع';
+
+  @override
+  String get selectLocationDescription =>
+      'اختر موقع التوصيل الخاص بك لرؤية المنتجات المتاحة والأسعار.';
+
+  @override
+  String get currentLocation => 'الموقع الحالي';
+
+  @override
+  String get selectedLocation => 'الموقع المحدد';
+
+  @override
+  String get confirmLocation => 'تأكيد الموقع';
+
+  @override
+  String get useCurrentLocation => 'استخدام الموقع الحالي';
+
+  @override
+  String get pickLocationOnMap => 'اختر الموقع على الخريطة';
+
+  @override
+  String get noLocationSelected => 'لم يتم اختيار موقع';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get change => 'تغيير';
+
+  @override
+  String get mobile => 'موبايل';
+
+  @override
+  String get deliveryTime => 'وقت التوصيل';
+
+  @override
+  String get withinTwoDays => 'خلال يومين';
+
+  @override
+  String get cashOnDelivery => 'الدفع عند الاستلام';
+
+  @override
+  String get details => 'التفاصيل';
+
+  @override
+  String get orderSummary => 'ملخص الطلب';
+
+  @override
+  String subtotalWithItems(Object itemsCount) {
+    return 'المجموع ($itemsCount منتجات)';
+  }
+
+  @override
+  String get total => 'المجموع';
+
+  @override
+  String get deliveryFees => 'رسوم التوصيل';
+
+  @override
+  String get placeOrder => 'تأكيد الطلب';
 }

@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
-import 'package:marketi/features/cart/presentation/widgets/cart_widgets/cart_items_bloc_builder.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+class CheckoutScreen extends StatelessWidget {
+  const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          context.l10n.cart,
+          context.l10n.checkout,
           style: AppTextStyles.enSb20,
         ),
         backgroundColor: context.backgroundColor,
@@ -21,7 +20,6 @@ class CartScreen extends StatelessWidget {
         surfaceTintColor: Colors.transparent,
         shadowColor: AppColors.primary.withValues(alpha: 0.04),
       ),
-      body: const CartItemsBlocBuilder(),
     );
   }
 }

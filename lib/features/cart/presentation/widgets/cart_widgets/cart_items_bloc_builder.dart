@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
 import 'package:marketi/core/widgets/custom_failure_widget.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
-import 'package:marketi/features/cart/presentation/widgets/cart_screen_body.dart';
-import 'package:marketi/features/cart/presentation/widgets/empty_cart_screen.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_widgets/cart_screen_body.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_widgets/empty_cart_screen.dart';
 
 class CartItemsBlocBuilder extends StatelessWidget {
   const CartItemsBlocBuilder({super.key});

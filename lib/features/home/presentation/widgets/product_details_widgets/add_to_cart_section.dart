@@ -6,7 +6,7 @@ import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/add_to_cart_button.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
-import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_widgets/product_quantity_buttons.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
 
 class AddToCartSection extends StatelessWidget {

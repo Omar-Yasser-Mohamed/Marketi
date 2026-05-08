@@ -126,5 +126,30 @@
   "checkout": "Checkout",
   "favoritesEmptyTitle": "No favorites yet",
   "favoritesEmptyDescription": "Save items you like by tapping the heart icon so you can find them quickly later.",
-  "itemsInYourWishList": "items in your wishlist"
+  "itemsInYourWishList": "items in your wishlist",
+  "selectLocation": "Select Location",
+  "selectLocationDescription": "Choose your delivery location to see available products and pricing.",
+  "currentLocation": "Current Location",
+  "selectedLocation": "Selected Location",
+  "confirmLocation": "Confirm Location",
+  "useCurrentLocation": "Use Current Location",
+  "pickLocationOnMap": "Pick Location on Map",
+  "noLocationSelected": "No location selected",
+  "search": "Search",
+  "change": "Change",
+  "mobile": "Mobile",
+  "deliveryTime": "Delivery Time",
+  "withinTwoDays": "Within 2 days",
+  "cashOnDelivery": "Cash on Delivery",
+  "details": "Details",
+  "orderSummary": "Order Summary",
+  "subtotalWithItems": "Subtotal ({itemsCount} items)",
+  "@subtotalWithItems": {
+    "placeholders": {
+      "itemsCount": {}
+    }
+  },
+  "total": "Total",
+  "deliveryFees": "Delivery Fees",
+  "placeOrder": "Place Order"
 }

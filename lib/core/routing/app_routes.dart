@@ -18,4 +18,6 @@ abstract class AppRoutes {
   static const String brandsScreen = '/brands_screen';
   static const String editProfileScreen = '/edit_profile_screen';
   static const String localeScreen = '/locale_screen';
+  static const String checkoutScreen = '/checkout_screen';
+  static const String pickLocationScreen = '/pick_location_screen';
 }

@@ -35,6 +35,9 @@ dependencies:
   smooth_page_indicator: ^2.0.1
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1
+  flutter_map: ^8.3.0
+  geolocator: ^14.0.2
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:

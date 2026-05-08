@@ -13,7 +13,7 @@ import 'package:marketi/core/widgets/discount_banner.dart';
 import 'package:marketi/core/widgets/fav_button.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
-import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_widgets/product_quantity_buttons.dart';
 import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
 

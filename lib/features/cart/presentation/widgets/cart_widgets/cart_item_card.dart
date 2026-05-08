@@ -10,7 +10,7 @@ import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/core/widgets/fav_loading.dart';
 import 'package:marketi/features/cart/domain/entities/cart_item_entity.dart';
-import 'package:marketi/features/cart/presentation/widgets/product_quantity_buttons.dart';
+import 'package:marketi/features/cart/presentation/widgets/cart_widgets/product_quantity_buttons.dart';
 import 'package:marketi/features/favorites/presentation/cubits/fav_cubit/fav_cubit.dart';
 
 class CartItemCard extends StatelessWidget {

@@ -799,6 +799,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'items in your wishlist'**
   String get itemsInYourWishList;
+
+  /// No description provided for @selectLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Location'**
+  String get selectLocation;
+
+  /// No description provided for @selectLocationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your delivery location to see available products and pricing.'**
+  String get selectLocationDescription;
+
+  /// No description provided for @currentLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Location'**
+  String get currentLocation;
+
+  /// No description provided for @selectedLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Location'**
+  String get selectedLocation;
+
+  /// No description provided for @confirmLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Location'**
+  String get confirmLocation;
+
+  /// No description provided for @useCurrentLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Current Location'**
+  String get useCurrentLocation;
+
+  /// No description provided for @pickLocationOnMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick Location on Map'**
+  String get pickLocationOnMap;
+
+  /// No description provided for @noLocationSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No location selected'**
+  String get noLocationSelected;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
+
+  /// No description provided for @mobile.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get mobile;
+
+  /// No description provided for @deliveryTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Time'**
+  String get deliveryTime;
+
+  /// No description provided for @withinTwoDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Within 2 days'**
+  String get withinTwoDays;
+
+  /// No description provided for @cashOnDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash on Delivery'**
+  String get cashOnDelivery;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @orderSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Summary'**
+  String get orderSummary;
+
+  /// No description provided for @subtotalWithItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal ({itemsCount} items)'**
+  String subtotalWithItems(Object itemsCount);
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @deliveryFees.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Fees'**
+  String get deliveryFees;
+
+  /// No description provided for @placeOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get placeOrder;
 }
 
 class _AppLocalizationsDelegate

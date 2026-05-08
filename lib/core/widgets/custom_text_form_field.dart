@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.readOnly = false,
     this.initialValue,
+    this.border,
   });
 
   final String? hintText;
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final bool readOnly;
   final String? initialValue;
+  final InputBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,9 @@ class CustomTextFormField extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
+        border: border,
+        enabledBorder: border,
+        focusedBorder: border,
       ),
     );
   }
