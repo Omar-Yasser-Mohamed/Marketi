@@ -130,6 +130,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
   );
 
+  static final enSb12 = TextStyle(
+    fontSize: 12.fs,
+    fontWeight: FontWeight.w600,
+  );
+
   static final enSb14 = TextStyle(
     fontSize: 14.fs,
     fontWeight: FontWeight.w600,
