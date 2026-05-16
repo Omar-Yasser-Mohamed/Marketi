@@ -28,4 +28,5 @@ abstract class AuthRepo {
     required ResetPasswordRequest resetPasswordRequest,
   });
   Future<Either<Failure, VerifyTokenModel>> verifyToken();
+  Future<void> logout();
 }

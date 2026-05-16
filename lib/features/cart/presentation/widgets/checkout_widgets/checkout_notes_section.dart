@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
+import 'package:marketi/features/cart/presentation/cubits/checkout_cubit/checkout_cubit.dart';
 
 class CheckoutNotesSection extends StatelessWidget {
   const CheckoutNotesSection({super.key});
@@ -38,6 +40,9 @@ class CheckoutNotesSection extends StatelessWidget {
               color: AppColors.lightBlue700.withValues(alpha: .7),
             ),
           ),
+          onChanged: (value) {
+            context.read<CheckoutCubit>().setDetails(value);
+          },
         ),
       ],
     );

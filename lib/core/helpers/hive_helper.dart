@@ -25,20 +25,24 @@ class HiveHelper {
     return Hive.box<T>(name);
   }
 
-  static Future<void> closeBox({required String name}) async {
+  static Future<void> closeBox<T>({required String name}) async {
     if (Hive.isBoxOpen(name)) {
-      await Hive.box(name).close();
+      await Hive.box<T>(name).close();
     }
   }
 
-  static Future<void> clearBox({required String name}) async {
+  static Future<void> clearBox<T>({required String name}) async {
     if (Hive.isBoxOpen(name)) {
-      await Hive.box(name).clear();
+      await Hive.box<T>(name).clear();
     }
   }
 
   static Future<void> deleteBox({required String name}) async {
     await Hive.deleteBoxFromDisk(name);
+  }
+
+  static Future<void> clearAllUserData() async {
+    await clearBox<UserEntity>(name: HiveConstants.userBox);
   }
 
   static List<T> getAll<T>({required String name}) {

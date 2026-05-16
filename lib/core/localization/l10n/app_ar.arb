@@ -100,6 +100,8 @@
   "lightMode": "الوضع الفاتح",
   "settings": "الإعدادات",
   "logout": "تسجيل الخروج",
+  "logoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "cancel": "إلغاء",
   "editProfile": "تعديل الملف الشخصي",
   "saveChanges": "حفظ التغييرات",
   "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
@@ -138,5 +140,17 @@
   "deliveryFees": "رسوم التوصيل",
   "placeOrder": "تأكيد الطلب",
   "notes": "ملاحظات",
-  "notesHint": "أضف ملاحظات..."
+  "notesHint": "أضف ملاحظات...",
+  "unknownLocation": "الموقع غير معروف",
+  "mobileNumber": "رقم الموبايل",
+  "loading": "جاري التحميل...",
+  "gettingLocation": "جاري الحصول على موقعك...",
+  "selectPaymentMethod": "اختر طريقة الدفع",
+  "paymentMethod": "طريقة الدفع",
+  "cashOnDeliveryDescription": "ادفع نقدًا عند استلام طلبك.",
+  "onlinePayment": "الدفع أونلاين",
+  "onlinePaymentDescription": "عبر كارت ائتمان Stripe",
+  "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح",
+  "orderSuccessDescription": "لقد تم تقديم طلبك بنجاح. يمكنك متابعة طلبك من قسم الطلبات.",
+  "continueShopping": "مواصلة التسوق"
 }

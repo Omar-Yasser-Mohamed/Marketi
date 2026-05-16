@@ -17,3 +17,5 @@ final class ProfileFailure extends ProfileState {
 
   ProfileFailure(this.failure);
 }
+
+final class ProfileLogoutSuccess extends ProfileState {}

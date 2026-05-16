@@ -4,12 +4,16 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:marketi/core/constansts/map_constants.dart';
 import 'package:marketi/core/styles/app_colors.dart';
+import 'package:marketi/features/cart/domain/entities/map_location_entity.dart';
 import 'package:marketi/features/cart/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
 
 class MapBlocBuilder extends StatefulWidget {
   const MapBlocBuilder({
     super.key,
+    this.location,
   });
+
+  final MapLocationEntity? location;
 
   @override
   State<MapBlocBuilder> createState() => _MapBlocBuilderState();
@@ -17,6 +21,19 @@ class MapBlocBuilder extends StatefulWidget {
 
 class _MapBlocBuilderState extends State<MapBlocBuilder> {
   final MapController _mapController = MapController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.location != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _mapController.move(
+          LatLng(widget.location!.lat, widget.location!.lng),
+          15,
+        );
+      });
+    }
+  }
 
   @override
   void dispose() {
@@ -59,17 +76,24 @@ class _MapBlocBuilderState extends State<MapBlocBuilder> {
             MarkerLayer(
               markers: [
                 if (state is PickLocationSuccess ||
-                    state is PickLocationSuccessLoading)
+                    state is PickLocationSuccessLoading ||
+                    widget.location != null)
                   Marker(
                     alignment: Alignment.topCenter,
                     point: LatLng(
-                      (state as dynamic).location.lat,
-                      (state as dynamic).location.lng,
+                      (state is PickLocationSuccess ||
+                              state is PickLocationSuccessLoading)
+                          ? (state as dynamic).location.lat
+                          : widget.location!.lat,
+                      (state is PickLocationSuccess ||
+                              state is PickLocationSuccessLoading)
+                          ? (state as dynamic).location.lng
+                          : widget.location!.lng,
                     ),
                     child: const Icon(
                       Icons.location_pin,
                       color: AppColors.primary,
-                      size: 38,
+                      size: 44,
                     ),
                   ),
               ],

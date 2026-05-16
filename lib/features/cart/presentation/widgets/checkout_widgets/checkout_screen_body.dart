@@ -5,6 +5,7 @@ import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/chec
 import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/checkout_delivery_time_section.dart';
 import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/checkout_notes_section.dart';
 import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/confirm_order_section.dart';
+import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/mobile_number_section.dart';
 import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/order_summary_section.dart';
 import 'package:marketi/features/cart/presentation/widgets/checkout_widgets/payment_section.dart';
 
@@ -24,6 +25,11 @@ class CheckoutScreenBody extends StatelessWidget {
         children: [
           // Address Section
           const CheckoutAddressSection(),
+
+          12.verticalSizedBox,
+
+          // Mobile Number Section
+          const MobileNumberSection(),
 
           12.verticalSizedBox,
 

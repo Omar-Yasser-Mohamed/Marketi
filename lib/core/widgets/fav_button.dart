@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/styles/app_colors.dart';
-import 'package:marketi/core/widgets/fav_loading.dart';
+import 'package:marketi/core/widgets/favorites_loading.dart';
 
 class FavButton extends StatelessWidget {
   const FavButton({

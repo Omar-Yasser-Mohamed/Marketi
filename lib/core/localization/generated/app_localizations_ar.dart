@@ -324,6 +324,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logout => 'تسجيل الخروج';
 
   @override
+  String get logoutConfirmation => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
   String get editProfile => 'تعديل الملف الشخصي';
 
   @override
@@ -444,4 +450,41 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notesHint => 'أضف ملاحظات...';
+
+  @override
+  String get unknownLocation => 'الموقع غير معروف';
+
+  @override
+  String get mobileNumber => 'رقم الموبايل';
+
+  @override
+  String get loading => 'جاري التحميل...';
+
+  @override
+  String get gettingLocation => 'جاري الحصول على موقعك...';
+
+  @override
+  String get selectPaymentMethod => 'اختر طريقة الدفع';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get cashOnDeliveryDescription => 'ادفع نقدًا عند استلام طلبك.';
+
+  @override
+  String get onlinePayment => 'الدفع أونلاين';
+
+  @override
+  String get onlinePaymentDescription => 'عبر كارت ائتمان Stripe';
+
+  @override
+  String get orderPlacedSuccessfully => 'تم تقديم الطلب بنجاح';
+
+  @override
+  String get orderSuccessDescription =>
+      'لقد تم تقديم طلبك بنجاح. يمكنك متابعة طلبك من قسم الطلبات.';
+
+  @override
+  String get continueShopping => 'مواصلة التسوق';
 }

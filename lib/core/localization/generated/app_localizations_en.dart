@@ -329,6 +329,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Log out';
 
   @override
+  String get logoutConfirmation => 'Are you sure you want to log out?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
   String get editProfile => 'Edit Profile';
 
   @override
@@ -449,4 +455,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notesHint => 'Add notes...';
+
+  @override
+  String get unknownLocation => 'Unknown Location';
+
+  @override
+  String get mobileNumber => 'Mobile Number';
+
+  @override
+  String get loading => 'Loading...';
+
+  @override
+  String get gettingLocation => 'Getting your location...';
+
+  @override
+  String get selectPaymentMethod => 'Select Payment Method';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get cashOnDeliveryDescription => 'Pay cash on delivery.';
+
+  @override
+  String get onlinePayment => 'Online Payment';
+
+  @override
+  String get onlinePaymentDescription => 'via credit card Stripe';
+
+  @override
+  String get orderPlacedSuccessfully => 'Order Placed Successfully';
+
+  @override
+  String get orderSuccessDescription =>
+      'Your order has been placed successfully. You can track your order from the orders section.';
+
+  @override
+  String get continueShopping => 'Continue Shopping';
 }

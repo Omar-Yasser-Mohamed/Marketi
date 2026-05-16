@@ -110,6 +110,8 @@
   "lightMode": "Light Mode",
   "settings": "Settings",
   "logout": "Log out",
+  "logoutConfirmation": "Are you sure you want to log out?",
+  "cancel": "Cancel",
   "editProfile": "Edit Profile",
   "saveChanges": "Save Changes",
   "profileUpdatedSuccessfully": "Profile updated successfully",
@@ -153,5 +155,17 @@
   "deliveryFees": "Delivery Fees",
   "placeOrder": "Place Order",
   "notes": "Notes",
-  "notesHint": "Add notes..."
+  "notesHint": "Add notes...",
+  "unknownLocation": "Unknown Location",
+  "mobileNumber": "Mobile Number",
+  "loading": "Loading...",
+  "gettingLocation": "Getting your location...",
+  "selectPaymentMethod": "Select Payment Method",
+  "paymentMethod": "Payment Method",
+  "cashOnDeliveryDescription": "Pay cash on delivery.",
+  "onlinePayment": "Online Payment",
+  "onlinePaymentDescription": "via credit card Stripe",
+  "orderPlacedSuccessfully": "Order Placed Successfully",
+  "orderSuccessDescription": "Your order has been placed successfully. You can track your order from the orders section.",
+  "continueShopping": "Continue Shopping"
 }

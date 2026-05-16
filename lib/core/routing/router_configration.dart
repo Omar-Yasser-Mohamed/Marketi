@@ -14,9 +14,13 @@ import 'package:marketi/features/auth/presentation/screens/login_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/screens/verification_screen.dart';
+import 'package:marketi/features/cart/domain/entities/cart_entity.dart';
+import 'package:marketi/features/cart/domain/entities/map_location_entity.dart';
+import 'package:marketi/features/cart/presentation/cubits/checkout_cubit/checkout_cubit.dart';
 import 'package:marketi/features/cart/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
 import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/checkout_screen.dart';
+import 'package:marketi/features/cart/presentation/screens/checkout_success_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/pick_location_screen.dart';
 import 'package:marketi/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
@@ -188,14 +192,35 @@ abstract class RouterConfigration {
       ),
       GoRoute(
         path: AppRoutes.checkoutScreen,
-        builder: (context, state) => const CheckoutScreen(),
+        builder: (context, state) {
+          final CartEntity cart = state.extra as CartEntity;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<PickLocationCubit>()..getCurrentLocation(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CheckoutCubit>(),
+              ),
+            ],
+            child: const CheckoutScreen(),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.pickLocationScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<PickLocationCubit>(),
-          child: const PickLocationScreen(),
-        ),
+        builder: (context, state) {
+          final MapLocationEntity? location = state.extra as MapLocationEntity?;
+          return BlocProvider(
+            create: (context) => getIt<PickLocationCubit>()..init(location),
+            child: PickLocationScreen(location: location),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.checkoutSuccessScreen,
+        builder: (context, state) => const CheckoutSuccessScreen(),
       ),
     ],
   );

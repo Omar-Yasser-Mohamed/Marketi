@@ -35,14 +35,36 @@ import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/otp_t
     as _i449;
 import 'package:marketi/features/auth/presentation/cubits/verify_otp_cubit/verify_otp_cubit.dart'
     as _i358;
+import 'package:marketi/features/cart/data/data_sources/local/gps_local_data_source.dart'
+    as _i605;
 import 'package:marketi/features/cart/data/data_sources/remote/cart_remote_data_source.dart'
     as _i862;
 import 'package:marketi/features/cart/data/data_sources/remote/cart_remote_data_source_impl.dart'
     as _i196;
+import 'package:marketi/features/cart/data/data_sources/remote/checkout_remote_data_source.dart'
+    as _i778;
+import 'package:marketi/features/cart/data/data_sources/remote/checkout_remote_data_source_impl.dart'
+    as _i487;
+import 'package:marketi/features/cart/data/data_sources/remote/location_remote_data_source.dart'
+    as _i59;
 import 'package:marketi/features/cart/data/repos/cart_repo_impl.dart' as _i1039;
+import 'package:marketi/features/cart/data/repos/checkout_repo_impl.dart'
+    as _i568;
+import 'package:marketi/features/cart/data/repos/location_repo_impl.dart'
+    as _i489;
 import 'package:marketi/features/cart/domain/repos/cart_repo.dart' as _i307;
+import 'package:marketi/features/cart/domain/repos/checkout_repo.dart' as _i608;
+import 'package:marketi/features/cart/domain/repos/location_repo.dart' as _i718;
+import 'package:marketi/features/cart/domain/use_cases/get_current_location_use_case.dart'
+    as _i414;
+import 'package:marketi/features/cart/domain/use_cases/get_location_name_use_case.dart'
+    as _i97;
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart'
     as _i723;
+import 'package:marketi/features/cart/presentation/cubits/checkout_cubit/checkout_cubit.dart'
+    as _i362;
+import 'package:marketi/features/cart/presentation/cubits/pick_location_cubit/pick_location_cubit.dart'
+    as _i775;
 import 'package:marketi/features/favorites/data/data_sources/remote/fav_remote_data_source.dart'
     as _i689;
 import 'package:marketi/features/favorites/data/data_sources/remote/fav_remote_data_source_impl.dart'
@@ -132,6 +154,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i24.BrandsGridBlocBuilder>(
         () => _i24.BrandsGridBlocBuilder(key: gh<_i409.Key>()));
     gh.lazySingleton<_i1028.TokenService>(() => _i364.TokenServiceImpl());
+    gh.lazySingleton<_i605.GpsLocalDataSource>(
+        () => _i605.GpsLocalDataSourceImpl());
     gh.lazySingleton<_i951.AuthorizationInterceptor>(
         () => _i951.AuthorizationInterceptor(gh<_i1028.TokenService>()));
     gh.lazySingleton<_i352.ApiService>(() => _i352.ApiService(
@@ -145,11 +169,18 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.lazySingleton<_i307.CartRepo>(
         () => _i1039.CartRepoImpl(gh<_i862.CartRemoteDataSource>()));
+    gh.lazySingleton<_i778.CheckoutRemoteDataSource>(
+        () => _i487.CheckoutRemoteDataSourceImpl(
+              apiService: gh<_i352.ApiService>(),
+              tokenService: gh<_i1028.TokenService>(),
+            ));
     gh.lazySingleton<_i689.FavRemoteDataSource>(
         () => _i713.FavRemoteDataSourceImpl(
               gh<_i352.ApiService>(),
               gh<_i1028.TokenService>(),
             ));
+    gh.lazySingleton<_i608.CheckoutRepo>(() => _i568.CheckoutRepoImpl(
+        checkoutRemoteDataSource: gh<_i778.CheckoutRemoteDataSource>()));
     gh.factory<_i723.CartCubit>(() => _i723.CartCubit(gh<_i307.CartRepo>()));
     gh.lazySingleton<_i822.BrandsRemoteDataSource>(
         () => _i822.BrandsRemoteDataSourceImpl(gh<_i352.ApiService>()));
@@ -157,6 +188,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i517.ProductsRemoteDataSourceImpl(gh<_i352.ApiService>()));
     gh.lazySingleton<_i605.BrandsRepo>(
         () => _i624.BrandsRepoImpl(gh<_i822.BrandsRemoteDataSource>()));
+    gh.lazySingleton<_i59.LocationRemoteDataSource>(
+        () => _i59.LocationRemoteDataSourceImpl(gh<_i352.ApiService>()));
     gh.lazySingleton<_i643.CategoryRemoteDataSource>(
         () => _i643.CategoryRemoteDataSourceImpl(gh<_i352.ApiService>()));
     gh.lazySingleton<_i244.AuthRemoteDataSource>(
@@ -171,6 +204,8 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.lazySingleton<_i370.FavRepo>(
         () => _i276.FavRepoImpl(gh<_i689.FavRemoteDataSource>()));
+    gh.factory<_i362.CheckoutCubit>(
+        () => _i362.CheckoutCubit(gh<_i608.CheckoutRepo>()));
     gh.lazySingleton<_i423.ProductsRepo>(
         () => _i184.ProductsRepoImpl(gh<_i517.ProductsRemoteDataSource>()));
     gh.lazySingleton<_i229.CategoriesRepo>(
@@ -187,16 +222,17 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1030.ProfileLocalDataSource>(),
           gh<_i258.ProfileRemoteDataSource>(),
         ));
+    gh.lazySingleton<_i718.LocationRepo>(() => _i489.LocationRepoImpl(
+          gh<_i59.LocationRemoteDataSource>(),
+          gh<_i605.GpsLocalDataSource>(),
+        ));
+    gh.factory<_i366.FavCubit>(() => _i366.FavCubit(gh<_i370.FavRepo>()));
     gh.lazySingleton<_i377.AuthRepo>(() => _i62.AuthRepoImpl(
           gh<_i244.AuthRemoteDataSource>(),
           gh<_i1028.TokenService>(),
+          gh<_i1030.ProfileLocalDataSource>(),
+          gh<_i258.ProfileRemoteDataSource>(),
         ));
-    gh.factory<_i938.SplashCubit>(() => _i938.SplashCubit(
-          gh<_i377.AuthRepo>(),
-          gh<_i1028.TokenService>(),
-          gh<_i9.ProfileRepo>(),
-        ));
-    gh.factory<_i366.FavCubit>(() => _i366.FavCubit(gh<_i370.FavRepo>()));
     gh.factory<_i923.BrandsCubit>(
         () => _i923.BrandsCubit(gh<_i281.BrandsUseCase>()));
     gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
@@ -220,10 +256,25 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i597.SignupCubit(gh<_i377.AuthRepo>()));
     gh.lazySingleton<_i571.UpdateProfileUseCase>(
         () => _i571.UpdateProfileUseCase(gh<_i9.ProfileRepo>()));
-    gh.factory<_i66.ProfileCubit>(
-        () => _i66.ProfileCubit(gh<_i9.ProfileRepo>()));
     gh.factory<_i358.VerifyOtpCubit>(
         () => _i358.VerifyOtpCubit(gh<_i377.AuthRepo>()));
+    gh.factory<_i66.ProfileCubit>(() => _i66.ProfileCubit(
+          gh<_i9.ProfileRepo>(),
+          gh<_i377.AuthRepo>(),
+        ));
+    gh.lazySingleton<_i414.GetCurrentLocationUseCase>(
+        () => _i414.GetCurrentLocationUseCase(gh<_i718.LocationRepo>()));
+    gh.lazySingleton<_i97.GetLocationNameUseCase>(
+        () => _i97.GetLocationNameUseCase(gh<_i718.LocationRepo>()));
+    gh.factory<_i938.SplashCubit>(() => _i938.SplashCubit(
+          gh<_i377.AuthRepo>(),
+          gh<_i1028.TokenService>(),
+          gh<_i9.ProfileRepo>(),
+        ));
+    gh.factory<_i775.PickLocationCubit>(() => _i775.PickLocationCubit(
+          gh<_i414.GetCurrentLocationUseCase>(),
+          gh<_i97.GetLocationNameUseCase>(),
+        ));
     gh.factory<_i899.UpdateProfileCubit>(
         () => _i899.UpdateProfileCubit(gh<_i571.UpdateProfileUseCase>()));
     return this;

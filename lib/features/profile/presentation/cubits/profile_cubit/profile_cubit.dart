@@ -2,14 +2,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/errors/failure.dart';
 import 'package:marketi/core/shared/entities/user_entity.dart';
+import 'package:marketi/features/auth/domain/repos/auth_repo.dart';
 import 'package:marketi/features/profile/domain/repos/profile_repo.dart';
 
 part 'profile_state.dart';
 
 @injectable
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit(this._profileRepo) : super(ProfileInitial());
+  ProfileCubit(this._profileRepo, this._authRepo) : super(ProfileInitial());
   final ProfileRepo _profileRepo;
+  final AuthRepo _authRepo;
 
   void safeEmit(ProfileState state) {
     if (!isClosed) emit(state);
@@ -42,5 +44,10 @@ class ProfileCubit extends Cubit<ProfileState> {
         safeEmit(ProfileSuccess(user));
       },
     );
+  }
+
+  Future<void> logout() async {
+    await _authRepo.logout();
+    safeEmit(ProfileLogoutSuccess());
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/constansts/app_icons.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
@@ -11,7 +12,7 @@ class ArrowBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pop(context),
+      onTap: () => context.pop(),
       child: Container(
         padding: EdgeInsets.only(
           top: 10.h,

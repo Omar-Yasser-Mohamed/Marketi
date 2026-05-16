@@ -58,7 +58,7 @@ class CartCheckOutSection extends StatelessWidget {
           AppButton(
             text: context.l10n.checkout,
             onPressed: () {
-              context.push(AppRoutes.checkoutScreen);
+              context.push(AppRoutes.checkoutScreen, extra: cart);
             },
           ),
         ],

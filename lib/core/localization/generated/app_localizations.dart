@@ -698,6 +698,18 @@ abstract class AppLocalizations {
   /// **'Log out'**
   String get logout;
 
+  /// No description provided for @logoutConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to log out?'**
+  String get logoutConfirmation;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
   /// No description provided for @editProfile.
   ///
   /// In en, this message translates to:
@@ -931,6 +943,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add notes...'**
   String get notesHint;
+
+  /// No description provided for @unknownLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Location'**
+  String get unknownLocation;
+
+  /// No description provided for @mobileNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Number'**
+  String get mobileNumber;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @gettingLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Getting your location...'**
+  String get gettingLocation;
+
+  /// No description provided for @selectPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Payment Method'**
+  String get selectPaymentMethod;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// No description provided for @cashOnDeliveryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay cash on delivery.'**
+  String get cashOnDeliveryDescription;
+
+  /// No description provided for @onlinePayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Online Payment'**
+  String get onlinePayment;
+
+  /// No description provided for @onlinePaymentDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'via credit card Stripe'**
+  String get onlinePaymentDescription;
+
+  /// No description provided for @orderPlacedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Placed Successfully'**
+  String get orderPlacedSuccessfully;
+
+  /// No description provided for @orderSuccessDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order has been placed successfully. You can track your order from the orders section.'**
+  String get orderSuccessDescription;
+
+  /// No description provided for @continueShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Shopping'**
+  String get continueShopping;
 }
 
 class _AppLocalizationsDelegate

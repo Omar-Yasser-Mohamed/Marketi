@@ -20,6 +20,10 @@ class PickLocationCubit extends Cubit<PickLocationState> {
     if (!isClosed) emit(state);
   }
 
+  void init(MapLocationEntity? location) {
+    if (location != null) safeEmit(PickLocationSuccess(location));
+  }
+
   Future<void> getCurrentLocation() async {
     safeEmit(PickLocationLoading());
     final result = await _getCurrentLocationUseCase();

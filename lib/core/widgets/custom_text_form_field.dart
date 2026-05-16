@@ -19,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
     this.maxLines = 1,
     this.prefix,
     this.suffix,
+    this.onChanged,
   });
 
   final String? hintText;
@@ -35,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxLines;
   final Widget? prefix;
   final Widget? suffix;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       readOnly: readOnly,
       initialValue: initialValue,
+      onChanged: onChanged,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       style: AppTextStyles.normalTextStyle,
       maxLines: maxLines,

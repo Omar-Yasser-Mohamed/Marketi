@@ -45,7 +45,16 @@
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>ar</string>
+		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs location access for delivery addresses.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>This app needs location access for delivery addresses.</string>
 	</dict>
 </plist>
