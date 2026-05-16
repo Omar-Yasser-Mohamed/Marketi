@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
+import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/widgets/custom_failure_widget.dart';
 import 'package:marketi/features/orders/presentation/cubits/orders_cubit/orders_cubit.dart';
 import 'package:marketi/features/orders/presentation/widgets/all_orders_widgets/empty_orders_widget.dart';
@@ -14,7 +15,11 @@ class OrdersBlocBuilderStates extends StatelessWidget {
     return BlocBuilder<OrdersCubit, OrdersState>(
       builder: (context, state) {
         if (state is OrdersLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
+          );
         } else if (state is OrdersFailure) {
           final error = FailureUiMapper.map(
             context: context,

@@ -70,7 +70,7 @@ class OrderCard extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: order.cartItems.length > 1 ? 100 : 60,
+                width: order.cartItems.length > 1 ? 110 : 60,
                 height: 60,
                 child: Stack(
                   children: List.generate(
