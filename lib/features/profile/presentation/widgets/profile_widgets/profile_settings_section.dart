@@ -33,6 +33,9 @@ class ProfileSettingsSection extends StatelessWidget {
           ProfileSectionTile(
             icon: Icons.shopping_bag_outlined,
             title: context.l10n.orders,
+            onTap: () {
+              context.push(AppRoutes.allOrdersScreen);
+            },
           ),
 
           const CustomDivider(),
@@ -45,13 +48,12 @@ class ProfileSettingsSection extends StatelessWidget {
             },
           ),
 
-          const CustomDivider(),
+          // const CustomDivider(),
 
-          ProfileSectionTile(
-            icon: Icons.favorite_border_rounded,
-            title: context.l10n.wishlist,
-          ),
-
+          // ProfileSectionTile(
+          //   icon: Icons.favorite_border_rounded,
+          //   title: context.l10n.wishlist,
+          // ),
           const CustomDivider(),
 
           ProfileSectionTile(

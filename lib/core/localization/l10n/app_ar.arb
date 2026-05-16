@@ -152,5 +152,13 @@
   "onlinePaymentDescription": "عبر كارت ائتمان Stripe",
   "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح",
   "orderSuccessDescription": "لقد تم تقديم طلبك بنجاح. يمكنك متابعة طلبك من قسم الطلبات.",
-  "continueShopping": "مواصلة التسوق"
+  "continueShopping": "مواصلة التسوق",
+  "myOrders": "طلباتي",
+  "viewDetails": "عرض التفاصيل",
+  "delivered": "تم التوصيل",
+  "pending": "قيد الانتظار",
+  "paid": "مدفوع",
+  "noOrdersTitle": "لا توجد طلبات بعد",
+  "noOrdersDescription": "لم تقم بإجراء أي طلبات حتى الآن. ابدأ بالاستكشاف واملأ حياتك بمنتجات ماركتي!"
 }
+

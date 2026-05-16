@@ -47,6 +47,8 @@ class AuthRepoImpl implements AuthRepo {
       await _tokenService.saveToken(data.token);
       log("Token ---  ${data.token}");
 
+      await verifyToken();
+
       // Fetch full user data
       final fullUser = await _profileRemoteDataSource.getUserData();
 
@@ -75,6 +77,8 @@ class AuthRepoImpl implements AuthRepo {
       // save token
       await _tokenService.saveToken(data.token);
       log("Token ---  ${data.token}");
+
+      await verifyToken();
 
       // Fetch full user data
       final fullUser = await _profileRemoteDataSource.getUserData();
@@ -140,7 +144,7 @@ class AuthRepoImpl implements AuthRepo {
       final data = await _authRemoteDataSource.verifyToken();
 
       // Save User ID
-      _tokenService.saveUserId(data.id);
+      await _tokenService.saveUserId(data.id);
 
       return right(data);
     } catch (e) {

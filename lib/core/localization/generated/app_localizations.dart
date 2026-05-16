@@ -1015,6 +1015,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue Shopping'**
   String get continueShopping;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get viewDetails;
+
+  /// No description provided for @delivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered'**
+  String get delivered;
+
+  /// No description provided for @pending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get pending;
+
+  /// No description provided for @paid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paid;
+
+  /// No description provided for @noOrdersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No orders yet'**
+  String get noOrdersTitle;
+
+  /// No description provided for @noOrdersDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t placed any orders yet. Start exploring and fill your life with Marketi products!'**
+  String get noOrdersDescription;
 }
 
 class _AppLocalizationsDelegate

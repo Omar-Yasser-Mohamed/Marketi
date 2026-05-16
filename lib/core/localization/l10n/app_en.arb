@@ -167,5 +167,13 @@
   "onlinePaymentDescription": "via credit card Stripe",
   "orderPlacedSuccessfully": "Order Placed Successfully",
   "orderSuccessDescription": "Your order has been placed successfully. You can track your order from the orders section.",
-  "continueShopping": "Continue Shopping"
+  "continueShopping": "Continue Shopping",
+  "myOrders": "My Orders",
+  "viewDetails": "View Details",
+  "delivered": "Delivered",
+  "pending": "Pending",
+  "paid": "Paid",
+  "noOrdersTitle": "No orders yet",
+  "noOrdersDescription": "You haven't placed any orders yet. Start exploring and fill your life with Marketi products!"
 }
+

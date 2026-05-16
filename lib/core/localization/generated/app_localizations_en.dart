@@ -492,4 +492,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueShopping => 'Continue Shopping';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get viewDetails => 'View Details';
+
+  @override
+  String get delivered => 'Delivered';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get paid => 'Paid';
+
+  @override
+  String get noOrdersTitle => 'No orders yet';
+
+  @override
+  String get noOrdersDescription =>
+      'You haven\'t placed any orders yet. Start exploring and fill your life with Marketi products!';
 }

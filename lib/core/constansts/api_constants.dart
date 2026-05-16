@@ -37,6 +37,6 @@ abstract class ApiConstants {
 
   // Orders
   static const String ordersEndPoint = '${apiVersion}orders';
+  static const String userOrdersEndPoint = '$ordersEndPoint/user';
   static const String checkoutEndPoint = '$ordersEndPoint/checkout-session';
-  
 }

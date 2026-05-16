@@ -18,7 +18,10 @@ class LocaleScreen extends StatelessWidget {
             context.pop();
           },
         ),
-        title: Text(context.l10n.language),
+        title: Text(
+          context.l10n.language,
+          style: AppTextStyles.enSb20,
+        ),
       ),
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),

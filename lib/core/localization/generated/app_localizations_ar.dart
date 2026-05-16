@@ -487,4 +487,26 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueShopping => 'مواصلة التسوق';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get delivered => 'تم التوصيل';
+
+  @override
+  String get pending => 'قيد الانتظار';
+
+  @override
+  String get paid => 'مدفوع';
+
+  @override
+  String get noOrdersTitle => 'لا توجد طلبات بعد';
+
+  @override
+  String get noOrdersDescription =>
+      'لم تقم بإجراء أي طلبات حتى الآن. ابدأ بالاستكشاف واملأ حياتك بمنتجات ماركتي!';
 }

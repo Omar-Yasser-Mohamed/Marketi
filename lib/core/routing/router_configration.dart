@@ -31,6 +31,8 @@ import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
 import 'package:marketi/features/home/presentation/screens/products_screen.dart';
+import 'package:marketi/features/orders/presentation/screens/all_orders_screen.dart';
+import 'package:marketi/features/orders/presentation/cubits/orders_cubit/orders_cubit.dart';
 import 'package:marketi/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:marketi/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:marketi/features/profile/presentation/screens/locale_screen.dart';
@@ -221,6 +223,13 @@ abstract class RouterConfigration {
       GoRoute(
         path: AppRoutes.checkoutSuccessScreen,
         builder: (context, state) => const CheckoutSuccessScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.allOrdersScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<OrdersCubit>()..getAllOrders(),
+          child: const AllOrdersScreen(),
+        ),
       ),
     ],
   );

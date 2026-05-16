@@ -106,6 +106,15 @@ import 'package:marketi/features/home/presentation/cubits/product_details_cubit/
     as _i607;
 import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart'
     as _i24;
+import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source.dart'
+    as _i649;
+import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source_impl.dart'
+    as _i578;
+import 'package:marketi/features/orders/data/repos/orders_repo_impl.dart'
+    as _i663;
+import 'package:marketi/features/orders/domain/repos/orders_repo.dart' as _i335;
+import 'package:marketi/features/orders/presentation/cubits/orders_cubit/orders_cubit.dart'
+    as _i357;
 import 'package:marketi/features/profile/data/data_source/local/profile_local_data_source.dart'
     as _i1030;
 import 'package:marketi/features/profile/data/data_source/local/profile_local_data_source_impl.dart'
@@ -202,6 +211,11 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i352.ApiService>(),
               gh<_i1028.TokenService>(),
             ));
+    gh.lazySingleton<_i649.OrdersRemoteDataSource>(
+        () => _i578.OrdersRemoteDataSourceImpl(
+              gh<_i352.ApiService>(),
+              gh<_i1028.TokenService>(),
+            ));
     gh.lazySingleton<_i370.FavRepo>(
         () => _i276.FavRepoImpl(gh<_i689.FavRemoteDataSource>()));
     gh.factory<_i362.CheckoutCubit>(
@@ -222,6 +236,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1030.ProfileLocalDataSource>(),
           gh<_i258.ProfileRemoteDataSource>(),
         ));
+    gh.lazySingleton<_i335.OrdersRepo>(
+        () => _i663.OrdersRepoImpl(gh<_i649.OrdersRemoteDataSource>()));
     gh.lazySingleton<_i718.LocationRepo>(() => _i489.LocationRepoImpl(
           gh<_i59.LocationRemoteDataSource>(),
           gh<_i605.GpsLocalDataSource>(),
@@ -254,6 +270,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i315.LoginCubit>(() => _i315.LoginCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i597.SignupCubit>(
         () => _i597.SignupCubit(gh<_i377.AuthRepo>()));
+    gh.factory<_i357.OrdersCubit>(
+        () => _i357.OrdersCubit(gh<_i335.OrdersRepo>()));
     gh.lazySingleton<_i571.UpdateProfileUseCase>(
         () => _i571.UpdateProfileUseCase(gh<_i9.ProfileRepo>()));
     gh.factory<_i358.VerifyOtpCubit>(
