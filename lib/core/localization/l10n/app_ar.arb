@@ -172,6 +172,8 @@
   "subtotal": "المجموع الفرعي",
   "shippingFee": "رسوم الشحن",
   "totalAmount": "المبلغ الإجمالي",
-  "downloadingInvoice": "جاري تحميل الفاتورة..."
+  "downloadingInvoice": "جاري تحميل الفاتورة...",
+  "noBrandsFound": "لا توجد علامات تجارية",
+  "noCategoriesFound": "لا توجد فئات"
 }
 

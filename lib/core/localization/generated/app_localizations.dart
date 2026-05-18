@@ -1135,6 +1135,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Downloading invoice...'**
   String get downloadingInvoice;
+
+  /// No description provided for @noBrandsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No brands found'**
+  String get noBrandsFound;
+
+  /// No description provided for @noCategoriesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No categories found'**
+  String get noCategoriesFound;
 }
 
 class _AppLocalizationsDelegate

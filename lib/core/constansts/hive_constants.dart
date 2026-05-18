@@ -10,4 +10,8 @@ abstract class HiveConstants {
   // Theme
   static const String themeBox = "theme_box";
   static const String themeKey = "theme";
+
+  // Products Cache
+  static const String productsCacheBox = "products_cache_box";
+  static const String productsCacheKey = "products_cache_key";
 }

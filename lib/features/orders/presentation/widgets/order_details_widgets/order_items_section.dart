@@ -13,7 +13,7 @@ class OrderItemsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final order = GoRouterState.of(context).extra as OrderEntity;
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "${context.l10n.items} (${order.cartItems.length})",

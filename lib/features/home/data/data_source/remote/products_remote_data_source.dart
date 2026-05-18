@@ -7,6 +7,8 @@ import 'package:marketi/features/home/domain/entities/product_entity.dart';
 
 abstract class ProductsRemoteDataSource {
   Future<List<ProductEntity>> getAllProducts({int page = 1});
+  Future<List<ProductEntity>> getPopularProducts({int page = 1});
+  Future<List<ProductEntity>> getBestProducts({int page = 1});
   Future<ProductModel> getProductById(String id);
 }
 
@@ -37,5 +39,35 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
     );
 
     return ProductModel.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<List<ProductEntity>> getPopularProducts({int page = 1}) async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.allProductsEndPoint,
+      queryParameters: {
+        "page": page,
+        "sort": "-sold",
+      },
+    );
+
+    final List<ProductEntity> products = productsMapper(response.data);
+
+    return products;
+  }
+
+  @override
+  Future<List<ProductEntity>> getBestProducts({int page = 1}) async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.allProductsEndPoint,
+      queryParameters: {
+        "page": page,
+        "sort": "-ratingsAverage",
+      },
+    );
+
+    final List<ProductEntity> products = productsMapper(response.data);
+
+    return products;
   }
 }

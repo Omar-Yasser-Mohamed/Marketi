@@ -554,4 +554,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get downloadingInvoice => 'Downloading invoice...';
+
+  @override
+  String get noBrandsFound => 'No brands found';
+
+  @override
+  String get noCategoriesFound => 'No categories found';
 }

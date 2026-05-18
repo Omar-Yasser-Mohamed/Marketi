@@ -187,6 +187,8 @@
   "subtotal": "Subtotal",
   "shippingFee": "Shipping Fee",
   "totalAmount": "Total Amount",
-  "downloadingInvoice": "Downloading invoice..."
+  "downloadingInvoice": "Downloading invoice...",
+  "noBrandsFound": "No brands found",
+  "noCategoriesFound": "No categories found"
 }
 

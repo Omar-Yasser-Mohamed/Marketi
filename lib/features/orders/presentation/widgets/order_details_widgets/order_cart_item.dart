@@ -31,7 +31,7 @@ class OrderCartItem extends StatelessWidget {
 
           Expanded(
             child: Column(
-              crossAxisAlignment: .start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [

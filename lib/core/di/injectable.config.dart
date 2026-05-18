@@ -8,7 +8,6 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:marketi/core/helpers/connectivity_helper.dart' as _i14;
@@ -94,18 +93,24 @@ import 'package:marketi/features/home/domain/use_cases/all_products_use_case.dar
     as _i898;
 import 'package:marketi/features/home/domain/use_cases/brands_use_case.dart'
     as _i281;
+import 'package:marketi/features/home/domain/use_cases/cach_products_use_case.dart'
+    as _i321;
 import 'package:marketi/features/home/domain/use_cases/categories_use_case.dart'
     as _i639;
+import 'package:marketi/features/home/domain/use_cases/get_best_products_use_case.dart'
+    as _i550;
+import 'package:marketi/features/home/domain/use_cases/get_popular_products_use_case.dart'
+    as _i637;
 import 'package:marketi/features/home/domain/use_cases/sort_products_use_case.dart'
     as _i478;
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart'
     as _i923;
+import 'package:marketi/features/home/presentation/cubits/categories_cubit/categories_cubit.dart'
+    as _i425;
 import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.dart'
     as _i70;
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart'
     as _i607;
-import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart'
-    as _i24;
 import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source.dart'
     as _i649;
 import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source_impl.dart'
@@ -160,8 +165,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i517.ThemeCubit>(() => _i517.ThemeCubit());
     gh.lazySingleton<_i1030.ProfileLocalDataSource>(
         () => _i860.ProfileLocalDataSourceImpl());
-    gh.lazySingleton<_i24.BrandsGridBlocBuilder>(
-        () => _i24.BrandsGridBlocBuilder(key: gh<_i409.Key>()));
     gh.lazySingleton<_i1028.TokenService>(() => _i364.TokenServiceImpl());
     gh.lazySingleton<_i605.GpsLocalDataSource>(
         () => _i605.GpsLocalDataSourceImpl());
@@ -242,6 +245,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i59.LocationRemoteDataSource>(),
           gh<_i605.GpsLocalDataSource>(),
         ));
+    gh.factory<_i425.CategoriesCubit>(
+        () => _i425.CategoriesCubit(gh<_i639.CategoriesUseCase>()));
     gh.factory<_i366.FavCubit>(() => _i366.FavCubit(gh<_i370.FavRepo>()));
     gh.lazySingleton<_i377.AuthRepo>(() => _i62.AuthRepoImpl(
           gh<_i244.AuthRemoteDataSource>(),
@@ -251,14 +256,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i923.BrandsCubit>(
         () => _i923.BrandsCubit(gh<_i281.BrandsUseCase>()));
-    gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
-          gh<_i377.AuthRepo>(),
-          gh<_i9.ProfileRepo>(),
-          gh<_i898.AllProductsUseCase>(),
-          gh<_i478.SortProductsUseCase>(),
-          gh<_i281.BrandsUseCase>(),
-          gh<_i639.CategoriesUseCase>(),
-        ));
+    gh.lazySingleton<_i550.GetBestProductsUseCase>(
+        () => _i550.GetBestProductsUseCase(gh<_i423.ProductsRepo>()));
+    gh.lazySingleton<_i637.GetPopularProductsUseCase>(
+        () => _i637.GetPopularProductsUseCase(gh<_i423.ProductsRepo>()));
+    gh.lazySingleton<_i321.CachProductsUseCase>(
+        () => _i321.CachProductsUseCase(gh<_i423.ProductsRepo>()));
     gh.factory<_i53.ForgetPasswordCubit>(() => _i53.ForgetPasswordCubit(
           gh<_i377.AuthRepo>(),
           gh<_i977.EmailFlow>(),
@@ -288,6 +291,16 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i377.AuthRepo>(),
           gh<_i1028.TokenService>(),
           gh<_i9.ProfileRepo>(),
+        ));
+    gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
+          gh<_i377.AuthRepo>(),
+          gh<_i9.ProfileRepo>(),
+          gh<_i898.AllProductsUseCase>(),
+          gh<_i281.BrandsUseCase>(),
+          gh<_i639.CategoriesUseCase>(),
+          gh<_i637.GetPopularProductsUseCase>(),
+          gh<_i550.GetBestProductsUseCase>(),
+          gh<_i321.CachProductsUseCase>(),
         ));
     gh.factory<_i775.PickLocationCubit>(() => _i775.PickLocationCubit(
           gh<_i414.GetCurrentLocationUseCase>(),

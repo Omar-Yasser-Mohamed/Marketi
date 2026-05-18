@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
@@ -31,7 +29,6 @@ class _BrandsGridViewState extends State<BrandsGridView> {
   void _onScroll() async {
     if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent - 200) {
-      log("Loading more brands...");
       await context.read<BrandsCubit>().loadMoreBrands();
     }
   }

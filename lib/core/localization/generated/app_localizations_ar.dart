@@ -549,4 +549,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get downloadingInvoice => 'جاري تحميل الفاتورة...';
+
+  @override
+  String get noBrandsFound => 'لا توجد علامات تجارية';
+
+  @override
+  String get noCategoriesFound => 'لا توجد فئات';
 }

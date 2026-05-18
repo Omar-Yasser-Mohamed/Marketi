@@ -81,10 +81,7 @@ class HomeScreenBody extends StatelessWidget {
         SectionTitle(
           title: context.l10n.category,
           onTap: () {
-            context.push(
-              AppRoutes.categoriesScreen,
-              extra: categories,
-            );
+            context.push(AppRoutes.categoriesScreen);
           },
         ),
 

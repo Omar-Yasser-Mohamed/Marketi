@@ -23,7 +23,7 @@ class OrderDetailsScreen extends StatelessWidget {
         ),
         toolbarHeight: 64,
         title: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               context.l10n.orderDetails,

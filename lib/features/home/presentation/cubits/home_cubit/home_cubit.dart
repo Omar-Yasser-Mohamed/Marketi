@@ -7,11 +7,12 @@ import 'package:marketi/features/auth/domain/repos/auth_repo.dart';
 import 'package:marketi/features/home/domain/entities/brand_entity.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
-import 'package:marketi/features/home/domain/enums/sort_type.dart';
 import 'package:marketi/features/home/domain/use_cases/all_products_use_case.dart';
 import 'package:marketi/features/home/domain/use_cases/brands_use_case.dart';
+import 'package:marketi/features/home/domain/use_cases/cach_products_use_case.dart';
 import 'package:marketi/features/home/domain/use_cases/categories_use_case.dart';
-import 'package:marketi/features/home/domain/use_cases/sort_products_use_case.dart';
+import 'package:marketi/features/home/domain/use_cases/get_best_products_use_case.dart';
+import 'package:marketi/features/home/domain/use_cases/get_popular_products_use_case.dart';
 import 'package:marketi/features/profile/domain/repos/profile_repo.dart';
 
 part 'home_state.dart';
@@ -22,17 +23,21 @@ class HomeCubit extends Cubit<HomeState> {
     this._authRepo,
     this._profileRepo,
     this._allProductsUseCase,
-    this._sortProductsUseCase,
     this._brandsUseCase,
     this._categoriesUseCase,
+    this._getPopularProductsUseCase,
+    this._getBestProductsUseCase,
+    this._cachProductsUseCase,
   ) : super(HomeInitial());
 
   final AuthRepo _authRepo;
   final ProfileRepo _profileRepo;
   final AllProductsUseCase _allProductsUseCase;
-  final SortProductsUseCase _sortProductsUseCase;
   final BrandsUseCase _brandsUseCase;
   final CategoriesUseCase _categoriesUseCase;
+  final GetPopularProductsUseCase _getPopularProductsUseCase;
+  final GetBestProductsUseCase _getBestProductsUseCase;
+  final CachProductsUseCase _cachProductsUseCase;
 
   List<ProductEntity> allProducts = [];
 
@@ -61,9 +66,11 @@ class HomeCubit extends Cubit<HomeState> {
     if (user == null) return;
 
     final results = await Future.wait([
-      _allProductsUseCase.call(),
+      _allProductsUseCase.call(page: 1),
       _categoriesUseCase.call(),
       _brandsUseCase.call(),
+      _getPopularProductsUseCase.call(page: 1),
+      _getBestProductsUseCase.call(page: 1),
     ]);
 
     final products = _extractOrEmitFailure(
@@ -81,15 +88,15 @@ class HomeCubit extends Cubit<HomeState> {
     );
     if (brands == null) return;
 
-    final popular = _sortProductsUseCase(
-      allProducts: products,
-      sortType: SortType.sold,
+    final popular = _extractOrEmitFailure(
+      results[3] as Either<Failure, List<ProductEntity>>,
     );
+    if (popular == null) return;
 
-    final best = _sortProductsUseCase(
-      allProducts: products,
-      sortType: SortType.ratingHighToLow,
+    final best = _extractOrEmitFailure(
+      results[4] as Either<Failure, List<ProductEntity>>,
     );
+    if (best == null) return;
 
     safeEmit(
       HomeSuccess(
@@ -101,5 +108,12 @@ class HomeCubit extends Cubit<HomeState> {
         user: user,
       ),
     );
+
+    await cachProducts();
   }
+
+  Future<void> cachProducts() async {
+    await _cachProductsUseCase();
+  }
+
 }

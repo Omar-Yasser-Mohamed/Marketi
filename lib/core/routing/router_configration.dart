@@ -25,6 +25,7 @@ import 'package:marketi/features/cart/presentation/screens/payment_web_view_scre
 import 'package:marketi/features/cart/presentation/screens/pick_location_screen.dart';
 import 'package:marketi/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
 import 'package:marketi/features/home/presentation/screens/categories_screen.dart';
@@ -174,7 +175,10 @@ abstract class RouterConfigration {
       ),
       GoRoute(
         path: AppRoutes.categoriesScreen,
-        builder: (context, state) => const CategoriesScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<CategoriesCubit>()..getAllCategories(),
+          child: const CategoriesScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.brandsScreen,

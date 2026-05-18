@@ -20,7 +20,7 @@ class OrderShippingAddressSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
       ),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
@@ -43,7 +43,7 @@ class OrderShippingAddressSection extends StatelessWidget {
           12.verticalSizedBox,
 
           Row(
-            crossAxisAlignment: .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(
                 Icons.location_on_outlined,
@@ -54,7 +54,7 @@ class OrderShippingAddressSection extends StatelessWidget {
 
               Expanded(
                 child: Column(
-                  crossAxisAlignment: .start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       context.l10n.home,
@@ -80,7 +80,7 @@ class OrderShippingAddressSection extends StatelessWidget {
           12.verticalSizedBox,
 
           Row(
-            crossAxisAlignment: .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(
                 Icons.phone_outlined,

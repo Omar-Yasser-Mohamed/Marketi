@@ -4,7 +4,7 @@ import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/arrow_back_button.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
-import 'package:marketi/features/home/presentation/widgets/categories_grid_view.dart';
+import 'package:marketi/features/home/presentation/widgets/categories_grid_bloc_builder.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -44,7 +44,7 @@ class CategoriesScreen extends StatelessWidget {
         ),
       ),
 
-      body: const CategoriesGridView(),
+      body: const CategoriesGridBlocBuilder(),
     );
   }
 }

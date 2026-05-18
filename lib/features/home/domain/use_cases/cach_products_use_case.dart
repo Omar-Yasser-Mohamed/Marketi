@@ -5,12 +5,10 @@ import 'package:marketi/features/home/domain/entities/product_entity.dart';
 import 'package:marketi/features/home/domain/repos/products_repo.dart';
 
 @lazySingleton
-class AllProductsUseCase {
-  final ProductsRepo _productsRepo;
-
-  AllProductsUseCase(this._productsRepo);
-
-  Future<Either<Failure, List<ProductEntity>>> call({int page = 1}) async {
-    return await _productsRepo.getAllProducts(page: page);
+class CachProductsUseCase {
+  final ProductsRepo _repo;
+  CachProductsUseCase(this._repo);
+  Future<Either<Failure, List<ProductEntity>>> call() async {
+    return await _repo.cachProducts();
   }
 }
