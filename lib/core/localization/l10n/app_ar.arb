@@ -159,6 +159,16 @@
   "pending": "قيد الانتظار",
   "paid": "مدفوع",
   "noOrdersTitle": "لا توجد طلبات بعد",
-  "noOrdersDescription": "لم تقم بإجراء أي طلبات حتى الآن. ابدأ بالاستكشاف واملأ حياتك بمنتجات ماركتي!"
+  "noOrdersDescription": "لم تقم بإجراء أي طلبات حتى الآن. ابدأ بالاستكشاف واملأ حياتك بمنتجات ماركتي!",
+  "orderDetails": "تفاصيل الطلب",
+  "orderTracking": "تتبع الطلب",
+  "shippingAddress": "عنوان الشحن",
+  "downloadInvoice": "تحميل الفاتورة",
+  "tax": "الضريبة",
+  "free": "مجاني",
+  "subtotal": "المجموع الفرعي",
+  "shippingFee": "رسوم الشحن",
+  "totalAmount": "المبلغ الإجمالي",
+  "downloadingInvoice": "جاري تحميل الفاتورة..."
 }
 

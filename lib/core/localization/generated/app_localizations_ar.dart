@@ -509,4 +509,34 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get noOrdersDescription =>
       'لم تقم بإجراء أي طلبات حتى الآن. ابدأ بالاستكشاف واملأ حياتك بمنتجات ماركتي!';
+
+  @override
+  String get orderDetails => 'تفاصيل الطلب';
+
+  @override
+  String get orderTracking => 'تتبع الطلب';
+
+  @override
+  String get shippingAddress => 'عنوان الشحن';
+
+  @override
+  String get downloadInvoice => 'تحميل الفاتورة';
+
+  @override
+  String get tax => 'الضريبة';
+
+  @override
+  String get free => 'مجاني';
+
+  @override
+  String get subtotal => 'المجموع الفرعي';
+
+  @override
+  String get shippingFee => 'رسوم الشحن';
+
+  @override
+  String get totalAmount => 'المبلغ الإجمالي';
+
+  @override
+  String get downloadingInvoice => 'جاري تحميل الفاتورة...';
 }

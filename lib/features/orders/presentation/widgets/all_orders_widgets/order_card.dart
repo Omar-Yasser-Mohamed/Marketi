@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
@@ -135,7 +137,7 @@ class OrderCard extends StatelessWidget {
                   children: [
                     Text(
                       order.cartItems.map((e) => e.product.title).join(", "),
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.enM14.copyWith(
                         color: context.textColor,
@@ -205,7 +207,9 @@ class OrderCard extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRoutes.orderDetailsScreen, extra: order);
+              },
               style: TextButton.styleFrom(
                 backgroundColor: AppColors.primary.withValues(alpha: 0.05),
                 shape: RoundedRectangleBorder(

@@ -22,4 +22,5 @@ abstract class AppRoutes {
   static const String pickLocationScreen = '/pick_location_screen';
   static const String checkoutSuccessScreen = '/checkout_success_screen';
   static const String allOrdersScreen = '/all_orders_screen';
+  static const String orderDetailsScreen = '/order_details_screen';
 }

@@ -174,6 +174,16 @@
   "pending": "Pending",
   "paid": "Paid",
   "noOrdersTitle": "No orders yet",
-  "noOrdersDescription": "You haven't placed any orders yet. Start exploring and fill your life with Marketi products!"
+  "noOrdersDescription": "You haven't placed any orders yet. Start exploring and fill your life with Marketi products!",
+  "orderDetails": "Order Details",
+  "orderTracking": "Order Tracking",
+  "shippingAddress": "Shipping Address",
+  "downloadInvoice": "Download Invoice",
+  "tax": "Tax",
+  "free": "Free",
+  "subtotal": "Subtotal",
+  "shippingFee": "Shipping Fee",
+  "totalAmount": "Total Amount",
+  "downloadingInvoice": "Downloading invoice..."
 }
 
