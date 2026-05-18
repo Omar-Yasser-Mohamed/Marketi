@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
+import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/add_to_cart_button.dart';
 import 'package:marketi/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
@@ -26,7 +27,12 @@ class AddToCartSection extends StatelessWidget {
         bottom: MediaQuery.of(context).padding.bottom + 4,
         top: 8,
       ),
-      decoration: BoxDecoration(color: context.backgroundColor),
+      decoration: BoxDecoration(
+        color: context.backgroundColor,
+        border: Border(
+          top: BorderSide(color: AppColors.primary.withValues(alpha: 0.2)),
+        ),
+      ),
       child: Row(
         children: [
           // price
@@ -40,7 +46,7 @@ class AddToCartSection extends StatelessWidget {
                 ),
               ),
               Text(
-                "$price ${context.l10n.egp   }",
+                "$price ${context.l10n.egp}",
                 style: AppTextStyles.enSb16.copyWith(
                   color: context.textColor,
                 ),

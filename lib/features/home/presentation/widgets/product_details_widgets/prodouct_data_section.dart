@@ -9,6 +9,7 @@ import 'package:marketi/features/home/domain/entities/product_entity.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/brand_section.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_description.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_rating.dart';
+import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_reviews_section.dart';
 
 class ProdouctDataSection extends StatelessWidget {
   const ProdouctDataSection({super.key, required this.product});
@@ -18,7 +19,7 @@ class ProdouctDataSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 14.p, vertical: 14),
+      padding: EdgeInsets.only(left: 14.p, right: 14.p, top: 14),
       decoration: BoxDecoration(
         color: context.backgroundColor,
         boxShadow: [
@@ -124,6 +125,10 @@ class ProdouctDataSection extends StatelessWidget {
 
           //Rating
           ProductRating(product: product),
+
+          16.verticalSizedBox,
+
+          ProductReviewsSection(product: product),
         ],
       ),
     );

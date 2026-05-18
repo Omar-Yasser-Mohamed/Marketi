@@ -191,6 +191,9 @@
   "noBrandsFound": "No brands found",
   "noCategoriesFound": "No categories found",
   "noProductsFound": "No products found",
-  "productsFromSameBrand": "Products from the same brand"
+  "productsFromSameBrand": "Products from the same brand",
+  "reviews": "Reviews",
+  "noReviews": "No reviews yet",
+  "verifiedBuyer": "Verified Buyer"
 }
 

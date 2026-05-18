@@ -1,3 +1,5 @@
+import 'package:marketi/features/home/domain/entities/review_entity.dart';
+
 import 'brand_entity.dart';
 import 'category_entity.dart';
 
@@ -15,6 +17,7 @@ class ProductEntity {
   final num sold;
   final CategoryEntity category;
   final BrandEntity brand;
+  final List<ReviewEntity> reviews;
 
   ProductEntity({
     required this.id,
@@ -30,5 +33,6 @@ class ProductEntity {
     required this.brand,
     required this.sold,
     this.priceAfterDiscount,
+    required this.reviews,
   });
 }

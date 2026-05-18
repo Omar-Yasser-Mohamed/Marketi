@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/errors/failure_ui_mapper.dart';
-import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/widgets/custom_failure_widget.dart';
 import 'package:marketi/features/home/domain/enums/products_type.dart';
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/products_cubit/products_cubit.dart';
 import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_details_screen_body.dart';
+import 'package:marketi/features/home/presentation/widgets/product_details_widgets/product_details_shimmer.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key});
@@ -36,11 +36,7 @@ class ProductDetailsScreen extends StatelessWidget {
             );
             return CustomFailureWidget(error: error);
           }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.primary,
-            ),
-          ); //TODO: Change loading widget
+          return const ProductDetailsShimmer();
         },
       ),
     );

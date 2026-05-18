@@ -1,3 +1,5 @@
+import 'package:marketi/features/home/data/mappers/review_mapper.dart';
+import 'package:marketi/features/home/data/models/review_model.dart';
 import 'package:marketi/features/home/domain/entities/brand_entity.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
@@ -24,6 +26,7 @@ class ProductModel extends ProductEntity {
   num? ratingsAverage;
   DateTime? createdAt;
   DateTime? updatedAt;
+  List<ReviewModel>? productReviews;
 
   ProductModel({
     this.productSold,
@@ -43,6 +46,7 @@ class ProductModel extends ProductEntity {
     this.createdAt,
     this.updatedAt,
     this.productPriceAfterDiscount,
+    this.productReviews,
   }) : super(
          id: productId ?? '',
          title: productTitle ?? '',
@@ -65,6 +69,7 @@ class ProductModel extends ProductEntity {
          ),
          sold: productSold ?? 0,
          priceAfterDiscount: productPriceAfterDiscount,
+         reviews: ReviewMapper.mapToEntityList(productReviews ?? []),
        );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
@@ -95,6 +100,9 @@ class ProductModel extends ProductEntity {
     updatedAt: json['updatedAt'] == null
         ? null
         : DateTime.parse(json['updatedAt'] as String),
+    productReviews: (json['reviews'] as List<dynamic>?)
+        ?.map((e) => ReviewModel.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 
   Map<String, dynamic> toJson() => {
@@ -115,5 +123,6 @@ class ProductModel extends ProductEntity {
     'createdAt': createdAt?.toIso8601String(),
     'updatedAt': updatedAt?.toIso8601String(),
     'id': productId,
+    'reviews': productReviews?.map((e) => e.toJson()).toList(),
   };
 }

@@ -561,4 +561,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get productsFromSameBrand => 'منتجات من نفس الماركة';
+
+  @override
+  String get reviews => 'التقييمات';
+
+  @override
+  String get noReviews => 'لا توجد تقييمات';
+
+  @override
+  String get verifiedBuyer => 'مشتري موثوق';
 }

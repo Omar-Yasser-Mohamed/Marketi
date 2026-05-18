@@ -566,4 +566,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productsFromSameBrand => 'Products from the same brand';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get noReviews => 'No reviews yet';
+
+  @override
+  String get verifiedBuyer => 'Verified Buyer';
 }

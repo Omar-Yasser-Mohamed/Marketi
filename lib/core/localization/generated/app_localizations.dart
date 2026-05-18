@@ -1159,6 +1159,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Products from the same brand'**
   String get productsFromSameBrand;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @noReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get noReviews;
+
+  /// No description provided for @verifiedBuyer.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified Buyer'**
+  String get verifiedBuyer;
 }
 
 class _AppLocalizationsDelegate

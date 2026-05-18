@@ -176,6 +176,9 @@
   "noBrandsFound": "لا توجد علامات تجارية",
   "noCategoriesFound": "لا توجد فئات",
   "noProductsFound": "لا توجد منتجات",
-  "productsFromSameBrand": "منتجات من نفس الماركة"
+  "productsFromSameBrand": "منتجات من نفس الماركة",
+  "reviews": "التقييمات",
+  "noReviews": "لا توجد تقييمات",
+  "verifiedBuyer": "مشتري موثوق"
 }
 
