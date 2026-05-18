@@ -29,7 +29,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
     final args = GoRouterState.of(context).extra as ProductsArgs;
     if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent - 200) {
-      await context.read<ProductsCubit>().loadMore(args.type);
+      await context.read<ProductsCubit>().loadMore(type: args.type);
     }
   }
 

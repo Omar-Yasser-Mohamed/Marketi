@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/features/home/domain/entities/brand_entity.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/presentation/strategies/products_grid_strategy/products_grid_factory.dart';
@@ -59,11 +61,19 @@ class _BrandsGridViewState extends State<BrandsGridView> {
       ),
       itemCount: widget.brands.length,
       itemBuilder: (context, index) {
-        return CategoryItem(
-          category: CategoryEntity(
-            id: widget.brands[index].id,
-            name: widget.brands[index].name,
-            image: widget.brands[index].image,
+        return GestureDetector(
+          onTap: () {
+            context.push(
+              AppRoutes.brandProductsScreen,
+              extra: widget.brands[index],
+            );
+          },
+          child: CategoryItem(
+            category: CategoryEntity(
+              id: widget.brands[index].id,
+              name: widget.brands[index].name,
+              image: widget.brands[index].image,
+            ),
           ),
         );
       },

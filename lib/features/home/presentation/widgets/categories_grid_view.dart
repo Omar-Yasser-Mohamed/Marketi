@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:marketi/features/home/presentation/strategies/products_grid_strategy/products_grid_factory.dart';
@@ -57,8 +59,16 @@ class _CategoriesGridViewState extends State<CategoriesGridView> {
       ),
       itemCount: widget.categories.length,
       itemBuilder: (context, index) {
-        return CategoryItem(
-          category: widget.categories[index],
+        return GestureDetector(
+          onTap: () {
+            context.push(
+              AppRoutes.categoryProductsScreen,
+              extra: widget.categories[index],
+            );
+          },
+          child: CategoryItem(
+            category: widget.categories[index],
+          ),
         );
       },
     );

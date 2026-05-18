@@ -101,6 +101,10 @@ import 'package:marketi/features/home/domain/use_cases/get_best_products_use_cas
     as _i550;
 import 'package:marketi/features/home/domain/use_cases/get_popular_products_use_case.dart'
     as _i637;
+import 'package:marketi/features/home/domain/use_cases/get_products_by_brand_use_case.dart'
+    as _i181;
+import 'package:marketi/features/home/domain/use_cases/get_products_by_category_use_case.dart'
+    as _i295;
 import 'package:marketi/features/home/domain/use_cases/sort_products_use_case.dart'
     as _i478;
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart'
@@ -235,6 +239,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i607.ProductDetailsCubit(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i898.AllProductsUseCase>(
         () => _i898.AllProductsUseCase(gh<_i423.ProductsRepo>()));
+    gh.lazySingleton<_i181.GetProductsByBrandUseCase>(
+        () => _i181.GetProductsByBrandUseCase(gh<_i423.ProductsRepo>()));
+    gh.lazySingleton<_i295.GetProductsByCategoryUseCase>(
+        () => _i295.GetProductsByCategoryUseCase(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i281.BrandsUseCase>(
         () => _i281.BrandsUseCase(gh<_i605.BrandsRepo>()));
     gh.lazySingleton<_i9.ProfileRepo>(() => _i432.ProfileRepoImpl(
@@ -279,11 +287,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.OrdersCubit(gh<_i335.OrdersRepo>()));
     gh.lazySingleton<_i571.UpdateProfileUseCase>(
         () => _i571.UpdateProfileUseCase(gh<_i9.ProfileRepo>()));
-    gh.factory<_i93.ProductsCubit>(() => _i93.ProductsCubit(
-          allProductsUseCase: gh<_i898.AllProductsUseCase>(),
-          getBestProductsUseCase: gh<_i550.GetBestProductsUseCase>(),
-          getPopularProductsUseCase: gh<_i637.GetPopularProductsUseCase>(),
-        ));
     gh.factory<_i358.VerifyOtpCubit>(
         () => _i358.VerifyOtpCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i66.ProfileCubit>(() => _i66.ProfileCubit(
@@ -298,6 +301,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i377.AuthRepo>(),
           gh<_i1028.TokenService>(),
           gh<_i9.ProfileRepo>(),
+        ));
+    gh.factory<_i93.ProductsCubit>(() => _i93.ProductsCubit(
+          allProductsUseCase: gh<_i898.AllProductsUseCase>(),
+          getBestProductsUseCase: gh<_i550.GetBestProductsUseCase>(),
+          getPopularProductsUseCase: gh<_i637.GetPopularProductsUseCase>(),
+          getProductsByBrandUseCase: gh<_i181.GetProductsByBrandUseCase>(),
+          getProductsByCategoryUseCase:
+              gh<_i295.GetProductsByCategoryUseCase>(),
         ));
     gh.factory<_i70.HomeCubit>(() => _i70.HomeCubit(
           gh<_i377.AuthRepo>(),

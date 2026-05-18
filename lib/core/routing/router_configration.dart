@@ -24,13 +24,18 @@ import 'package:marketi/features/cart/presentation/screens/checkout_success_scre
 import 'package:marketi/features/cart/presentation/screens/payment_web_view_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/pick_location_screen.dart';
 import 'package:marketi/features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:marketi/features/home/domain/entities/brand_entity.dart';
+import 'package:marketi/features/home/domain/entities/category_entity.dart';
+import 'package:marketi/features/home/domain/enums/products_type.dart';
 import 'package:marketi/features/home/presentation/args/products_args.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/products_cubit/products_cubit.dart';
+import 'package:marketi/features/home/presentation/screens/brand_products_screen.dart';
 import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
 import 'package:marketi/features/home/presentation/screens/categories_screen.dart';
+import 'package:marketi/features/home/presentation/screens/category_products_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
@@ -176,7 +181,8 @@ abstract class RouterConfigration {
         builder: (context, state) {
           final ProductsArgs args = state.extra as ProductsArgs;
           return BlocProvider(
-            create: (context) => getIt<ProductsCubit>()..fetchData(args.type),
+            create: (context) =>
+                getIt<ProductsCubit>()..fetchData(type: args.type),
             child: const ProductsScreen(),
           );
         },
@@ -255,6 +261,32 @@ abstract class RouterConfigration {
       GoRoute(
         path: AppRoutes.orderDetailsScreen,
         builder: (context, state) => const OrderDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.brandProductsScreen,
+        builder: (context, state) {
+          final BrandEntity brand = state.extra as BrandEntity;
+          return BlocProvider(
+            create: (context) => getIt<ProductsCubit>()..fetchData(
+              type: ProductsType.brand,
+              brandId: brand.id,
+            ),
+            child: const BrandProductsScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.categoryProductsScreen,
+        builder: (context, state) {
+          final category = state.extra as CategoryEntity;
+          return BlocProvider(
+            create: (context) => getIt<ProductsCubit>()..fetchData(
+              type: ProductsType.category,
+              categoryId: category.id,
+            ),
+            child: const CategoryProductsScreen(),
+          );
+        },
       ),
     ],
   );

@@ -8,4 +8,12 @@ abstract class ProductsRepo {
   Future<Either<Failure, List<ProductEntity>>> getBestProducts({int page = 1});
   Future<Either<Failure, List<ProductEntity>>> cachProducts();
   Future<Either<Failure, ProductEntity>> getProductById(String id);
+  Future<Either<Failure, List<ProductEntity>>> getProductsByBrand({
+    required String brandId,
+    int page = 1,
+  });
+  Future<Either<Failure, List<ProductEntity>>> getProductsByCategory({
+    required String categoryId,
+    int page = 1,
+  });
 }

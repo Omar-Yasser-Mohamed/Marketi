@@ -10,6 +10,14 @@ abstract class ProductsRemoteDataSource {
   Future<List<ProductEntity>> getPopularProducts({int page = 1});
   Future<List<ProductEntity>> getBestProducts({int page = 1});
   Future<ProductModel> getProductById(String id);
+  Future<List<ProductModel>> getProductsByBrand({
+    required String brandId,
+    int page = 1,
+  });
+  Future<List<ProductModel>> getProductsByCategory({
+    required String categoryId,
+    int page = 1,
+  });
 }
 
 @LazySingleton(as: ProductsRemoteDataSource)
@@ -67,6 +75,46 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
     );
 
     final List<ProductEntity> products = productsMapper(response.data);
+
+    return products;
+  }
+
+  @override
+  Future<List<ProductModel>> getProductsByBrand({
+    required String brandId,
+    int page = 1,
+  }) async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.allProductsEndPoint,
+      queryParameters: {
+        "page": page,
+        "brand": brandId,
+      },
+    );
+
+    final List<ProductModel> products = (response.data['data'] as List<dynamic>)
+        .map((json) => ProductModel.fromJson(json))
+        .toList();
+
+    return products;
+  }
+
+  @override
+  Future<List<ProductModel>> getProductsByCategory({
+    required String categoryId,
+    int page = 1,
+  }) async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.allProductsEndPoint,
+      queryParameters: {
+        "page": page,
+        "category": categoryId,
+      },
+    );
+
+    final List<ProductModel> products = (response.data['data'] as List<dynamic>)
+        .map((json) => ProductModel.fromJson(json))
+        .toList();
 
     return products;
   }

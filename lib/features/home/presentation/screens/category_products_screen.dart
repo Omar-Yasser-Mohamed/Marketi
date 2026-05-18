@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/arrow_back_button.dart';
-import 'package:marketi/features/home/presentation/widgets/brands_grid_bloc_builder.dart';
-import 'package:marketi/features/home/presentation/widgets/search_button.dart';
+import 'package:marketi/features/home/domain/entities/category_entity.dart';
+import 'package:marketi/features/home/presentation/widgets/category_products_widgets/category_products_screen_body.dart';
 
-class BrandsScreen extends StatelessWidget {
-  const BrandsScreen({super.key});
+class CategoryProductsScreen extends StatelessWidget {
+  const CategoryProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final category = GoRouterState.of(context).extra as CategoryEntity;
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -20,27 +22,13 @@ class BrandsScreen extends StatelessWidget {
         ),
         leadingWidth: 70.p,
         title: Text(
-          context.l10n.brands,
+          category.name,
           style: AppTextStyles.enM20.copyWith(
             color: context.textColor,
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 14.p,
-              right: 14.p,
-              top: 8,
-              bottom: 8,
-            ),
-            child: const SearchButton(),
-          ),
-          const Expanded(child: BrandsGridBlocBuilder()),
-        ],
-      ),
+      body: const CategoryProductsScreenBody(),
     );
   }
 }
-

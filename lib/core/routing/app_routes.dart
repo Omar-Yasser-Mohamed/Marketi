@@ -23,5 +23,7 @@ abstract class AppRoutes {
   static const String checkoutSuccessScreen = '/checkout_success_screen';
   static const String paymentWebViewScreen = '/payment_web_view_screen';
   static const String allOrdersScreen = '/all_orders_screen';
+  static const String brandProductsScreen = '/brand_products_screen';
+  static const String categoryProductsScreen = '/category_products_screen';
   static const String orderDetailsScreen = '/order_details_screen';
 }

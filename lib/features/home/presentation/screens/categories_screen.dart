@@ -14,7 +14,10 @@ class CategoriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        leading: const ArrowBackButton(),
+        leading: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14),
+          child: ArrowBackButton(),
+        ),
         leadingWidth: 70.p,
         title: Text(
           context.l10n.categories,
@@ -22,13 +25,14 @@ class CategoriesScreen extends StatelessWidget {
             color: context.textColor,
           ),
         ),
-        bottom: PreferredSize(
-          preferredSize: const Size(double.infinity, 64),
-          child: Padding(
+      ),
+      body: Column(
+        children: [
+          Padding(
             padding: EdgeInsets.only(
               left: 14.p,
               right: 14.p,
-              top: 12,
+              top: 8,
               bottom: 8,
             ),
             child: CustomTextFormField(
@@ -41,10 +45,9 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ),
           ),
-        ),
+          const Expanded(child: CategoriesGridBlocBuilder()),
+        ],
       ),
-
-      body: const CategoriesGridBlocBuilder(),
     );
   }
 }

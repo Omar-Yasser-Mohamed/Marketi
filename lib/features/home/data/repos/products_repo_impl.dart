@@ -119,4 +119,36 @@ class ProductsRepoImpl implements ProductsRepo {
       return left(ErrorHandler.handle(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getProductsByBrand({
+    required String brandId,
+    int page = 1,
+  }) async {
+    try {
+      final data = await _productsRemoteDataSource.getProductsByBrand(
+        brandId: brandId,
+        page: page,
+      );
+      return right(data);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getProductsByCategory({
+    required String categoryId,
+    int page = 1,
+  }) async {
+    try {
+      final data = await _productsRemoteDataSource.getProductsByCategory(
+        categoryId: categoryId,
+        page: page,
+      );
+      return right(data);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
 }

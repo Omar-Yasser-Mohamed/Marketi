@@ -19,6 +19,8 @@ class AddToCartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
+        elevation: 0,
+        shadowColor: Colors.transparent,
         side: const BorderSide(
           color: AppColors.darkBlue100,
         ),
