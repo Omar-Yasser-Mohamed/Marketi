@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
+import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/custom_network_image.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
-import 'package:marketi/features/home/presentation/widgets/product_details_widgets/products_from_same_brand_list_view.dart';
+import 'package:marketi/features/home/presentation/widgets/product_details_widgets/products_from_same_brand_bloc_builder.dart';
 
 class BrandSection extends StatelessWidget {
   const BrandSection({super.key, required this.product});
@@ -21,64 +23,77 @@ class BrandSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              //Brand Image
-              Container(
-                width: 50.h,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withValues(alpha: .5),
-                      blurRadius: 4,
-                    ),
-                  ],
-                ),
-                child: CustomNetworkImage(imageUrl: product.brand.image),
-              ),
-
-              16.horizontalSizedBox,
-
-              // Brand Name
-              Expanded(
-                child: Text.rich(
-                  TextSpan(
-                    text: context.l10n.soldBy,
-                    style: AppTextStyles.enR16.copyWith(
-                      color: context.textColor,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: " ${product.brand.name}",
-                        style: AppTextStyles.enSb16.copyWith(
-                          color: context.textColor,
-                        ),
+          GestureDetector(
+            onTap: () {
+              context.push(AppRoutes.brandProductsScreen, extra: product.brand);
+            },
+            child: Row(
+              children: [
+                //Brand Image
+                Container(
+                  width: 50.h,
+                  height: 50.h,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withValues(alpha: .5),
+                        blurRadius: 4,
                       ),
                     ],
                   ),
+                  child: CustomNetworkImage(imageUrl: product.brand.image),
                 ),
-              ),
 
-              4.horizontalSizedBox,
+                16.horizontalSizedBox,
 
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: context.textColor,
-                size: 18,
-              ),
-            ],
+                // Brand Name
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      text: context.l10n.soldBy,
+                      style: AppTextStyles.enR16.copyWith(
+                        color: context.textColor,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: " ${product.brand.name}",
+                          style: AppTextStyles.enSb16.copyWith(
+                            color: context.textColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                4.horizontalSizedBox,
+
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: context.textColor,
+                  size: 18,
+                ),
+              ],
+            ),
           ),
 
-          16.verticalSizedBox,
+          8.verticalSizedBox,
+
+          Text(
+            context.l10n.productsFromSameBrand,
+            style: AppTextStyles.enM16.copyWith(color: context.textColor),
+          ),
+
+          10.verticalSizedBox,
 
           // Products from this brand
           SizedBox(
             height: 200.h,
-            child: const ProductsFromSameBrandListView(),
+            child: const ProductsFromSameBrandBlocBuilder(),
           ),
         ],
       ),

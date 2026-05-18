@@ -558,4 +558,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noProductsFound => 'لا توجد منتجات';
+
+  @override
+  String get productsFromSameBrand => 'منتجات من نفس الماركة';
 }

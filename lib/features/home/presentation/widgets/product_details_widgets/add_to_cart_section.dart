@@ -40,7 +40,7 @@ class AddToCartSection extends StatelessWidget {
                 ),
               ),
               Text(
-                "$price LE",
+                "$price ${context.l10n.egp   }",
                 style: AppTextStyles.enSb16.copyWith(
                   color: context.textColor,
                 ),

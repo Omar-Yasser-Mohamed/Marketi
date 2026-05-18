@@ -1153,6 +1153,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No products found'**
   String get noProductsFound;
+
+  /// No description provided for @productsFromSameBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Products from the same brand'**
+  String get productsFromSameBrand;
 }
 
 class _AppLocalizationsDelegate

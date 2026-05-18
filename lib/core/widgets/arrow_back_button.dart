@@ -17,8 +17,8 @@ class ArrowBackButton extends StatelessWidget {
         padding: EdgeInsets.only(
           top: 10.h,
           bottom: 10.h,
-          left: 14.w,
-          right: 16.w,
+          left: context.isArabic ? 16.w : 14.w,
+          right: context.isArabic ? 14.w : 16.w,
         ),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -28,7 +28,7 @@ class ArrowBackButton extends StatelessWidget {
         ),
         child: Center(
           child: SvgPicture.asset(
-            AppIcons.arrowBackIos,
+            context.isArabic ? AppIcons.arArrowBackIos : AppIcons.arrowBackIos,
             width: context.screenHeight * 0.013,
             colorFilter: ColorFilter.mode(
               context.isLightMode

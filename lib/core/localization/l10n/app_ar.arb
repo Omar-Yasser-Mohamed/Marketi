@@ -175,6 +175,7 @@
   "downloadingInvoice": "جاري تحميل الفاتورة...",
   "noBrandsFound": "لا توجد علامات تجارية",
   "noCategoriesFound": "لا توجد فئات",
-  "noProductsFound": "لا توجد منتجات"
+  "noProductsFound": "لا توجد منتجات",
+  "productsFromSameBrand": "منتجات من نفس الماركة"
 }
 

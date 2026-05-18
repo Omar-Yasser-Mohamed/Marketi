@@ -563,4 +563,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noProductsFound => 'No products found';
+
+  @override
+  String get productsFromSameBrand => 'Products from the same brand';
 }

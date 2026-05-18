@@ -190,6 +190,7 @@
   "downloadingInvoice": "Downloading invoice...",
   "noBrandsFound": "No brands found",
   "noCategoriesFound": "No categories found",
-  "noProductsFound": "No products found"
+  "noProductsFound": "No products found",
+  "productsFromSameBrand": "Products from the same brand"
 }
 

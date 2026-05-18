@@ -164,9 +164,9 @@ class ProductItem extends StatelessWidget {
                     children: [
                       6.verticalSizedBox,
                       SizedBox(
-                        height: 28.h,
+                        height: 30.h,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: BlocBuilder<CartCubit, CartState>(
                             builder: (context, state) {
                               final cartItem = context
@@ -183,13 +183,13 @@ class ProductItem extends StatelessWidget {
                                 return ProductQuantityButtons(
                                   product: cartItem,
                                   iconSize: 16,
-                                  padding: 8,
-                                  textPadding: 4,
+                                  padding: 10,
+                                  textPadding: 6,
                                 );
                               }
 
                               return AddToCartButton(
-                                height: 28,
+                                height: 30,
                                 isLoading:
                                     state is CartActionLoading &&
                                     state.productId == product.id,

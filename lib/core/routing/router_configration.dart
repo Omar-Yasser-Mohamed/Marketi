@@ -169,9 +169,16 @@ abstract class RouterConfigration {
         path: AppRoutes.productDetailsScreen,
         builder: (context, state) {
           final String id = state.extra as String;
-          return BlocProvider(
-            create: (context) =>
-                getIt<ProductDetailsCubit>()..getProductById(id),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<ProductDetailsCubit>()..getProductById(id),
+              ),
+              BlocProvider(
+                create: (context) => getIt<ProductsCubit>(),
+              ),
+            ],
             child: const ProductDetailsScreen(),
           );
         },
@@ -267,10 +274,11 @@ abstract class RouterConfigration {
         builder: (context, state) {
           final BrandEntity brand = state.extra as BrandEntity;
           return BlocProvider(
-            create: (context) => getIt<ProductsCubit>()..fetchData(
-              type: ProductsType.brand,
-              brandId: brand.id,
-            ),
+            create: (context) => getIt<ProductsCubit>()
+              ..fetchData(
+                type: ProductsType.brand,
+                brandId: brand.id,
+              ),
             child: const BrandProductsScreen(),
           );
         },
@@ -280,10 +288,11 @@ abstract class RouterConfigration {
         builder: (context, state) {
           final category = state.extra as CategoryEntity;
           return BlocProvider(
-            create: (context) => getIt<ProductsCubit>()..fetchData(
-              type: ProductsType.category,
-              categoryId: category.id,
-            ),
+            create: (context) => getIt<ProductsCubit>()
+              ..fetchData(
+                type: ProductsType.category,
+                categoryId: category.id,
+              ),
             child: const CategoryProductsScreen(),
           );
         },
