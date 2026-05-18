@@ -555,4 +555,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noCategoriesFound => 'لا توجد فئات';
+
+  @override
+  String get noProductsFound => 'لا توجد منتجات';
 }

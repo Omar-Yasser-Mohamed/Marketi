@@ -7,6 +7,7 @@ import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/features/home/domain/entities/brand_entity.dart';
 import 'package:marketi/features/home/domain/entities/category_entity.dart';
 import 'package:marketi/features/home/domain/entities/product_entity.dart';
+import 'package:marketi/features/home/domain/enums/products_type.dart';
 import 'package:marketi/features/home/presentation/args/products_args.dart';
 
 import 'home_brands_grid_view.dart';
@@ -60,7 +61,7 @@ class HomeScreenBody extends StatelessWidget {
               AppRoutes.productsScreen,
               extra: ProductsArgs(
                 title: context.l10n.popular_product,
-                products: popularProducts,
+                type: ProductsType.popular,
               ),
             );
           },
@@ -100,7 +101,7 @@ class HomeScreenBody extends StatelessWidget {
               AppRoutes.productsScreen,
               extra: ProductsArgs(
                 title: context.l10n.bestForYou,
-                products: bestProducts,
+                type: ProductsType.best,
               ),
             );
           },
@@ -145,7 +146,7 @@ class HomeScreenBody extends StatelessWidget {
               AppRoutes.productsScreen,
               extra: ProductsArgs(
                 title: context.l10n.allProducts,
-                products: allProducts,
+                type: ProductsType.all,
               ),
             );
           },

@@ -111,6 +111,8 @@ import 'package:marketi/features/home/presentation/cubits/home_cubit/home_cubit.
     as _i70;
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart'
     as _i607;
+import 'package:marketi/features/home/presentation/cubits/products_cubit/products_cubit.dart'
+    as _i93;
 import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source.dart'
     as _i649;
 import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source_impl.dart'
@@ -277,6 +279,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.OrdersCubit(gh<_i335.OrdersRepo>()));
     gh.lazySingleton<_i571.UpdateProfileUseCase>(
         () => _i571.UpdateProfileUseCase(gh<_i9.ProfileRepo>()));
+    gh.factory<_i93.ProductsCubit>(() => _i93.ProductsCubit(
+          allProductsUseCase: gh<_i898.AllProductsUseCase>(),
+          getBestProductsUseCase: gh<_i550.GetBestProductsUseCase>(),
+          getPopularProductsUseCase: gh<_i637.GetPopularProductsUseCase>(),
+        ));
     gh.factory<_i358.VerifyOtpCubit>(
         () => _i358.VerifyOtpCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i66.ProfileCubit>(() => _i66.ProfileCubit(

@@ -1,8 +1,8 @@
-import 'package:marketi/features/home/domain/entities/product_entity.dart';
+import 'package:marketi/features/home/domain/enums/products_type.dart';
 
 class ProductsArgs {
   final String title;
-  final List<ProductEntity> products;
+  final ProductsType type;
 
-  ProductsArgs({required this.title, required this.products});
+  ProductsArgs({required this.title, required this.type});
 }

@@ -24,9 +24,11 @@ import 'package:marketi/features/cart/presentation/screens/checkout_success_scre
 import 'package:marketi/features/cart/presentation/screens/payment_web_view_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/pick_location_screen.dart';
 import 'package:marketi/features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:marketi/features/home/presentation/args/products_args.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/products_cubit/products_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
 import 'package:marketi/features/home/presentation/screens/categories_screen.dart';
 import 'package:marketi/features/home/presentation/screens/home_screen.dart';
@@ -171,7 +173,13 @@ abstract class RouterConfigration {
       ),
       GoRoute(
         path: AppRoutes.productsScreen,
-        builder: (context, state) => const ProductsScreen(),
+        builder: (context, state) {
+          final ProductsArgs args = state.extra as ProductsArgs;
+          return BlocProvider(
+            create: (context) => getIt<ProductsCubit>()..fetchData(args.type),
+            child: const ProductsScreen(),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.categoriesScreen,

@@ -189,6 +189,7 @@
   "totalAmount": "Total Amount",
   "downloadingInvoice": "Downloading invoice...",
   "noBrandsFound": "No brands found",
-  "noCategoriesFound": "No categories found"
+  "noCategoriesFound": "No categories found",
+  "noProductsFound": "No products found"
 }
 

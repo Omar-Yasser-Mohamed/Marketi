@@ -6,7 +6,7 @@ import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/arrow_back_button.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
 import 'package:marketi/features/home/presentation/args/products_args.dart';
-import 'package:marketi/features/home/presentation/widgets/products_grid_view.dart';
+import 'package:marketi/features/home/presentation/widgets/products_bloc_builder_states.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -47,7 +47,7 @@ class ProductsScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: ProductsGridView(products: data.products),
+      body: const ProductsBlocBuilderStates(),
     );
   }
 }

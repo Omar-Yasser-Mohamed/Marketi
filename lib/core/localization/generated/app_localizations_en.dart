@@ -560,4 +560,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noCategoriesFound => 'No categories found';
+
+  @override
+  String get noProductsFound => 'No products found';
 }
