@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketi/core/errors/failure.dart';
-import 'package:marketi/core/errors/failure_code.dart';
 import 'package:marketi/core/shared/models/payment_method.dart';
 import 'package:marketi/features/cart/data/models/checkout_request.dart';
 import 'package:marketi/features/cart/domain/repos/checkout_repo.dart';
@@ -43,36 +42,43 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         final result = await _checkoutRepo.createCashOrder(request);
         result.fold(
           (l) {
-            safeEmit(state.copyWith(status: CheckoutStatus.failure, failure: l));
+            safeEmit(
+              state.copyWith(status: CheckoutStatus.failure, failure: l),
+            );
           },
           (r) {
-            safeEmit(state.copyWith(status: CheckoutStatus.success));
+            safeEmit(
+              state.copyWith(
+                status: CheckoutStatus.success,
+                failure: null,
+              ),
+            );
           },
         );
-        break;
       case OnlinePayment():
         final result = await _checkoutRepo.createOnlineOrder(request);
         result.fold(
           (l) {
-            safeEmit(state.copyWith(status: CheckoutStatus.failure, failure: l));
+            safeEmit(
+              state.copyWith(status: CheckoutStatus.failure, failure: l),
+            );
           },
-          (r) {
-            safeEmit(state.copyWith(status: CheckoutStatus.success));
+          (url) {
+            emit(
+              state.copyWith(
+                status: CheckoutStatus.onlinePaymentRedirecting,
+                url: url,
+              ),
+            );
           },
         );
-        break;
     }
-    
   }
 
-  void checkValidation() {
-    if (state.location == null || state.mobileNumber == null) {
-      safeEmit(
-        state.copyWith(
-          status: CheckoutStatus.failure,
-          failure: const AppFailure(failureCode: FailureCode.validation),
-        ),
-      );
-    }
+  bool checkValidation() {
+    return state.location != null &&
+        state.location!.trim().isNotEmpty &&
+        state.mobileNumber != null &&
+        state.mobileNumber!.trim().isNotEmpty;
   }
 }

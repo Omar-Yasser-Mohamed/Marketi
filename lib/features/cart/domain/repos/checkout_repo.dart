@@ -4,5 +4,5 @@ import 'package:marketi/features/cart/data/models/checkout_request.dart';
 
 abstract interface class CheckoutRepo {
   Future<Either<Failure, void>> createCashOrder(CheckoutRequest checkout);
-  Future<Either<Failure, void>> createOnlineOrder(CheckoutRequest checkout);
+  Future<Either<Failure, String>> createOnlineOrder(CheckoutRequest checkout);
 }

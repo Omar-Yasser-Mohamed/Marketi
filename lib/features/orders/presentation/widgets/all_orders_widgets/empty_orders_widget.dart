@@ -24,7 +24,7 @@ class EmptyOrdersWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    AppImages.emptyOrders,
+                    AppImages.emptyCart,
                     height: 250.h,
                   ),
 

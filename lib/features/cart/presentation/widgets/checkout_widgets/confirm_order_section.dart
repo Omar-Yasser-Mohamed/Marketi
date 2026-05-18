@@ -15,6 +15,8 @@ class ConfirmOrderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = GoRouterState.of(context).extra as CartEntity;
+    final checkoutCubit = context.read<CheckoutCubit>();
+
     return BlocConsumer<CheckoutCubit, CheckoutState>(
       listener: (context, state) {
         if (state.status == CheckoutStatus.success) {
@@ -26,6 +28,8 @@ class ConfirmOrderSection extends StatelessWidget {
             failure: state.failure!,
           );
           context.showErrorSnakbar(message: error.message);
+        } else if (state.status == CheckoutStatus.onlinePaymentRedirecting) {
+          context.push(AppRoutes.paymentWebViewScreen, extra: state.url);
         }
       },
       builder: (context, state) {
@@ -33,7 +37,13 @@ class ConfirmOrderSection extends StatelessWidget {
           isLoading: state.status == CheckoutStatus.loading,
           text: context.l10n.placeOrder,
           onPressed: () {
-            context.read<CheckoutCubit>().submitOrder(cart.id);
+            if (!checkoutCubit.checkValidation()) {
+              context.showErrorSnakbar(
+                message: context.l10n.pleaseCompleteAllFields,
+              );
+            } else {
+              checkoutCubit.submitOrder(cart.id);
+            }
           },
         );
       },

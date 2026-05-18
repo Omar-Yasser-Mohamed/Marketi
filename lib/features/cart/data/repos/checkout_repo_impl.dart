@@ -25,12 +25,12 @@ class CheckoutRepoImpl implements CheckoutRepo {
   }
 
   @override
-  Future<Either<Failure, void>> createOnlineOrder(
+  Future<Either<Failure, String>> createOnlineOrder(
     CheckoutRequest checkout,
   ) async {
     try {
-      await checkoutRemoteDataSource.createOnlineOrder(checkout);
-      return right(null);
+      final url = await checkoutRemoteDataSource.createOnlineOrder(checkout);
+      return right(url);
     } catch (e) {
       return left(ErrorHandler.handle(e));
     }

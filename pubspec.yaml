@@ -38,6 +38,7 @@ dependencies:
   flutter_map: ^8.3.0
   geolocator: ^14.0.2
   latlong2: ^0.9.1
+  webview_flutter: ^4.13.1
 
 dev_dependencies:
   flutter_test:

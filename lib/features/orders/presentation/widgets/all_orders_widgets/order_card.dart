@@ -80,7 +80,7 @@ class OrderCard extends StatelessWidget {
                     (index) {
                       if (index == 1 && order.cartItems.length > 2) {
                         return Positioned(
-                          left: index * 20.0,
+                          left: index * 45.0,
                           child: Container(
                             width: 60,
                             height: 60,

@@ -300,6 +300,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get payment => 'الدفع';
 
   @override
+  String get paymentFailed => 'فشلت عملية الدفع. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get completePayment => 'إتمام الدفع';
+
+  @override
   String get address => 'العنوان';
 
   @override
@@ -444,6 +450,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get placeOrder => 'تأكيد الطلب';
+
+  @override
+  String get pleaseCompleteAllFields =>
+      'يرجى اختيار موقع التوصيل وإدخال رقم الموبايل لتأكيد الطلب';
 
   @override
   String get notes => 'ملاحظات';

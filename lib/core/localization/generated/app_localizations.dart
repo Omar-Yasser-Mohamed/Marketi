@@ -650,6 +650,18 @@ abstract class AppLocalizations {
   /// **'Payment'**
   String get payment;
 
+  /// No description provided for @paymentFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment failed. Please try again.'**
+  String get paymentFailed;
+
+  /// No description provided for @completePayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete Payment'**
+  String get completePayment;
+
   /// No description provided for @address.
   ///
   /// In en, this message translates to:
@@ -931,6 +943,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Place Order'**
   String get placeOrder;
+
+  /// No description provided for @pleaseCompleteAllFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a delivery location and enter a mobile number to place your order'**
+  String get pleaseCompleteAllFields;
 
   /// No description provided for @notes.
   ///

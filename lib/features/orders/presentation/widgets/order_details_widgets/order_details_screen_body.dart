@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
-import 'package:marketi/core/extentions/snake_bar_extention.dart';
-import 'package:marketi/core/widgets/app_button.dart';
 import 'package:marketi/features/orders/presentation/widgets/order_details_widgets/order_details_summary_section.dart';
 import 'package:marketi/features/orders/presentation/widgets/order_details_widgets/order_items_section.dart';
 import 'package:marketi/features/orders/presentation/widgets/order_details_widgets/order_payment_method_section.dart';
@@ -41,15 +38,15 @@ class OrderDetailsScreenBody extends StatelessWidget {
 
           const OrderDetailsSummarySection(),
 
-          24.verticalSizedBox,
+          // 24.verticalSizedBox,
 
-          AppButton(
-            text: context.l10n.downloadInvoice,
-            onPressed: () {
-              //TODO:: implementing downloading invoice
-              context.showSuccessSnakbar(message: "Soon...");
-            },
-          ),
+          // AppButton(
+          //   text: context.l10n.downloadInvoice,
+          //   onPressed: () {
+          //     //TODO:: implementing downloading invoice
+          //     context.showSuccessSnakbar(message: "Soon...");
+          //   },
+          // ),
         ],
       ),
     );

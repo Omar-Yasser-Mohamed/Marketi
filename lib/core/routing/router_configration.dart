@@ -21,6 +21,7 @@ import 'package:marketi/features/cart/presentation/cubits/pick_location_cubit/pi
 import 'package:marketi/features/cart/presentation/screens/cart_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/checkout_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/checkout_success_screen.dart';
+import 'package:marketi/features/cart/presentation/screens/payment_web_view_screen.dart';
 import 'package:marketi/features/cart/presentation/screens/pick_location_screen.dart';
 import 'package:marketi/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart';
@@ -224,6 +225,13 @@ abstract class RouterConfigration {
       GoRoute(
         path: AppRoutes.checkoutSuccessScreen,
         builder: (context, state) => const CheckoutSuccessScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.paymentWebViewScreen,
+        builder: (context, state) {
+          final String url = state.extra as String;
+          return PaymentWebViewScreen(url: url);
+        },
       ),
       GoRoute(
         path: AppRoutes.allOrdersScreen,

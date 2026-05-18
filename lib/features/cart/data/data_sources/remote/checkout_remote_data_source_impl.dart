@@ -27,13 +27,15 @@ class CheckoutRemoteDataSourceImpl implements CheckoutRemoteDataSource {
   }
 
   @override
-  Future<void> createOnlineOrder(CheckoutRequest checkout) async {
-    await apiService.post(
+  Future<String> createOnlineOrder(CheckoutRequest checkout) async {
+    final response = await apiService.post(
       endpoint: "${ApiConstants.checkoutEndPoint}/${checkout.cartId}",
       data: checkout.toJson(),
       headers: {
         'token': await tokenService.getToken(),
       },
     );
+
+    return response.data['session']['url'] as String;
   }
 }

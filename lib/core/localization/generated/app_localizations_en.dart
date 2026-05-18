@@ -305,6 +305,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get payment => 'Payment';
 
   @override
+  String get paymentFailed => 'Payment failed. Please try again.';
+
+  @override
+  String get completePayment => 'Complete Payment';
+
+  @override
   String get address => 'Address';
 
   @override
@@ -449,6 +455,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get placeOrder => 'Place Order';
+
+  @override
+  String get pleaseCompleteAllFields =>
+      'Please select a delivery location and enter a mobile number to place your order';
 
   @override
   String get notes => 'Notes';
