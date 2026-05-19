@@ -570,4 +570,23 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verifiedBuyer => 'مشتري موثوق';
+
+  @override
+  String get noSearchResultsTitle => 'لم يتم العثور على نتائج';
+
+  @override
+  String get noSearchResultsDescription =>
+      'لم نتمكن من العثور على ما تبحث عنه. حاول التحقق من الإملاء أو استخدم كلمات رئيسية مختلفة.';
+
+  @override
+  String get startSearchingTitle => 'ابدأ البحث';
+
+  @override
+  String get startSearchingDescription =>
+      'ابحث عن منتجاتك المفضلة، أو الفئات، أو العلامات التجارية.';
+
+  @override
+  String searchResultsCount(int count) {
+    return 'النتائج ($count)';
+  }
 }

@@ -20,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefix,
     this.suffix,
     this.onChanged,
+    this.onTap,
   });
 
   final String? hintText;
@@ -37,10 +38,12 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? prefix;
   final Widget? suffix;
   final Function(String)? onChanged;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       controller: controller,
       obscureText: isSecure,
       keyboardType: keyboardType,

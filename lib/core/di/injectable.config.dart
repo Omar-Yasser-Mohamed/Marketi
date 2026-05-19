@@ -105,6 +105,8 @@ import 'package:marketi/features/home/domain/use_cases/get_products_by_brand_use
     as _i181;
 import 'package:marketi/features/home/domain/use_cases/get_products_by_category_use_case.dart'
     as _i295;
+import 'package:marketi/features/home/domain/use_cases/search_products_use_case.dart'
+    as _i527;
 import 'package:marketi/features/home/domain/use_cases/sort_products_use_case.dart'
     as _i478;
 import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cubit.dart'
@@ -117,6 +119,8 @@ import 'package:marketi/features/home/presentation/cubits/product_details_cubit/
     as _i607;
 import 'package:marketi/features/home/presentation/cubits/products_cubit/products_cubit.dart'
     as _i93;
+import 'package:marketi/features/home/presentation/cubits/search_cubit/search_cubit.dart'
+    as _i311;
 import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source.dart'
     as _i649;
 import 'package:marketi/features/orders/data/data_sources/remote/orders_remote_data_source_impl.dart'
@@ -243,6 +247,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i181.GetProductsByBrandUseCase(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i295.GetProductsByCategoryUseCase>(
         () => _i295.GetProductsByCategoryUseCase(gh<_i423.ProductsRepo>()));
+    gh.lazySingleton<_i527.SearchProductsUseCase>(
+        () => _i527.SearchProductsUseCase(gh<_i423.ProductsRepo>()));
     gh.lazySingleton<_i281.BrandsUseCase>(
         () => _i281.BrandsUseCase(gh<_i605.BrandsRepo>()));
     gh.lazySingleton<_i9.ProfileRepo>(() => _i432.ProfileRepoImpl(
@@ -280,6 +286,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i377.AuthRepo>(),
           gh<_i977.EmailFlow>(),
         ));
+    gh.factory<_i311.SearchCubit>(
+        () => _i311.SearchCubit(gh<_i527.SearchProductsUseCase>()));
     gh.factory<_i315.LoginCubit>(() => _i315.LoginCubit(gh<_i377.AuthRepo>()));
     gh.factory<_i597.SignupCubit>(
         () => _i597.SignupCubit(gh<_i377.AuthRepo>()));

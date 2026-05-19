@@ -575,4 +575,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verifiedBuyer => 'Verified Buyer';
+
+  @override
+  String get noSearchResultsTitle => 'No results found';
+
+  @override
+  String get noSearchResultsDescription =>
+      'We couldn\'t find what you are looking for. Try checking the spelling or use different keywords.';
+
+  @override
+  String get startSearchingTitle => 'Start Searching';
+
+  @override
+  String get startSearchingDescription =>
+      'Search for your favorite products, categories, or brands.';
+
+  @override
+  String searchResultsCount(int count) {
+    return 'Results ($count)';
+  }
 }

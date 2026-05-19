@@ -179,6 +179,11 @@
   "productsFromSameBrand": "منتجات من نفس الماركة",
   "reviews": "التقييمات",
   "noReviews": "لا توجد تقييمات",
-  "verifiedBuyer": "مشتري موثوق"
+  "verifiedBuyer": "مشتري موثوق",
+  "noSearchResultsTitle": "لم يتم العثور على نتائج",
+  "noSearchResultsDescription": "لم نتمكن من العثور على ما تبحث عنه. حاول التحقق من الإملاء أو استخدم كلمات رئيسية مختلفة.",
+  "startSearchingTitle": "ابدأ البحث",
+  "startSearchingDescription": "ابحث عن منتجاتك المفضلة، أو الفئات، أو العلامات التجارية.",
+  "searchResultsCount": "النتائج ({count})"
 }
 

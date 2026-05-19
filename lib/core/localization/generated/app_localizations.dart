@@ -1177,6 +1177,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Verified Buyer'**
   String get verifiedBuyer;
+
+  /// No description provided for @noSearchResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get noSearchResultsTitle;
+
+  /// No description provided for @noSearchResultsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find what you are looking for. Try checking the spelling or use different keywords.'**
+  String get noSearchResultsDescription;
+
+  /// No description provided for @startSearchingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Searching'**
+  String get startSearchingTitle;
+
+  /// No description provided for @startSearchingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for your favorite products, categories, or brands.'**
+  String get startSearchingDescription;
+
+  /// No description provided for @searchResultsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Results ({count})'**
+  String searchResultsCount(int count);
 }
 
 class _AppLocalizationsDelegate

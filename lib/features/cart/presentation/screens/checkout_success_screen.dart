@@ -21,7 +21,7 @@ class CheckoutSuccessScreen extends StatelessWidget {
             children: [
               const Spacer(),
               Image.asset(
-                AppImages.congratulationsLogo,
+                AppImages.checkoutSuccess,
                 height: context.screenHeight * 0.3,
               ),
               const SizedBox(height: 32),

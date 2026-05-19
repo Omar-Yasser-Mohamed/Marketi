@@ -194,6 +194,18 @@
   "productsFromSameBrand": "Products from the same brand",
   "reviews": "Reviews",
   "noReviews": "No reviews yet",
-  "verifiedBuyer": "Verified Buyer"
+  "verifiedBuyer": "Verified Buyer",
+  "noSearchResultsTitle": "No results found",
+  "noSearchResultsDescription": "We couldn't find what you are looking for. Try checking the spelling or use different keywords.",
+  "startSearchingTitle": "Start Searching",
+  "startSearchingDescription": "Search for your favorite products, categories, or brands.",
+  "searchResultsCount": "Results ({count})",
+  "@searchResultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
 

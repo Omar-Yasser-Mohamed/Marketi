@@ -3,8 +3,8 @@ import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/arrow_back_button.dart';
-import 'package:marketi/core/widgets/custom_text_form_field.dart';
 import 'package:marketi/features/home/presentation/widgets/categories_grid_bloc_builder.dart';
+import 'package:marketi/features/home/presentation/widgets/search_button.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -35,15 +35,7 @@ class CategoriesScreen extends StatelessWidget {
               top: 8,
               bottom: 8,
             ),
-            child: CustomTextFormField(
-              readOnly: true,
-              hintText: context.l10n.searchHint,
-              prefixIcon: Icon(
-                Icons.search,
-                size: 30,
-                color: context.textColor,
-              ),
-            ),
+            child: const SearchButton(),
           ),
           const Expanded(child: CategoriesGridBlocBuilder()),
         ],

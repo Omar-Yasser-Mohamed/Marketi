@@ -4,9 +4,9 @@ import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
 import 'package:marketi/core/widgets/arrow_back_button.dart';
-import 'package:marketi/core/widgets/custom_text_form_field.dart';
 import 'package:marketi/features/home/presentation/args/products_args.dart';
 import 'package:marketi/features/home/presentation/widgets/products_bloc_builder_states.dart';
+import 'package:marketi/features/home/presentation/widgets/search_button.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -39,15 +39,7 @@ class ProductsScreen extends StatelessWidget {
               top: 8,
               bottom: 8,
             ),
-            child: CustomTextFormField(
-              readOnly: true,
-              hintText: context.l10n.searchHint,
-              prefixIcon: Icon(
-                Icons.search,
-                size: 30,
-                color: context.textColor,
-              ),
-            ),
+            child: const SearchButton(),
           ),
           const Expanded(child: ProductsBlocBuilderStates()),
         ],

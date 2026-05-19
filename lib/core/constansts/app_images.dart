@@ -12,7 +12,7 @@ abstract class AppImages {
   static const String congratulationsLogo = 'assets/images/congratulations.png';
   static const String emptyCart = 'assets/images/cart_empty.png';
   static const String emptyOrders = 'assets/images/empty_orders.png';
-
+  static const String checkoutSuccess = 'assets/images/Success_Order.png';
 
   // Errors
   static const String cancelledError = 'assets/images/cancelled_error.svg';

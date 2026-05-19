@@ -26,4 +26,5 @@ abstract class AppRoutes {
   static const String brandProductsScreen = '/brand_products_screen';
   static const String categoryProductsScreen = '/category_products_screen';
   static const String orderDetailsScreen = '/order_details_screen';
+  static const String searchScreen = '/search_screen';
 }

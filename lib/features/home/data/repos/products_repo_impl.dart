@@ -14,11 +14,14 @@ import 'package:marketi/core/constansts/hive_constants.dart';
 @LazySingleton(as: ProductsRepo)
 class ProductsRepoImpl implements ProductsRepo {
   final ProductsRemoteDataSource _productsRemoteDataSource;
+  List<ProductEntity>? _cachedProducts;
 
-  const ProductsRepoImpl(this._productsRemoteDataSource);
+  ProductsRepoImpl(this._productsRemoteDataSource);
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getAllProducts({int page = 1}) async {
+  Future<Either<Failure, List<ProductEntity>>> getAllProducts({
+    int page = 1,
+  }) async {
     try {
       final data = await _productsRemoteDataSource.getAllProducts(page: page);
       return right(data);
@@ -27,23 +30,54 @@ class ProductsRepoImpl implements ProductsRepo {
     }
   }
 
+  Map<String, dynamic> _recursiveConvert(Map<dynamic, dynamic> map) {
+    return map.map((key, value) {
+      final stringKey = key.toString();
+      if (value is Map) {
+        return MapEntry(stringKey, _recursiveConvert(value));
+      } else if (value is List) {
+        return MapEntry(stringKey, _recursiveConvertList(value));
+      }
+      return MapEntry(stringKey, value);
+    });
+  }
+
+  List<dynamic> _recursiveConvertList(List<dynamic> list) {
+    return list.map((item) {
+      if (item is Map) {
+        return _recursiveConvert(item);
+      } else if (item is List) {
+        return _recursiveConvertList(item);
+      }
+      return item;
+    }).toList();
+  }
+
   @override
   Future<Either<Failure, List<ProductEntity>>> cachProducts() async {
     try {
+      if (_cachedProducts != null && _cachedProducts!.isNotEmpty) {
+        return right(_cachedProducts!);
+      }
+
       final box = await Hive.openBox(HiveConstants.productsCacheBox);
-      final List<dynamic>? cachedList = box.get(HiveConstants.productsCacheKey) as List<dynamic>?;
+      final List<dynamic>? cachedList =
+          box.get(HiveConstants.productsCacheKey) as List<dynamic>?;
 
       if (cachedList != null && cachedList.isNotEmpty) {
         final List<ProductEntity> products = cachedList.map((e) {
-          return ProductModel.fromJson(Map<String, dynamic>.from(e as Map));
+          return ProductModel.fromJson(_recursiveConvert(e as Map));
         }).toList();
+        _cachedProducts = products;
         return right(products);
       }
 
+      _cachedProducts = [];
       final List<ProductEntity> products = [];
       for (int page = 1; ; page++) {
         final data = await _productsRemoteDataSource.getAllProducts(page: page);
         if (data.isEmpty) break;
+        _cachedProducts?.addAll(data);
         products.addAll(data);
       }
 
@@ -83,6 +117,7 @@ class ProductsRepoImpl implements ProductsRepo {
       }).toList();
 
       await box.put(HiveConstants.productsCacheKey, dataToCache);
+      _cachedProducts = products;
 
       return right(products);
     } catch (e) {
@@ -101,9 +136,13 @@ class ProductsRepoImpl implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getPopularProducts({int page = 1}) async {
+  Future<Either<Failure, List<ProductEntity>>> getPopularProducts({
+    int page = 1,
+  }) async {
     try {
-      final data = await _productsRemoteDataSource.getPopularProducts(page: page);
+      final data = await _productsRemoteDataSource.getPopularProducts(
+        page: page,
+      );
       return right(data);
     } catch (e) {
       return left(ErrorHandler.handle(e));
@@ -111,7 +150,9 @@ class ProductsRepoImpl implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getBestProducts({int page = 1}) async {
+  Future<Either<Failure, List<ProductEntity>>> getBestProducts({
+    int page = 1,
+  }) async {
     try {
       final data = await _productsRemoteDataSource.getBestProducts(page: page);
       return right(data);
@@ -147,6 +188,38 @@ class ProductsRepoImpl implements ProductsRepo {
         page: page,
       );
       return right(data);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> searchProducts({
+    required String query,
+  }) async {
+    try {
+      if (_cachedProducts == null || _cachedProducts!.isEmpty) {
+        final box = await Hive.openBox(HiveConstants.productsCacheBox);
+        final List<dynamic>? cachedList =
+            box.get(HiveConstants.productsCacheKey) as List<dynamic>?;
+
+        if (cachedList != null && cachedList.isNotEmpty) {
+          _cachedProducts = cachedList.map((e) {
+            return ProductModel.fromJson(_recursiveConvert(e as Map));
+          }).toList();
+        } else {
+          _cachedProducts = [];
+        }
+      }
+
+      final filteredProducts = _cachedProducts!
+          .where(
+            (product) =>
+                product.title.toLowerCase().contains(query.toLowerCase()),
+          )
+          .toList();
+
+      return right(filteredProducts);
     } catch (e) {
       return left(ErrorHandler.handle(e));
     }

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/extentions/sized_box_extention.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
-import 'package:marketi/core/widgets/custom_text_form_field.dart';
+import 'package:marketi/features/home/presentation/widgets/search_button.dart';
 import 'package:marketi/features/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -33,15 +33,7 @@ class HomeHeader extends StatelessWidget {
         14.verticalSizedBox,
 
         //Serach text field
-        CustomTextFormField(
-          readOnly: true,
-          hintText: context.l10n.searchHint,
-          prefixIcon: Icon(
-            Icons.search,
-            size: 30,
-            color: context.textColor,
-          ),
-        ),
+        const SearchButton(),
       ],
     );
   }

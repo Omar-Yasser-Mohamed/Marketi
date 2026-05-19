@@ -32,6 +32,7 @@ import 'package:marketi/features/home/presentation/cubits/brands_cubit/brands_cu
 import 'package:marketi/features/home/presentation/cubits/categories_cubit/categories_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/product_details_cubit/product_details_cubit.dart';
 import 'package:marketi/features/home/presentation/cubits/products_cubit/products_cubit.dart';
+import 'package:marketi/features/home/presentation/cubits/search_cubit/search_cubit.dart';
 import 'package:marketi/features/home/presentation/screens/brand_products_screen.dart';
 import 'package:marketi/features/home/presentation/screens/brands_screen.dart';
 import 'package:marketi/features/home/presentation/screens/categories_screen.dart';
@@ -40,6 +41,7 @@ import 'package:marketi/features/home/presentation/screens/home_screen.dart';
 import 'package:marketi/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:marketi/features/home/presentation/screens/product_details_screen.dart';
 import 'package:marketi/features/home/presentation/screens/products_screen.dart';
+import 'package:marketi/features/home/presentation/screens/search_screen.dart';
 import 'package:marketi/features/orders/presentation/screens/all_orders_screen.dart';
 import 'package:marketi/features/orders/presentation/cubits/orders_cubit/orders_cubit.dart';
 import 'package:marketi/features/orders/presentation/screens/order_details_screen.dart';
@@ -294,6 +296,15 @@ abstract class RouterConfigration {
                 categoryId: category.id,
               ),
             child: const CategoryProductsScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.searchScreen,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => getIt<SearchCubit>(),
+            child: const SearchScreen(),
           );
         },
       ),
