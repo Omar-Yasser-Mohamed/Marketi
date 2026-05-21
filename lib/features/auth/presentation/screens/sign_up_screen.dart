@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/extentions/responsive_extentions.dart';
-import 'package:marketi/features/auth/presentation/widgets/custom_continue_with_text.dart';
-import 'package:marketi/features/auth/presentation/widgets/google_login_button.dart';
 import 'package:marketi/features/auth/presentation/widgets/signup_widgets/signup_header.dart';
 import 'package:marketi/features/auth/presentation/widgets/signup_widgets/signup_section.dart';
 
@@ -25,14 +23,14 @@ class SignUpScreen extends StatelessWidget {
 
             const SignupSection(),
 
-            const SizedBox(height: 12),
+            // const SizedBox(height: 12),
 
-            const CustomContinueWithText(),
+            // const CustomContinueWithText(),
 
-            const SizedBox(height: 20),
+            // const SizedBox(height: 20),
 
-            // Google Login button
-            const GoogleLoginButton(),
+            // // Google Login button
+            // const GoogleLoginButton(),
 
             const SizedBox(height: 28),
           ],

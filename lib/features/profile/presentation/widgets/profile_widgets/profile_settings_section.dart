@@ -23,13 +23,12 @@ class ProfileSettingsSection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          ProfileSectionTile(
-            icon: Icons.payment_outlined,
-            title: context.l10n.payment,
-          ),
+          // ProfileSectionTile(
+          //   icon: Icons.payment_outlined,
+          //   title: context.l10n.payment,
+          // ),
 
-          const CustomDivider(),
-
+          // const CustomDivider(),
           ProfileSectionTile(
             icon: Icons.shopping_bag_outlined,
             title: context.l10n.orders,

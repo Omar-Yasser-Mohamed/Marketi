@@ -6,8 +6,6 @@ import 'package:marketi/core/extentions/context_extentions.dart';
 import 'package:marketi/core/routing/app_routes.dart';
 import 'package:marketi/core/styles/app_colors.dart';
 import 'package:marketi/core/styles/app_text_styles.dart';
-import 'package:marketi/features/auth/presentation/widgets/custom_continue_with_text.dart';
-import 'package:marketi/features/auth/presentation/widgets/google_login_button.dart';
 import 'package:marketi/features/auth/presentation/widgets/login_widgets/login_section.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -37,13 +35,13 @@ class LoginScreen extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            // Or continue with text
-            const CustomContinueWithText(),
+            // // Or continue with text
+            // const CustomContinueWithText(),
 
-            const SizedBox(height: 20),
+            // const SizedBox(height: 20),
 
-            // Google Login button
-            const GoogleLoginButton(),
+            // // Google Login button
+            // const GoogleLoginButton(),
 
             const SizedBox(height: 24),
 
